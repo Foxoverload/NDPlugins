@@ -258,7 +258,7 @@ function exportarFichaHTML(sheet, selfForm)
     local html = table.concat(parts, "\n");
     
     local stream = utils.newMemoryStream();
-    stream:write(html);
+    stream:writeBinary("utf8", html);
     stream.position = 0;
     
     local nome = v("nome");
