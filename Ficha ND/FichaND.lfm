@@ -1308,13 +1308,14 @@
                         local function stripRtf(rtfText)
                             if rtfText == nil or rtfText == "" then return ""; end
                             local text = tostring(rtfText);
-                            if string.sub(text, 1, 5) ~= "{\rtf" then return text; end
+                            if string.sub(text, 1, 1) ~= "{" then return text; end
+                            if not string.find(text, "\\rtf") then return text; end
                             text = string.gsub(text, "\\[{}]", "");
                             text = string.gsub(text, "\\pard[^%s]*%s?", " ");
-                            text = string.gsub(text, "\\par[^%a]", "\n");
+                            text = string.gsub(text, "\\par ", "\n");
+                            text = string.gsub(text, "\\par\n", "\n");
                             text = string.gsub(text, "\\[a-zA-Z]+%-?[0-9]*%s?", "");
                             text = string.gsub(text, "[{}]", "");
-                            text = string.gsub(text, "\r", "");
                             return text;
                         end
                         
