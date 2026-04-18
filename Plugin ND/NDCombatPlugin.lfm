@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmNDCombatPlugin" formType="tablesDock" dataType="br.com.rrpg.NarutoDestiny_CombatPlugin" title="ND Combate" align="client" theme="dark">
+    <script>
+        local ndb = require("ndb.lua");
+
+        -- Modo teste
+        local MODO_TESTE = false;
+        local TESTE_VALOR = 20;
+
+        -- ========== COMANDOS DE COMBATE ==========
+        local COMANDOS_COMBATE = {
+            ["taijutsu"]    = {campo = "taijutsu",       nome = "Taijutsu",        fisico = true},
+            ["bukijutsu"]   = {campo = "bukijutsu",      nome = "Bukijutsu",       fisico = true},
+            ["ninjutsu"]    = {campo = "ninjutsu",        nome = "Ninjutsu",        fisico = false},
+            ["genjutsu"]    = {campo = "genjutsu",        nome = "Genjutsu",        fisico = false},
+            ["kai"]         = {campo = "genjutsu_kai",    nome = "Genjutsu Kai",    fisico = false},
+            ["fuinjutsu"]   = {campo = "fuinjutsu",       nome = "Fuinjutsu",       fisico = false},
+            ["arremesso"]   = {campo = "arremesso",       nome = "Arremesso",       fisico = false},
+            ["esquiva"]     = {campo = "esquiva",         nome = "Esquiva",         fisico = false},
+            ["bloqfisico"]  = {campo = "bloqueio_fisico", nome = "Bloqueio Fisico", fisico = false},
+            ["bloqchakra"]  = {campo = "bloqueio_chakra", nome = "Bloqueio Chakra", fisico = false},
+            ["reflexo"]     = {campo = "reflexo",         nome = "Reflexo",         fisico = false},
+            ["iniciativa"]  = {campo = "iniciativa",      nome = "Iniciativa",      fisico = false},
+            ["tai-buki"]    = {campo = "tai_bukijutsu",   nome = "Tai-Bukijutsu",   fisico = true},
+            ["nin-tai"]     = {campo = "nin_taijutsu",    nome = "Nin-Taijutsu",    fisico = false},
+            ["hiraishin"]   = {campo = "hiraishin",       nome = "Hiraishin",       fisico = false},
+            ["mover"]       = {campo = "movimentacao",    nome = "Movimentacao",    fisico = false},
+        };
+
+        -- ========== FUNCOES AUXILIARES ==========
+        local function buscarFichaEExecutar(mesa, chat, callback)
+            if mesa == nil then
+                if chat ~= nil then chat:enviarMensagem("Erro: mesa nao encontrada."); end;
+                return;
+            end;
+            local meuJogador = mesa.meuJogador;
+            if meuJogador == nil then
+                if chat ~= nil then chat:enviarMensagem("Erro: jogador nao encontrado."); end;
+                return;
+            end;
+            local codPersonagem = meuJogador.personagemPrincipal;
+            if codPersonagem ~= nil and codPersonagem ~= 0 then
+                local bibItem = mesa:findBibliotecaItem(codPersonagem);
+                if bibItem ~= nil then
+                    bibItem:loadSheetNDB(function(sheetNode)
+                        if sheetNode ~= nil then callback(sheetNode);
+                        else chat:enviarMensagem("Erro ao carregar ficha."); end;
+                    end);
+                    return;
+                end;
+            end;
+            local bib = mesa.biblioteca;
+            if bib ~= nil then
+                local filhos = bib.filhos;
+                if filhos ~= nil then
+                    for i = 1, #filhos, 1 do
+                        local item = filhos[i];
+                        if item ~= nil and item.tipo == "personagem" and item.loginDono == meuJogador.login then
+                            item:loadSheetNDB(function(sheetNode)
+                                if sheetNode ~= nil then callback(sheetNode);
+                                else chat:enviarMensagem("Erro ao carregar ficha."); end;
+                            end);
+                            return;
+                        end;
+                    end;
+                end;
+            end;
+            chat:enviarMensagem("Nenhuma ficha encontrada.");
+        end;
+
+        local function verificarZeroStatus(sheetNode, chat, nome)
+            if sheetNode == nil or chat == nil then return; end;
+            local pvAt = tonumber(sheetNode.pv_atual) or 0;
+            local chkAt = tonumber(sheetNode.pchakra_atual) or 0;
+            local estAt = tonumber(sheetNode.pestamina_atual) or 0;
+            if pvAt &lt;= 0 then chat:enviarMensagem("DERROTADO! " .. nome .. " PV zerado (" .. pvAt .. ")."); end;
+            if chkAt &lt;= 0 and estAt &lt;= 0 then
+                chat:enviarMensagem("ALERTA: " .. nome .. " Chakra E Estamina zerados! -8 em todas as acoes.");
+            elseif chkAt &lt;= 0 then
+                chat:enviarMensagem("ALERTA: " .. nome .. " Chakra zerado! -4 em todas as acoes.");
+            elseif estAt &lt;= 0 then
+                chat:enviarMensagem("ALERTA: " .. nome .. " Estamina zerada! -4 em todas as acoes.");
+            end;
+        end;
+
+        -- ========== TRACKER DE INICIATIVA ==========
+        local combatentes = {};
+        local turnoAtual = 0;
+        local rodadaAtual = 0;
+        local MAX_LINHAS = 12;
+
+        -- Forward declarations (definidas mais abaixo)
+        local buscarCombatente;
+        local calcularBonusEfeitos;
+        local calcularBonusTotal;
+        local adicionarEfeitoAoCombatente;
+        local processarEfeitos;
+
+        local function ordenarCombatentes()
+            table.sort(combatentes, function(a, b) return (a.ini or 0) > (b.ini or 0); end);
+        end;
+
+        local function renderizarTracker()
+            ordenarCombatentes();
+            for i = 1, MAX_LINHAS do
+                local lblNum = self["lblNum" .. i];
+                local lblNome = self["lblNome" .. i];
+                local lblIni = self["lblIni" .. i];
+                local lblBg = self["lblBg" .. i];
+
+                if lblNome ~= nil then
+                    if i &lt;= #combatentes then
+                        local c = combatentes[i];
+                        local marcador = "";
+                        if i == turnoAtual then marcador = ">> "; end;
+                        lblNum.text = marcador .. i .. ".";
+                        -- Mostrar efeitos ao lado do nome
+                        local nomeTxt = c.nome or "?";
+                        local hintTxt = c.nome or "?";
+                        if c.efeitos ~= nil and #c.efeitos > 0 then
+                            local efNomes = {};
+                            local hintLines = {};
+                            for ei = 1, #c.efeitos do
+                                local ef = c.efeitos[ei];
+                                local prefixo = "";
+                                if ef.bonusAtb ~= nil and ef.bonusAtb > 0 then prefixo = "+";
+                                elseif ef.bonusAtb ~= nil and ef.bonusAtb &lt; 0 then prefixo = "-";
+                                elseif ef.danoRodada ~= nil and ef.danoRodada > 0 then prefixo = "-";
+                                end;
+                                local durTag = "";
+                                if ef.duracao ~= nil and ef.duracao > 0 then durTag = "(" .. ef.duracao .. "rd)"; end;
+                                table.insert(efNomes, prefixo .. ef.nome .. durTag);
+                                -- Hint detalhado
+                                local hLine = ef.nome .. ":";
+                                if ef.bonusAtb ~= nil and ef.bonusAtb ~= 0 then
+                                    hLine = hLine .. " " .. (ef.bonusAtb > 0 and "+" or "") .. ef.bonusAtb .. " atributos";
+                                end;
+                                if ef.danoRodada ~= nil and ef.danoRodada > 0 then
+                                    hLine = hLine .. " " .. ef.danoRodada .. " dano/rd";
+                                end;
+                                if ef.estaminaRodada ~= nil and ef.estaminaRodada > 0 then
+                                    hLine = hLine .. " -" .. ef.estaminaRodada .. " est/rd";
+                                end;
+                                if ef.custoChakraRd ~= nil and ef.custoChakraRd > 0 then
+                                    hLine = hLine .. " -" .. ef.custoChakraRd .. " chk/rd";
+                                end;
+                                if ef.duracao ~= nil and ef.duracao > 0 then
+                                    hLine = hLine .. " (" .. ef.duracao .. " rodadas)";
+                                else
+                                    hLine = hLine .. " (permanente)";
+                                end;
+                                table.insert(hintLines, hLine);
+                            end;
+                            nomeTxt = nomeTxt .. " [" .. table.concat(efNomes, ", ") .. "]";
+                            hintTxt = hintTxt .. "\n" .. table.concat(hintLines, "\n");
+                        end;
+                        lblNome.text = nomeTxt;
+                        lblIni.text = tostring(c.ini or "?");
+                        lblNome.visible = true;
+                        lblIni.visible = true;
+                        lblNum.visible = true;
+
+                        if i == turnoAtual then
+                            lblNum.fontColor = "#4FC3F7";
+                            lblNome.fontColor = "#4FC3F7";
+                            lblIni.fontColor = "#4FC3F7";
+                            if lblBg ~= nil then lblBg.color = "#122A3A"; lblBg.visible = true; end;
+                        else
+                            if c.tipo == "npc" then
+                                lblNum.fontColor = "#EF5350";
+                                lblNome.fontColor = "#EF5350";
+                                lblIni.fontColor = "#EF5350";
+                            else
+                                lblNum.fontColor = "#78909C";
+                                lblNome.fontColor = "#B0BEC5";
+                                lblIni.fontColor = "#B0BEC5";
+                            end;
+                            if lblBg ~= nil then lblBg.visible = false; end;
+                        end;
+                    else
+                        lblNum.text = "";
+                        lblNome.text = "";
+                        lblIni.text = "";
+                        lblNome.visible = false;
+                        lblIni.visible = false;
+                        lblNum.visible = false;
+                        if lblBg ~= nil then lblBg.visible = false; end;
+                    end;
+                end;
+            end;
+            if self.lblStatus ~= nil then
+                local statusTxt = #combatentes .. " combatentes";
+                if rodadaAtual > 0 then
+                    statusTxt = "Rodada " .. rodadaAtual;
+                    if turnoAtual > 0 and turnoAtual &lt;= #combatentes then
+                        statusTxt = statusTxt .. " | Turno: " .. combatentes[turnoAtual].nome;
+                    end;
+                end;
+                self.lblStatus.text = statusTxt;
+            end;
+            -- Mostrar detalhes dos efeitos do combatente atual
+            if self.lblEfeitos ~= nil then
+                local efDetailTxt = "";
+                if turnoAtual > 0 and turnoAtual &lt;= #combatentes then
+                    local c = combatentes[turnoAtual];
+                    if c.efeitos ~= nil and #c.efeitos > 0 then
+                        local lines = {};
+                        for ei = 1, #c.efeitos do
+                            local ef = c.efeitos[ei];
+                            local desc = ef.nome .. ":";
+                            if ef.bonusAtb ~= nil and ef.bonusAtb ~= 0 then
+                                desc = desc .. " " .. (ef.bonusAtb > 0 and "+" or "") .. ef.bonusAtb .. "atb";
+                            end;
+                            if ef.danoRodada ~= nil and ef.danoRodada > 0 then desc = desc .. " " .. ef.danoRodada .. "dano/rd"; end;
+                            if ef.estaminaRodada ~= nil and ef.estaminaRodada > 0 then desc = desc .. " -" .. ef.estaminaRodada .. "est/rd"; end;
+                            if ef.custoChakraRd ~= nil and ef.custoChakraRd > 0 then desc = desc .. " -" .. ef.custoChakraRd .. "chk/rd"; end;
+                            if ef.duracao ~= nil and ef.duracao > 0 then desc = desc .. " (" .. ef.duracao .. "rd)";
+                            else desc = desc .. " (perm)"; end;
+                            table.insert(lines, desc);
+                        end;
+                        efDetailTxt = table.concat(lines, " | ");
+                    end;
+                end;
+                self.lblEfeitos.text = efDetailTxt;
+            end;
+        end;
+
+        local function adicionarJogadores()
+            local mesas = Firecast.getMesas();
+            if mesas == nil or #mesas == 0 then return; end;
+            local mesa = mesas[1];
+            local jogadores = mesa.jogadores;
+            if jogadores == nil then return; end;
+
+            for i = 1, #jogadores do
+                local jog = jogadores[i];
+                if jog ~= nil then
+                    local nick = jog.nick or jog.login or ("Jogador " .. i);
+                    -- Remover tags de formatacao [...] do nick manualmente
+                    local limpo = "";
+                    local dentro = false;
+                    for ci = 1, string.len(nick) do
+                        local ch = string.sub(nick, ci, ci);
+                        if ch == "[" then dentro = true;
+                        elseif ch == "]" then dentro = false;
+                        elseif not dentro then limpo = limpo .. ch;
+                        end;
+                    end;
+                    nick = limpo;
+                    if nick == "" then nick = jog.login or ("Jogador " .. i); end;
+                    local login = jog.login or "";
+                    -- Verificar se ja existe no tracker
+                    local jaExiste = false;
+                    for j = 1, #combatentes do
+                        if combatentes[j].login == login then
+                            jaExiste = true;
+                            break;
+                        end;
+                    end;
+                    if not jaExiste then
+                        -- Tentar buscar iniciativa da ficha
+                        local codPersonagem = jog.personagemPrincipal;
+                        if codPersonagem ~= nil and codPersonagem ~= 0 then
+                            local bibItem = mesa:findBibliotecaItem(codPersonagem);
+                            if bibItem ~= nil then
+                                bibItem:loadSheetNDB(function(sheetNode)
+                                    local ini = 0;
+                                    local nomeSheet = nick;
+                                    if sheetNode ~= nil then
+                                        ini = tonumber(sheetNode.iniciativa) or 0;
+                                        local sn = sheetNode.nome;
+                                        if sn ~= nil and sn ~= "" then nomeSheet = sn; end;
+                                    end;
+                                    table.insert(combatentes, {nome = nomeSheet, ini = ini, tipo = "jogador", login = login, baseIni = ini, bibCode = codPersonagem});
+                                    renderizarTracker();
+                                end);
+                            else
+                                table.insert(combatentes, {nome = nick, ini = 0, tipo = "jogador", login = login, baseIni = 0, bibCode = nil});
+                            end;
+                        else
+                            table.insert(combatentes, {nome = nick, ini = 0, tipo = "jogador", login = login, baseIni = 0, bibCode = nil});
+                        end;
+                    end;
+                end;
+            end;
+            renderizarTracker();
+        end;
+
+        local function adicionarNPC()
+            local nomeEdit = self.edtNpcNome;
+            local iniEdit = self.edtNpcIni;
+            if nomeEdit == nil or iniEdit == nil then return; end;
+            local nome = nomeEdit.text or "";
+            local ini = tonumber(iniEdit.text) or 0;
+            if nome == "" then return; end;
+            table.insert(combatentes, {nome = nome, ini = ini, tipo = "npc", bibCode = nil, baseIni = ini});
+            nomeEdit.text = "";
+            iniEdit.text = "";
+            renderizarTracker();
+        end;
+
+        local function rolarIniciativas()
+            local mesas = Firecast.getMesas();
+            local mesa = (mesas ~= nil and #mesas > 0) and mesas[1] or nil;
+            local chat = (mesa ~= nil) and mesa.chat or nil;
+
+            for i = 1, #combatentes do
+                local c = combatentes[i];
+                local baseIni = c.baseIni or 0;
+                if MODO_TESTE then
+                    c.ini = TESTE_VALOR + baseIni;
+                    if chat ~= nil then
+                        chat:enviarMensagem("Iniciativa: " .. c.nome .. " [TESTE] 1d20+" .. baseIni .. " = " .. c.ini);
+                    end;
+                else
+                    local rol = Firecast.interpretarRolagem("1d20 + " .. baseIni);
+                    rol:rolarLocalmente();
+                    c.ini = rol.resultado or baseIni;
+                    local d20 = c.ini - baseIni;
+                    if chat ~= nil then
+                        chat:enviarMensagem(c.nome .. " rolou 1d20+" .. baseIni .. " = " .. c.ini .. " {[" .. d20 .. "]+" .. baseIni .. "}");
+                    end;
+                end;
+            end;
+            -- Ordenar por resultado de iniciativa (maior primeiro)
+            table.sort(combatentes, function(a, b) return (a.ini or 0) > (b.ini or 0); end);
+            turnoAtual = 1;
+            rodadaAtual = 1;
+            if chat ~= nil then
+                chat:enviarMensagem("--- Ordem de Iniciativa ---");
+                for i = 1, #combatentes do
+                    chat:enviarMensagem(i .. ". " .. combatentes[i].nome .. " (" .. combatentes[i].ini .. ")");
+                end;
+            end;
+            renderizarTracker();
+        end;
+
+        local function proximoTurno()
+            if #combatentes == 0 then return; end;
+            turnoAtual = turnoAtual + 1;
+            local novaRodada = false;
+            if turnoAtual > #combatentes then
+                turnoAtual = 1;
+                rodadaAtual = rodadaAtual + 1;
+                novaRodada = true;
+            end;
+
+            local mesas = Firecast.getMesas();
+            local mesa = (mesas ~= nil and #mesas > 0) and mesas[1] or nil;
+            local chat = (mesa ~= nil) and mesa.chat or nil;
+            if chat ~= nil then
+                if novaRodada then
+                    chat:enviarMensagem("========== RODADA " .. rodadaAtual .. " ==========");
+                    processarEfeitos(chat);
+                end;
+                if turnoAtual &lt;= #combatentes then
+                    local efBonus = calcularBonusTotal(combatentes[turnoAtual]);
+                    local efTxt = "";
+                    if efBonus ~= 0 then
+                        efTxt = " | Efeitos: " .. (efBonus > 0 and "+" or "") .. efBonus .. " atb";
+                    end;
+                    chat:enviarMensagem(">> Turno de: " .. combatentes[turnoAtual].nome .. " (Ini: " .. combatentes[turnoAtual].ini .. ")" .. efTxt);
+                end;
+            end;
+            renderizarTracker();
+        end;
+
+        local function turnoAnterior()
+            if #combatentes == 0 then return; end;
+            turnoAtual = turnoAtual - 1;
+            if turnoAtual &lt; 1 then turnoAtual = #combatentes; end;
+            renderizarTracker();
+        end;
+
+        local function limparTracker()
+            combatentes = {};
+            turnoAtual = 0;
+            rodadaAtual = 0;
+            renderizarTracker();
+        end;
+
+        local function removerCombatente(indice)
+            if indice &lt;= #combatentes then
+                table.remove(combatentes, indice);
+                if turnoAtual > #combatentes then turnoAtual = #combatentes; end;
+                renderizarTracker();
+            end;
+        end;
+
+        -- ========== SISTEMA DE EFEITOS ==========
+        -- Atributos por tipo de efeito
+        local SHARINGAN_ATBS = {"taijutsu", "bukijutsu", "ninjutsu", "nin_taijutsu", "hiraishin", "genjutsu", "genjutsu_kai", "arremesso", "esquiva", "movimentacao", "bloqueio_fisico", "bloqueio_chakra"};
+        local ELETROCUTAR_ATBS = {"taijutsu", "bukijutsu", "arremesso", "esquiva", "bloqueio_fisico"};
+        local CONGELA_ATBS = {"taijutsu", "bukijutsu", "arremesso", "esquiva", "bloqueio_fisico", "reflexo"};
+        local DEFESA_ATBS = {"esquiva", "bloqueio_fisico", "bloqueio_chakra", "reflexo"};
+        local GENJUTSU_ATBS = {"esquiva", "bloqueio_fisico", "bloqueio_chakra", "genjutsu_kai", "reflexo"};
+
+        -- Tabela de efeitos pre-definidos
+        local EFEITOS_CMD = {
+            -- === PERMANENTES (dano) ===
+            ["corrosao"]     = {nome = "Corrosao",         tipo = "dano",    atbs = nil,            uso = "!corrosao [comb] [dano/rd]"},
+            ["corrosaoac"]   = {nome = "Corrosao-Acido",   tipo = "dano",    atbs = nil,            uso = "!corrosaoac [comb] [dano/rd]"},
+            ["queimadura"]   = {nome = "Queimadura",       tipo = "dano",    atbs = nil,            uso = "!queimadura [comb] [dano/rd]"},
+            ["queimalava"]   = {nome = "Queimadura-Lava",  tipo = "danomult",mult = 1.4, atbs = nil,uso = "!queimalava [comb] [dano_base]"},
+            ["amaterasu"]    = {nome = "Amaterasu",        tipo = "danomult",mult = 1.4, atbs = nil,uso = "!amaterasu [comb] [dano_base]"},
+            ["sangramento"]  = {nome = "Sangramento",     tipo = "dano",    atbs = nil,            uso = "!sangramento [comb] [dano/rd]"},
+            -- === PERMANENTES (redutor) ===
+            ["congelamento"] = {nome = "Congelamento",     tipo = "redutor", atbs = CONGELA_ATBS,   uso = "!congelamento [comb] [penalidade]"},
+            ["cristalizacao"]= {nome = "Cristalizacao",    tipo = "redutor", atbs = CONGELA_ATBS,   uso = "!cristalizacao [comb] [penalidade]"},
+            ["desidratacao"] = {nome = "Desidratacao",     tipo = "redutor", atbs = nil,            uso = "!desidratacao [comb] [penalidade]"},
+            ["tenketsu"]     = {nome = "Tenketsu-Fechado", tipo = "redutor", atbs = nil,            uso = "!tenketsu [comb] [penalidade]"},
+            ["magnetizacao"] = {nome = "Magnetizacao",     tipo = "redutor", atbs = nil,            uso = "!magnetizacao [comb] [penalidade]"},
+            -- === PERMANENTES (hibrido) ===
+            ["envenenamento"]= {nome = "Envenenamento",    tipo = "hibrido",atbs = nil,             uso = "!envenenamento [comb] [penalidade] [dano/rd]"},
+            ["esmagamento"]  = {nome = "Esmagamento",     tipo = "hibrido",atbs = nil,             uso = "!esmagamento [comb] [penalidade] [dano/rd]"},
+            ["perfuracao"]   = {nome = "Perfuracao",       tipo = "hibrido",atbs = nil,             uso = "!perfuracao [comb] [penalidade] [dano/rd]"},
+            -- === PERMANENTES (especiais) ===
+            ["desintegracao"]= {nome = "Desintegracao",    tipo = "info",   atbs = nil,             uso = "!desintegracao [comb] [% PV]"},
+            ["explosao"]     = {nome = "Explosao",         tipo = "info",   atbs = nil,             uso = "!explosao [comb] [dano_extra]"},
+            ["bakuton"]      = {nome = "Explosao-Bakuton", tipo = "bakuton",atbs = DEFESA_ATBS,     uso = "!bakuton [comb] [penalidade]"},
+            -- === TEMPORARIOS ===
+            ["atordoamento"] = {nome = "Atordoamento",     tipo = "redutortmp", atbs = CONGELA_ATBS,uso = "!atordoamento [comb] [penalidade] [rodadas]"},
+            ["eletrocutar"]  = {nome = "Eletrocussao",     tipo = "eletro", atbs = ELETROCUTAR_ATBS,uso = "!eletrocutar [comb] [penalidade] [dano/rd] [rodadas]"},
+            ["eletroranton"] = {nome = "Eletrocussao-Ranton",tipo = "eletro",atbs = ELETROCUTAR_ATBS,uso = "!eletroranton [comb] [penalidade] [dano/rd] [rodadas]"},
+            ["genjutsuef"]   = {nome = "Genjutsu",         tipo = "redutortmp", atbs = GENJUTSU_ATBS,uso = "!genjutsuef [comb] [penalidade] [rodadas]"},
+            ["percavisao"]   = {nome = "Perca-de-Visao",   tipo = "redutortmp", atbs = nil,         uso = "!percavisao [comb] [penalidade] [rodadas]"},
+            ["afogamento"]   = {nome = "Afogamento",       tipo = "afoga",  atbs = nil,             uso = "!afogamento [comb] [dano/rd] [estamina/rd] [rodadas]"},
+            ["sufocamento"]  = {nome = "Sufocamento",      tipo = "afoga",  atbs = nil,             uso = "!sufocamento [comb] [dano/rd] [estamina/rd] [rodadas]"},
+            ["alterarchk"]   = {nome = "Alterar-Ctrl-CHK", tipo = "infotmp",atbs = nil,             uso = "!alterarchk [comb] [+chakra] [tecnicas]"},
+            ["exaustao"]     = {nome = "Exaustao",         tipo = "exaustao",atbs = CONGELA_ATBS,   uso = "!exaustao [comb] [penalidade] [+estamina] [tecnicas]"},
+            ["exaustaoilus"] = {nome = "Exaustao-Ilusoria",tipo = "infotmp",atbs = nil,             uso = "!exaustaoilus [comb] [+estamina] [tecnicas]"},
+            ["reducaores"]   = {nome = "Reducao-Resistencia",tipo = "infotmp",atbs = nil,           uso = "!reducaores [comb] [+dano_recebido] [rodadas]"},
+        };
+
+        buscarCombatente = function(nomeParcial)
+            if nomeParcial == nil or nomeParcial == "" then return nil; end;
+            nomeParcial = string.lower(nomeParcial);
+            for i = 1, #combatentes do
+                if string.lower(combatentes[i].nome) == nomeParcial then return combatentes[i]; end;
+            end;
+            for i = 1, #combatentes do
+                if string.find(string.lower(combatentes[i].nome), nomeParcial, 1, true) then return combatentes[i]; end;
+            end;
+            return nil;
+        end;
+
+        calcularBonusEfeitos = function(combatente, campo)
+            local bonus = 0;
+            if combatente == nil or combatente.efeitos == nil then return 0; end;
+            for i = 1, #combatente.efeitos do
+                local ef = combatente.efeitos[i];
+                if ef.atributos ~= nil then
+                    -- Bonus por atributo especifico
+                    for j = 1, #ef.atributos do
+                        if ef.atributos[j] == campo then
+                            bonus = bonus + (ef.bonusAtb or 0);
+                            break;
+                        end;
+                    end;
+                else
+                    -- Bonus global (todos os atributos)
+                    bonus = bonus + (ef.bonusAtb or 0);
+                end;
+            end;
+            return bonus;
+        end;
+
+        calcularBonusTotal = function(combatente)
+            local bonus = 0;
+            if combatente == nil or combatente.efeitos == nil then return 0; end;
+            for i = 1, #combatente.efeitos do
+                bonus = bonus + (combatente.efeitos[i].bonusAtb or 0);
+            end;
+            return bonus;
+        end;
+
+        adicionarEfeitoAoCombatente = function(comb, ef, chat)
+            if comb.efeitos == nil then comb.efeitos = {}; end;
+            table.insert(comb.efeitos, ef);
+            local durTxt = (ef.duracao ~= nil and ef.duracao > 0) and (ef.duracao .. " rodadas") or "permanente";
+            local bonTxt = (ef.bonusAtb ~= nil and ef.bonusAtb ~= 0) and ((ef.bonusAtb > 0 and "+" or "") .. ef.bonusAtb .. " atb") or "";
+            local dmgTxt = (ef.danoRodada ~= nil and ef.danoRodada > 0) and (ef.danoRodada .. " dano/rd") or "";
+            local chkTxt = (ef.custoChakraRd ~= nil and ef.custoChakraRd > 0) and (ef.custoChakraRd .. " chk/rd") or "";
+            chat:enviarMensagem("[EFEITO] " .. comb.nome .. " recebe " .. ef.nome .. ": " .. bonTxt .. " " .. dmgTxt .. " " .. chkTxt .. " (" .. durTxt .. ")");
+            renderizarTracker();
+        end;
+
+        processarEfeitos = function(chat)
+            for i = 1, #combatentes do
+                local c = combatentes[i];
+                if c.efeitos ~= nil and #c.efeitos > 0 then
+                    local j = 1;
+                    while j &lt;= #c.efeitos do
+                        local ef = c.efeitos[j];
+                        -- Identificador para comandos de barra
+                        local barId = c.login or c.nome;
+                        -- Aplicar dano
+                        if ef.danoRodada ~= nil and ef.danoRodada > 0 then
+                            chat:enviarMensagem("[EFEITO] " .. c.nome .. ": " .. ef.nome .. " causa " .. ef.danoRodada .. " de dano.");
+                            if c.tipo == "jogador" then
+                                chat:enviarMensagem("/vida " .. barId .. " -" .. ef.danoRodada);
+                            end;
+                        end;
+                        -- Aplicar perda de estamina (afogamento/sufocamento)
+                        if ef.estaminaRodada ~= nil and ef.estaminaRodada > 0 then
+                            chat:enviarMensagem("[EFEITO] " .. c.nome .. ": " .. ef.nome .. " drena " .. ef.estaminaRodada .. " de estamina.");
+                            if c.tipo == "jogador" then
+                                chat:enviarMensagem("/estamina " .. barId .. " -" .. ef.estaminaRodada);
+                            end;
+                        end;
+                        -- Custo de chakra para manter
+                        if ef.custoChakraRd ~= nil and ef.custoChakraRd > 0 then
+                            chat:enviarMensagem("[EFEITO] " .. c.nome .. ": " .. ef.nome .. " consome " .. ef.custoChakraRd .. " de chakra.");
+                            if c.tipo == "jogador" then
+                                chat:enviarMensagem("/chakra " .. barId .. " -" .. ef.custoChakraRd);
+                            end;
+                        end;
+                        -- Decrementar duracao
+                        if ef.duracao ~= nil and ef.duracao > 0 then
+                            ef.duracao = ef.duracao - 1;
+                            if ef.duracao &lt;= 0 then
+                                chat:enviarMensagem("[EFEITO] " .. c.nome .. ": " .. ef.nome .. " EXPIROU!");
+                                table.remove(c.efeitos, j);
+                            else
+                                chat:enviarMensagem("[EFEITO] " .. c.nome .. ": " .. ef.nome .. " (" .. ef.duracao .. " rodadas restantes)");
+                                j = j + 1;
+                            end;
+                        else
+                            j = j + 1;
+                        end;
+                    end;
+                end;
+            end;
+            renderizarTracker();
+        end;
+
+        -- ========== HANDLER DE CHAT ==========
+        Firecast.messaging.listen("HandleChatTextInput",
+            function(message)
+                if message.O_texto_foi_processado then return; end;
+                local texto = message.texto or "";
+                local cmd = string.match(texto, "^!(%S+)");
+                if cmd == nil then return; end;
+                cmd = string.lower(cmd);
+                local ehNosso = (cmd == "status" or cmd == "sorte" or cmd == "testar" or cmd == "efeito" or cmd == "efeitos" or cmd == "removerefeito" or cmd == "sharingan" or EFEITOS_CMD[cmd] ~= nil or COMANDOS_COMBATE[cmd] ~= nil);
+                if not ehNosso then return; end;
+                local mesa = message.mesa or message.room;
+                local chat = message.chat;
+                if mesa == nil then
+                    local mesas = Firecast.getMesas();
+                    if mesas ~= nil and #mesas > 0 then mesa = mesas[1]; end;
+                end;
+                if chat == nil and mesa ~= nil then chat = mesa.chat; end;
+                if mesa == nil or chat == nil then return; end;
+
+                if cmd == "testar" then
+                    local param = string.match(texto, "^!testar%s+(%S+)");
+                    if param ~= nil then param = string.lower(param); end;
+                    if param == "off" then
+                        MODO_TESTE = false;
+                        chat:enviarMensagem("[TESTE] Modo teste DESLIGADO.");
+                    else
+                        local val = tonumber(param);
+                        if val ~= nil then
+                            MODO_TESTE = true; TESTE_VALOR = val;
+                            chat:enviarMensagem("[TESTE] Modo teste LIGADO. d20 fixo = " .. val);
+                        else
+                            chat:enviarMensagem("[TESTE] " .. (MODO_TESTE and ("Ativo: d20=" .. TESTE_VALOR) or "Inativo") .. ". Use !testar N ou !testar off");
+                        end;
+                    end;
+                    message.O_texto_foi_processado = true; return true;
+                end;
+
+                if cmd == "status" then
+                    buscarFichaEExecutar(mesa, chat, function(sheetNode)
+                        local nome = tostring(sheetNode.nome) or "?";
+                        local msg = "Status de " .. nome .. " | PV: " .. (sheetNode.pv_atual or "?") .. "/" .. (sheetNode.pv or "?");
+                        msg = msg .. " | Chakra: " .. (sheetNode.pchakra_atual or "?") .. "/" .. (sheetNode.pchakra or "?");
+                        msg = msg .. " | Estamina: " .. (sheetNode.pestamina_atual or "?") .. "/" .. (sheetNode.pestamina or "?");
+                        chat:enviarMensagem(msg);
+                    end);
+                    message.O_texto_foi_processado = true; return true;
+                end;
+
+                if cmd == "sorte" then
+                    buscarFichaEExecutar(mesa, chat, function(sheetNode)
+                        local sorteAt = tonumber(sheetNode.sorte) or 0;
+                        local nome = tostring(sheetNode.nome) or "?";
+                        if sorteAt > 0 then
+                            sheetNode.sorte = tostring(sorteAt - 1);
+                            chat:enviarMensagem("[SORTE] " .. nome .. " usa 1 ponto! Valor = 15. (Restante: " .. (sorteAt - 1) .. ")");
+                        else
+                            chat:enviarMensagem(nome .. " nao possui pontos de Sorte!");
+                        end;
+                    end);
+                    message.O_texto_foi_processado = true; return true;
+                end;
+
+                -- !efeito NomeCombatente NomeEfeito bonus dano duracao
+                if cmd == "efeito" then
+                    local parts = {};
+                    for w in string.gmatch(texto, "%S+") do table.insert(parts, w); end;
+                    if #parts &lt; 5 then
+                        chat:enviarMensagem("Uso: !efeito [combatente] [nome] [bonus_atb] [dano/rd] [duracao]");
+                        chat:enviarMensagem("Ex: !efeito Aizen Buff +3 0 0");
+                    else
+                        local comb = buscarCombatente(parts[2]);
+                        if comb == nil then
+                            chat:enviarMensagem("Combatente '" .. parts[2] .. "' nao encontrado.");
+                        else
+                            local ef = {nome = parts[3], bonusAtb = tonumber(parts[4]) or 0, danoRodada = tonumber(parts[5]) or 0, duracao = tonumber(parts[6]) or 0, atributos = nil, custoChakraRd = 0};
+                            adicionarEfeitoAoCombatente(comb, ef, chat);
+                        end;
+                    end;
+                    message.O_texto_foi_processado = true; return true;
+                end;
+
+                -- !sharingan Combatente C/B/A
+                if cmd == "sharingan" then
+                    local parts = {};
+                    for w in string.gmatch(texto, "%S+") do table.insert(parts, w); end;
+                    if #parts &lt; 3 then
+                        chat:enviarMensagem("Uso: !sharingan [combatente] [C/B/A]");
+                    else
+                        local comb = buscarCombatente(parts[2]);
+                        if comb == nil then
+                            chat:enviarMensagem("Combatente '" .. parts[2] .. "' nao encontrado.");
+                        else
+                            local rank = string.upper(parts[3]);
+                            local cfg = nil;
+                            if rank == "C" then cfg = {bonus = 2, ativacao = 40, manutencao = 12, label = "1o Estagio (C)"};
+                            elseif rank == "B" then cfg = {bonus = 3, ativacao = 70, manutencao = 21, label = "2o Estagio (B)"};
+                            elseif rank == "A" then cfg = {bonus = 4, ativacao = 100, manutencao = 30, label = "3o Estagio (A)"};
+                            end;
+                            if cfg == nil then
+                                chat:enviarMensagem("Rank invalido. Use C, B ou A.");
+                            else
+                                local ef = {nome = "Sharingan-" .. rank, bonusAtb = cfg.bonus, danoRodada = 0, duracao = 0, atributos = SHARINGAN_ATBS, custoChakraRd = cfg.manutencao};
+                                chat:enviarMensagem("[SHARINGAN] " .. comb.nome .. " ativa Sharingan " .. cfg.label .. "! Custo: " .. cfg.ativacao .. " chakra.");
+                                adicionarEfeitoAoCombatente(comb, ef, chat);
+                            end;
+                        end;
+                    end;
+                    message.O_texto_foi_processado = true; return true;
+                end;
+
+                -- Handler unificado de efeitos pre-definidos
+                local efTemplate = EFEITOS_CMD[cmd];
+                if efTemplate ~= nil then
+                    local parts = {};
+                    for w in string.gmatch(texto, "%S+") do table.insert(parts, w); end;
+                    if #parts &lt; 3 then
+                        chat:enviarMensagem("Uso: " .. efTemplate.uso);
+                    else
+                        local comb = buscarCombatente(parts[2]);
+                        if comb == nil then
+                            chat:enviarMensagem("Combatente '" .. parts[2] .. "' nao encontrado.");
+                        else
+                            local x = tonumber(parts[3]) or 0;
+                            local y = tonumber(parts[4]) or 0;
+                            local ef = nil;
+                            if efTemplate.tipo == "dano" then
+                                ef = {nome = efTemplate.nome, bonusAtb = 0, danoRodada = x, duracao = 0, atributos = nil, custoChakraRd = 0};
+                            elseif efTemplate.tipo == "danomult" then
+                                local danoFinal = math.floor(x * (efTemplate.mult or 1));
+                                ef = {nome = efTemplate.nome, bonusAtb = 0, danoRodada = danoFinal, duracao = 0, atributos = nil, custoChakraRd = 0};
+                                chat:enviarMensagem("[EFEITO] Dano calculado: " .. x .. " x " .. (efTemplate.mult or 1) .. " = " .. danoFinal .. "/rd");
+                            elseif efTemplate.tipo == "redutor" then
+                                ef = {nome = efTemplate.nome, bonusAtb = -x, danoRodada = 0, duracao = 0, atributos = efTemplate.atbs, custoChakraRd = 0};
+                            elseif efTemplate.tipo == "hibrido" then
+                                ef = {nome = efTemplate.nome, bonusAtb = -x, danoRodada = y, duracao = 0, atributos = efTemplate.atbs, custoChakraRd = 0};
+                            elseif efTemplate.tipo == "eletro" then
+                                local dur = tonumber(parts[5]) or 0;
+                                ef = {nome = efTemplate.nome, bonusAtb = -x, danoRodada = y, duracao = dur, atributos = efTemplate.atbs, custoChakraRd = 0};
+                            elseif efTemplate.tipo == "bakuton" then
+                                ef = {nome = efTemplate.nome, bonusAtb = -x, danoRodada = 0, duracao = 2, atributos = efTemplate.atbs, custoChakraRd = 0};
+                                chat:enviarMensagem("[EFEITO] " .. comb.nome .. ": -" .. x .. " em defesas por 2 rodadas!");
+                            elseif efTemplate.tipo == "info" then
+                                if cmd == "desintegracao" then
+                                    local pct = math.min(x, 10);
+                                    chat:enviarMensagem("[EFEITO] " .. comb.nome .. ": Desintegracao! Execucao se PV &lt;= " .. pct .. "%");
+                                elseif cmd == "explosao" then
+                                    chat:enviarMensagem("[EFEITO] " .. comb.nome .. ": Explosao! +" .. x .. " dano adicional nesta tecnica.");
+                                end;
+                            elseif efTemplate.tipo == "redutortmp" then
+                                -- X = penalidade, Y = rodadas
+                                ef = {nome = efTemplate.nome, bonusAtb = -x, danoRodada = 0, duracao = y, atributos = efTemplate.atbs, custoChakraRd = 0};
+                            elseif efTemplate.tipo == "afoga" then
+                                -- X = dano/rd, Y = estamina/rd, Z = rodadas
+                                local z = tonumber(parts[5]) or 0;
+                                ef = {nome = efTemplate.nome, bonusAtb = 0, danoRodada = x, estaminaRodada = y, duracao = z, atributos = nil, custoChakraRd = 0};
+                                chat:enviarMensagem("[EFEITO] " .. comb.nome .. ": " .. efTemplate.nome .. " - " .. x .. " PV e -" .. y .. " Estamina/rd por " .. z .. " rodadas");
+                            elseif efTemplate.tipo == "exaustao" then
+                                -- X = penalidade atb (2 rodadas), Y = +estamina custo, Z = tecnicas
+                                local z = tonumber(parts[5]) or 0;
+                                ef = {nome = efTemplate.nome, bonusAtb = -x, danoRodada = 0, duracao = 2, atributos = efTemplate.atbs, custoChakraRd = 0};
+                                chat:enviarMensagem("[EFEITO] " .. comb.nome .. ": Exaustao -" .. x .. " atb por 2 rodadas. +" .. y .. " estamina nas proximas " .. z .. " tecnicas.");
+                            elseif efTemplate.tipo == "infotmp" then
+                                -- X = valor, Y = rodadas/tecnicas
+                                ef = {nome = efTemplate.nome, bonusAtb = 0, danoRodada = 0, duracao = y, atributos = nil, custoChakraRd = 0};
+                                chat:enviarMensagem("[EFEITO] " .. comb.nome .. ": " .. efTemplate.nome .. " ativo. Valor: " .. x .. ", Duracao: " .. y .. " rodadas/tecnicas.");
+                            end;
+                            if ef ~= nil then
+                                adicionarEfeitoAoCombatente(comb, ef, chat);
+                            end;
+                        end;
+                    end;
+                    message.O_texto_foi_processado = true; return true;
+                end;
+
+                -- !efeitos NomeCombatente
+                if cmd == "efeitos" then
+                    local nomeComb = string.match(texto, "^!efeitos%s+(%S+)");
+                    if nomeComb == nil then
+                        chat:enviarMensagem("Uso: !efeitos [combatente]");
+                    else
+                        local comb = buscarCombatente(nomeComb);
+                        if comb == nil then
+                            chat:enviarMensagem("Combatente '" .. nomeComb .. "' nao encontrado.");
+                        else
+                            if comb.efeitos == nil or #comb.efeitos == 0 then
+                                chat:enviarMensagem(comb.nome .. ": sem efeitos ativos.");
+                            else
+                                chat:enviarMensagem("Efeitos de " .. comb.nome .. ":");
+                                for k = 1, #comb.efeitos do
+                                    local ef = comb.efeitos[k];
+                                    local durTxt = (ef.duracao ~= nil and ef.duracao > 0) and (ef.duracao .. "rd") or "perm";
+                                    local bonTxt = (ef.bonusAtb ~= nil and ef.bonusAtb ~= 0) and ((ef.bonusAtb > 0 and "+" or "") .. ef.bonusAtb .. "atb") or "";
+                                    local dmgTxt = (ef.danoRodada ~= nil and ef.danoRodada > 0) and (ef.danoRodada .. "dano/rd") or "";
+                                    local chkTxt = (ef.custoChakraRd ~= nil and ef.custoChakraRd > 0) and (ef.custoChakraRd .. "chk/rd") or "";
+                                    local atbTxt = "";
+                                    if ef.atributos ~= nil then atbTxt = "(" .. #ef.atributos .. " atbs)"; end;
+                                    chat:enviarMensagem("  " .. k .. ". " .. ef.nome .. " " .. bonTxt .. " " .. dmgTxt .. " " .. chkTxt .. " " .. atbTxt .. " [" .. durTxt .. "]");
+                                end;
+                            end;
+                        end;
+                    end;
+                    message.O_texto_foi_processado = true; return true;
+                end;
+
+                -- !removerefeito NomeCombatente [numero]
+                if cmd == "removerefeito" then
+                    local parts = {};
+                    for w in string.gmatch(texto, "%S+") do table.insert(parts, w); end;
+                    if #parts &lt; 2 then
+                        chat:enviarMensagem("Uso: !removerefeito [combatente] - lista efeitos");
+                        chat:enviarMensagem("      !removerefeito [combatente] [numero] - remove efeito");
+                    else
+                        local comb = buscarCombatente(parts[2]);
+                        if comb == nil then
+                            chat:enviarMensagem("Combatente '" .. parts[2] .. "' nao encontrado.");
+                        else
+                            local num = tonumber(parts[3]);
+                            if num == nil then
+                                -- Listar efeitos numerados
+                                if comb.efeitos == nil or #comb.efeitos == 0 then
+                                    chat:enviarMensagem(comb.nome .. ": sem efeitos ativos.");
+                                else
+                                    chat:enviarMensagem("Efeitos ativos de " .. comb.nome .. " (digite !removerefeito " .. comb.nome .. " N para remover):");
+                                    for k = 1, #comb.efeitos do
+                                        local ef = comb.efeitos[k];
+                                        local desc = ef.nome;
+                                        if ef.bonusAtb ~= nil and ef.bonusAtb ~= 0 then desc = desc .. " " .. (ef.bonusAtb > 0 and "+" or "") .. ef.bonusAtb .. "atb"; end;
+                                        if ef.danoRodada ~= nil and ef.danoRodada > 0 then desc = desc .. " " .. ef.danoRodada .. "dano/rd"; end;
+                                        if ef.duracao ~= nil and ef.duracao > 0 then desc = desc .. " (" .. ef.duracao .. "rd)";
+                                        else desc = desc .. " (perm)"; end;
+                                        chat:enviarMensagem("  [" .. k .. "] " .. desc);
+                                    end;
+                                end;
+                            else
+                                -- Remover efeito por numero
+                                if comb.efeitos == nil or num &lt; 1 or num > #comb.efeitos then
+                                    chat:enviarMensagem("Numero invalido. Use !removerefeito " .. comb.nome .. " para ver a lista.");
+                                else
+                                    local nomeRemovido = comb.efeitos[num].nome;
+                                    table.remove(comb.efeitos, num);
+                                    chat:enviarMensagem("[EFEITO] Removido #" .. num .. " (" .. nomeRemovido .. ") de " .. comb.nome .. ".");
+                                    renderizarTracker();
+                                end;
+                            end;
+                        end;
+                    end;
+                    message.O_texto_foi_processado = true; return true;
+                end;
+
+                -- Comandos de combate
+                local info = COMANDOS_COMBATE[cmd];
+                if info == nil then return; end;
+                buscarFichaEExecutar(mesa, chat, function(sheetNode)
+                    local valorAtb = tonumber(sheetNode[info.campo]) or 0;
+                    local nome = tostring(sheetNode.nome) or "?";
+                    local efBonus = 0;
+                    local comb = buscarCombatente(nome);
+                    if comb ~= nil then efBonus = calcularBonusEfeitos(comb, info.campo); end;
+                    local valorFinal = valorAtb + efBonus;
+                    local efTxt = "";
+                    if efBonus ~= 0 then efTxt = " (base:" .. valorAtb .. " efeitos:" .. (efBonus > 0 and "+" or "") .. efBonus .. ")"; end;
+
+                    -- Rolar UMA vez localmente para ter o resultado
+                    local rolLocal = Firecast.interpretarRolagem("1d20 + " .. valorFinal);
+                    if MODO_TESTE then
+                        local total = TESTE_VALOR + valorFinal;
+                        chat:enviarMensagem("[TESTE] " .. nome .. " rolou 1d20 + " .. valorFinal .. " = " .. total .. efTxt .. " &lt;&lt; " .. info.nome .. " &gt;&gt;");
+                        if info.fisico then
+                            local estAt = tonumber(sheetNode.pestamina_atual) or 0;
+                            local novaEst = estAt - total;
+                            sheetNode.pestamina_atual = tostring(novaEst);
+                            chat:enviarMensagem("Auto-gasto Estamina: -" .. total .. " (" .. estAt .. " -> " .. novaEst .. ")");
+                            verificarZeroStatus(sheetNode, chat, nome);
+                        end;
+                    else
+                        if info.fisico then
+                            -- Para fisico: rola local, mostra resultado e gasta estamina com o MESMO valor
+                            rolLocal:rolarLocalmente();
+                            local resultado = rolLocal.resultado or 0;
+                            chat:enviarMensagem(nome .. " rolou 1d20 + " .. valorFinal .. " = " .. resultado .. efTxt .. " &lt;&lt; " .. info.nome .. " &gt;&gt;");
+                            local estAt = tonumber(sheetNode.pestamina_atual) or 0;
+                            local novaEst = estAt - resultado;
+                            sheetNode.pestamina_atual = tostring(novaEst);
+                            chat:enviarMensagem("Auto-gasto Estamina: -" .. resultado .. " (" .. estAt .. " -> " .. novaEst .. ")");
+                            -- Atualizar barra da sala
+                            local combAt = buscarCombatente(nome);
+                            if combAt ~= nil and combAt.tipo == "jogador" then
+                                local barId = combAt.login or nome;
+                                chat:enviarMensagem("/estamina " .. barId .. " -" .. resultado);
+                            end;
+                            verificarZeroStatus(sheetNode, chat, nome);
+                        else
+                            -- Para nao-fisico: usa rolarDados normal (visual bonito)
+                            chat:rolarDados(rolLocal, info.nome .. " de " .. nome .. efTxt);
+                        end;
+                    end;
+                end);
+                message.O_texto_foi_processado = true; return true;
+            end
+        );
+    </script>
+
+    <layout align="client">
+        <rectangle align="client" color="#0A0E1A" strokeColor="#1E3A5F" strokeSize="2" xradius="8" yradius="8"/>
+
+        <!-- TITULO -->
+        <layout align="top" height="32" margins="{left=6, right=6, top=6}">
+            <rectangle align="client" color="#141B2D" strokeColor="#1E90FF" strokeSize="1" xradius="8" yradius="8"/>
+            <label align="client" text="COMBAT TRACKER" fontColor="#4FC3F7" fontSize="13" fontStyle="bold" horzTextAlign="center" vertTextAlign="center"/>
+        </layout>
+
+        <!-- BOTOES PRINCIPAIS -->
+        <layout align="top" height="30" margins="{left=6, right=6, top=6}">
+            <button name="btnAddJogadores" align="left" width="130" text="+ Jogadores" fontColor="#B0BEC5" fontSize="10" onClick="adicionarJogadores()"/>
+            <button name="btnRolarIni" align="left" width="110" text="Rolar Iniciativa" fontColor="#4FC3F7" fontSize="10" margins="{left=4}" onClick="rolarIniciativas()"/>
+            <button name="btnLimpar" align="right" width="60" text="Limpar" fontColor="#EF5350" fontSize="9" onClick="limparTracker()"/>
+        </layout>
+
+        <!-- ADD NPC -->
+        <layout align="top" height="28" margins="{left=6, right=6, top=4}">
+            <rectangle align="client" color="#111827" xradius="4" yradius="4"/>
+            <label align="left" width="40" text=" NPC:" fontColor="#EF5350" fontSize="10" fontStyle="bold" vertTextAlign="center"/>
+            <edit name="edtNpcNome" align="left" width="120" fontColor="white" fontSize="10" margins="{left=2}"/>
+            <label align="left" width="28" text=" Ini:" fontColor="#EF5350" fontSize="10" vertTextAlign="center"/>
+            <edit name="edtNpcIni" align="left" width="36" fontColor="white" fontSize="10" margins="{left=2}"/>
+            <button name="btnAddNpc" align="left" width="52" text="+ NPC" fontColor="#EF5350" fontSize="9" margins="{left=4}" onClick="adicionarNPC()"/>
+        </layout>
+
+        <!-- CABECALHO DA LISTA -->
+        <layout align="top" height="20" margins="{left=6, right=6, top=4}">
+            <rectangle align="client" color="#141B2D" xradius="4" yradius="4"/>
+            <label left="8" width="25" align="left" text="#" fontColor="#546E7A" fontSize="9" fontStyle="bold" vertTextAlign="center"/>
+            <label left="34" width="200" align="left" text="COMBATENTE" fontColor="#546E7A" fontSize="9" fontStyle="bold" vertTextAlign="center"/>
+            <label align="right" width="50" text="INI" fontColor="#546E7A" fontSize="9" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+
+        <!-- LINHAS DO TRACKER (12 slots) -->
+        <layout align="top" height="22" margins="{left=6, right=6, top=1}">
+            <rectangle name="lblBg1" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum1" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome1" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni1" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg2" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum2" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome2" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni2" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg3" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum3" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome3" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni3" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg4" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum4" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome4" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni4" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg5" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum5" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome5" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni5" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg6" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum6" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome6" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni6" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg7" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum7" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome7" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni7" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg8" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum8" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome8" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni8" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg9" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum9" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome9" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni9" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg10" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum10" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome10" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni10" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg11" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum11" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome11" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni11" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
+            <rectangle name="lblBg12" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
+            <label name="lblNum12" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
+            <label name="lblNome12" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
+            <label name="lblIni12" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        </layout>
+
+        <!-- STATUS -->
+        <layout align="top" height="18" margins="{left=6, right=6, top=4}">
+            <label name="lblStatus" align="client" text="0 combatentes" fontColor="#546E7A" fontSize="9" horzTextAlign="center" vertTextAlign="center"/>
+        </layout>
+
+        <!-- EFEITOS DO TURNO ATUAL -->
+        <layout align="top" height="24" margins="{left=6, right=6, top=1}">
+            <label name="lblEfeitos" align="client" text="" fontColor="#80DEEA" fontSize="8" horzTextAlign="center" vertTextAlign="center"/>
+        </layout>
+
+        <!-- NAVEGACAO -->
+        <layout align="top" height="32" margins="{left=6, right=6, top=2}">
+            <button name="btnAnterior" align="left" width="120" text="Anterior" fontColor="#B0BEC5" fontSize="10" onClick="turnoAnterior()"/>
+            <button name="btnProximo" align="right" width="120" text="Proximo >>" fontColor="#4FC3F7" fontSize="10" onClick="proximoTurno()"/>
+        </layout>
+
+        <!-- RODAPE -->
+        <layout align="bottom" height="14" margins="{left=6, right=6, bottom=4}">
+            <label align="client" text="!removerefeito | !efeitos | !sharingan | !status" fontColor="#37474F" fontSize="7" horzTextAlign="center" vertTextAlign="center"/>
+        </layout>
+    </layout>
+</form>

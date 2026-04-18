@@ -1,0 +1,22 @@
+# Build output
+output/
+*.rpk
+
+# Compiled files
+*.lfm.lua
+_rdkCompiledLang.cln
+
+# Temp files
+*.tmp
+stdout.txt
+stderr.txt
+
+# OS files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~

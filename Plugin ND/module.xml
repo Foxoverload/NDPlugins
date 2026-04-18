@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="NarutoDestinyPlugin.rpk" compilationDate="10032026202412" sdkApiVersion="88" sdkMinorApiVersion="2" compilationDigest="2354652650d43b8a45b1d2397869a90d191c24b5" compilationUniqueID="69b07decc50585ea00003839">
+    <id>br.com.rrpg.NarutoDestiny_CombatPlugin</id>
+    <version>1.0</version>
+    <info lang="pt-BR">
+        <name>Naruto Destiny - Plugin de Combate</name>
+        <description>Plugin de combate para Naruto Destiny. Adiciona comandos de chat (/taijutsu, /ninjutsu, etc.), auto-gasto de estamina e verificação de status zerado.</description>
+        <author>Aaron</author>
+        <site/>
+        <contact/>
+    </info>
+    <dataTypes>
+        <dataType title="ND Combate" name="frmNDCombatPlugin" lfmFile="NDCombatPlugin.lfm">br.com.rrpg.NarutoDestiny_CombatPlugin</dataType>
+    </dataTypes>
+    <assembledFeatures>
+        <dataTypes>
+            <dataType id="br.com.rrpg.NarutoDestiny_CombatPlugin" formType="tablesDock" lfmFile="NDCombatPlugin.lfm" formName="frmNDCombatPlugin">
+                <info title="ND Combate"/>
+            </dataType>
+        </dataTypes>
+    </assembledFeatures>
+    <name>Naruto Destiny - Plugin de Combate</name>
+    <description>Plugin de combate para Naruto Destiny. Adiciona comandos de chat (/taijutsu, /ninjutsu, etc.), auto-gasto de estamina e verificação de status zerado.</description>
+    <author>Aaron</author>
+</module>
