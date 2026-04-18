@@ -1,0 +1,9 @@
+-----------------------------------
+Firecast Development Kit 3.7b
+C:\Users\aaron\AppData\Local\FirecastSDK3\rdk.exe
+-----------------------------------
+
+Compiling "C:\Users\aaron\Desktop\ND Fichas\Ficha ND\"...
+
+
+

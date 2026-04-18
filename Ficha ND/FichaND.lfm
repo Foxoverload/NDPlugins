@@ -26,6 +26,14 @@
         <tab title="Ficha Principal">
             <scrollBox align="client">
                 
+                <!-- Banner Topo -->
+                <layout align="top" height="90" margins="{left=10, right=10, top=8}">
+                    <rectangle align="client" color="#0A1018" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                    <rectangle align="client" color="#0A1018" strokeColor="#1E3A5C" strokeSize="1" xradius="10" yradius="10" margins="{left=-3, right=-3, top=-3, bottom=-3}"/>
+                    <image align="client" src="/images/top_banner.png" style="stretch" margins="{left=2, right=2, top=2, bottom=2}"/>
+                    <label align="client" text="N A R U T O   D E S T I N Y" horzTextAlign="center" vertTextAlign="center" fontColor="#F97316" fontSize="26" fontStyle="bold"/>
+                </layout>
+                
                 <!-- Cadeado de Bloqueio da Ficha (fora do layout desabilitavel) -->
                 <layout align="top" height="28" margins="{left=20, right=20, top=5, bottom=5}">
                     <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="6" yradius="6"/>
@@ -79,6 +87,9 @@
 
                 <layout name="layoutConteudo" align="top" height="4400" margins="{left=20, right=20, top=0}">
 
+                    <layout align="top" height="8" margins="{top=5}">
+                        <horzLine align="client" strokeColor="#1E3A5C" strokeSize="1"/>
+                    </layout>
                     <cabecalho texto="Naruto Destiny" />
                     
                     <layout align="top" height="30" margins="{top=2}">
@@ -698,6 +709,9 @@
                         </event>
                     </dataLink>
                     
+                    <layout align="top" height="8" margins="{top=5}">
+                        <horzLine align="client" strokeColor="#1E3A5C" strokeSize="1"/>
+                    </layout>
                     <cabecalho texto="Aparência" />
                     
                     <layout align="top" height="20" margins="{top=2, bottom=2}">
@@ -761,6 +775,9 @@
                         </layout>
                     </layout>
                     <!-- ====== ATRIBUTOS ====== -->
+                    <layout align="top" height="8" margins="{top=5}">
+                        <horzLine align="client" strokeColor="#1E3A5C" strokeSize="1"/>
+                    </layout>
                     <cabecalho texto="Atributos" />
                     
 
