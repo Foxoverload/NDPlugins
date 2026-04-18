@@ -602,7 +602,7 @@
                             local texto = "";
                             
                             if self.edtTraits ~= nil then
-                                texto = self.edtTraits.text or "";
+                                texto = self.edtTraits:getText() or "";
                             end
                             
                             -- Procura todos os padrões '(NUMERO pontos de Trait)' case insensitive
@@ -679,11 +679,8 @@
                         end
                     </script>
                     
-                    <textEditor name="edtTraits" align="top" height="250" field="traits" fontColor="white" transparent="false" margins="{top=5, left=10, right=10}">
-                        <event name="onChange">
-                            calcularTraits();
-                        </event>
-                    </textEditor>
+                    <richEdit name="edtTraits" align="top" height="250" field="traits" defaultFontColor="white" backgroundColor="#1A1A1A" defaultFontSize="13" hideSelection="false" animateImages="true" margins="{top=5, left=10, right=10}">
+                    </richEdit>
                     
                     <!-- Gatilho secundário: recalcular quando o nível muda -->
                     <dataLink fields="{'nivel'}">
@@ -2096,6 +2093,7 @@
                     <timer name="timerJutsu" interval="2000" enabled="true">
                         <event name="onTimer">
                             contarPontosJutsu();
+                            calcularTraits();
                         </event>
                     </timer>
 
