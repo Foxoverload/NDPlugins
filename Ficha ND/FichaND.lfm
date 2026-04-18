@@ -1,20 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaNarutoDestiny" formType="sheetTemplate" dataType="br.com.rrpg.Ficha_Naruto_Destiny" title="Ficha Naruto Destiny" align="client" theme="dark">
     
-    <!-- ============ ESTILO NARUTO SHIPPUDEN ============ -->
+    <!-- ============ ESTILO SHIPPUDEN ============ -->
     <style>
         edit {
             fontSize: 13;
             fontColor: #E2E8F0;
         }
-        
         comboBox {
-            fontSize: 12;
             fontColor: #CBD5E1;
         }
-        
         textEditor {
-            fontSize: 13;
             fontColor: #E2E8F0;
         }
     </style>
@@ -22,14 +18,14 @@
     <!-- Templates para agilizar e manter o padrao -->
     <template name="cabecalho">
         <layout align="top" height="34" margins="{top=18, bottom=6}">
-            <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+            <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
             <label align="client" text="$(texto)" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
         </layout>
     </template>
 
     <template name="campo">
         <layout align="top" height="30" margins="{top=2}">
-            <label align="left" width="130" text="$(texto)" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+            <label align="left" width="130" text="$(texto)" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
             <edit align="client" field="$(campo)" fontColor="white" transparent="false"/>
         </layout>
     </template>
@@ -44,26 +40,11 @@
         <tab title="Ficha Principal">
             <scrollBox align="client">
                 
-                <!-- Banner Topo -->
-                <layout align="top" height="90" margins="{left=10, right=10, top=8}">
-                    <rectangle align="client" color="#0A1018" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
-                    <rectangle align="client" color="#0A1018" strokeColor="#1E3A5C" strokeSize="1" xradius="10" yradius="10" margins="{left=-3, right=-3, top=-3, bottom=-3}"/>
-                    <image align="client" src="/images/top_banner.png" style="stretch" margins="{left=2, right=2, top=2, bottom=2}"/>
-                    <label align="client" text="N A R U T O   D E S T I N Y" horzTextAlign="center" vertTextAlign="center" fontColor="#F97316" fontSize="26" fontStyle="bold"/>
-                </layout>
-                
-                <!-- ===== BANNER TOPO ===== -->
-                <layout align="top" height="90" margins="{left=10, right=10, top=8, bottom=5}">
-                    <image align="client" src="/images/top_banner.png" style="stretch"/>
-                    <rectangle align="client" color="#0A101800" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
-                    <label align="client" text="N A R U T O   D E S T I N Y" horzTextAlign="center" vertTextAlign="center" fontColor="#F97316" fontSize="26" fontStyle="bold"/>
-                </layout>
-                
                 <!-- Cadeado de Bloqueio da Ficha (fora do layout desabilitavel) -->
                 <layout align="top" height="28" margins="{left=20, right=20, top=5, bottom=5}">
-                    <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="6" yradius="6"/>
-                    <checkBox name="chkCadeado" align="left" width="200" field="cadeado_ficha" text=" Travar Ficha" fontColor="#CBD5E1" fontSize="12" margins="{left=8}"/>
-                    <label name="lblCadeadoStatus" align="client" text="" fontColor="#22C55E" fontSize="11" fontStyle="italic" horzTextAlign="leading" margins="{left=5}"/>
+                    <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
+                    <checkBox name="chkCadeado" align="left" width="200" field="cadeado_ficha" text=" Travar Ficha" fontColor="#A0B8D0" fontSize="12" margins="{left=8}"/>
+                    <label name="lblCadeadoStatus" align="client" text="" fontColor="#34D399" fontSize="11" fontStyle="italic" horzTextAlign="leading" margins="{left=5}"/>
                 </layout>
                 
                 <layout align="top" height="32" margins="{left=20, right=20, top=2, bottom=5}">
@@ -98,7 +79,7 @@
                                 self.lblCadeadoStatus.fontColor = "#F87171";
                             else
                                 self.lblCadeadoStatus.text = "(Ficha destravada)";
-                                self.lblCadeadoStatus.fontColor = "#22C55E";
+                                self.lblCadeadoStatus.fontColor = "#34D399";
                             end
                         end
                     end
@@ -112,26 +93,24 @@
 
                 <layout name="layoutConteudo" align="top" height="4400" margins="{left=20, right=20, top=0}">
 
-                    <layout align="top" height="8" margins="{top=5}">
-                        <horzLine align="client" strokeColor="#1E3A5C" strokeSize="1"/>
-                    </layout>
-                    <layout align="top" height="4" margins="{top=10, left=30, right=30}">
-                        <rectangle align="client" color="#1E3A5C" xradius="2" yradius="2"/>
-                    </layout>
-                    <cabecalho texto="Naruto Destiny" />
+                    <layout align="top" height="80" margins="{left=5, right=5, top=8, bottom=8}">
+                    <image align="client" src="/images/top_banner.png" style="stretch" margins="{left=2, right=2, top=2, bottom=2}"/>
+                    <rectangle align="client" color="#0A101800" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                    <label align="client" text="N A R U T O   D E S T I N Y" horzTextAlign="center" vertTextAlign="center" fontColor="#F97316" fontSize="24" fontStyle="bold"/>
+                </layout>
                     
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Nome:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Nome:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="nome" fontColor="white" textPrompt="Nome do Personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Idade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Idade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="idade" fontColor="white" textPrompt="Baseado no Rank Shinobi"/>
                     </layout>
                     
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Sexo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Sexo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="left" width="200">
                             <comboBox align="client" name="cb1" hitTest="false" field="sexo" items="{'♂ Masculino', '♀ Feminino'}" values="{'M', 'F'}" fontColor="white"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cb1:dropDown();</event></layout>
@@ -139,18 +118,18 @@
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Aniversário:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Aniversário:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="aniversario" fontColor="white" textPrompt="Dia/Mês/Ano (Ano é opcional)"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Nível:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Nível:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <label align="left" width="60" field="nivel" fontColor="#FBBF24" fontSize="15" fontStyle="bold" horzTextAlign="center"/>
                         <label align="client" text="(Core Total ÷ 2) - 7" fontColor="#4B5563" fontSize="10" fontStyle="italic"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Ryõ:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Ryõ:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="120" field="ryous" fontColor="white" textPrompt="Digite o valor" horzTextAlign="center"/>
                         <label align="left" width="15" text="" />
                         <label align="client" field="ryous_fmt" fontColor="#FBBF24" fontSize="13" fontStyle="bold"/>
@@ -181,48 +160,48 @@
                     </dataLink>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Altura:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Altura:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="altura" fontColor="white" textPrompt="x,xxm de altura"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Peso:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Peso:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="peso" fontColor="white" textPrompt="x,xx KG"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Gostos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Gostos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="gostos" fontColor="white" textPrompt="Descreva ou liste os gostos do personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Desgostos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Desgostos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="desgostos" fontColor="white" textPrompt="Descreva ou liste as coisas que o personagem desgosta"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Hobbies:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Hobbies:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="hobbies" fontColor="white" textPrompt="Descreva o(s) hobbie(s) do personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Sonho:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Sonho:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="sonho" fontColor="white" textPrompt="Descreva o(s) sonho(s) ou vontade(s) do personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Objetivo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Objetivo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="objetivo" fontColor="white" textPrompt="Descreva ou liste o(s) objetivo(s) do personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Interesse Romântico:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Interesse Romântico:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="interesse_romantico" fontColor="white" textPrompt="Descreva ou liste o(s) interesse(s) romantico(s) do personagem"/>
                     </layout>
 
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="client">
                             <comboBox align="client" name="cb2" hitTest="false" field="natureza" fontColor="white" items="{'Selecione...','Amador','Arquiteto','Artista','Autocrata','Bon Vivant','Caçador de Emoções','Capitalista','Competidor','Conciliador','Conformista','Criança','Diretor','Diplomata','Esperto','Estrategista','Excêntrico','Executor','Explorador','Fanático','Filantropo','Galante','Guardião','Guru','Humanitário','Juiz','Malandro','Mártir','Masoquista','Monstro','Observador','Pedagogo','Penitente','Ranzinza','Sábio','Samaritano','Show de Horrores','Sobrevivente','Solitário','Sonhador','Tradicionalista','Valentão','Visionário'}" values="{'','Amador','Arquiteto','Artista','Autocrata','Bon Vivant','Caçador de Emoções','Capitalista','Competidor','Conciliador','Conformista','Criança','Diretor','Diplomata','Esperto','Estrategista','Excêntrico','Executor','Explorador','Fanático','Filantropo','Galante','Guardião','Guru','Humanitário','Juiz','Malandro','Mártir','Masoquista','Monstro','Observador','Pedagogo','Penitente','Ranzinza','Sábio','Samaritano','Show de Horrores','Sobrevivente','Solitário','Sonhador','Tradicionalista','Valentão','Visionário'}"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cb2:dropDown();</event></layout>
@@ -230,14 +209,14 @@
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Comportamento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Comportamento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="client">
                             <comboBox align="client" name="cb3" hitTest="false" field="comportamento" fontColor="white" items="{'Selecione...','Amador','Arquiteto','Artista','Autocrata','Bon Vivant','Caçador de Emoções','Capitalista','Competidor','Conciliador','Conformista','Criança','Diretor','Diplomata','Esperto','Estrategista','Excêntrico','Executor','Explorador','Fanático','Filantropo','Galante','Guardião','Guru','Humanitário','Juiz','Malandro','Mártir','Masoquista','Monstro','Observador','Pedagogo','Penitente','Ranzinza','Sábio','Samaritano','Show de Horrores','Sobrevivente','Solitário','Sonhador','Tradicionalista','Valentão','Visionário'}" values="{'','Amador','Arquiteto','Artista','Autocrata','Bon Vivant','Caçador de Emoções','Capitalista','Competidor','Conciliador','Conformista','Criança','Diretor','Diplomata','Esperto','Estrategista','Excêntrico','Executor','Explorador','Fanático','Filantropo','Galante','Guardião','Guru','Humanitário','Juiz','Malandro','Mártir','Masoquista','Monstro','Observador','Pedagogo','Penitente','Ranzinza','Sábio','Samaritano','Show de Horrores','Sobrevivente','Solitário','Sonhador','Tradicionalista','Valentão','Visionário'}"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cb3:dropDown();</event></layout>
                         </layout>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Qualidades:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Qualidades:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="left" width="155">
                             <comboBox align="client" name="cb4" hitTest="false" field="qualidade1" fontColor="white" items="{'Nenhuma','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}" values="{'','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cb4:dropDown();</event></layout>
@@ -260,7 +239,7 @@
                         </layout>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Defeitos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Defeitos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="left" width="155">
                             <comboBox align="client" name="cb9" hitTest="false" field="defeito1" fontColor="white" items="{'Nenhum','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}" values="{'','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','    Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cb9:dropDown();</event></layout>
@@ -286,50 +265,50 @@
                     <cabecalho texto="Família e Amigos" />
                     
                     <layout align="top" height="20" margins="{top=2, bottom=5}">
-                        <label align="left" width="800" text="(Os campos abaixo são Opcionais de acordo com a narração/mestre)" horzTextAlign="center" fontColor="#64748B" fontSize="11" fontStyle="italic"/>
+                        <label align="left" width="800" text="(Os campos abaixo são Opcionais de acordo com a narração/mestre)" horzTextAlign="center" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Pais:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Pais:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="familia_pais" fontColor="white" textPrompt="Nome do Pai e Nome da Mãe do Personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Irmã(os):" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Irmã(os):" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="familia_irmaos" fontColor="white" textPrompt="Nome dos irmãos e idade deles em parênteses"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Relativos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Relativos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="familia_relativos" fontColor="white" textPrompt="Nome dos tios, tias, avôs, Avós e/ou primos"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Amigos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Amigos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="familia_amigos" fontColor="white" textPrompt="Quais são os amigos do seu personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Neutros:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Neutros:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="familia_neutros" fontColor="white" textPrompt="Nome das pessoas que o personagem conhece mas não é amigo ou inimigo"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Inimigos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Inimigos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="familia_inimigos" fontColor="white" textPrompt="Quais são os inimigos do seu personagem"/>
                     </layout>
                     
                     <cabecalho texto="Informações Ninjas" />
                     
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Vila de Nascimento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Vila de Nascimento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="vila_nascimento" fontColor="white" textPrompt="Vila de nascimento do personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Rank Shinobi:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Rank Shinobi:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="left" width="200" height="30">
-                            <rectangle align="client" color="#0F172A" strokeColor="#1A2A3A" strokeSize="1" xradius="6" yradius="6"/>
+                            <rectangle align="client" color="#0C1828" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
                             <label align="client" field="rank_shinobi" fontColor="#FBBF24" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                         </layout>
                     </layout>
@@ -396,17 +375,17 @@
                     </dataLink>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Sensei:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Sensei:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="sensei" fontColor="white" textPrompt="Senseis ou mentores do personagem"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Kuchiyose:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Kuchiyose:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="kuchiyose" fontColor="white" textPrompt="Caso possua, qual o Nome do animal ou objeto que o personagem possuí contrato"/>
                     </layout>
 
                     <layout align="top" height="48" margins="{top=5}">
-                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         
                         <!-- Fogo -->
                         <layout align="left" width="95" height="48">
@@ -429,7 +408,7 @@
                         <!-- Vento -->
                         <layout align="left" width="95" height="48">
                             <image left="38" top="2" width="18" height="18" src="/Imagens/Elementos/Nature_Icon_Wind.webp"/>
-                            <checkBox left="16" top="24" height="20" field="elem_vento" text="Fūton" fontColor="#34D399" fontSize="12"/>
+                            <checkBox left="16" top="24" height="20" field="elem_vento" text="Fūton" fontColor="#2DD4BF" fontSize="12"/>
                         </layout>
                         
                         <!-- Raio -->
@@ -441,7 +420,7 @@
 
                     <!-- Combinações Elementais Detectadas -->
                     <layout align="top" height="25" margins="{top=4}">
-                        <label align="left" width="160" text="Combinação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Combinação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <label align="client" field="elem_combo" fontColor="#FDBA74" fontSize="12" fontStyle="bold italic"/>
                     </layout>
 
@@ -484,17 +463,17 @@
                     </dataLink>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Clã:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Clã:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="cla_ninja" fontColor="white" textPrompt=""/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Kekkei Genkai:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Kekkei Genkai:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="kekkei_genkai" fontColor="white" textPrompt=""/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Tipo Sanguíneo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Tipo Sanguíneo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="left" width="200">
                             <comboBox align="client" name="cb14" hitTest="false" field="tipo_sanguineo" fontColor="white" items="{'Selecione...','A','B','AB','O'}" values="{'','A','B','AB','O'}"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cb14:dropDown();</event></layout>
@@ -502,7 +481,7 @@
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Mão Dominante:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Mão Dominante:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="left" width="200">
                             <comboBox align="client" name="cb15" hitTest="false" field="mao_dominante" items="{'Canhoto', 'Destro', 'Ambidestro (Trait)'}" values="{'Canhoto', 'Destro', 'Ambidestro'}" fontColor="white"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cb15:dropDown();</event></layout>
@@ -517,7 +496,7 @@
                     
                     <!-- Natureza da fama -->
                     <layout align="top" height="30" margins="{top=4}">
-                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="left" width="250">
                             <comboBox align="client" name="cb16" hitTest="false" field="rec_natureza" items="{'☆ Invisível (sem natureza)', '★ Renome (Dourado/Azul)', '★ Infâmia (Vermelho/Laranja)'}" values="{'0','1','2'}" fontColor="white"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cb16:dropDown();</event></layout>
@@ -526,7 +505,7 @@
                     
                     <!-- 6 Estrelas clicáveis -->
                     <layout align="top" height="35" margins="{top=6}">
-                        <label align="left" width="160" text="Estrelas:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Estrelas:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <checkBox align="left" width="28" field="rec_star1" text="" fontColor="#FBBF24"/>
                         <checkBox align="left" width="28" field="rec_star2" text="" fontColor="#FBBF24"/>
                         <checkBox align="left" width="28" field="rec_star3" text="" fontColor="#FBBF24"/>
@@ -539,14 +518,14 @@
                     
                     <!-- Titulo automático -->
                     <layout align="top" height="32" margins="{top=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#1A2A3A" strokeSize="1" xradius="6" yradius="6"/>
-                        <label align="left" width="160" text="Título:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
+                        <label align="left" width="160" text="Título:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <label align="client" field="rec_titulo" fontColor="#FBBF24" fontSize="14" fontStyle="bold" horzTextAlign="leading"/>
                     </layout>
                     
                     <!-- Descrição da fama -->
                     <layout align="top" height="15" margins="{top=6, bottom=2}">
-                        <label align="client" text="Motivo da fama / infâmia:" fontColor="#64748B" fontSize="11" fontStyle="italic"/>
+                        <label align="client" text="Motivo da fama / infâmia:" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
                     </layout>
                     <textEditor align="top" height="70" field="rec_descricao" fontColor="white" transparent="false"/>
                     
@@ -615,19 +594,19 @@
                     </dataLink>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Organização:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Organização:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="organizacao" fontColor="white" textPrompt="(Opcional, somente usado de acordo com a narração/mestre)"/>
                     </layout>
 
 
 
                     <layout align="top" height="30" margins="{top=15, bottom=5}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" field="trait_resumo" horzTextAlign="center" vertTextAlign="center" fontStyle="bold" fontColor="white" fontSize="15"/>
                     </layout>
                     
                     <layout align="top" height="20" margins="{top=2, bottom=5}">
-                        <label align="left" width="800" text="Formato para somar automaticamente: Nome do Trait (XXX pontos de Trait)" horzTextAlign="center" fontColor="#64748B" fontSize="11" fontStyle="italic"/>
+                        <label align="left" width="800" text="Formato para somar automaticamente: Nome do Trait (XXX pontos de Trait)" horzTextAlign="center" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
                     </layout>
                     <layout align="top" height="16" margins="{bottom=5}">
                         <label align="left" width="800" text="Bônus nos cálculos: [bônus: CAMPO +N]  ex: [bônus: forca +2]  [bônus: pv +500]" horzTextAlign="center" fontColor="#7DD3FC" fontSize="10" fontStyle="italic"/>
@@ -737,13 +716,10 @@
                         </event>
                     </dataLink>
                     
-                    <layout align="top" height="8" margins="{top=5}">
-                        <horzLine align="client" strokeColor="#1E3A5C" strokeSize="1"/>
-                    </layout>
                     <cabecalho texto="Aparência" />
                     
                     <layout align="top" height="20" margins="{top=2, bottom=2}">
-                        <label align="client" text="Clique nas imagens abaixo para selecionar fotos do personagem" horzTextAlign="center" fontColor="#64748B" fontSize="11" fontStyle="italic"/>
+                        <label align="client" text="Clique nas imagens abaixo para selecionar fotos do personagem" horzTextAlign="center" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
                     </layout>
                     
                     <!-- Imagens 1-6 em uma fileira -->
@@ -751,64 +727,58 @@
                         <!-- Imagem 1 -->
                         <layout left="20" top="0" width="270" height="280">
                             <layout align="top" height="250">
-                                <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="8" yradius="8"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
                                 <image align="client" field="aparencia_img1" editable="true" style="autoFit"/>
                             </layout>
-                            <label align="top" height="25" text="Imagem 1" horzTextAlign="center" fontColor="#9CA3AF" fontSize="11" margins="{top=5}"/>
+                            <label align="top" height="25" text="Imagem 1" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
                         </layout>
                         
                         <!-- Imagem 2 -->
                         <layout left="310" top="0" width="270" height="280">
                             <layout align="top" height="250">
-                                <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="8" yradius="8"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
                                 <image align="client" field="aparencia_img2" editable="true" style="autoFit"/>
                             </layout>
-                            <label align="top" height="25" text="Imagem 2" horzTextAlign="center" fontColor="#9CA3AF" fontSize="11" margins="{top=5}"/>
+                            <label align="top" height="25" text="Imagem 2" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
                         </layout>
                         
                         <!-- Imagem 3 -->
                         <layout left="600" top="0" width="270" height="280">
                             <layout align="top" height="250">
-                                <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="8" yradius="8"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
                                 <image align="client" field="aparencia_img3" editable="true" style="autoFit"/>
                             </layout>
-                            <label align="top" height="25" text="Imagem 3" horzTextAlign="center" fontColor="#9CA3AF" fontSize="11" margins="{top=5}"/>
+                            <label align="top" height="25" text="Imagem 3" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
                         </layout>
                         
                         <!-- Imagem 4 -->
                         <layout left="890" top="0" width="270" height="280">
                             <layout align="top" height="250">
-                                <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="8" yradius="8"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
                                 <image align="client" field="aparencia_img4" editable="true" style="autoFit"/>
                             </layout>
-                            <label align="top" height="25" text="Imagem 4" horzTextAlign="center" fontColor="#9CA3AF" fontSize="11" margins="{top=5}"/>
+                            <label align="top" height="25" text="Imagem 4" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
                         </layout>
                         
                         <!-- Imagem 5 -->
                         <layout left="1180" top="0" width="270" height="280">
                             <layout align="top" height="250">
-                                <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="8" yradius="8"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
                                 <image align="client" field="aparencia_img5" editable="true" style="autoFit"/>
                             </layout>
-                            <label align="top" height="25" text="Imagem 5" horzTextAlign="center" fontColor="#9CA3AF" fontSize="11" margins="{top=5}"/>
+                            <label align="top" height="25" text="Imagem 5" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
                         </layout>
                         
                         <!-- Imagem 6 -->
                         <layout left="1470" top="0" width="270" height="280">
                             <layout align="top" height="250">
-                                <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="8" yradius="8"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
                                 <image align="client" field="aparencia_img6" editable="true" style="autoFit"/>
                             </layout>
-                            <label align="top" height="25" text="Imagem 6" horzTextAlign="center" fontColor="#9CA3AF" fontSize="11" margins="{top=5}"/>
+                            <label align="top" height="25" text="Imagem 6" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
                         </layout>
                     </layout>
                     <!-- ====== ATRIBUTOS ====== -->
-                    <layout align="top" height="8" margins="{top=5}">
-                        <horzLine align="client" strokeColor="#1E3A5C" strokeSize="1"/>
-                    </layout>
-                    <layout align="top" height="4" margins="{top=10, left=30, right=30}">
-                        <rectangle align="client" color="#1E3A5C" xradius="2" yradius="2"/>
-                    </layout>
                     <cabecalho texto="Atributos" />
                     
 
@@ -818,41 +788,41 @@
                         <layout name="rowBarraPv" align="top" height="30" margins="{top=2}">
                             <label align="left" width="160" text="Pontos de Vida:" horzTextAlign="trailing" margins="{right=10}" fontColor="#F87171" fontSize="13" fontStyle="bold"/>
                             <edit align="left" width="55" field="pv_atual" fontColor="white" horzTextAlign="center"/>
-                            <label align="left" width="20" text=" / " fontColor="#9CA3AF" fontSize="13" horzTextAlign="center"/>
+                            <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
                             <label align="left" width="55" field="pv" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             <layout align="left" width="10" height="30"/>
                             <layout name="containerBarraPv" align="client" height="30" margins="{top=5, bottom=5}">
                                 <rectangle name="barraPvFundo" align="client" color="#1A0A10" strokeColor="#2A0E0E" strokeSize="1" xradius="6" yradius="6"/>
-                                <rectangle name="barraPv" align="left" width="0" color="#22C55E" xradius="6" yradius="6"/>
+                                <rectangle name="barraPv" align="left" width="0" color="#10B981" xradius="6" yradius="6"/>
                             </layout>
                         </layout>
                         <layout name="rowBarraChakra" align="top" height="30" margins="{top=5}">
                             <label align="left" width="160" text="Pontos de Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#818CF8" fontSize="13" fontStyle="bold"/>
                             <edit align="left" width="55" field="pchakra_atual" fontColor="white" horzTextAlign="center"/>
-                            <label align="left" width="20" text=" / " fontColor="#9CA3AF" fontSize="13" horzTextAlign="center"/>
+                            <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
                             <label align="left" width="55" field="pchakra" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             <layout align="left" width="10" height="30"/>
                             <layout name="containerBarraChakra" align="client" height="30" margins="{top=5, bottom=5}">
-                                <rectangle name="barraChakraFundo" align="client" color="#060A12" strokeColor="#0F172A" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle name="barraChakraFundo" align="client" color="#060A12" strokeColor="#0C1828" strokeSize="1" xradius="6" yradius="6"/>
                                 <rectangle name="barraChakra" align="left" width="0" color="#3B82F6" xradius="6" yradius="6"/>
                             </layout>
                         </layout>
                         <layout name="rowBarraEstamina" align="top" height="30" margins="{top=5}">
-                            <label align="left" width="160" text="Pontos de Estamina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#4ADE80" fontSize="13" fontStyle="bold"/>
+                            <label align="left" width="160" text="Pontos de Estamina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#34D399" fontSize="13" fontStyle="bold"/>
                             <edit align="left" width="55" field="pestamina_atual" fontColor="white" horzTextAlign="center"/>
-                            <label align="left" width="20" text=" / " fontColor="#9CA3AF" fontSize="13" horzTextAlign="center"/>
+                            <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
                             <label align="left" width="55" field="pestamina" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             <layout align="left" width="10" height="30"/>
                             <layout name="containerBarraEstamina" align="client" height="30" margins="{top=5, bottom=5}">
                                 <rectangle name="barraEstaminaFundo" align="client" color="#061210" strokeColor="#0A2015" strokeSize="1" xradius="6" yradius="6"/>
-                                <rectangle name="barraEstamina" align="left" width="0" color="#2DD4BF" xradius="6" yradius="6"/>
+                                <rectangle name="barraEstamina" align="left" width="0" color="#14B8A6" xradius="6" yradius="6"/>
                             </layout>
                         </layout>
                     </layout>
                     
                     <!-- Traits de Status -->
                     <layout align="top" height="22" margins="{top=12, bottom=2}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#1A2A3A" strokeSize="1" xradius="6" yradius="6"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
                         <label align="client" text="Traits de Status" horzTextAlign="center" fontColor="#FBBF24" fontSize="12" fontStyle="bold"/>
                     </layout>
                     
@@ -877,7 +847,7 @@
                         <layout align="left" width="10" height="60"/>
                         <!-- Estamina Trait -->
                         <layout align="client" height="60">
-                            <label align="top" height="18" text="Trait de Estâmina:" fontColor="#4ADE80" fontSize="11" fontStyle="bold" horzTextAlign="center"/>
+                            <label align="top" height="18" text="Trait de Estâmina:" fontColor="#34D399" fontSize="11" fontStyle="bold" horzTextAlign="center"/>
                             <layout align="top" height="28">
                                 <comboBox align="client" name="cb19" hitTest="false" field="trait_pestamina" items="{'Nenhum','Estâmina Extra: ★ ☆ ☆ ☆ ☆ ☆ (+5%)','Estâmina Extra: ★ ★ ☆ ☆ ☆ ☆ (+10%)','Estâmina Extra: ★ ★ ★ ☆ ☆ ☆ (+15%)','Estâmina Extra: ★ ★ ★ ★ ☆ ☆ (+20%)','Estâmina Extra: ★ ★ ★ ★ ★ ☆ (+25%)','Reencarnação de Asura (+25%)','Linhagem de Hagoromo/Hamura (+35%)','Híbrido: Meio-Õtsutsuki (+60%)','Clã Õtsutsuki (+100%)'}" values="{'0','5','10','15','20','25','25','35','60','100'}" fontColor="white" fontSize="11"/>
                                 <layout align="client" hitTest="true"><event name="onClick">self.cb19:dropDown();</event></layout>
@@ -897,40 +867,40 @@
                         <!-- === COLUNA ESQUERDA: Atributos Core === -->
                         <layout left="0" top="0" width="430" height="560">
                             <layout align="top" height="25">
-                                <rectangle align="client" color="#0E1420" strokeColor="#2DD4BF" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#14B8A6" strokeSize="1" xradius="6" yradius="6"/>
                                 <label align="client" text="Atributos Core" horzTextAlign="center" fontColor="#FBBF24" fontSize="13" fontStyle="bold"/>
                             </layout>
                             
                             <layout align="top" height="30" margins="{top=4}">
-                                <label align="left" width="180" text="Força:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="180" text="Força:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="forca" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="180" text="Agilidade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="180" text="Agilidade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="agilidade" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="180" text="Constituição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="180" text="Constituição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="constituicao" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="180" text="Destreza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="180" text="Destreza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="destreza" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="180" text="Controle de Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="180" text="Controle de Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="ctrl_chakra" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="180" text="Concentração:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="180" text="Concentração:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="concentracao" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="180" text="Força Espiritual:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="180" text="Força Espiritual:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="forca_espiritual" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="180" text="Inteligência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="180" text="Inteligência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="inteligencia" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             
@@ -943,7 +913,7 @@
                             </layout>
                             <!-- Pontos Core -->
                             <layout align="top" height="28" margins="{top=6}">
-                                <rectangle align="client" color="#0F172A" strokeColor="#1A2A3A" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle align="client" color="#0C1828" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
                                 <label align="client" field="pontos_core_resumo" horzTextAlign="center" fontColor="#FBBF24" fontSize="12" fontStyle="bold"/>
                             </layout>
                         </layout>
@@ -951,69 +921,69 @@
 <!-- === COLUNA DIREITA: Atributos Interpretativos === -->
                         <layout left="450" top="0" width="430" height="560">
                             <layout align="top" height="25">
-                                <rectangle align="client" color="#0E1420" strokeColor="#2DD4BF" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#14B8A6" strokeSize="1" xradius="6" yradius="6"/>
                                 <label align="client" text="Atributos Interpretativos" horzTextAlign="center" fontColor="#FBBF24" fontSize="13" fontStyle="bold"/>
                             </layout>
                             
 
                             <layout align="top" height="30" margins="{top=4}">
-                                <label align="left" width="160" text="Sobrevivência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Sobrevivência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="sobrevivencia" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Armadilha:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Armadilha:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="armadilha" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Empatia:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Empatia:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="empatia" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Intimidação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Intimidação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="intimidacao" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Ladinagem:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Ladinagem:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="ladinagem" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Enganação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Enganação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="enganacao" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Percepção:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Percepção:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="percepcao" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Persuasão:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Persuasão:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="persuasao" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Sedução:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Sedução:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="seducao" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Medicina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Medicina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="medicina" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="História:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="História:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="historia_attr" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Ofício:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Ofício:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="oficio" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Conhecimento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Conhecimento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="conhecimento" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Aprendizado:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Aprendizado:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="aprendizado" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="160" text="Ensinamento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="160" text="Ensinamento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                                 <edit align="left" width="60" field="ensinamento" fontColor="white" horzTextAlign="center"/>
                             </layout>
                             <!-- Uso de pontos interpretativos vs máximo -->
@@ -1031,12 +1001,12 @@
                         <!-- === COLUNA ESQUERDA: Atributos de Combate === -->
                         <layout left="0" top="0" width="530" height="480">
                             <layout align="top" height="25">
-                                <rectangle align="client" color="#0E1420" strokeColor="#2DD4BF" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#14B8A6" strokeSize="1" xradius="6" yradius="6"/>
                                 <label align="client" text="Atributos de Combate" horzTextAlign="center" fontColor="#FB923C" fontSize="13" fontStyle="bold"/>
                             </layout>
                             
                             <layout align="top" height="30" margins="{top=4}">
-                                <label align="left" width="155" text="Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="taijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.taijutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Taijutsu"); end;</event>
@@ -1044,7 +1014,7 @@
                                 <label align="client" text="(Forca + 50% Agilidade)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="bukijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.bukijutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Bukijutsu"); end;</event>
@@ -1052,7 +1022,7 @@
                                 <label align="client" text="(Destreza + 50% Forca)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Ninjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Ninjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="ninjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.ninjutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Ninjutsu"); end;</event>
@@ -1060,7 +1030,7 @@
                                 <label align="client" text="(F. Espiritual + 50% Ctrl Chakra)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Genjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Genjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="genjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.genjutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Genjutsu"); end;</event>
@@ -1068,7 +1038,7 @@
                                 <label align="client" text="(Ctrl Chakra + 50% Inteligencia)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Genjutsu Kai:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Genjutsu Kai:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="genjutsu_kai" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.genjutsu_kai) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Genjutsu Kai"); end;</event>
@@ -1076,7 +1046,7 @@
                                 <label align="client" text="(Int + CtrlC + Conc)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Fuinjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Fuinjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="fuinjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.fuinjutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Fuinjutsu"); end;</event>
@@ -1084,7 +1054,7 @@
                                 <label align="client" text="(Int + 50% F. Espiritual)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Arremesso:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Arremesso:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="arremesso" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.arremesso) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Arremesso"); end;</event>
@@ -1092,7 +1062,7 @@
                                 <label align="client" text="(Concentracao + 50% Destreza)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Esquiva:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Esquiva:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="esquiva" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.esquiva) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Esquiva"); end;</event>
@@ -1100,7 +1070,7 @@
                                 <label align="client" text="(Agi+Conc+Int+Cons)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Bloqueio Fisico:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Bloqueio Fisico:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="bloqueio_fisico" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.bloqueio_fisico) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Bloqueio Fisico"); end;</event>
@@ -1108,7 +1078,7 @@
                                 <label align="client" text="(For+Des+Cons+Agi)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Bloqueio Chakra:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Bloqueio Chakra:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="bloqueio_chakra" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.bloqueio_chakra) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Bloqueio Chakra"); end;</event>
@@ -1116,7 +1086,7 @@
                                 <label align="client" text="(CtrlC+FEsp+Cons+Conc)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Reflexo:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Reflexo:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="reflexo" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.reflexo) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Reflexo"); end;</event>
@@ -1124,7 +1094,7 @@
                                 <label align="client" text="(Conc+Agi+Cons+Int)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Iniciativa:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Iniciativa:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="iniciativa" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.iniciativa) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Iniciativa"); end;</event>
@@ -1141,12 +1111,12 @@
                         <!-- === COLUNA DIREITA: Atributos de Combate Únicos === -->
                         <layout left="550" top="0" width="330" height="200">
                             <layout align="top" height="25">
-                                <rectangle align="client" color="#0E1420" strokeColor="#2DD4BF" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle align="client" color="#0E1420" strokeColor="#14B8A6" strokeSize="1" xradius="6" yradius="6"/>
                                 <label align="client" text="Combate Únicos" horzTextAlign="center" fontColor="#FB923C" fontSize="13" fontStyle="bold"/>
                             </layout>
                             
                             <layout align="top" height="30" margins="{top=4}">
-                                <label align="left" width="135" text="Tai-Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="135" text="Tai-Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="tai_bukijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.tai_bukijutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Tai-Bukijutsu"); end</event>
@@ -1154,7 +1124,7 @@
                                 <label align="client" text="(Tai+Buki)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="135" text="Nin-Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="135" text="Nin-Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="nin_taijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.nin_taijutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Nin-Taijutsu"); end</event>
@@ -1162,7 +1132,7 @@
                                 <label align="client" text="(Tai+Nin)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="135" text="Hiraishin:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="135" text="Hiraishin:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="hiraishin" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.hiraishin) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Hiraishin"); end</event>
@@ -1170,7 +1140,7 @@
                                 <label align="client" text="(Nin+Fuin)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="135" text="Movimentacao:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="135" text="Movimentacao:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="movimentacao" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
                                     <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.movimentacao) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Movimentacao"); end</event>
@@ -1182,7 +1152,7 @@
                     
                                         <!-- ====== TRAIT DE COMBATE ====== -->
                     <layout align="top" height="34" margins="{top=18, bottom=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" text="Trait de Combate" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
                     </layout>
 
@@ -1201,7 +1171,7 @@
 
                     <!-- ====== TRAITS INTERPRETATIVOS ====== -->
                     <layout align="top" height="34" margins="{top=18, bottom=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#A78BFA" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#A78BFA" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" text="Traits Interpretativos" horzTextAlign="center" fontStyle="bold" fontColor="#A78BFA" fontSize="15"/>
                     </layout>
 
@@ -1233,7 +1203,7 @@
                         <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
                     </layout>
                     <layout align="top" height="28" margins="{top=4}">
-                        <label align="left" width="320" text="Sobrevivente: Instinto Primal" fontColor="#4ADE80" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <label align="left" width="320" text="Sobrevivente: Instinto Primal" fontColor="#34D399" fontSize="12" fontStyle="bold" hitTest="true"/>
                         <checkBox align="left" width="22" field="trait_sobrevivente_s1" text="" fontColor="#FBBF24" fontSize="14"/>
                         <checkBox align="left" width="22" field="trait_sobrevivente_s2" text="" fontColor="#FBBF24" fontSize="14"/>
                         <checkBox align="left" width="22" field="trait_sobrevivente_s3" text="" fontColor="#FBBF24" fontSize="14"/>
@@ -1242,7 +1212,7 @@
                         <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
                     </layout>
                     <layout align="top" height="28" margins="{top=4}">
-                        <label align="left" width="320" text="Mednin Eficiente: Especialista em Campo" fontColor="#34D399" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <label align="left" width="320" text="Mednin Eficiente: Especialista em Campo" fontColor="#2DD4BF" fontSize="12" fontStyle="bold" hitTest="true"/>
                         <checkBox align="left" width="22" field="trait_mednin_s1" text="" fontColor="#FBBF24" fontSize="14"/>
                         <checkBox align="left" width="22" field="trait_mednin_s2" text="" fontColor="#FBBF24" fontSize="14"/>
                         <checkBox align="left" width="22" field="trait_mednin_s3" text="" fontColor="#FBBF24" fontSize="14"/>
@@ -1302,7 +1272,7 @@
                                 local pct = math.min(pvAtual / pvMax, 1);
                                 self.barraPv.width = math.floor(pct * barraLargPv);
                                 if pct > 0.6 then
-                                    self.barraPv.color = "#22C55E";
+                                    self.barraPv.color = "#10B981";
                                 elseif pct > 0.3 then
                                     self.barraPv.color = "#EAB308";
                                 else
@@ -1328,7 +1298,7 @@
                                 local pct = math.min(estAtual / estMax, 1);
                                 self.barraEstamina.width = math.floor(pct * barraLargEst);
                                 if pct > 0.6 then
-                                    self.barraEstamina.color = "#2DD4BF";
+                                    self.barraEstamina.color = "#14B8A6";
                                 elseif pct > 0.3 then
                                     self.barraEstamina.color = "#EAB308";
                                 else
@@ -1586,11 +1556,11 @@
         
         <tab title="Técnicas">
             <layout align="top" height="32" margins="{left=10, right=10, top=4, bottom=2}">
-                <rectangle align="client" color="#0F172A" strokeColor="#60A5FA" strokeSize="1" xradius="8" yradius="8"/>
+                <rectangle align="client" color="#0C1828" strokeColor="#60A5FA" strokeSize="1" xradius="8" yradius="8"/>
                 <label align="left" width="140" text="  Pontos de Jutsu:" fontColor="#60A5FA" fontSize="12" fontStyle="bold" horzTextAlign="leading"/>
                 <label name="lblJutsuPontosAtual" align="left" width="60" field="jutsu_pontos_atual" fontColor="#FBBF24" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
-                <label align="left" width="20" text=" / " fontColor="#9CA3AF" fontSize="12" horzTextAlign="center"/>
-                <label name="lblJutsuPontosMax" align="left" width="60" field="jutsu_pontos_max" fontColor="#22C55E" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="12" horzTextAlign="center"/>
+                <label name="lblJutsuPontosMax" align="left" width="60" field="jutsu_pontos_max" fontColor="#34D399" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                 <label name="lblJutsuStatus" align="client" field="jutsu_status" fontColor="#F87171" fontSize="11" fontStyle="italic" horzTextAlign="leading" margins="{left=10}"/>
             </layout>
             <tabControl align="client">
@@ -1624,117 +1594,117 @@
 
                     <!-- Cabeçalho -->
                     <layout align="top" height="34" margins="{top=5, bottom=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" text="Ficha de Kuchiyose (Invocação)" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
                     </layout>
 
                     <!-- Info Basica -->
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Nome:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Nome:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="kuchi_nome" fontColor="white" textPrompt="Nome da Invocação"/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Espécie:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Espécie:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="kuchi_especie" fontColor="white" textPrompt="Ex: Sapo, Cobra, Tartaruga..."/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Rank da Invocação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Rank da Invocação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <layout align="left" width="200">
                             <comboBox align="client" name="cbKuchiRank" hitTest="false" field="kuchi_rank" items="{'D (-5)','C (-4)','B (-4)','A (-3)','S (-2)','SS (-1)','SS+ (0)'}" values="{'-5','-4','-4b','-3','-2','-1','0'}" fontColor="white"/>
                             <layout align="client" hitTest="true"><event name="onClick">self.cbKuchiRank:dropDown();</event></layout>
                         </layout>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Descrição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Descrição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="client" field="kuchi_descricao" fontColor="white" textPrompt="Breve descrição da invocação"/>
                     </layout>
 
                     <!-- Atributos Core -->
                     <layout align="top" height="34" margins="{top=18, bottom=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" text="Atributos Core" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
                     </layout>
 
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Força:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Força:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="60" field="kuchi_forca" fontColor="white" horzTextAlign="center"/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Agilidade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Agilidade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="60" field="kuchi_agilidade" fontColor="white" horzTextAlign="center"/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Constituição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Constituição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="60" field="kuchi_constituicao" fontColor="white" horzTextAlign="center"/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Destreza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Destreza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="60" field="kuchi_destreza" fontColor="white" horzTextAlign="center"/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Ctrl. Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Ctrl. Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="60" field="kuchi_ctrl_chakra" fontColor="white" horzTextAlign="center"/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Concentração:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Concentração:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="60" field="kuchi_concentracao" fontColor="white" horzTextAlign="center"/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Força Espiritual:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Força Espiritual:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="60" field="kuchi_forca_espiritual" fontColor="white" horzTextAlign="center"/>
                     </layout>
                     <layout align="top" height="30" margins="{top=2}">
-                        <label align="left" width="160" text="Inteligência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#94A3B8" fontSize="13"/>
+                        <label align="left" width="160" text="Inteligência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
                         <edit align="left" width="60" field="kuchi_inteligencia" fontColor="white" horzTextAlign="center"/>
                     </layout>
 
                     <!-- PV / Chakra / Estamina -->
                     <layout align="top" height="34" margins="{top=18, bottom=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" text="Pontos Vitais" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
                     </layout>
 
                     <layout name="kuchi_rowBarraPv" align="top" height="30" margins="{top=2}">
                         <label align="left" width="160" text="Pontos de Vida:" horzTextAlign="trailing" margins="{right=10}" fontColor="#F87171" fontSize="13" fontStyle="bold"/>
                         <edit align="left" width="55" field="kuchi_pv_atual" fontColor="white" horzTextAlign="center"/>
-                        <label align="left" width="20" text=" / " fontColor="#9CA3AF" fontSize="13" horzTextAlign="center"/>
+                        <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
                         <label align="left" width="55" field="kuchi_pv" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                         <layout align="left" width="10" height="30"/>
                         <layout name="kuchi_containerBarraPv" align="client" height="30" margins="{top=5, bottom=5}">
                             <rectangle name="kuchi_barraPvFundo" align="client" color="#1A0A10" strokeColor="#2A0E0E" strokeSize="1" xradius="6" yradius="6"/>
-                            <rectangle name="kuchi_barraPv" align="left" width="0" color="#22C55E" xradius="6" yradius="6"/>
+                            <rectangle name="kuchi_barraPv" align="left" width="0" color="#10B981" xradius="6" yradius="6"/>
                         </layout>
                     </layout>
                     <layout name="kuchi_rowBarraChakra" align="top" height="30" margins="{top=5}">
                         <label align="left" width="160" text="Pontos de Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#818CF8" fontSize="13" fontStyle="bold"/>
                         <edit align="left" width="55" field="kuchi_pchakra_atual" fontColor="white" horzTextAlign="center"/>
-                        <label align="left" width="20" text=" / " fontColor="#9CA3AF" fontSize="13" horzTextAlign="center"/>
+                        <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
                         <label align="left" width="55" field="kuchi_pchakra" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                         <layout align="left" width="10" height="30"/>
                         <layout name="kuchi_containerBarraChakra" align="client" height="30" margins="{top=5, bottom=5}">
-                            <rectangle name="kuchi_barraChakraFundo" align="client" color="#060A12" strokeColor="#0F172A" strokeSize="1" xradius="6" yradius="6"/>
+                            <rectangle name="kuchi_barraChakraFundo" align="client" color="#060A12" strokeColor="#0C1828" strokeSize="1" xradius="6" yradius="6"/>
                             <rectangle name="kuchi_barraChakra" align="left" width="0" color="#3B82F6" xradius="6" yradius="6"/>
                         </layout>
                     </layout>
                     <layout name="kuchi_rowBarraEstamina" align="top" height="30" margins="{top=5}">
-                        <label align="left" width="160" text="Pontos de Estâmina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#4ADE80" fontSize="13" fontStyle="bold"/>
+                        <label align="left" width="160" text="Pontos de Estâmina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#34D399" fontSize="13" fontStyle="bold"/>
                         <edit align="left" width="55" field="kuchi_pestamina_atual" fontColor="white" horzTextAlign="center"/>
-                        <label align="left" width="20" text=" / " fontColor="#9CA3AF" fontSize="13" horzTextAlign="center"/>
+                        <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
                         <label align="left" width="55" field="kuchi_pestamina" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                         <layout align="left" width="10" height="30"/>
                         <layout name="kuchi_containerBarraEstamina" align="client" height="30" margins="{top=5, bottom=5}">
                             <rectangle name="kuchi_barraEstaminaFundo" align="client" color="#061210" strokeColor="#0A2015" strokeSize="1" xradius="6" yradius="6"/>
-                            <rectangle name="kuchi_barraEstamina" align="left" width="0" color="#22C55E" xradius="6" yradius="6"/>
+                            <rectangle name="kuchi_barraEstamina" align="left" width="0" color="#10B981" xradius="6" yradius="6"/>
                         </layout>
                     </layout>
 
                     <!-- Trait da Kuchiyose -->
                     <layout align="top" height="30" margins="{top=15, bottom=5}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" field="kuchi_trait_resumo" horzTextAlign="center" vertTextAlign="center" fontStyle="bold" fontColor="white" fontSize="15"/>
                     </layout>
                     <layout align="top" height="20" margins="{top=2, bottom=5}">
-                        <label align="left" width="800" text="Formato para somar automaticamente: Nome do Trait (XXX pontos de Trait)" horzTextAlign="center" fontColor="#64748B" fontSize="11" fontStyle="italic"/>
+                        <label align="left" width="800" text="Formato para somar automaticamente: Nome do Trait (XXX pontos de Trait)" horzTextAlign="center" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
                     </layout>
                     <layout align="top" height="16" margins="{bottom=5}">
                         <label align="left" width="800" text="Bonus nos calculos: [bonus: CAMPO +N]  ex: [bonus: forca +2]  [bonus: pv +500]" horzTextAlign="center" fontColor="#7DD3FC" fontSize="10" fontStyle="italic"/>
@@ -1821,7 +1791,7 @@
 
                     <!-- Atributos de Combate -->
                     <layout align="top" height="34" margins="{top=18, bottom=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#FB923C" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#FB923C" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" text="Atributos de Combate" horzTextAlign="center" fontStyle="bold" fontColor="#FB923C" fontSize="15"/>
                     </layout>
                     <layout align="top" height="20">
@@ -1832,77 +1802,77 @@
                         <!-- Coluna Esquerda -->
                         <layout align="left" width="420">
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_taijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <label align="client" text="(For + Agi/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_bukijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <label align="client" text="(Des + For/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Ninjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Ninjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_ninjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <label align="client" text="(FEsp + CC/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Genjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Genjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_genjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <label align="client" text="(CC + Int/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Genjutsu Kai:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Genjutsu Kai:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_genjutsu_kai" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <label align="client" text="(Int+CC+Conc)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Fuinjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Fuinjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_fuinjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <label align="client" text="(Int + FEsp/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Arremesso:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Arremesso:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_arremesso" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                                 <label align="client" text="(Conc + Des/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Esquiva:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Esquiva:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_esquiva" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Bloqueio Físico:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Bloqueio Físico:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_bloqueio_fisico" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Bloqueio Chakra:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Bloqueio Chakra:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_bloqueio_chakra" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Reflexo:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Reflexo:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_reflexo" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="155" text="Iniciativa:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="155" text="Iniciativa:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_iniciativa" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                         </layout>
                         <!-- Coluna Direita: Unicos -->
                         <layout align="client">
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="135" text="Tai-Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="135" text="Tai-Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_tai_bukijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="135" text="Nin-Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="135" text="Nin-Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_nin_taijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="135" text="Hiraishin:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="135" text="Hiraishin:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_hiraishin" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                             <layout align="top" height="30" margins="{top=2}">
-                                <label align="left" width="135" text="Movimentação:" horzTextAlign="trailing" margins="{right=8}" fontColor="#94A3B8" fontSize="13"/>
+                                <label align="left" width="135" text="Movimentação:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
                                 <label align="left" width="45" field="kuchi_movimentacao" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
                             </layout>
                         </layout>
@@ -1910,7 +1880,7 @@
 
                     <!-- ====== TRAITS DE COMBATE (KUCHIYOSE) ====== -->
                     <layout align="top" height="34" margins="{top=18, bottom=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" text="Traits de Combate" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
                     </layout>
 
@@ -1951,7 +1921,7 @@
                         <checkBox align="left" width="22" field="kuchi_trait_ilusionista_s6" text="" fontColor="#FBBF24" fontSize="14"/>
                     </layout>
                     <layout align="top" height="28" margins="{top=4}">
-                        <label align="left" width="320" text="Mente Blindada: Cidadela Psíquica" fontColor="#2DD4BF" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <label align="left" width="320" text="Mente Blindada: Cidadela Psíquica" fontColor="#14B8A6" fontSize="12" fontStyle="bold" hitTest="true"/>
                         <checkBox align="left" width="22" field="kuchi_trait_menteblind_s1" text="" fontColor="#FBBF24" fontSize="14"/>
                         <checkBox align="left" width="22" field="kuchi_trait_menteblind_s2" text="" fontColor="#FBBF24" fontSize="14"/>
                         <checkBox align="left" width="22" field="kuchi_trait_menteblind_s3" text="" fontColor="#FBBF24" fontSize="14"/>
@@ -1980,7 +1950,7 @@
 
                     <!-- Notas / Habilidades da Invocação -->
                     <layout align="top" height="34" margins="{top=18, bottom=6}">
-                        <rectangle align="client" color="#0F172A" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
                         <label align="client" text="Habilidades e Notas" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
                     </layout>
                     <layout align="top" height="600">
@@ -2005,7 +1975,7 @@
                             if pvMax > 0 and self.kuchi_barraPv ~= nil then
                                 local pct = math.min(pvAtual / pvMax, 1);
                                 self.kuchi_barraPv.width = math.floor(pct * barraLarg);
-                                if pct > 0.6 then self.kuchi_barraPv.color = "#22C55E";
+                                if pct > 0.6 then self.kuchi_barraPv.color = "#10B981";
                                 elseif pct > 0.3 then self.kuchi_barraPv.color = "#EAB308";
                                 else self.kuchi_barraPv.color = "#DC2626"; end
                             end
@@ -2019,7 +1989,7 @@
                             if estMax > 0 and self.kuchi_barraEstamina ~= nil then
                                 local pct = math.min(estAtual / estMax, 1);
                                 self.kuchi_barraEstamina.width = math.floor(pct * barraLarg);
-                                if pct > 0.6 then self.kuchi_barraEstamina.color = "#22C55E";
+                                if pct > 0.6 then self.kuchi_barraEstamina.color = "#10B981";
                                 elseif pct > 0.3 then self.kuchi_barraEstamina.color = "#EAB308";
                                 else self.kuchi_barraEstamina.color = "#DC2626"; end
                             end

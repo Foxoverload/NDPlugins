@@ -73,9 +73,9 @@
     add("h2{color:#F97316;margin-top:25px;border-bottom:1px solid #333}");
     add("h3{color:#D97706;margin-top:15px}");
     add("table{width:100%;border-collapse:collapse;margin-bottom:15px}");
-    add("td,th{padding:4px 8px;border:1px solid #1A2A3A;text-align:left}");
-    add(".l{width:180px;color:#94A3B8;font-weight:bold;background:#0F172A}");
-    add("pre{background:#0F172A;padding:10px;border:1px solid #1A2A3A;white-space:pre-wrap;font-size:12px;color:#CBD5E1}");
+    add("td,th{padding:4px 8px;border:1px solid #2A2A4E;text-align:left}");
+    add(".l{width:180px;color:#8BA3C4;font-weight:bold;background:#0C1828}");
+    add("pre{background:#0C1828;padding:10px;border:1px solid #2A2A4E;white-space:pre-wrap;font-size:12px;color:#A0B8D0}");
     add(LT .. "/style" .. GT);
     add(LT .. "/head" .. GT);
     
@@ -250,7 +250,7 @@
     end
     
     -- Footer
-    add(LT .. "div style='text-align:center;color:#4B5563;margin-top:30px;font-size:11px'" .. GT .. "Exportado de Naruto Destiny - Firecast" .. LT .. "/div" .. GT);
+    add(LT .. "div style='text-align:center;color:#666;margin-top:30px;font-size:11px'" .. GT .. "Exportado de Naruto Destiny - Firecast" .. LT .. "/div" .. GT);
     add(LT .. "/body" .. GT);
     add(LT .. "/html" .. GT);
     
