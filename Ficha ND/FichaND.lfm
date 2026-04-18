@@ -1305,7 +1305,66 @@
                             return valores;
                         end
                         
-                        local function calcularAtributos()
+                        local function stripRtf(rtfText)
+                            if rtfText == nil or rtfText == "" then return ""; end
+                            local text = tostring(rtfText);
+                            if string.sub(text, 1, 5) ~= "{\rtf" then return text; end
+                            text = string.gsub(text, "\\[{}]", "");
+                            text = string.gsub(text, "\\pard[^%%s]*%%s?", " ");
+                            text = string.gsub(text, "\\par[^%%a]", "\n");
+                            text = string.gsub(text, "\\[a-zA-Z]+%%-?[0-9]*%%s?", "");
+                            text = string.gsub(text, "[{}]", "");
+                            text = string.gsub(text, "\r", "");
+                            return text;
+                        end
+                        
+                        local function contarPontosJutsu()
+                            if sheet == nil then return end;
+                            
+                            local campos = {'tec_taijutsu','tec_bukijutsu','tec_ninjutsu','tec_elemental','tec_fuinjutsu','tec_kuchiyose','tec_kekkei_genkai','tec_habilidades_gerais'};
+                            local totalPontos = 0;
+                            
+                            for _, campo in ipairs(campos) do
+                                local raw = tostring(sheet[campo] or "");
+                                local texto = stripRtf(raw);
+                                texto = string.upper(texto);
+                                
+                                for linha in string.gmatch(texto .. "\n", "(.-)\n") do
+                                    if not string.find(linha, "GRATUITO") then
+                                        if string.find(linha, "RANK%%s+SSS") or string.find(linha, "RANK%%s+MSS") then
+                                            totalPontos = totalPontos + 400;
+                                        elseif string.find(linha, "RANK%%s+SS%%+") or string.find(linha, "SS%%+") then
+                                            totalPontos = totalPontos + 350;
+                                        elseif string.find(linha, "RANK%%s+SS") and not string.find(linha, "RANK%%s+SS%%+") and not string.find(linha, "RANK%%s+SSS") then
+                                            totalPontos = totalPontos + 300;
+                                        elseif string.find(linha, "RANK%%s+S[^S]") or string.find(linha, "RANK%%s+S$") then
+                                            totalPontos = totalPontos + 250;
+                                        elseif string.find(linha, "RANK%%s+A") then
+                                            totalPontos = totalPontos + 200;
+                                        elseif string.find(linha, "RANK%%s+B") then
+                                            totalPontos = totalPontos + 150;
+                                        elseif string.find(linha, "RANK%%s+C") then
+                                            totalPontos = totalPontos + 100;
+                                        elseif string.find(linha, "RANK%%s+D") then
+                                            totalPontos = totalPontos + 50;
+                                        end
+                                    end
+                                end
+                            end
+                            
+                            local nivel = tonumber(sheet.nivel) or 0;
+                            local maxPontos = nivel * 100;
+                            
+                            sheet.jutsu_pontos_atual = tostring(totalPontos);
+                            sheet.jutsu_pontos_max = tostring(maxPontos);
+                            
+                            if totalPontos > maxPontos then
+                                sheet.jutsu_status = "Excedido em " .. (totalPontos - maxPontos) .. " pts!";
+                            else
+                                sheet.jutsu_status = "Restam " .. (maxPontos - totalPontos) .. " pts";
+                            end
+                        end
+                                                local function calcularAtributos()
                             if sheet == nil then return end;
                             
                             -- Ler atributos core
@@ -1417,6 +1476,8 @@
                             sheet.nin_taijutsu = tostring(math.floor((taijutsu + ninjutsu) / 2) + (tonumber(sheet.bonus_nin_taijutsu) or 0) + t_artmarcial + t_manipchakra);
                             sheet.hiraishin = tostring(math.floor((ninjutsu + fuinjutsu) / 2) + (tonumber(sheet.bonus_hiraishin) or 0));
                             sheet.movimentacao = tostring(math.floor(agilidade + inteligencia / 2) + (tonumber(sheet.bonus_movimentacao) or 0) + t_intuicao);
+                            
+                            contarPontosJutsu();
                         end
                     </script>
                     
@@ -1446,6 +1507,14 @@
         </tab>
         
         <tab title="Técnicas">
+            <layout align="top" height="32" margins="{left=10, right=10, top=4, bottom=2}">
+                <rectangle align="client" color="#141428" strokeColor="#4488FF" strokeSize="1" xradius="8" yradius="8"/>
+                <label align="left" width="140" text="  Pontos de Jutsu:" fontColor="#4488FF" fontSize="12" fontStyle="bold" horzTextAlign="leading"/>
+                <label name="lblJutsuPontosAtual" align="left" width="60" field="jutsu_pontos_atual" fontColor="#FFD700" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                <label align="left" width="20" text=" / " fontColor="#AAAAAA" fontSize="12" horzTextAlign="center"/>
+                <label name="lblJutsuPontosMax" align="left" width="60" field="jutsu_pontos_max" fontColor="#88FF88" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                <label name="lblJutsuStatus" align="client" field="jutsu_status" fontColor="#FF6666" fontSize="11" fontStyle="italic" horzTextAlign="leading" margins="{left=10}"/>
+            </layout>
             <tabControl align="client">
                 <tab title="Taijutsu">
                     <richEdit name="edtTecTaijutsu" align="client" field="tec_taijutsu" backgroundColor="#1A1A1A" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
@@ -2024,6 +2093,12 @@
                     <dataLink fields="{'kuchi_pv_atual', 'kuchi_pchakra_atual', 'kuchi_pestamina_atual', 'kuchi_pv', 'kuchi_pchakra', 'kuchi_pestamina'}">
                         <event name="onChange">
                             kuchi_atualizarBarras();
+                        </event>
+                    </dataLink>
+                    
+                    <dataLink fields="{'tec_taijutsu', 'tec_bukijutsu', 'tec_ninjutsu', 'tec_elemental', 'tec_fuinjutsu', 'tec_kuchiyose', 'tec_kekkei_genkai', 'tec_habilidades_gerais', 'nivel'}">
+                        <event name="onChange">
+                            contarPontosJutsu();
                         </event>
                     </dataLink>
 
