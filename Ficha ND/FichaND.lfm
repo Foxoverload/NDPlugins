@@ -1305,49 +1305,36 @@
                             return valores;
                         end
                         
-                        local function stripRtf(rtfText)
-                            if rtfText == nil or rtfText == "" then return ""; end
-                            local text = tostring(rtfText);
-                            if string.sub(text, 1, 1) ~= "{" then return text; end
-                            if not string.find(text, "\\rtf") then return text; end
-                            text = string.gsub(text, "\\[{}]", "");
-                            text = string.gsub(text, "\\pard[^%s]*%s?", " ");
-                            text = string.gsub(text, "\\par ", "\n");
-                            text = string.gsub(text, "\\par\n", "\n");
-                            text = string.gsub(text, "\\[a-zA-Z]+%-?[0-9]*%s?", "");
-                            text = string.gsub(text, "[{}]", "");
-                            return text;
-                        end
-                        
                         local function contarPontosJutsu()
                             if sheet == nil then return end;
                             
-                            local campos = {'tec_taijutsu','tec_bukijutsu','tec_ninjutsu','tec_elemental','tec_fuinjutsu','tec_kuchiyose','tec_kekkei_genkai','tec_habilidades_gerais'};
+                            local edits = {self.edtTecTaijutsu, self.edtTecBukijutsu, self.edtTecNinjutsu, self.edtTecElemental, self.edtTecFuinjutsu, self.edtTecKuchiyose, self.edtTecKekkei, self.edtTecGerais};
                             local totalPontos = 0;
                             
-                            for _, campo in ipairs(campos) do
-                                local raw = tostring(sheet[campo] or "");
-                                local texto = stripRtf(raw);
-                                texto = string.upper(texto);
-                                
-                                for linha in string.gmatch(texto .. "\n", "(.-)\n") do
-                                    if not string.find(linha, "GRATUITO") then
-                                        if string.find(linha, "RANK[:%s]+SSS") or string.find(linha, "RANK[:%s]+MSS") then
-                                            totalPontos = totalPontos + 400;
-                                        elseif string.find(linha, "RANK[:%s]+SS%+") then
-                                            totalPontos = totalPontos + 350;
-                                        elseif string.find(linha, "RANK[:%s]+SS") and not string.find(linha, "RANK[:%s]+SS%+") and not string.find(linha, "RANK[:%s]+SSS") then
-                                            totalPontos = totalPontos + 300;
-                                        elseif string.find(linha, "RANK[:%s]+S[^S%+]") or (string.find(linha, "RANK[:%s]+S$")) then
-                                            totalPontos = totalPontos + 250;
-                                        elseif string.find(linha, "RANK[:%s]+A") then
-                                            totalPontos = totalPontos + 200;
-                                        elseif string.find(linha, "RANK[:%s]+B") then
-                                            totalPontos = totalPontos + 150;
-                                        elseif string.find(linha, "RANK[:%s]+C") then
-                                            totalPontos = totalPontos + 100;
-                                        elseif string.find(linha, "RANK[:%s]+D") then
-                                            totalPontos = totalPontos + 50;
+                            for _, edt in ipairs(edits) do
+                                if edt ~= nil then
+                                    local texto = edt:getText() or "";
+                                    texto = string.upper(texto);
+                                    
+                                    for linha in string.gmatch(texto .. "\n", "(.-)\n") do
+                                        if not string.find(linha, "GRATUITO") then
+                                            if string.find(linha, "RANK[:%s]+SSS") or string.find(linha, "RANK[:%s]+MSS") then
+                                                totalPontos = totalPontos + 400;
+                                            elseif string.find(linha, "RANK[:%s]+SS%+") then
+                                                totalPontos = totalPontos + 350;
+                                            elseif string.find(linha, "RANK[:%s]+SS") and not string.find(linha, "RANK[:%s]+SS%+") and not string.find(linha, "RANK[:%s]+SSS") then
+                                                totalPontos = totalPontos + 300;
+                                            elseif string.find(linha, "RANK[:%s]+S[^S%+]") or string.find(linha, "RANK[:%s]+S$") then
+                                                totalPontos = totalPontos + 250;
+                                            elseif string.find(linha, "RANK[:%s]+A") then
+                                                totalPontos = totalPontos + 200;
+                                            elseif string.find(linha, "RANK[:%s]+B") then
+                                                totalPontos = totalPontos + 150;
+                                            elseif string.find(linha, "RANK[:%s]+C") then
+                                                totalPontos = totalPontos + 100;
+                                            elseif string.find(linha, "RANK[:%s]+D") then
+                                                totalPontos = totalPontos + 50;
+                                            end
                                         end
                                     end
                                 end
