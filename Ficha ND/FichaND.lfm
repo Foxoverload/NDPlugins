@@ -33,6 +33,28 @@
                     <label name="lblCadeadoStatus" align="client" text="" fontColor="#88FF88" fontSize="11" fontStyle="italic" horzTextAlign="leading" margins="{left=5}"/>
                 </layout>
                 
+                <layout align="top" height="32" margins="{left=20, right=20, top=2, bottom=5}">
+                    <button align="client" text="Exportar Ficha" fontColor="white" fontSize="12">
+                        <event name="onClick">
+                            require("ndb.lua");
+                            require("dialogs.lua");
+                            require("utils.lua");
+                            
+                            local xmlContent = NDB.exportXML(sheet);
+                            local stream = utils.newMemoryStream();
+                            stream:write(xmlContent);
+                            stream.position = 0;
+                            
+                            local nome = tostring(sheet.nome or "Ficha");
+                            Dialogs.saveFile("Exportar ficha como XML", stream, nome .. "_ND.xml", "application/xml",
+                                function()
+                                    showMessage("Ficha exportada com sucesso!");
+                                end
+                            );
+                        </event>
+                    </button>
+                </layout>
+                
                 <script>
                     local function aplicarCadeado()
                         if sheet == nil then return end;
