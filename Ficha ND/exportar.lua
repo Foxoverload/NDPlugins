@@ -1,4 +1,4 @@
-function exportarFichaHTML(sheet, selfForm)
+﻿function exportarFichaHTML(sheet, selfForm)
     require("dialogs.lua");
     require("utils.lua");
     
@@ -68,14 +68,14 @@ function exportarFichaHTML(sheet, selfForm)
     add(LT .. "meta charset='utf-8'" .. "/" .. GT);
     add(LT .. "title" .. GT .. "Ficha ND - " .. esc(v("nome")) .. LT .. "/title" .. GT);
     add(LT .. "style" .. GT);
-    add("body{background:#0D0D1A;color:#E0E0FF;font-family:Segoe UI,sans-serif;padding:20px;max-width:900px;margin:0 auto}");
-    add("h1{color:#FF6B35;text-align:center;border-bottom:2px solid #FF6B35;padding-bottom:10px}");
-    add("h2{color:#FF6B35;margin-top:25px;border-bottom:1px solid #333}");
-    add("h3{color:#CCAA55;margin-top:15px}");
+    add("body{background:#080C14;color:#E2E8F0;font-family:Segoe UI,sans-serif;padding:20px;max-width:900px;margin:0 auto}");
+    add("h1{color:#F97316;text-align:center;border-bottom:2px solid #F97316;padding-bottom:10px}");
+    add("h2{color:#F97316;margin-top:25px;border-bottom:1px solid #333}");
+    add("h3{color:#D97706;margin-top:15px}");
     add("table{width:100%;border-collapse:collapse;margin-bottom:15px}");
-    add("td,th{padding:4px 8px;border:1px solid #2A2A4E;text-align:left}");
-    add(".l{width:180px;color:#B8B8CC;font-weight:bold;background:#141428}");
-    add("pre{background:#141428;padding:10px;border:1px solid #2A2A4E;white-space:pre-wrap;font-size:12px;color:#CCCCEE}");
+    add("td,th{padding:4px 8px;border:1px solid #1A2A3A;text-align:left}");
+    add(".l{width:180px;color:#94A3B8;font-weight:bold;background:#0F172A}");
+    add("pre{background:#0F172A;padding:10px;border:1px solid #1A2A3A;white-space:pre-wrap;font-size:12px;color:#CBD5E1}");
     add(LT .. "/style" .. GT);
     add(LT .. "/head" .. GT);
     
@@ -250,7 +250,7 @@ function exportarFichaHTML(sheet, selfForm)
     end
     
     -- Footer
-    add(LT .. "div style='text-align:center;color:#666;margin-top:30px;font-size:11px'" .. GT .. "Exportado de Naruto Destiny - Firecast" .. LT .. "/div" .. GT);
+    add(LT .. "div style='text-align:center;color:#4B5563;margin-top:30px;font-size:11px'" .. GT .. "Exportado de Naruto Destiny - Firecast" .. LT .. "/div" .. GT);
     add(LT .. "/body" .. GT);
     add(LT .. "/html" .. GT);
     
