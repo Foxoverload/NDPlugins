@@ -1,6 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaNarutoDestiny" formType="sheetTemplate" dataType="br.com.rrpg.Ficha_Naruto_Destiny" title="Ficha Naruto Destiny" align="client" theme="dark">
     
+    <!-- ============ ESTILO NARUTO SHIPPUDEN ============ -->
+    <style>
+        edit {
+            fontSize: 13;
+            fontColor: #E2E8F0;
+        }
+        
+        comboBox {
+            fontSize: 12;
+            fontColor: #CBD5E1;
+        }
+        
+        textEditor {
+            fontSize: 13;
+            fontColor: #E2E8F0;
+        }
+    </style>
+    
     <!-- Templates para agilizar e manter o padrao -->
     <template name="cabecalho">
         <layout align="top" height="34" margins="{top=18, bottom=6}">
@@ -34,6 +52,13 @@
                     <label align="client" text="N A R U T O   D E S T I N Y" horzTextAlign="center" vertTextAlign="center" fontColor="#F97316" fontSize="26" fontStyle="bold"/>
                 </layout>
                 
+                <!-- ===== BANNER TOPO ===== -->
+                <layout align="top" height="90" margins="{left=10, right=10, top=8, bottom=5}">
+                    <image align="client" src="/images/top_banner.png" style="stretch"/>
+                    <rectangle align="client" color="#0A101800" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                    <label align="client" text="N A R U T O   D E S T I N Y" horzTextAlign="center" vertTextAlign="center" fontColor="#F97316" fontSize="26" fontStyle="bold"/>
+                </layout>
+                
                 <!-- Cadeado de Bloqueio da Ficha (fora do layout desabilitavel) -->
                 <layout align="top" height="28" margins="{left=20, right=20, top=5, bottom=5}">
                     <rectangle align="client" color="#0E1420" strokeColor="#1A2A3A" strokeSize="1" xradius="6" yradius="6"/>
@@ -42,7 +67,7 @@
                 </layout>
                 
                 <layout align="top" height="32" margins="{left=20, right=20, top=2, bottom=5}">
-                    <button align="client" text="Exportar Ficha" fontColor="white" fontSize="12">
+                    <button align="client" text="Exportar Ficha" fontColor="#F97316" fontSize="13" fontStyle="bold">
                         <event name="onClick">
                             require("exportar.lua");
                             exportarFichaHTML(sheet, self);
@@ -89,6 +114,9 @@
 
                     <layout align="top" height="8" margins="{top=5}">
                         <horzLine align="client" strokeColor="#1E3A5C" strokeSize="1"/>
+                    </layout>
+                    <layout align="top" height="4" margins="{top=10, left=30, right=30}">
+                        <rectangle align="client" color="#1E3A5C" xradius="2" yradius="2"/>
                     </layout>
                     <cabecalho texto="Naruto Destiny" />
                     
@@ -777,6 +805,9 @@
                     <!-- ====== ATRIBUTOS ====== -->
                     <layout align="top" height="8" margins="{top=5}">
                         <horzLine align="client" strokeColor="#1E3A5C" strokeSize="1"/>
+                    </layout>
+                    <layout align="top" height="4" margins="{top=10, left=30, right=30}">
+                        <rectangle align="client" color="#1E3A5C" xradius="2" yradius="2"/>
                     </layout>
                     <cabecalho texto="Atributos" />
                     
