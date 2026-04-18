@@ -1314,26 +1314,33 @@
                             for _, edt in ipairs(edits) do
                                 if edt ~= nil then
                                     local texto = edt:getText() or "";
-                                    texto = string.upper(texto);
                                     
-                                    for linha in string.gmatch(texto .. "\n", "(.-)\n") do
-                                        if not string.find(linha, "GRATUITO") then
-                                            if string.find(linha, "RANK[:%s]+SSS") or string.find(linha, "RANK[:%s]+MSS") then
-                                                totalPontos = totalPontos + 400;
-                                            elseif string.find(linha, "RANK[:%s]+SS%+") then
-                                                totalPontos = totalPontos + 350;
-                                            elseif string.find(linha, "RANK[:%s]+SS") and not string.find(linha, "RANK[:%s]+SS%+") and not string.find(linha, "RANK[:%s]+SSS") then
-                                                totalPontos = totalPontos + 300;
-                                            elseif string.find(linha, "RANK[:%s]+S[^S%+]") or string.find(linha, "RANK[:%s]+S$") then
-                                                totalPontos = totalPontos + 250;
-                                            elseif string.find(linha, "RANK[:%s]+A") then
-                                                totalPontos = totalPontos + 200;
-                                            elseif string.find(linha, "RANK[:%s]+B") then
-                                                totalPontos = totalPontos + 150;
-                                            elseif string.find(linha, "RANK[:%s]+C") then
-                                                totalPontos = totalPontos + 100;
-                                            elseif string.find(linha, "RANK[:%s]+D") then
-                                                totalPontos = totalPontos + 50;
+                                    -- Separar em linhas e procurar "Rank" em cada uma
+                                    for linha in string.gmatch(texto, "[^\r\n]+") do
+                                        local upper = string.upper(linha);
+                                        
+                                        -- Pular linhas com Gratuito
+                                        if not string.find(upper, "GRATUITO") then
+                                            -- Procurar "RANK" seguido de separador e letra
+                                            local rankMatch = string.match(upper, "RANK[:%s]*(%S+)");
+                                            if rankMatch ~= nil then
+                                                if rankMatch == "SSS" or rankMatch == "MSS+" then
+                                                    totalPontos = totalPontos + 400;
+                                                elseif rankMatch == "SS+" then
+                                                    totalPontos = totalPontos + 350;
+                                                elseif rankMatch == "SS" then
+                                                    totalPontos = totalPontos + 300;
+                                                elseif rankMatch == "S" then
+                                                    totalPontos = totalPontos + 250;
+                                                elseif rankMatch == "A" then
+                                                    totalPontos = totalPontos + 200;
+                                                elseif rankMatch == "B" then
+                                                    totalPontos = totalPontos + 150;
+                                                elseif rankMatch == "C" then
+                                                    totalPontos = totalPontos + 100;
+                                                elseif rankMatch == "D" then
+                                                    totalPontos = totalPontos + 50;
+                                                end
                                             end
                                         end
                                     end
