@@ -36,17 +36,163 @@
                 <layout align="top" height="32" margins="{left=20, right=20, top=2, bottom=5}">
                     <button align="client" text="Exportar Ficha" fontColor="white" fontSize="12">
                         <event name="onClick">
-                            require("ndb.lua");
                             require("dialogs.lua");
                             require("utils.lua");
                             
-                            local xmlContent = NDB.exportXML(sheet);
+                            local function v(field)
+                                local val = sheet[field];
+                                if val == nil then return ""; end
+                                return tostring(val);
+                            end
+                            
+                            local function esc(s)
+                                s = string.gsub(s, "&", "&amp;");
+                                s = string.gsub(s, "<", "&lt;");
+                                s = string.gsub(s, ">", "&gt;");
+                                return s;
+                            end
+                            
+                            local function row(label, field)
+                                local val = v(field);
+                                if val == "" then return ""; end
+                                return "<tr><td class='l'>" .. esc(label) .. "</td><td>" .. esc(val) .. "</td></tr>\n";
+                            end
+                            
+                            local function secao(titulo)
+                                return "<tr><th colspan='2' class='sec'>" .. esc(titulo) .. "</th></tr>\n";
+                            end
+                            
+                            local function getText(ctrl)
+                                if ctrl ~= nil then return ctrl:getText() or ""; end
+                                return "";
+                            end
+                            
+                            local html = "<!DOCTYPE html>\n<html><head><meta charset='utf-8'/>\n";
+                            html = html .. "<title>Ficha ND - " .. esc(v("nome")) .. "</title>\n";
+                            html = html .. "<style>\n";
+                            html = html .. "body{background:#0D0D1A;color:#E0E0FF;font-family:Segoe UI,sans-serif;padding:20px;max-width:900px;margin:0 auto}\n";
+                            html = html .. "h1{color:#FF6B35;text-align:center;border-bottom:2px solid #FF6B35;padding-bottom:10px}\n";
+                            html = html .. "h2{color:#FF6B35;margin-top:25px;border-bottom:1px solid #333}\n";
+                            html = html .. "table{width:100%;border-collapse:collapse;margin-bottom:15px}\n";
+                            html = html .. "td,th{padding:4px 8px;border:1px solid #2A2A4E;text-align:left}\n";
+                            html = html .. ".l{width:180px;color:#B8B8CC;font-weight:bold;background:#141428}\n";
+                            html = html .. ".sec{background:#1A1A3E;color:#FF6B35;font-size:14px;text-align:center}\n";
+                            html = html .. "pre{background:#141428;padding:10px;border:1px solid #2A2A4E;white-space:pre-wrap;font-size:12px;color:#CCCCEE}\n";
+                            html = html .. "</style></head><body>\n";
+                            
+                            html = html .. "<h1>Ficha Naruto Destiny - " .. esc(v("nome")) .. "</h1>\n";
+                            
+                            html = html .. "<h2>Dados Pessoais</h2><table>\n";
+                            html = html .. row("Nome", "nome");
+                            html = html .. row("Idade", "idade");
+                            html = html .. row("Sexo", "sexo");
+                            html = html .. row("Altura", "altura");
+                            html = html .. row("Peso", "peso");
+                            html = html .. row("Tipo Sanguineo", "tipo_sanguineo");
+                            html = html .. row("Aniversario", "aniversario");
+                            html = html .. row("Vila de Nascimento", "vila_nascimento");
+                            html = html .. row("Cla Ninja", "cla_ninja");
+                            html = html .. row("Rank Shinobi", "rank_shinobi");
+                            html = html .. row("Sensei", "sensei");
+                            html = html .. row("Organizacao", "organizacao");
+                            html = html .. row("Natureza", "natureza");
+                            html = html .. row("Mao Dominante", "mao_dominante");
+                            html = html .. row("Nivel", "nivel");
+                            html = html .. row("Kekkei Genkai", "kekkei_genkai");
+                            html = html .. "</table>\n";
+                            
+                            html = html .. "<h2>Personalidade</h2><table>\n";
+                            html = html .. row("Comportamento", "comportamento");
+                            html = html .. row("Objetivo", "objetivo");
+                            html = html .. row("Sonho", "sonho");
+                            html = html .. row("Gostos", "gostos");
+                            html = html .. row("Desgostos", "desgostos");
+                            html = html .. row("Hobbies", "hobbies");
+                            html = html .. row("Interesse Romantico", "interesse_romantico");
+                            html = html .. "</table>\n";
+                            
+                            html = html .. "<h2>Atributos Core</h2><table>\n";
+                            html = html .. row("Forca", "forca") .. row("Agilidade", "agilidade");
+                            html = html .. row("Constituicao", "constituicao") .. row("Destreza", "destreza");
+                            html = html .. row("Ctrl Chakra", "ctrl_chakra") .. row("Concentracao", "concentracao");
+                            html = html .. row("Inteligencia", "inteligencia") .. row("Forca Espiritual", "forca_espiritual");
+                            html = html .. "</table>\n";
+                            
+                            html = html .. "<h2>Status</h2><table>\n";
+                            html = html .. row("PV", "pv") .. row("PV Atual", "pv_atual");
+                            html = html .. row("Chakra", "pchakra") .. row("Chakra Atual", "pchakra_atual");
+                            html = html .. row("Estamina", "pestamina") .. row("Estamina Atual", "pestamina_atual");
+                            html = html .. row("Ryous", "ryous");
+                            html = html .. "</table>\n";
+                            
+                            html = html .. "<h2>Atributos de Combate</h2><table>\n";
+                            html = html .. row("Taijutsu", "taijutsu") .. row("Bukijutsu", "bukijutsu");
+                            html = html .. row("Ninjutsu", "ninjutsu") .. row("Genjutsu", "genjutsu");
+                            html = html .. row("Genjutsu Kai", "genjutsu_kai") .. row("Fuinjutsu", "fuinjutsu");
+                            html = html .. row("Arremesso", "arremesso") .. row("Esquiva", "esquiva");
+                            html = html .. row("Bloqueio Fisico", "bloqueio_fisico") .. row("Bloqueio Chakra", "bloqueio_chakra");
+                            html = html .. row("Reflexo", "reflexo") .. row("Iniciativa", "iniciativa");
+                            html = html .. row("Tai-Bukijutsu", "tai_bukijutsu") .. row("Nin-Taijutsu", "nin_taijutsu");
+                            html = html .. row("Hiraishin", "hiraishin") .. row("Movimentacao", "movimentacao");
+                            html = html .. "</table>\n";
+                            
+                            html = html .. "<h2>Pericias</h2><table>\n";
+                            html = html .. row("Sobrevivencia", "sobrevivencia") .. row("Armadilha", "armadilha");
+                            html = html .. row("Empatia", "empatia") .. row("Intimidacao", "intimidacao");
+                            html = html .. row("Ladinagem", "ladinagem") .. row("Enganacao", "enganacao");
+                            html = html .. row("Percepcao", "percepcao") .. row("Persuasao", "persuasao");
+                            html = html .. row("Seducao", "seducao") .. row("Medicina", "medicina");
+                            html = html .. row("Conhecimento", "conhecimento") .. row("Oficio", "oficio");
+                            html = html .. row("Ensinamento", "ensinamento") .. row("Aprendizado", "aprendizado");
+                            html = html .. "</table>\n";
+                            
+                            html = html .. "<h2>Elementos</h2><table>\n";
+                            html = html .. row("Fogo", "elem_fogo") .. row("Agua", "elem_agua");
+                            html = html .. row("Vento", "elem_vento") .. row("Terra", "elem_terra");
+                            html = html .. row("Raio", "elem_raio") .. row("Combo", "elem_combo");
+                            html = html .. "</table>\n";
+                            
+                            html = html .. "<h2>Traits</h2>\n<pre>" .. esc(getText(self.edtTraits)) .. "</pre>\n";
+                            html = html .. "<p>" .. esc(v("trait_resumo")) .. "</p>\n";
+                            
+                            local tecNames = {"Taijutsu","Bukijutsu","Ninjutsu","Elemental","Fuinjutsu","Kuchiyose","Kekkei Genkai","Hab. Gerais"};
+                            local tecEdits = {self.edtTecTaijutsu, self.edtTecBukijutsu, self.edtTecNinjutsu, self.edtTecElemental, self.edtTecFuinjutsu, self.edtTecKuchiyose, self.edtTecKekkei, self.edtTecGerais};
+                            
+                            html = html .. "<h2>Tecnicas</h2>\n";
+                            html = html .. "<p>" .. esc(v("jutsu_pontos_atual")) .. " / " .. esc(v("jutsu_pontos_max")) .. " Pontos de Jutsu</p>\n";
+                            
+                            for i = 1, #tecNames do
+                                local txt = getText(tecEdits[i]);
+                                if txt ~= "" then
+                                    html = html .. "<h3>" .. esc(tecNames[i]) .. "</h3>\n<pre>" .. esc(txt) .. "</pre>\n";
+                                end
+                            end
+                            
+                            local invTxt = getText(self.edtInventario);
+                            if invTxt ~= "" then
+                                html = html .. "<h2>Inventario</h2>\n<pre>" .. esc(invTxt) .. "</pre>\n";
+                            end
+                            
+                            local histTxt = getText(self.edtHistoria);
+                            if histTxt ~= "" then
+                                html = html .. "<h2>Historia</h2>\n<pre>" .. esc(histTxt) .. "</pre>\n";
+                            end
+                            
+                            html = html .. "<h2>Qualidades e Defeitos</h2><table>\n";
+                            for i = 1, 5 do
+                                html = html .. row("Qualidade " .. i, "qualidade" .. i);
+                                html = html .. row("Defeito " .. i, "defeito" .. i);
+                            end
+                            html = html .. "</table>\n";
+                            
+                            html = html .. "</body></html>";
+                            
                             local stream = utils.newMemoryStream();
-                            stream:write(xmlContent);
+                            stream:write(html);
                             stream.position = 0;
                             
                             local nome = tostring(sheet.nome or "Ficha");
-                            Dialogs.saveFile("Exportar ficha como XML", stream, nome .. "_ND.xml", "application/xml",
+                            Dialogs.saveFile("Exportar ficha HTML", stream, nome .. "_ND.html", "text/html",
                                 function()
                                     showMessage("Ficha exportada com sucesso!");
                                 end
