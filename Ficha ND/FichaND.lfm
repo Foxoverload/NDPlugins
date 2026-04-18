@@ -1353,6 +1353,7 @@
                             sheet.jutsu_pontos_atual = tostring(totalPontos);
                             sheet.jutsu_pontos_max = tostring(maxPontos);
                             
+                            local debugRanks = "";
                             if totalPontos > maxPontos then
                                 sheet.jutsu_status = "Excedido em " .. (totalPontos - maxPontos) .. " pts!";
                             else
@@ -2092,11 +2093,11 @@
                         </event>
                     </dataLink>
                     
-                    <dataLink fields="{'tec_taijutsu', 'tec_bukijutsu', 'tec_ninjutsu', 'tec_elemental', 'tec_fuinjutsu', 'tec_kuchiyose', 'tec_kekkei_genkai', 'tec_habilidades_gerais', 'nivel'}">
-                        <event name="onChange">
+                    <timer name="timerJutsu" interval="2000" enabled="true">
+                        <event name="onTimer">
                             contarPontosJutsu();
                         </event>
-                    </dataLink>
+                    </timer>
 
                         </layout>
                     </scrollBox>
