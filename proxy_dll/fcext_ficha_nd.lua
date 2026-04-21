@@ -5,9 +5,42 @@
 -- ============================================================
 
 local function criarFichaAvancada(sheet, parentForm)
-    -- Load UI library
+    -- Load UI library (auto-discover path)
     local fcext = require("fcext");
-    local uiCode = fcext.readFile("C:\\Users\\aaron\\AppData\\Local\\Firecast\\fcext_ui.lua");
+    
+    local function findScript(name)
+        local candidates = {};
+        pcall(function()
+            local ad = os.getenv("LOCALAPPDATA");
+            if ad then table.insert(candidates, ad .. "\\Firecast\\" .. name); end;
+        end);
+        pcall(function()
+            local up = os.getenv("USERPROFILE");
+            if up then table.insert(candidates, up .. "\\AppData\\Local\\Firecast\\" .. name); end;
+        end);
+        -- Scan user directories
+        local drives = {"C", "D"};
+        for _, drv in ipairs(drives) do
+            local ok2, users = pcall(fcext.listDir, drv .. ":\\Users");
+            if ok2 and users then
+                for _, u in ipairs(users) do
+                    if u ~= "Public" and u ~= "Default" and u ~= "Default User" and u ~= "All Users" then
+                        local p = drv .. ":\\Users\\" .. u .. "\\AppData\\Local\\Firecast\\" .. name;
+                        if fcext.fileExists(p) then table.insert(candidates, 1, p); end;
+                    end;
+                end;
+            end;
+        end;
+        for _, path in ipairs(candidates) do
+            if fcext.fileExists(path) then
+                local code = fcext.readFile(path);
+                if code then return code; end;
+            end;
+        end;
+        return nil;
+    end;
+    
+    local uiCode = findScript("fcext_ui.lua");
     if not uiCode then return "ERRO: fcext_ui.lua nao encontrado"; end;
     local ui = load(uiCode)();
     if not ui then return "ERRO: falha ao carregar ui"; end;
