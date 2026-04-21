@@ -1,13 +1,12 @@
 @echo off
-chcp 65001 >nul 2>&1
 title Naruto Destiny - Script Extender Installer
 color 0A
 
 echo.
-echo  ╔══════════════════════════════════════════════════╗
-echo  ║   🍥 NARUTO DESTINY - SCRIPT EXTENDER v2.0.0   ║
-echo  ║              Instalador Automatico              ║
-echo  ╚══════════════════════════════════════════════════╝
+echo  ===================================================
+echo  =   NARUTO DESTINY - SCRIPT EXTENDER v2.0.0      =
+echo  =              Instalador Automatico              =
+echo  ===================================================
 echo.
 
 REM Detectar pasta do Firecast automaticamente
@@ -83,17 +82,15 @@ copy /Y "%~dp0fcext_ui.lua" "%FC%\fcext_ui.lua" >nul
 echo       fcext_ui.lua instalado.
 
 echo.
-echo  ╔══════════════════════════════════════════════════╗
-echo  ║         ✅ INSTALACAO CONCLUIDA COM SUCESSO!     ║
-echo  ╠══════════════════════════════════════════════════╣
-echo  ║                                                  ║
-echo  ║  1. Abra o Firecast normalmente                  ║
-echo  ║  2. Abra/crie uma ficha Naruto Destiny           ║
-echo  ║  3. Os calculos automaticos estarao ativos!      ║
-echo  ║                                                  ║
-echo  ║  Para desinstalar, execute:                      ║
-echo  ║  desinstalar_script_extender.bat                 ║
-echo  ║                                                  ║
-echo  ╚══════════════════════════════════════════════════╝
+echo  ===================================================
+echo  =       INSTALACAO CONCLUIDA COM SUCESSO!         =
+echo  ===================================================
+echo.
+echo  1. Abra o Firecast normalmente
+echo  2. Abra/crie uma ficha Naruto Destiny
+echo  3. Os calculos automaticos estarao ativos!
+echo.
+echo  Para desinstalar, execute:
+echo  desinstalar_script_extender.bat
 echo.
 pause

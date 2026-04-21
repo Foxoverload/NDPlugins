@@ -1,13 +1,12 @@
 @echo off
-chcp 65001 >nul 2>&1
 title Naruto Destiny - Script Extender Desinstalador
 color 0C
 
 echo.
-echo  ╔══════════════════════════════════════════════════╗
-echo  ║   🍥 NARUTO DESTINY - SCRIPT EXTENDER v2.0.0   ║
-echo  ║            Desinstalador Automatico             ║
-echo  ╚══════════════════════════════════════════════════╝
+echo  ===================================================
+echo  =   NARUTO DESTINY - SCRIPT EXTENDER v2.0.0      =
+echo  =            Desinstalador Automatico             =
+echo  ===================================================
 echo.
 
 set "FC=%LOCALAPPDATA%\Firecast"
@@ -45,11 +44,11 @@ if exist "%FC%\fcext_log.txt" del /F "%FC%\fcext_log.txt"
 echo       Limpo.
 
 echo.
-echo  ╔══════════════════════════════════════════════════╗
-echo  ║      ✅ DESINSTALACAO CONCLUIDA COM SUCESSO!     ║
-echo  ║                                                  ║
-echo  ║  O Firecast voltou ao estado original.           ║
-echo  ║  A ficha ND continuara funcionando sem FCEXT.    ║
-echo  ╚══════════════════════════════════════════════════╝
+echo  ===================================================
+echo  =      DESINSTALACAO CONCLUIDA COM SUCESSO!       =
+echo  ===================================================
+echo.
+echo  O Firecast voltou ao estado original.
+echo  A ficha ND continuara funcionando sem o Script Extender.
 echo.
 pause
