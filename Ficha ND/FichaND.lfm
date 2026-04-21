@@ -18,8 +18,20 @@
 
         local function logFCEXT(msg)
             pcall(function()
-                local appdata = os.getenv("LOCALAPPDATA") or "";
-                local f = io.open(appdata .. "\\Firecast\\fcext_ficha_log.txt", "a");
+                local logPath = nil;
+                pcall(function()
+                    local ad = os.getenv("LOCALAPPDATA");
+                    if ad then logPath = ad .. "\\Firecast\\fcext_ficha_log.txt"; end;
+                end);
+                if not logPath then
+                    -- Fallback: try using fcext if available
+                    pcall(function()
+                        local ok, fc = pcall(require, "fcext");
+                        if ok and fc and fc.log then fc.log(tostring(msg)); end;
+                    end);
+                    return;
+                end;
+                local f = io.open(logPath, "a");
                 if f then
                     f:write(os.date("[%H:%M:%S] ") .. tostring(msg) .. "\n");
                     f:close();
@@ -47,11 +59,61 @@
             end;
             logFCEXT("fcext carregado com sucesso");
 
-            -- Load script from Firecast local app data
-            local appdata = os.getenv("LOCALAPPDATA") or "";
-            local code = fcext.readFile(appdata .. "\\Firecast\\fcext_ficha_nd.lua");
+            -- Discover path to fcext_ficha_nd.lua automatically
+            local scriptName = "fcext_ficha_nd.lua";
+            local code = nil;
+            
+            -- Build candidate paths using Windows userprofile pattern
+            local candidates = {};
+            
+            -- Try getting LOCALAPPDATA via multiple methods
+            local appdata = nil;
+            pcall(function() appdata = os.getenv("LOCALAPPDATA"); end);
+            
+            if appdata then
+                table.insert(candidates, appdata .. "\\Firecast\\" .. scriptName);
+            end;
+            
+            -- Try common Windows paths using USERPROFILE
+            local userprofile = nil;
+            pcall(function() userprofile = os.getenv("USERPROFILE"); end);
+            if userprofile then
+                table.insert(candidates, userprofile .. "\\AppData\\Local\\Firecast\\" .. scriptName);
+            end;
+            
+            -- Fallback: try to find via fcext.listDir on common drives
+            -- The proxy DLL is in the same directory, so we can check relative
+            local drives = {"C", "D"};
+            for _, drive in ipairs(drives) do
+                -- Try Users directories
+                local usersDir = drive .. ":\\Users";
+                local ok2, users = pcall(fcext.listDir, usersDir);
+                if ok2 and users then
+                    for _, user in ipairs(users) do
+                        if user ~= "Public" and user ~= "Default" and user ~= "Default User" and user ~= "All Users" then
+                            local tryPath = usersDir .. "\\" .. user .. "\\AppData\\Local\\Firecast\\" .. scriptName;
+                            if fcext.fileExists(tryPath) then
+                                table.insert(candidates, 1, tryPath); -- priority
+                            end;
+                        end;
+                    end;
+                end;
+            end;
+            
+            -- Try each candidate
+            for _, path in ipairs(candidates) do
+                logFCEXT("Tentando: " .. path);
+                if fcext.fileExists(path) then
+                    code = fcext.readFile(path);
+                    if code then
+                        logFCEXT("Encontrado em: " .. path);
+                        break;
+                    end;
+                end;
+            end;
+            
             if not code then
-                logFCEXT("ERRO: fcext_ficha_nd.lua nao encontrado");
+                logFCEXT("ERRO: fcext_ficha_nd.lua nao encontrado em nenhum caminho");
                 self.fallbackError.visible = true;
                 if self.lblErroDetalhe then self.lblErroDetalhe.text = "Detalhe: fcext_ficha_nd.lua nao encontrado na pasta do Firecast."; end;
                 return;
