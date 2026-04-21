@@ -7,6 +7,747 @@
         local MODO_TESTE = false;
         local TESTE_VALOR = 20;
 
+        -- Forward declarations for combat functions (needed by popup)
+        local toggleNpcPanel, adicionarJogadores, rolarIniciativas;
+        local proximoTurno, limparTracker, removerCombatente;
+
+        -- ========== GUI API EXPLORER ==========
+        function explorarGUI()
+            if fcext == nil then
+                local ok, mod = pcall(require, "fcext");
+                if ok and mod then fcext = mod; end;
+            end;
+
+            local mesas = Firecast.getMesas();
+            local mesa = (mesas ~= nil and #mesas > 0) and mesas[1] or nil;
+            local chat = (mesa ~= nil) and mesa.chat or nil;
+
+            -- Helper: deep dump an object's properties
+            local function dumpObj(obj, name)
+                local result = {};
+                -- Direct pairs
+                local ok1, _ = pcall(function()
+                    for k, v in pairs(obj) do
+                        local vstr = tostring(v);
+                        if type(v) == "string" then vstr = '"' .. v .. '"'; end;
+                        table.insert(result, "  " .. k .. " = " .. type(v) .. " -> " .. vstr);
+                    end;
+                end);
+                -- Try common properties via pcall
+                local tryProps = {"name","text","align","width","height","left","top","visible","enabled",
+                    "color","fontColor","fontSize","fontStyle","fontFamily","horzTextAlign","vertTextAlign",
+                    "parent","margins","padding","hint","cursor","opacity","rotation",
+                    "strokeColor","strokeSize","xradius","yradius","hitTest",
+                    "field","readOnly","transparent","editable","style","src","checked",
+                    "min","max","value","position","interval","items","tabIndex",
+                    "scrollBars","wordWrap","backgroundColor","defaultFontColor","defaultFontSize"};
+                for _, prop in ipairs(tryProps) do
+                    local ok2, val = pcall(function() return obj[prop]; end);
+                    if ok2 and val ~= nil then
+                        local found = false;
+                        for _, r in ipairs(result) do
+                            if r:find("  " .. prop .. " =") then found = true; break; end;
+                        end;
+                        if not found then
+                            table.insert(result, "  " .. prop .. " = " .. type(val) .. " -> " .. tostring(val));
+                        end;
+                    end;
+                end;
+                return name .. " {\n" .. table.concat(result, "\n") .. "\n}";
+            end;
+
+            -- Helper: dump class methods
+            local function dumpClass(obj, name)
+                local result = {};
+                pcall(function()
+                    if obj.class then
+                        for k, v in pairs(obj.class) do
+                            table.insert(result, "  " .. k .. " : " .. type(v));
+                        end;
+                    end;
+                end);
+                if #result > 0 then
+                    return name .. ".class {\n" .. table.concat(result, "\n") .. "\n}";
+                end;
+                return "";
+            end;
+
+            local allDumps = {};
+            table.insert(allDumps, "=== FCEXT GUI API DEEP DUMP ===\n");
+            table.insert(allDumps, "Timestamp: " .. os.date("%Y-%m-%d %H:%M:%S") .. "\n");
+
+            -- 1. Dump all GUI functions first
+            local guiFuncs = {};
+            pcall(function()
+                for k, v in pairs(GUI) do
+                    table.insert(guiFuncs, "GUI." .. k .. " = " .. type(v));
+                end;
+            end);
+            table.sort(guiFuncs);
+            table.insert(allDumps, "=== GUI FUNCTIONS ===\n" .. table.concat(guiFuncs, "\n") .. "\n");
+
+            -- 2. Create test popup as container
+            local popup = GUI.newPopupForm();
+            popup.title = "GUI API Explorer";
+            popup.width = 500;
+            popup.height = 600;
+            table.insert(allDumps, "\n" .. dumpObj(popup, "PopupForm"));
+            table.insert(allDumps, dumpClass(popup, "PopupForm"));
+
+            -- ScrollBox inside popup
+            local scroll;
+            pcall(function()
+                scroll = GUI.newScrollBox();
+                scroll.parent = popup;
+                scroll.align = "client";
+                table.insert(allDumps, "\n" .. dumpObj(scroll, "ScrollBox"));
+            end);
+
+            local container = scroll or popup;
+
+            -- 3. Test each control type
+            local controls = {
+                {"Label", function()
+                    local c = GUI.newLabel();
+                    c.parent = container; c.align = "top"; c.height = 25;
+                    c.text = "Label Test"; c.fontColor = "#4FC3F7"; c.fontSize = 12;
+                    return c;
+                end},
+                {"Button", function()
+                    local c = GUI.newButton();
+                    c.parent = container; c.align = "top"; c.height = 30;
+                    c.text = "Button Test";
+                    return c;
+                end},
+                {"Edit", function()
+                    local c = GUI.newEdit();
+                    c.parent = container; c.align = "top"; c.height = 25;
+                    c.text = "Edit field test";
+                    return c;
+                end},
+                {"Rectangle", function()
+                    local c = GUI.newRectangle();
+                    c.parent = container; c.align = "top"; c.height = 30;
+                    c.color = "#EF4444"; c.strokeColor = "#FFFFFF"; c.strokeSize = 2;
+                    c.xradius = 8; c.yradius = 8;
+                    return c;
+                end},
+                {"Layout", function()
+                    local c = GUI.newLayout();
+                    c.parent = container; c.align = "top"; c.height = 30;
+                    return c;
+                end},
+                {"CheckBox", function()
+                    local c = GUI.newCheckBox();
+                    c.parent = container; c.align = "top"; c.height = 25;
+                    c.text = "Checkbox test";
+                    return c;
+                end},
+                {"ComboBox", function()
+                    local c = GUI.newComboBox();
+                    c.parent = container; c.align = "top"; c.height = 25;
+                    pcall(function() c.items = {"Opção 1", "Opção 2", "Opção 3"}; end);
+                    return c;
+                end},
+                {"ProgressBar", function()
+                    local c = GUI.newProgressBar();
+                    c.parent = container; c.align = "top"; c.height = 20;
+                    pcall(function() c.min = 0; c.max = 100; c.position = 65; end);
+                    pcall(function() c.color = "#22C55E"; end);
+                    return c;
+                end},
+                {"HorzLine", function()
+                    local c = GUI.newHorzLine();
+                    c.parent = container; c.align = "top";
+                    return c;
+                end},
+                {"Image", function()
+                    local c = GUI.newImage();
+                    c.parent = container; c.align = "top"; c.height = 50;
+                    pcall(function() c.style = "autoFit"; end);
+                    return c;
+                end},
+                {"TextEditor", function()
+                    local c = GUI.newTextEditor();
+                    c.parent = container; c.align = "top"; c.height = 50;
+                    pcall(function() c.text = "Multi-line text editor"; end);
+                    return c;
+                end},
+                {"RichEdit", function()
+                    local c = GUI.newRichEdit();
+                    c.parent = container; c.align = "top"; c.height = 50;
+                    return c;
+                end},
+                {"TabControl", function()
+                    local c = GUI.newTabControl();
+                    c.parent = container; c.align = "top"; c.height = 80;
+                    pcall(function()
+                        local t1 = GUI.newTab();
+                        t1.parent = c;
+                        t1.title = "Tab 1";
+                        local t2 = GUI.newTab();
+                        t2.parent = c;
+                        t2.title = "Tab 2";
+                    end);
+                    return c;
+                end},
+                {"Timer", function()
+                    local c = GUI.newTimer();
+                    pcall(function() c.enabled = false; c.interval = 1000; end);
+                    return c;
+                end},
+                {"ColorComboBox", function()
+                    local c = GUI.newColorComboBox();
+                    c.parent = container; c.align = "top"; c.height = 25;
+                    return c;
+                end},
+                {"Path", function()
+                    local c = GUI.newPath();
+                    c.parent = container; c.align = "top"; c.height = 30;
+                    return c;
+                end},
+                {"Frame", function()
+                    local c = GUI.newFrame();
+                    c.parent = container; c.align = "top"; c.height = 40;
+                    return c;
+                end},
+                {"DataLink", function()
+                    local c = GUI.newDataLink();
+                    c.parent = container;
+                    return c;
+                end},
+                {"Popup", function()
+                    local c = GUI.newPopup();
+                    c.width = 100; c.height = 100;
+                    return c;
+                end},
+            };
+
+            local successCount = 0;
+            local failCount = 0;
+            for _, ctrl in ipairs(controls) do
+                local name = ctrl[1];
+                local factory = ctrl[2];
+                local ok3, obj = pcall(factory);
+                if ok3 and obj then
+                    successCount = successCount + 1;
+                    table.insert(allDumps, "\n" .. dumpObj(obj, name));
+                    local classDump = dumpClass(obj, name);
+                    if classDump ~= "" then table.insert(allDumps, classDump); end;
+                else
+                    failCount = failCount + 1;
+                    table.insert(allDumps, "\n" .. name .. " -> FAILED: " .. tostring(obj));
+                end;
+            end;
+
+            -- 4. Try additional GUI functions
+            local extraTests = {};
+            local extras = {"toast","alert","confirm","inputBox","openInBrowser","openURL",
+                "showMessage","dialog","findControlByName","newDataScopeBox",
+                "newRadioButton","newRadioGroup","newFlowLayout","newFlowLineBreak",
+                "newPanel","newGroupBox","newSplitter","newSplitLayout"};
+            for _, fname in ipairs(extras) do
+                local exists = false;
+                pcall(function() exists = (GUI[fname] ~= nil); end);
+                table.insert(extraTests, "GUI." .. fname .. " = " .. (exists and "EXISTS" or "nil"));
+            end;
+            table.insert(allDumps, "\n=== EXTRA GUI FUNCTIONS ===\n" .. table.concat(extraTests, "\n"));
+
+            -- 5. Write to file
+            local fullDump = table.concat(allDumps, "\n");
+            if fcext and fcext.log then
+                fcext.log("GUI dump: " .. successCount .. " OK, " .. failCount .. " failed");
+            end;
+
+            -- Write dump to file via fcext (bypasses sandbox)
+            if fcext and fcext.writeFile then
+                fcext.writeFile("C:\\Users\\aaron\\AppData\\Local\\Firecast\\fcext_gui_dump.txt", fullDump);
+            end;
+
+
+            -- Show popup with results
+            popup:show();
+
+            if chat then
+                chat:enviarMensagem("[FCEXT] GUI Explorer: " .. successCount .. " controles OK, " .. failCount .. " falharam");
+                chat:enviarMensagem("[FCEXT] Dump salvo em fcext_gui_dump.txt");
+            end;
+        end;
+
+        -- ========== FICHA DEMO (fcext_ui library test) ==========
+        function fichaDemo()
+            if fcext == nil then
+                local ok, mod = pcall(require, "fcext");
+                if ok and mod then fcext = mod; end;
+            end;
+
+            local mesas = Firecast.getMesas();
+            local mesa = (mesas ~= nil and #mesas > 0) and mesas[1] or nil;
+            local chat = (mesa ~= nil) and mesa.chat or nil;
+
+            -- Load UI library
+            local uiCode = fcext.readFile("C:\\Users\\aaron\\AppData\\Local\\Firecast\\fcext_ui.lua");
+            if not uiCode then
+                if chat then chat:enviarMensagem("[FCEXT] ERRO: fcext_ui.lua nao encontrado!"); end;
+                return;
+            end;
+
+            local ui = load(uiCode)();
+            if not ui then
+                if chat then chat:enviarMensagem("[FCEXT] ERRO: falha ao carregar fcext_ui.lua!"); end;
+                return;
+            end;
+
+            -- Create window
+            local popup = ui.window({
+                title = "Naruto Destiny - Ficha Demo",
+                width = 900,
+                height = 700,
+                show = false,
+            });
+            local content = popup._content;
+
+            -- Banner
+            ui.banner(content, {
+                title = "N A R U T O   D E S T I N Y",
+                height = 70,
+                src = "/images/top_banner.png",
+            });
+
+            -- === DADOS PESSOAIS ===
+            ui.section(content, {text = "Dados Pessoais"});
+
+            ui.field(content, {label = "Nome", placeholder = "Nome do Personagem"});
+            ui.field(content, {label = "Idade", placeholder = "Baseado no Rank"});
+            ui.field(content, {label = "Sexo", items = {"Masculino", "Feminino"}});
+
+            -- Grid row (2 columns)
+            local gridRow = ui.grid(content, {cols = 2, totalWidth = 850, height = 30, margins = {top = 2}});
+            ui.field(gridRow._cols[1], {label = "Altura", labelWidth = 80, placeholder = "x,xxm"});
+            ui.field(gridRow._cols[2], {label = "Peso", labelWidth = 80, placeholder = "xx KG"});
+
+            local gridRow2 = ui.grid(content, {cols = 2, totalWidth = 850, height = 30, margins = {top = 2}});
+            ui.field(gridRow2._cols[1], {label = "Vila", labelWidth = 80, placeholder = "Vila de nascimento"});
+            ui.field(gridRow2._cols[2], {label = "Cla", labelWidth = 80, placeholder = "Cla ninja"});
+
+            ui.separator(content);
+
+            -- === STATUS ===
+            ui.section(content, {text = "Status"});
+
+            ui.statBar(content, {
+                label = "Pontos de Vida",
+                current = 1250,
+                max = 2000,
+                color = "#EF4444",
+                bgColor = "#1A0A10",
+            });
+
+            ui.statBar(content, {
+                label = "Chakra",
+                current = 800,
+                max = 1500,
+                color = "#818CF8",
+                bgColor = "#0A0A1A",
+            });
+
+            ui.statBar(content, {
+                label = "Estamina",
+                current = 600,
+                max = 600,
+                color = "#FBBF24",
+                bgColor = "#1A1A0A",
+            });
+
+            ui.separator(content);
+
+            -- === ATRIBUTOS ===
+            ui.section(content, {text = "Atributos de Combate"});
+
+            local attrGrid = ui.grid(content, {cols = 2, totalWidth = 850, height = 30, margins = {top = 2}});
+            ui.attribute(attrGrid._cols[1], {label = "Taijutsu", labelWidth = 100});
+            ui.attribute(attrGrid._cols[2], {label = "Bukijutsu", labelWidth = 100});
+
+            local attrGrid2 = ui.grid(content, {cols = 2, totalWidth = 850, height = 30, margins = {top = 2}});
+            ui.attribute(attrGrid2._cols[1], {label = "Ninjutsu", labelWidth = 100});
+            ui.attribute(attrGrid2._cols[2], {label = "Genjutsu", labelWidth = 100});
+
+            local attrGrid3 = ui.grid(content, {cols = 2, totalWidth = 850, height = 30, margins = {top = 2}});
+            ui.attribute(attrGrid3._cols[1], {label = "Esquiva", labelWidth = 100});
+            ui.attribute(attrGrid3._cols[2], {label = "Bloqueio", labelWidth = 100});
+
+            local attrGrid4 = ui.grid(content, {cols = 2, totalWidth = 850, height = 30, margins = {top = 2}});
+            ui.attribute(attrGrid4._cols[1], {label = "Reflexo", labelWidth = 100});
+            ui.attribute(attrGrid4._cols[2], {label = "Iniciativa", labelWidth = 100});
+
+            ui.separator(content);
+
+            -- === RANK e RECONHECIMENTO ===
+            ui.section(content, {text = "Rank e Reconhecimento"});
+
+            -- Rank card
+            local rankCard = ui.card(content, {
+                title = "Rank Shinobi",
+                height = 90,
+                headerColor = "#0D3B66",
+            });
+            local rankBody = rankCard._body;
+            ui.label(rankBody, {text = "Jonin", color = "#FBBF24", fontSize = 22, bold = true, textAlign = "center"});
+            ui.label(rankBody, {text = "Nivel 35 - 450 XP", color = "#8BA3C4", fontSize = 11, textAlign = "center"});
+
+            -- Badges row
+            local badgeRow = GUI.newLayout();
+            badgeRow.parent = content;
+            badgeRow.align = "top";
+            badgeRow.height = 30;
+            badgeRow.margins = {top = 6, left = 10};
+
+            ui.badge(badgeRow, {text = "Renome", bgColor = "#B45309", width = 90, margins = {right = 6}});
+            ui.badge(badgeRow, {text = "Katon", bgColor = "#EA580C", width = 70, margins = {right = 6}});
+            ui.badge(badgeRow, {text = "Suiton", bgColor = "#0284C7", width = 70, margins = {right = 6}});
+            ui.badge(badgeRow, {text = "Doton", bgColor = "#A16207", width = 70, margins = {right = 6}});
+            ui.badge(badgeRow, {text = "Enton", bgColor = "#7C2D12", width = 70, margins = {right = 6}});
+
+            ui.separator(content);
+
+            -- === APARENCIA ===
+            ui.section(content, {text = "Aparencia"});
+
+            local imgRow = GUI.newLayout();
+            imgRow.parent = content;
+            imgRow.align = "top";
+            imgRow.height = 200;
+            imgRow.margins = {top = 5, left = 10, right = 10};
+
+            for i = 1, 3 do
+                local imgCard = ui.card(imgRow, {
+                    align = "left",
+                    height = 195,
+                    title = "Imagem " .. i,
+                    headerHeight = 24,
+                    bgColor = "#0E1420",
+                    margins = {right = 8},
+                });
+                imgCard.width = 270;
+                ui.image(imgCard._body, {
+                    height = 145,
+                    editable = true,
+                    style = "autoFit",
+                });
+            end;
+
+            ui.spacer(content, 20);
+
+            -- Show
+            popup:show();
+
+            if chat then
+                chat:enviarMensagem("[FCEXT] Ficha Demo aberta! UI Library carregada com sucesso.");
+            end;
+        end;
+
+        -- ========== POPUP COMBAT TRACKER ==========
+        local popupRef = nil;
+
+        function atualizarPopup()
+            if popupRef == nil then return; end;
+            pcall(function() popupRef:close(); end);
+            popupRef = nil;
+            abrirPopupTracker();
+        end;
+
+        function abrirPopupTracker()
+            if fcext == nil then
+                local ok, mod = pcall(require, "fcext");
+                if ok and mod then fcext = mod; end;
+            end;
+
+            local cl = combatentes or {};
+            local rd = rodadaAtual or 0;
+            local tn = turnoAtual or 0;
+
+            local ok1, r1 = pcall(function()
+                local popup = GUI.newPopupForm();
+                popupRef = popup;
+                popup.title = "ND Combat Tracker";
+                popup.width = 400;
+                popup.height = 520;
+                pcall(function() popup:setResizable(true); end);
+
+                -- Colors
+                local bgColor = "#2D2D30";
+                local headerColor = "#3C3C3C";
+                local rowColorA = "#333336";
+                local rowColorB = "#2A2A2E";
+                local activeRowColor = "#1A3A1A";
+                local textColor = "#CCCCCC";
+                local dimColor = "#888888";
+
+                -- Background
+                local bg = GUI.newRectangle();
+                bg.parent = popup;
+                bg.align = "client";
+                bg.color = bgColor;
+
+                -- ===== HEADER BAR =====
+                local headerRow = GUI.newLayout();
+                headerRow.parent = popup;
+                headerRow.align = "top";
+                headerRow.height = 30;
+
+                local headerBgR = GUI.newRectangle();
+                headerBgR.parent = headerRow;
+                headerBgR.align = "client";
+                headerBgR.color = headerColor;
+
+                local btnAdd = GUI.newButton();
+                btnAdd.parent = headerRow;
+                btnAdd.align = "left";
+                btnAdd.width = 28;
+                btnAdd.text = "+";
+                pcall(function() btnAdd.onClick = function() toggleNpcPanel(); end; end);
+
+                local btnRoll = GUI.newButton();
+                btnRoll.parent = headerRow;
+                btnRoll.align = "left";
+                btnRoll.width = 28;
+                btnRoll.text = "R";
+                pcall(function() btnRoll.onClick = function() rolarIniciativas(); atualizarPopup(); end; end);
+
+                local btnPlayers = GUI.newButton();
+                btnPlayers.parent = headerRow;
+                btnPlayers.align = "left";
+                btnPlayers.width = 28;
+                btnPlayers.text = "A";
+                pcall(function() btnPlayers.onClick = function() adicionarJogadores(); atualizarPopup(); end; end);
+
+                local btnClear = GUI.newButton();
+                btnClear.parent = headerRow;
+                btnClear.align = "right";
+                btnClear.width = 45;
+                btnClear.text = "Clear";
+                pcall(function() btnClear.onClick = function() limparTracker(); atualizarPopup(); end; end);
+
+                -- ===== COLUMN HEADERS =====
+                local colRow = GUI.newLayout();
+                colRow.parent = popup;
+                colRow.align = "top";
+                colRow.height = 20;
+
+                local colBg = GUI.newRectangle();
+                colBg.parent = colRow;
+                colBg.align = "client";
+                colBg.color = "#252528";
+
+                local lblChk = GUI.newLabel();
+                lblChk.parent = colRow;
+                lblChk.align = "left";
+                lblChk.width = 50;
+                lblChk.text = "  Check";
+                lblChk.fontColor = dimColor;
+                lblChk.fontSize = 9;
+
+                local lblName = GUI.newLabel();
+                lblName.parent = colRow;
+                lblName.align = "client";
+                lblName.text = "Name";
+                lblName.fontColor = dimColor;
+                lblName.fontSize = 9;
+
+                local lblInit = GUI.newLabel();
+                lblInit.parent = colRow;
+                lblInit.align = "right";
+                lblInit.width = 35;
+                lblInit.text = "Init";
+                lblInit.fontColor = dimColor;
+                lblInit.fontSize = 9;
+
+                local lblFof = GUI.newLabel();
+                lblFof.parent = colRow;
+                lblFof.align = "right";
+                lblFof.width = 30;
+                lblFof.text = "FoF";
+                lblFof.fontColor = dimColor;
+                lblFof.fontSize = 9;
+
+                -- Separator
+                local sep1 = GUI.newHorzLine();
+                sep1.parent = popup;
+                sep1.align = "top";
+
+                -- ===== COMBATANT ROWS =====
+                for i = 1, math.max(#cl, 1) do
+                    if i > #cl then break; end;
+                    local c = cl[i];
+                    local isActive = (i == tn);
+
+                    -- Main row
+                    local row = GUI.newLayout();
+                    row.parent = popup;
+                    row.align = "top";
+                    row.height = 26;
+
+                    local rowBg = GUI.newRectangle();
+                    rowBg.parent = row;
+                    rowBg.align = "client";
+                    if isActive then rowBg.color = activeRowColor;
+                    elseif i % 2 == 0 then rowBg.color = rowColorB;
+                    else rowBg.color = rowColorA; end;
+
+                    -- Arrow
+                    local lblArrow = GUI.newLabel();
+                    lblArrow.parent = row;
+                    lblArrow.align = "left";
+                    lblArrow.width = 18;
+                    lblArrow.fontColor = "#FFFFFF";
+                    lblArrow.fontSize = 12;
+                    if isActive then lblArrow.text = ">"; else lblArrow.text = ""; end;
+
+                    -- Check button
+                    local btnChk = GUI.newButton();
+                    btnChk.parent = row;
+                    btnChk.align = "left";
+                    btnChk.width = 24;
+                    btnChk.text = (c.checked and "[x]" or "[ ]");
+                    btnChk.fontSize = 9;
+
+                    -- Name
+                    local lblN = GUI.newLabel();
+                    lblN.parent = row;
+                    lblN.align = "client";
+                    lblN.text = " " .. c.nome;
+                    lblN.fontColor = textColor;
+                    lblN.fontSize = 11;
+
+                    -- Initiative
+                    local lblI = GUI.newLabel();
+                    lblI.parent = row;
+                    lblI.align = "right";
+                    lblI.width = 35;
+                    lblI.text = tostring(c.ini or "-");
+                    lblI.fontColor = "#A0A0A0";
+                    lblI.fontSize = 11;
+
+                    -- FoF color indicator
+                    local fofRect = GUI.newRectangle();
+                    fofRect.parent = row;
+                    fofRect.align = "right";
+                    fofRect.width = 16;
+                    if c.fof == "aliado" then fofRect.color = "#22C55E";
+                    elseif c.fof == "inimigo" then fofRect.color = "#EF4444";
+                    elseif c.fof == "neutro" then fofRect.color = "#FBBF24";
+                    else fofRect.color = "#666666"; end;
+
+                    -- Remove button
+                    local btnRem = GUI.newButton();
+                    btnRem.parent = row;
+                    btnRem.align = "right";
+                    btnRem.width = 22;
+                    btnRem.text = "X";
+                    btnRem.fontSize = 10;
+                    local idx = i;
+                    pcall(function() btnRem.onClick = function() removerCombatente(idx); atualizarPopup(); end; end);
+
+                    -- Effect row (if has effects)
+                    if c.efeitos and #c.efeitos > 0 then
+                        local efRow = GUI.newLayout();
+                        efRow.parent = popup;
+                        efRow.align = "top";
+                        efRow.height = 16;
+
+                        local efBg = GUI.newRectangle();
+                        efBg.parent = efRow;
+                        efBg.align = "client";
+                        efBg.color = "#0D1117";
+
+                        local efTexts = {};
+                        for _, ef in ipairs(c.efeitos) do
+                            local t = ef.nome;
+                            if ef.duracao and ef.duracao > 0 then t = t .. "(" .. ef.duracao .. "rd)"; end;
+                            table.insert(efTexts, t);
+                        end;
+
+                        local lblEf = GUI.newLabel();
+                        lblEf.parent = efRow;
+                        lblEf.align = "client";
+                        lblEf.text = "     " .. table.concat(efTexts, " | ");
+                        lblEf.fontColor = "#80DEEA";
+                        lblEf.fontSize = 9;
+                    end;
+                end;
+
+                if #cl == 0 then
+                    local emptyRow = GUI.newLayout();
+                    emptyRow.parent = popup;
+                    emptyRow.align = "top";
+                    emptyRow.height = 60;
+
+                    local emptyBg = GUI.newRectangle();
+                    emptyBg.parent = emptyRow;
+                    emptyBg.align = "client";
+                    emptyBg.color = rowColorA;
+
+                    local lblEmpty = GUI.newLabel();
+                    lblEmpty.parent = emptyRow;
+                    lblEmpty.align = "client";
+                    lblEmpty.text = "   Sem combatentes";
+                    lblEmpty.fontColor = dimColor;
+                    lblEmpty.fontSize = 11;
+                end;
+
+                -- ===== FOOTER =====
+                local footSep = GUI.newHorzLine();
+                footSep.parent = popup;
+                footSep.align = "bottom";
+
+                local footer = GUI.newLayout();
+                footer.parent = popup;
+                footer.align = "bottom";
+                footer.height = 34;
+
+                local footBg = GUI.newRectangle();
+                footBg.parent = footer;
+                footBg.align = "client";
+                footBg.color = headerColor;
+
+                local btnNextTurn = GUI.newButton();
+                btnNextTurn.parent = footer;
+                btnNextTurn.align = "left";
+                btnNextTurn.width = 85;
+                btnNextTurn.text = "Next turn";
+                pcall(function() btnNextTurn.onClick = function() proximoTurno(); atualizarPopup(); end; end);
+
+                local lblRound = GUI.newLabel();
+                lblRound.parent = footer;
+                lblRound.align = "right";
+                lblRound.width = 80;
+                lblRound.text = "Round: " .. rd;
+                lblRound.fontColor = textColor;
+                lblRound.fontSize = 11;
+
+                popup:show();
+                return "TRACKER ABERTO!";
+            end);
+
+            local mesas = Firecast.getMesas();
+            local mesa = (mesas ~= nil and #mesas > 0) and mesas[1] or nil;
+            local chat = (mesa ~= nil) and mesa.chat or nil;
+            if chat then chat:enviarMensagem("[FCEXT] " .. (ok1 and r1 or ("ERR: " .. tostring(r1)))); end;
+        end;
+
+        function testarFcext()
+            abrirPopupTracker();
+        end;
+
+        function fecharOverlay()
+            if fcext == nil then
+                local ok, mod = pcall(require, "fcext");
+                if ok and mod then fcext = mod; end;
+            end;
+            if fcext and fcext.overlayClose then
+                fcext.overlayClose();
+            end;
+        end;
         -- ========== COMANDOS DE COMBATE ==========
         local COMANDOS_COMBATE = {
             ["taijutsu"]    = {campo = "taijutsu",       nome = "Taijutsu",        fisico = true},
@@ -87,7 +828,7 @@
         local combatentes = {};
         local turnoAtual = 0;
         local rodadaAtual = 0;
-        local MAX_LINHAS = 12;
+        local MAX_LINHAS = 10;
 
         -- Forward declarations (definidas mais abaixo)
         local buscarCombatente;
@@ -101,131 +842,119 @@
         end;
 
         local function renderizarTracker()
-            ordenarCombatentes();
+            if rodadaAtual == 0 then ordenarCombatentes(); end;
             for i = 1, MAX_LINHAS do
-                local lblNum = self["lblNum" .. i];
+                local lblArrow = self["lblArrow" .. i];
+                local btnChk = self["btnChk" .. i];
                 local lblNome = self["lblNome" .. i];
                 local lblIni = self["lblIni" .. i];
-                local lblBg = self["lblBg" .. i];
-
+                local btnFof = self["btnFof" .. i];
+                local btnX = self["btnX" .. i];
+                local lblEfRow = self["lblEfRow" .. i];
+                local lblDur = self["lblDur" .. i];
+                local rowMain = self["rowMain" .. i];
+                local rowEf = self["rowEf" .. i];
                 if lblNome ~= nil then
                     if i &lt;= #combatentes then
-                        local c = combatentes[i];
-                        local marcador = "";
-                        if i == turnoAtual then marcador = ">> "; end;
-                        lblNum.text = marcador .. i .. ".";
-                        -- Mostrar efeitos ao lado do nome
-                        local nomeTxt = c.nome or "?";
-                        local hintTxt = c.nome or "?";
-                        if c.efeitos ~= nil and #c.efeitos > 0 then
-                            local efNomes = {};
-                            local hintLines = {};
-                            for ei = 1, #c.efeitos do
-                                local ef = c.efeitos[ei];
-                                local prefixo = "";
-                                if ef.bonusAtb ~= nil and ef.bonusAtb > 0 then prefixo = "+";
-                                elseif ef.bonusAtb ~= nil and ef.bonusAtb &lt; 0 then prefixo = "-";
-                                elseif ef.danoRodada ~= nil and ef.danoRodada > 0 then prefixo = "-";
-                                end;
-                                local durTag = "";
-                                if ef.duracao ~= nil and ef.duracao > 0 then durTag = "(" .. ef.duracao .. "rd)"; end;
-                                table.insert(efNomes, prefixo .. ef.nome .. durTag);
-                                -- Hint detalhado
-                                local hLine = ef.nome .. ":";
-                                if ef.bonusAtb ~= nil and ef.bonusAtb ~= 0 then
-                                    hLine = hLine .. " " .. (ef.bonusAtb > 0 and "+" or "") .. ef.bonusAtb .. " atributos";
-                                end;
-                                if ef.danoRodada ~= nil and ef.danoRodada > 0 then
-                                    hLine = hLine .. " " .. ef.danoRodada .. " dano/rd";
-                                end;
-                                if ef.estaminaRodada ~= nil and ef.estaminaRodada > 0 then
-                                    hLine = hLine .. " -" .. ef.estaminaRodada .. " est/rd";
-                                end;
-                                if ef.custoChakraRd ~= nil and ef.custoChakraRd > 0 then
-                                    hLine = hLine .. " -" .. ef.custoChakraRd .. " chk/rd";
-                                end;
-                                if ef.duracao ~= nil and ef.duracao > 0 then
-                                    hLine = hLine .. " (" .. ef.duracao .. " rodadas)";
-                                else
-                                    hLine = hLine .. " (permanente)";
-                                end;
-                                table.insert(hintLines, hLine);
-                            end;
-                            nomeTxt = nomeTxt .. " [" .. table.concat(efNomes, ", ") .. "]";
-                            hintTxt = hintTxt .. "\n" .. table.concat(hintLines, "\n");
+                        local co = combatentes[i];
+                        if rowMain ~= nil then rowMain.visible = true; end;
+                        if rowEf ~= nil then rowEf.visible = true; end;
+                        -- Arrow
+                        if lblArrow ~= nil then
+                            if i == turnoAtual then lblArrow.text = "&gt;"; lblArrow.fontColor = "#FFFFFF";
+                            else lblArrow.text = ""; end;
                         end;
-                        lblNome.text = nomeTxt;
-                        lblIni.text = tostring(c.ini or "?");
-                        lblNome.visible = true;
-                        lblIni.visible = true;
-                        lblNum.visible = true;
-
+                        -- Checkbox
+                        if btnChk ~= nil then
+                            if co.checked == false then btnChk.text = "";
+                            else btnChk.text = "X"; end;
+                        end;
+                        -- Nome
+                        lblNome.text = co.nome or "?";
+                        -- Ini
+                        if lblIni ~= nil then lblIni.text = tostring(co.ini or 0); end;
+                        -- FoF color
+                        local fof = co.fof or "aliado";
+                        local fofC = "#22C55E";
+                        if fof == "neutro" then fofC = "#EAB308";
+                        elseif fof == "inimigo" then fofC = "#EF4444"; end;
+                        if btnFof ~= nil then btnFof.fontColor = fofC; btnFof.text = "@"; end;
+                        -- Font colors
                         if i == turnoAtual then
-                            lblNum.fontColor = "#4FC3F7";
-                            lblNome.fontColor = "#4FC3F7";
-                            lblIni.fontColor = "#4FC3F7";
-                            if lblBg ~= nil then lblBg.color = "#122A3A"; lblBg.visible = true; end;
+                            lblNome.fontColor = "#FFFFFF";
+                            if lblIni ~= nil then lblIni.fontColor = "#FFFFFF"; end;
                         else
-                            if c.tipo == "npc" then
-                                lblNum.fontColor = "#EF5350";
-                                lblNome.fontColor = "#EF5350";
-                                lblIni.fontColor = "#EF5350";
+                            lblNome.fontColor = "#C0C0C0";
+                            if lblIni ~= nil then lblIni.fontColor = "#A0A0A0"; end;
+                        end;
+                        -- Effects sub-line
+                        if lblEfRow ~= nil then
+                            if co.efeitos ~= nil and #co.efeitos &gt; 0 then
+                                local nomes = {};
+                                local durTxt = "";
+                                for ei = 1, #co.efeitos do
+                                    table.insert(nomes, co.efeitos[ei].nome);
+                                    local d = co.efeitos[ei].duracao or 0;
+                                    if d &gt; 0 then durTxt = durTxt .. "[" .. d .. "] ";
+                                    else durTxt = durTxt .. "[~] "; end;
+                                end;
+                                lblEfRow.text = table.concat(nomes, " | ");
+                                if lblDur ~= nil then lblDur.text = durTxt; end;
                             else
-                                lblNum.fontColor = "#78909C";
-                                lblNome.fontColor = "#B0BEC5";
-                                lblIni.fontColor = "#B0BEC5";
+                                lblEfRow.text = "";
+                                if lblDur ~= nil then lblDur.text = ""; end;
                             end;
-                            if lblBg ~= nil then lblBg.visible = false; end;
                         end;
                     else
-                        lblNum.text = "";
-                        lblNome.text = "";
-                        lblIni.text = "";
-                        lblNome.visible = false;
-                        lblIni.visible = false;
-                        lblNum.visible = false;
-                        if lblBg ~= nil then lblBg.visible = false; end;
+                        if rowMain ~= nil then rowMain.visible = false; end;
+                        if rowEf ~= nil then rowEf.visible = false; end;
                     end;
                 end;
             end;
             if self.lblStatus ~= nil then
                 local statusTxt = #combatentes .. " combatentes";
-                if rodadaAtual > 0 then
+                if rodadaAtual &gt; 0 then
                     statusTxt = "Rodada " .. rodadaAtual;
-                    if turnoAtual > 0 and turnoAtual &lt;= #combatentes then
+                    if turnoAtual &gt; 0 and turnoAtual &lt;= #combatentes then
                         statusTxt = statusTxt .. " | Turno: " .. combatentes[turnoAtual].nome;
                     end;
                 end;
                 self.lblStatus.text = statusTxt;
             end;
-            -- Mostrar detalhes dos efeitos do combatente atual
-            if self.lblEfeitos ~= nil then
-                local efDetailTxt = "";
-                if turnoAtual > 0 and turnoAtual &lt;= #combatentes then
-                    local c = combatentes[turnoAtual];
-                    if c.efeitos ~= nil and #c.efeitos > 0 then
-                        local lines = {};
-                        for ei = 1, #c.efeitos do
-                            local ef = c.efeitos[ei];
-                            local desc = ef.nome .. ":";
-                            if ef.bonusAtb ~= nil and ef.bonusAtb ~= 0 then
-                                desc = desc .. " " .. (ef.bonusAtb > 0 and "+" or "") .. ef.bonusAtb .. "atb";
-                            end;
-                            if ef.danoRodada ~= nil and ef.danoRodada > 0 then desc = desc .. " " .. ef.danoRodada .. "dano/rd"; end;
-                            if ef.estaminaRodada ~= nil and ef.estaminaRodada > 0 then desc = desc .. " -" .. ef.estaminaRodada .. "est/rd"; end;
-                            if ef.custoChakraRd ~= nil and ef.custoChakraRd > 0 then desc = desc .. " -" .. ef.custoChakraRd .. "chk/rd"; end;
-                            if ef.duracao ~= nil and ef.duracao > 0 then desc = desc .. " (" .. ef.duracao .. "rd)";
-                            else desc = desc .. " (perm)"; end;
-                            table.insert(lines, desc);
-                        end;
-                        efDetailTxt = table.concat(lines, " | ");
-                    end;
-                end;
-                self.lblEfeitos.text = efDetailTxt;
+            if self.lblRoundNum ~= nil then
+                self.lblRoundNum.text = tostring(rodadaAtual);
             end;
         end;
 
-        local function adicionarJogadores()
+        local function toggleCheck(idx)
+            if idx &gt; #combatentes then return; end;
+            combatentes[idx].checked = not combatentes[idx].checked;
+            renderizarTracker();
+        end;
+
+        local function ciclarFoF(idx)
+            if idx &gt; #combatentes then return; end;
+            local co = combatentes[idx];
+            if co.fof == "aliado" then co.fof = "neutro";
+            elseif co.fof == "neutro" then co.fof = "inimigo";
+            else co.fof = "aliado"; end;
+            renderizarTracker();
+        end;
+
+        local function removerCombatente(idx)
+            if idx &gt; #combatentes then return; end;
+            table.remove(combatentes, idx);
+            if turnoAtual &gt; #combatentes then turnoAtual = #combatentes; end;
+            renderizarTracker();
+        end;
+
+        toggleNpcPanel = function()
+            if self.pnlNpcInput ~= nil then
+                self.pnlNpcInput.visible = not self.pnlNpcInput.visible;
+            end;
+        end;
+
+        adicionarJogadores = function()
             local mesas = Firecast.getMesas();
             if mesas == nil or #mesas == 0 then return; end;
             local mesa = mesas[1];
@@ -234,7 +963,7 @@
 
             for i = 1, #jogadores do
                 local jog = jogadores[i];
-                if jog ~= nil then
+                if jog ~= nil and not jog.isMestre then
                     local nick = jog.nick or jog.login or ("Jogador " .. i);
                     -- Remover tags de formatacao [...] do nick manualmente
                     local limpo = "";
@@ -271,14 +1000,14 @@
                                         local sn = sheetNode.nome;
                                         if sn ~= nil and sn ~= "" then nomeSheet = sn; end;
                                     end;
-                                    table.insert(combatentes, {nome = nomeSheet, ini = ini, tipo = "jogador", login = login, baseIni = ini, bibCode = codPersonagem});
+                                    table.insert(combatentes, {nome = nomeSheet, ini = ini, tipo = "jogador", login = login, baseIni = ini, bibCode = codPersonagem, fof = "aliado", checked = true});
                                     renderizarTracker();
                                 end);
                             else
-                                table.insert(combatentes, {nome = nick, ini = 0, tipo = "jogador", login = login, baseIni = 0, bibCode = nil});
+                                table.insert(combatentes, {nome = nick, ini = 0, tipo = "jogador", login = login, baseIni = 0, bibCode = nil, fof = "aliado", checked = true});
                             end;
                         else
-                            table.insert(combatentes, {nome = nick, ini = 0, tipo = "jogador", login = login, baseIni = 0, bibCode = nil});
+                            table.insert(combatentes, {nome = nick, ini = 0, tipo = "jogador", login = login, baseIni = 0, bibCode = nil, fof = "aliado", checked = true});
                         end;
                     end;
                 end;
@@ -293,13 +1022,13 @@
             local nome = nomeEdit.text or "";
             local ini = tonumber(iniEdit.text) or 0;
             if nome == "" then return; end;
-            table.insert(combatentes, {nome = nome, ini = ini, tipo = "npc", bibCode = nil, baseIni = ini});
+            table.insert(combatentes, {nome = nome, ini = ini, tipo = "npc", bibCode = nil, baseIni = ini, fof = "inimigo", checked = true});
             nomeEdit.text = "";
             iniEdit.text = "";
             renderizarTracker();
         end;
 
-        local function rolarIniciativas()
+        rolarIniciativas = function()
             local mesas = Firecast.getMesas();
             local mesa = (mesas ~= nil and #mesas > 0) and mesas[1] or nil;
             local chat = (mesa ~= nil) and mesa.chat or nil;
@@ -335,7 +1064,7 @@
             renderizarTracker();
         end;
 
-        local function proximoTurno()
+        proximoTurno = function()
             if #combatentes == 0 then return; end;
             turnoAtual = turnoAtual + 1;
             local novaRodada = false;
@@ -372,14 +1101,14 @@
             renderizarTracker();
         end;
 
-        local function limparTracker()
+        limparTracker = function()
             combatentes = {};
             turnoAtual = 0;
             rodadaAtual = 0;
             renderizarTracker();
         end;
 
-        local function removerCombatente(indice)
+        removerCombatente = function(indice)
             if indice &lt;= #combatentes then
                 table.remove(combatentes, indice);
                 if turnoAtual > #combatentes then turnoAtual = #combatentes; end;
@@ -476,6 +1205,10 @@
 
         adicionarEfeitoAoCombatente = function(comb, ef, chat)
             if comb.efeitos == nil then comb.efeitos = {}; end;
+            if #comb.efeitos &gt;= 2 then
+                chat:enviarMensagem("[AVISO] " .. comb.nome .. " limite de efeitos.");
+                table.remove(comb.efeitos, 1);
+            end;
             table.insert(comb.efeitos, ef);
             local durTxt = (ef.duracao ~= nil and ef.duracao > 0) and (ef.duracao .. " rodadas") or "permanente";
             local bonTxt = (ef.bonusAtb ~= nil and ef.bonusAtb ~= 0) and ((ef.bonusAtb > 0 and "+" or "") .. ef.bonusAtb .. " atb") or "";
@@ -837,132 +1570,174 @@
     </script>
 
     <layout align="client">
-        <rectangle align="client" color="#0A0E1A" strokeColor="#1E3A5F" strokeSize="2" xradius="8" yradius="8"/>
-
-        <!-- TITULO -->
-        <layout align="top" height="32" margins="{left=6, right=6, top=6}">
-            <rectangle align="client" color="#141B2D" strokeColor="#1E90FF" strokeSize="1" xradius="8" yradius="8"/>
-            <label align="client" text="COMBAT TRACKER" fontColor="#4FC3F7" fontSize="13" fontStyle="bold" horzTextAlign="center" vertTextAlign="center"/>
+        <rectangle align="client" color="#1A1D23"/>
+        <layout align="top" height="30" margins="{left=4, right=4, top=4}">
+            <button name="btnAddNpcToggle" align="left" width="30" text="+" fontColor="#CCCCCC" fontSize="16" onClick="toggleNpcPanel()"/>
+            <button name="btnRolarIni" align="left" width="30" text="R" fontColor="#FBBF24" fontSize="13" onClick="rolarIniciativas()"/>
+            <button name="btnAddJogadores" align="left" width="30" text="A" fontColor="#22C55E" fontSize="13" onClick="adicionarJogadores()"/>
+            <label align="client" text="COMBAT TRACKER" fontColor="#4FC3F7" fontSize="12" horzTextAlign="center" vertTextAlign="center"/>
+            <button name="btnCloseOverlay" align="right" width="22" text="X" fontColor="#FF6B6B" fontSize="11" onClick="fecharOverlay()"/>
+            <button name="btnGuiExplorer" align="right" width="30" text="G" fontColor="#FFD700" fontSize="13" onClick="explorarGUI()"/>
+            <button name="btnFichaDemo" align="right" width="30" text="D" fontColor="#4FC3F7" fontSize="13" onClick="fichaDemo()"/>
+            <button name="btnTestFcext" align="right" width="30" text="F" fontColor="#AB47BC" fontSize="13" onClick="testarFcext()"/>
+            <button name="btnLimpar" align="right" width="45" text="Clear" fontColor="#EF5350" fontSize="10" onClick="limparTracker()"/>
         </layout>
-
-        <!-- BOTOES PRINCIPAIS -->
-        <layout align="top" height="30" margins="{left=6, right=6, top=6}">
-            <button name="btnAddJogadores" align="left" width="130" text="+ Jogadores" fontColor="#B0BEC5" fontSize="10" onClick="adicionarJogadores()"/>
-            <button name="btnRolarIni" align="left" width="110" text="Rolar Iniciativa" fontColor="#4FC3F7" fontSize="10" margins="{left=4}" onClick="rolarIniciativas()"/>
-            <button name="btnLimpar" align="right" width="60" text="Limpar" fontColor="#EF5350" fontSize="9" onClick="limparTracker()"/>
+        <layout name="pnlNpcInput" align="top" height="28" visible="false" margins="{left=4, right=4, top=2}">
+            <edit name="edtNpcNome" align="left" width="100" fontColor="white"/>
+            <edit name="edtNpcIni" align="left" width="35" fontColor="white"/>
+            <button name="btnAddNpc" align="left" width="30" text="OK" onClick="adicionarNPC()"/>
         </layout>
-
-        <!-- ADD NPC -->
-        <layout align="top" height="28" margins="{left=6, right=6, top=4}">
-            <rectangle align="client" color="#111827" xradius="4" yradius="4"/>
-            <label align="left" width="40" text=" NPC:" fontColor="#EF5350" fontSize="10" fontStyle="bold" vertTextAlign="center"/>
-            <edit name="edtNpcNome" align="left" width="120" fontColor="white" fontSize="10" margins="{left=2}"/>
-            <label align="left" width="28" text=" Ini:" fontColor="#EF5350" fontSize="10" vertTextAlign="center"/>
-            <edit name="edtNpcIni" align="left" width="36" fontColor="white" fontSize="10" margins="{left=2}"/>
-            <button name="btnAddNpc" align="left" width="52" text="+ NPC" fontColor="#EF5350" fontSize="9" margins="{left=4}" onClick="adicionarNPC()"/>
+        <layout align="top" height="18" margins="{left=4, right=4, top=3}">
+            <label align="left" width="42" text="  Check" fontColor="#666666" fontSize="8"/>
+            <label align="client" text="Name" fontColor="#666666" fontSize="9"/>
+            <label align="right" width="35" text="Init" fontColor="#666666" fontSize="9"/>
+            <label align="right" width="22" text="FoF" fontColor="#666666" fontSize="8"/>
+            <label align="right" width="22" text=""/>
         </layout>
-
-        <!-- CABECALHO DA LISTA -->
-        <layout align="top" height="20" margins="{left=6, right=6, top=4}">
-            <rectangle align="client" color="#141B2D" xradius="4" yradius="4"/>
-            <label left="8" width="25" align="left" text="#" fontColor="#546E7A" fontSize="9" fontStyle="bold" vertTextAlign="center"/>
-            <label left="34" width="200" align="left" text="COMBATENTE" fontColor="#546E7A" fontSize="9" fontStyle="bold" vertTextAlign="center"/>
-            <label align="right" width="50" text="INI" fontColor="#546E7A" fontSize="9" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowMain1" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow1" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk1" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(1)"/>
+            <label name="lblNome1" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni1" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof1" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(1)"/>
+            <button name="btnX1" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(1)"/>
         </layout>
-
-        <!-- LINHAS DO TRACKER (12 slots) -->
-        <layout align="top" height="22" margins="{left=6, right=6, top=1}">
-            <rectangle name="lblBg1" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum1" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome1" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni1" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowEf1" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow1" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur1" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg2" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum2" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome2" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni2" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowMain2" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow2" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk2" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(2)"/>
+            <label name="lblNome2" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni2" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof2" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(2)"/>
+            <button name="btnX2" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(2)"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg3" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum3" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome3" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni3" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowEf2" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow2" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur2" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg4" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum4" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome4" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni4" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowMain3" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow3" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk3" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(3)"/>
+            <label name="lblNome3" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni3" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof3" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(3)"/>
+            <button name="btnX3" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(3)"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg5" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum5" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome5" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni5" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowEf3" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow3" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur3" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg6" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum6" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome6" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni6" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowMain4" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow4" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk4" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(4)"/>
+            <label name="lblNome4" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni4" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof4" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(4)"/>
+            <button name="btnX4" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(4)"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg7" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum7" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome7" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni7" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowEf4" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow4" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur4" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg8" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum8" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome8" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni8" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowMain5" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow5" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk5" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(5)"/>
+            <label name="lblNome5" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni5" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof5" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(5)"/>
+            <button name="btnX5" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(5)"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg9" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum9" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome9" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni9" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowEf5" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow5" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur5" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg10" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum10" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome10" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni10" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowMain6" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow6" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk6" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(6)"/>
+            <label name="lblNome6" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni6" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof6" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(6)"/>
+            <button name="btnX6" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(6)"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg11" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum11" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome11" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni11" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowEf6" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow6" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur6" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
         </layout>
-        <layout align="top" height="22" margins="{left=6, right=6, top=0}">
-            <rectangle name="lblBg12" align="client" color="#1A2332" visible="false" xradius="4" yradius="4"/>
-            <label name="lblNum12" left="8" width="25" align="left" text="" fontColor="#78909C" fontSize="10" vertTextAlign="center"/>
-            <label name="lblNome12" left="34" width="200" align="left" text="" fontColor="#B0BEC5" fontSize="10" vertTextAlign="center"/>
-            <label name="lblIni12" align="right" width="50" text="" fontColor="#B0BEC5" fontSize="11" fontStyle="bold" vertTextAlign="center" horzTextAlign="center" margins="{right=6}"/>
+        <layout name="rowMain7" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow7" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk7" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(7)"/>
+            <label name="lblNome7" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni7" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof7" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(7)"/>
+            <button name="btnX7" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(7)"/>
         </layout>
-
-        <!-- STATUS -->
-        <layout align="top" height="18" margins="{left=6, right=6, top=4}">
-            <label name="lblStatus" align="client" text="0 combatentes" fontColor="#546E7A" fontSize="9" horzTextAlign="center" vertTextAlign="center"/>
+        <layout name="rowEf7" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow7" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur7" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
         </layout>
-
-        <!-- EFEITOS DO TURNO ATUAL -->
-        <layout align="top" height="24" margins="{left=6, right=6, top=1}">
-            <label name="lblEfeitos" align="client" text="" fontColor="#80DEEA" fontSize="8" horzTextAlign="center" vertTextAlign="center"/>
+        <layout name="rowMain8" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow8" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk8" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(8)"/>
+            <label name="lblNome8" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni8" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof8" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(8)"/>
+            <button name="btnX8" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(8)"/>
         </layout>
-
-        <!-- NAVEGACAO -->
-        <layout align="top" height="32" margins="{left=6, right=6, top=2}">
-            <button name="btnAnterior" align="left" width="120" text="Anterior" fontColor="#B0BEC5" fontSize="10" onClick="turnoAnterior()"/>
-            <button name="btnProximo" align="right" width="120" text="Proximo >>" fontColor="#4FC3F7" fontSize="10" onClick="proximoTurno()"/>
+        <layout name="rowEf8" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow8" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur8" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
         </layout>
-
-        <!-- RODAPE -->
-        <layout align="bottom" height="14" margins="{left=6, right=6, bottom=4}">
-            <label align="client" text="!removerefeito | !efeitos | !sharingan | !status" fontColor="#37474F" fontSize="7" horzTextAlign="center" vertTextAlign="center"/>
+        <layout name="rowMain9" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow9" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk9" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(9)"/>
+            <label name="lblNome9" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni9" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof9" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(9)"/>
+            <button name="btnX9" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(9)"/>
+        </layout>
+        <layout name="rowEf9" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow9" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur9" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
+        </layout>
+        <layout name="rowMain10" align="top" height="22" margins="{left=4, right=4, top=1}" visible="false">
+            <rectangle align="client" color="#1A2E1A"/>
+            <label name="lblArrow10" align="left" width="18" text="" fontColor="#FFFFFF" fontSize="14"/>
+            <button name="btnChk10" align="left" width="22" text="[x]" fontColor="#AAAAAA" fontSize="9" onClick="toggleCheck(10)"/>
+            <label name="lblNome10" align="client" text="" fontColor="#C0C0C0" fontSize="11" margins="{left=4}"/>
+            <label name="lblIni10" align="right" width="35" text="" fontColor="#A0A0A0" fontSize="11"/>
+            <button name="btnFof10" align="right" width="20" text="@" fontColor="#22C55E" fontSize="12" onClick="ciclarFoF(10)"/>
+            <button name="btnX10" align="right" width="22" text="X" fontColor="#FF4444" fontSize="12" onClick="removerCombatente(10)"/>
+        </layout>
+        <layout name="rowEf10" align="top" height="16" margins="{left=4, right=4}" visible="false">
+            <rectangle align="client" color="#0D1117"/>
+            <label name="lblEfRow10" align="client" text="" fontColor="#80DEEA" fontSize="9" margins="{left=44}"/>
+            <label name="lblDur10" align="right" width="60" text="" fontColor="#4FC3F7" fontSize="9"/>
+        </layout>
+        <label name="lblStatus" align="bottom" height="16" text="0" fontColor="#555555" horzTextAlign="center"/>
+        <layout align="bottom" height="28" margins="{left=4, right=4, bottom=4}">
+            <button name="btnProximo" align="left" width="90" text="Next turn" fontColor="#CCCCCC" onClick="proximoTurno()"/>
+            <label name="lblRoundNum" align="right" width="80" text="0" fontColor="#888888"/>
         </layout>
     </layout>
 </form>

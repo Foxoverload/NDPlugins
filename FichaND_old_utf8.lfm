@@ -1,0 +1,2174 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaNarutoDestiny" formType="sheetTemplate" dataType="br.com.rrpg.Ficha_Naruto_Destiny" title="Ficha Naruto Destiny" align="client" theme="dark">
+    
+    <!-- ============ ESTILO SHIPPUDEN ============ -->
+    <style>
+        edit {
+            fontSize: 13;
+            fontColor: #E2E8F0;
+        }
+        comboBox {
+            fontColor: #CBD5E1;
+        }
+        textEditor {
+            fontColor: #E2E8F0;
+        }
+    </style>
+    
+    <!-- Templates para agilizar e manter o padrao -->
+    <template name="cabecalho">
+        <layout align="top" height="34" margins="{top=18, bottom=6}">
+            <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+            <label align="client" text="$(texto)" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
+        </layout>
+    </template>
+
+    <template name="campo">
+        <layout align="top" height="30" margins="{top=2}">
+            <label align="left" width="130" text="$(texto)" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+            <edit align="client" field="$(campo)" fontColor="white" transparent="false"/>
+        </layout>
+    </template>
+    
+    <template name="blocoTexto">
+        <layout align="top" height="$(altura)" margins="{top=5}">
+            <textEditor align="client" field="$(campo)" fontColor="white" transparent="false"/>
+        </layout>
+    </template>
+
+    <tabControl align="client">
+        <tab title="Ficha Principal">
+            <scrollBox align="client">
+                
+                <!-- Cadeado de Bloqueio da Ficha (fora do layout desabilitavel) -->
+                <layout align="top" height="28" margins="{left=20, right=20, top=5, bottom=5}">
+                    <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
+                    <checkBox name="chkCadeado" align="left" width="200" field="cadeado_ficha" text=" Travar Ficha" fontColor="#A0B8D0" fontSize="12" margins="{left=8}"/>
+                    <label name="lblCadeadoStatus" align="client" text="" fontColor="#34D399" fontSize="11" fontStyle="italic" horzTextAlign="leading" margins="{left=5}"/>
+                </layout>
+                
+                <layout align="top" height="32" margins="{left=20, right=20, top=2, bottom=5}">
+                    <button align="client" text="Exportar Ficha" fontColor="#F97316" fontSize="13" fontStyle="bold">
+                        <event name="onClick">
+                            require("exportar.lua");
+                            exportarFichaHTML(sheet, self);
+                        </event>
+                    </button>
+                </layout>
+                
+                <script>
+                    local function aplicarCadeado()
+                        if sheet == nil then return end;
+                        local locked = (tostring(sheet.cadeado_ficha) == "true");
+                        
+                        if self.layoutConteudo ~= nil then self.layoutConteudo.enabled = not locked; end
+                        if self.edtTecTaijutsu ~= nil then self.edtTecTaijutsu.readOnly = locked; end
+                        if self.edtTecBukijutsu ~= nil then self.edtTecBukijutsu.readOnly = locked; end
+                        if self.edtTecNinjutsu ~= nil then self.edtTecNinjutsu.readOnly = locked; end
+                        if self.edtTecElemental ~= nil then self.edtTecElemental.readOnly = locked; end
+                        if self.edtTecFuinjutsu ~= nil then self.edtTecFuinjutsu.readOnly = locked; end
+                        if self.edtTecKuchiyose ~= nil then self.edtTecKuchiyose.readOnly = locked; end
+                        if self.edtTecKekkei ~= nil then self.edtTecKekkei.readOnly = locked; end
+                        if self.edtTecGerais ~= nil then self.edtTecGerais.readOnly = locked; end
+                        if self.edtInventario ~= nil then self.edtInventario.readOnly = locked; end
+                        if self.edtHistoria ~= nil then self.edtHistoria.readOnly = locked; end
+                        
+                        if self.lblCadeadoStatus ~= nil then
+                            if locked then
+                                self.lblCadeadoStatus.text = "(Ficha travada - campos protegidos)";
+                                self.lblCadeadoStatus.fontColor = "#F87171";
+                            else
+                                self.lblCadeadoStatus.text = "(Ficha destravada)";
+                                self.lblCadeadoStatus.fontColor = "#34D399";
+                            end
+                        end
+                    end
+                </script>
+                
+                <dataLink fields="{'cadeado_ficha'}">
+                    <event name="onChange">
+                        aplicarCadeado();
+                    </event>
+                </dataLink>
+
+                <layout name="layoutConteudo" align="top" height="4400" margins="{left=20, right=20, top=0}">
+
+                    <layout align="top" height="80" margins="{left=5, right=5, top=8, bottom=8}">
+                    <image align="client" src="/images/top_banner.png" style="stretch" margins="{left=2, right=2, top=2, bottom=2}"/>
+                    <rectangle align="client" color="#0A101800" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                    <label align="client" text="N A R U T O   D E S T I N Y" horzTextAlign="center" vertTextAlign="center" fontColor="#F97316" fontSize="24" fontStyle="bold"/>
+                </layout>
+                    
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Nome:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="nome" fontColor="white" textPrompt="Nome do Personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Idade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="idade" fontColor="white" textPrompt="Baseado no Rank Shinobi"/>
+                    </layout>
+                    
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Sexo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="left" width="200">
+                            <comboBox align="client" name="cb1" hitTest="false" field="sexo" items="{'♂ Masculino', '♀ Feminino'}" values="{'M', 'F'}" fontColor="white"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb1:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Aniversário:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="aniversario" fontColor="white" textPrompt="Dia/Mês/Ano (Ano é opcional)"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Nível:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <label align="left" width="60" field="nivel" fontColor="#FBBF24" fontSize="15" fontStyle="bold" horzTextAlign="center"/>
+                        <label align="client" text="(Core Total ÷ 2) - 7" fontColor="#4B5563" fontSize="10" fontStyle="italic"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Ryõ:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="120" field="ryous" fontColor="white" textPrompt="Digite o valor" horzTextAlign="center"/>
+                        <label align="left" width="15" text="" />
+                        <label align="client" field="ryous_fmt" fontColor="#FBBF24" fontSize="13" fontStyle="bold"/>
+                    </layout>
+                    
+                    <script>
+                        local function formatarRyo()
+                            if sheet == nil then return end;
+                            local val = tonumber(sheet.ryous) or 0;
+                            -- Formatar com separadores de milhar (virgula)
+                            local s = tostring(math.floor(val));
+                            local result = "";
+                            local len = #s;
+                            for i = 1, len do
+                                if i > 1 and (len - i + 1) % 3 == 0 then
+                                    result = result .. ",";
+                                end
+                                result = result .. s:sub(i, i);
+                            end
+                            sheet.ryous_fmt = result .. " R¥";
+                        end
+                    </script>
+                    
+                    <dataLink fields="{'ryous'}">
+                        <event name="onChange">
+                            formatarRyo();
+                        </event>
+                    </dataLink>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Altura:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="altura" fontColor="white" textPrompt="x,xxm de altura"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Peso:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="peso" fontColor="white" textPrompt="x,xx KG"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Gostos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="gostos" fontColor="white" textPrompt="Descreva ou liste os gostos do personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Desgostos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="desgostos" fontColor="white" textPrompt="Descreva ou liste as coisas que o personagem desgosta"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Hobbies:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="hobbies" fontColor="white" textPrompt="Descreva o(s) hobbie(s) do personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Sonho:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="sonho" fontColor="white" textPrompt="Descreva o(s) sonho(s) ou vontade(s) do personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Objetivo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="objetivo" fontColor="white" textPrompt="Descreva ou liste o(s) objetivo(s) do personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Interesse Romântico:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="interesse_romantico" fontColor="white" textPrompt="Descreva ou liste o(s) interesse(s) romantico(s) do personagem"/>
+                    </layout>
+
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="client">
+                            <comboBox align="client" name="cb2" hitTest="false" field="natureza" fontColor="white" items="{'Selecione...','Amador','Arquiteto','Artista','Autocrata','Bon Vivant','Caçador de Emoções','Capitalista','Competidor','Conciliador','Conformista','Criança','Diretor','Diplomata','Esperto','Estrategista','Excêntrico','Executor','Explorador','Fanático','Filantropo','Galante','Guardião','Guru','Humanitário','Juiz','Malandro','Mártir','Masoquista','Monstro','Observador','Pedagogo','Penitente','Ranzinza','Sábio','Samaritano','Show de Horrores','Sobrevivente','Solitário','Sonhador','Tradicionalista','Valentão','Visionário'}" values="{'','Amador','Arquiteto','Artista','Autocrata','Bon Vivant','Caçador de Emoções','Capitalista','Competidor','Conciliador','Conformista','Criança','Diretor','Diplomata','Esperto','Estrategista','Excêntrico','Executor','Explorador','Fanático','Filantropo','Galante','Guardião','Guru','Humanitário','Juiz','Malandro','Mártir','Masoquista','Monstro','Observador','Pedagogo','Penitente','Ranzinza','Sábio','Samaritano','Show de Horrores','Sobrevivente','Solitário','Sonhador','Tradicionalista','Valentão','Visionário'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb2:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Comportamento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="client">
+                            <comboBox align="client" name="cb3" hitTest="false" field="comportamento" fontColor="white" items="{'Selecione...','Amador','Arquiteto','Artista','Autocrata','Bon Vivant','Caçador de Emoções','Capitalista','Competidor','Conciliador','Conformista','Criança','Diretor','Diplomata','Esperto','Estrategista','Excêntrico','Executor','Explorador','Fanático','Filantropo','Galante','Guardião','Guru','Humanitário','Juiz','Malandro','Mártir','Masoquista','Monstro','Observador','Pedagogo','Penitente','Ranzinza','Sábio','Samaritano','Show de Horrores','Sobrevivente','Solitário','Sonhador','Tradicionalista','Valentão','Visionário'}" values="{'','Amador','Arquiteto','Artista','Autocrata','Bon Vivant','Caçador de Emoções','Capitalista','Competidor','Conciliador','Conformista','Criança','Diretor','Diplomata','Esperto','Estrategista','Excêntrico','Executor','Explorador','Fanático','Filantropo','Galante','Guardião','Guru','Humanitário','Juiz','Malandro','Mártir','Masoquista','Monstro','Observador','Pedagogo','Penitente','Ranzinza','Sábio','Samaritano','Show de Horrores','Sobrevivente','Solitário','Sonhador','Tradicionalista','Valentão','Visionário'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb3:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Qualidades:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="left" width="155">
+                            <comboBox align="client" name="cb4" hitTest="false" field="qualidade1" fontColor="white" items="{'Nenhuma','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}" values="{'','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb4:dropDown();</event></layout>
+                        </layout>
+                        <layout align="left" width="155" margins="{left=3}">
+                            <comboBox align="client" name="cb5" hitTest="false" field="qualidade2" fontColor="white" items="{'Nenhuma','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}" values="{'','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb5:dropDown();</event></layout>
+                        </layout>
+                        <layout align="left" width="155" margins="{left=3}">
+                            <comboBox align="client" name="cb6" hitTest="false" field="qualidade3" fontColor="white" items="{'Nenhuma','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}" values="{'','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb6:dropDown();</event></layout>
+                        </layout>
+                        <layout align="left" width="155" margins="{left=3}">
+                            <comboBox align="client" name="cb7" hitTest="false" field="qualidade4" fontColor="white" items="{'Nenhuma','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}" values="{'','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb7:dropDown();</event></layout>
+                        </layout>
+                        <layout align="left" width="155" margins="{left=3}">
+                            <comboBox align="client" name="cb8" hitTest="false" field="qualidade5" fontColor="white" items="{'Nenhuma','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}" values="{'','Harmonia com a Natureza','Carismático','Boa Reputação','Ideal','Shinobi Exemplar','Enciclopédia Shinobi','Perseverança','Disciplinado','Educado','Protetor','Sensato','Leal','Motivador','Inabalável','Pragmatismo Sombrio'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb8:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Defeitos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="left" width="155">
+                            <comboBox align="client" name="cb9" hitTest="false" field="defeito1" fontColor="white" items="{'Nenhum','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}" values="{'','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','    Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb9:dropDown();</event></layout>
+                        </layout>
+                        <layout align="left" width="155" margins="{left=3}">
+                            <comboBox align="client" name="cb10" hitTest="false" field="defeito2" fontColor="white" items="{'Nenhum','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}" values="{'','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','    Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb10:dropDown();</event></layout>
+                        </layout>
+                        <layout align="left" width="155" margins="{left=3}">
+                            <comboBox align="client" name="cb11" hitTest="false" field="defeito3" fontColor="white" items="{'Nenhum','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}" values="{'','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','    Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb11:dropDown();</event></layout>
+                        </layout>
+                        <layout align="left" width="155" margins="{left=3}">
+                            <comboBox align="client" name="cb12" hitTest="false" field="defeito4" fontColor="white" items="{'Nenhum','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}" values="{'','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','    Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb12:dropDown();</event></layout>
+                        </layout>
+                        <layout align="left" width="155" margins="{left=3}">
+                            <comboBox align="client" name="cb13" hitTest="false" field="defeito5" fontColor="white" items="{'Nenhum','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}" values="{'','Código de Honra','Curiosidade','Hábito Detestável','Fanatismo','Pobreza','Pesadelos','Intolerância','Imprevisível','Esquecido','Esnobe','Excesso de Confiança','Timidez','Dificuldade de Fala','Sadismo ou Masoquismo','Obsessão','Vingança','Ódio','Pacifista','Má Fama','Fanfarronice','Sanguinolência','Hábito Negativo','Segredo Sombrio','Mentiroso','Covardia','Honestidade','    Impulsividade','Ninja Orgulhoso','Lealdade Inabalável','Fair Play','Pervertido','Cabeça Quente','Sede de Poder'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb13:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+
+                    <cabecalho texto="Família e Amigos" />
+                    
+                    <layout align="top" height="20" margins="{top=2, bottom=5}">
+                        <label align="left" width="800" text="(Os campos abaixo são Opcionais de acordo com a narração/mestre)" horzTextAlign="center" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Pais:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="familia_pais" fontColor="white" textPrompt="Nome do Pai e Nome da Mãe do Personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Irmã(os):" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="familia_irmaos" fontColor="white" textPrompt="Nome dos irmãos e idade deles em parênteses"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Relativos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="familia_relativos" fontColor="white" textPrompt="Nome dos tios, tias, avôs, Avós e/ou primos"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Amigos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="familia_amigos" fontColor="white" textPrompt="Quais são os amigos do seu personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Neutros:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="familia_neutros" fontColor="white" textPrompt="Nome das pessoas que o personagem conhece mas não é amigo ou inimigo"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Inimigos:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="familia_inimigos" fontColor="white" textPrompt="Quais são os inimigos do seu personagem"/>
+                    </layout>
+                    
+                    <cabecalho texto="Informações Ninjas" />
+                    
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Vila de Nascimento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="vila_nascimento" fontColor="white" textPrompt="Vila de nascimento do personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Rank Shinobi:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="left" width="200" height="30">
+                            <rectangle align="client" color="#0C1828" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
+                            <label align="client" field="rank_shinobi" fontColor="#FBBF24" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                        </layout>
+                    </layout>
+                    
+                    <script>
+                        local function calcularRank()
+                            if sheet == nil then return end;
+                            local nivel = tonumber(sheet.nivel) or 0;
+                            local rank;
+                            if nivel >= 160 then
+                                rank = "Fushi";
+                            elseif nivel >= 140 then
+                                rank = "Kage";
+                            elseif nivel >= 120 then
+                                rank = "Sannin";
+                            elseif nivel >= 90 then
+                                rank = "Oinin";
+                            elseif nivel >= 80 then
+                                rank = "Nukenin";
+                            elseif nivel >= 60 then
+                                rank = "Comandante ANBU";
+                            elseif nivel >= 50 then
+                                rank = "ANBU";
+                            elseif nivel >= 40 then
+                                rank = "Capitão Jõnin";
+                            elseif nivel >= 30 then
+                                rank = "Jõnin";
+                            elseif nivel >= 20 then
+                                rank = "Tokubetsu Jõnin";
+                            elseif nivel >= 10 then
+                                rank = "Chunin";
+                            elseif nivel >= 4 then
+                                rank = "Genin";
+                            else
+                                rank = "Estudante";
+                            end
+                            sheet.rank_shinobi = rank;
+                            
+                            -- Calcular máximo de pontos interpretativos por rank
+                            local maxInterp;
+                            if     rank == "Estudante"       then maxInterp = 20;
+                            elseif rank == "Genin"           then maxInterp = 24;
+                            elseif rank == "Chunin"          then maxInterp = 30;
+                            elseif rank == "Tokubetsu Jõnin" then maxInterp = 32;
+                            elseif rank == "Jõnin"           then maxInterp = 34;
+                            elseif rank == "Capitão Jõnin"  then maxInterp = 36;
+                            elseif rank == "ANBU"            then maxInterp = 38;
+                            elseif rank == "Comandante ANBU" then maxInterp = 40;
+                            elseif rank == "Nukenin"         then maxInterp = 42;
+                            elseif rank == "Oinin"           then maxInterp = 44;
+                            elseif rank == "Sannin"          then maxInterp = 46;
+                            elseif rank == "Kage"            then maxInterp = 48;
+                            elseif rank == "Fushi"           then maxInterp = 50;
+                            else maxInterp = 0;
+                            end
+                            sheet.max_pontos_interp = tostring(maxInterp);
+                        end
+                    </script>
+                    
+                    <dataLink fields="{'nivel'}">
+                        <event name="onChange">
+                            calcularRank();
+                        </event>
+                    </dataLink>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Sensei:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="sensei" fontColor="white" textPrompt="Senseis ou mentores do personagem"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Kuchiyose:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="kuchiyose" fontColor="white" textPrompt="Caso possua, qual o Nome do animal ou objeto que o personagem possuí contrato"/>
+                    </layout>
+
+                    <layout align="top" height="48" margins="{top=5}">
+                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        
+                        <!-- Fogo -->
+                        <layout align="left" width="95" height="48">
+                            <image left="38" top="2" width="18" height="18" src="/Imagens/Elementos/Nature_Icon_Fire.webp"/>
+                            <checkBox left="15" top="24" height="20" field="elem_fogo" text="Katon" fontColor="#EA580C" fontSize="12"/>
+                        </layout>
+                        
+                        <!-- Água -->
+                        <layout align="left" width="95" height="48">
+                            <image left="38" top="2" width="18" height="18" src="/Imagens/Elementos/Nature_Icon_Water.webp"/>
+                            <checkBox left="13" top="24" height="20" field="elem_agua" text="Suiton" fontColor="#38BDF8" fontSize="12"/>
+                        </layout>
+                        
+                        <!-- Terra -->
+                        <layout align="left" width="95" height="48">
+                            <image left="38" top="2" width="18" height="18" src="/Imagens/Elementos/Nature_Icon_Earth.webp"/>
+                            <checkBox left="15" top="24" height="20" field="elem_terra" text="Doton" fontColor="#CA8A04" fontSize="12"/>
+                        </layout>
+                        
+                        <!-- Vento -->
+                        <layout align="left" width="95" height="48">
+                            <image left="38" top="2" width="18" height="18" src="/Imagens/Elementos/Nature_Icon_Wind.webp"/>
+                            <checkBox left="16" top="24" height="20" field="elem_vento" text="Fūton" fontColor="#2DD4BF" fontSize="12"/>
+                        </layout>
+                        
+                        <!-- Raio -->
+                        <layout align="left" width="95" height="48">
+                            <image left="38" top="2" width="18" height="18" src="/Imagens/Elementos/Nature_Icon_Lightning.webp"/>
+                            <checkBox left="13" top="24" height="20" field="elem_raio" text="Raiton" fontColor="#FDE047" fontSize="12"/>
+                        </layout>
+                    </layout>
+
+                    <!-- Combinações Elementais Detectadas -->
+                    <layout align="top" height="25" margins="{top=4}">
+                        <label align="left" width="160" text="Combinação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <label align="client" field="elem_combo" fontColor="#FDBA74" fontSize="12" fontStyle="bold italic"/>
+                    </layout>
+
+                    <script>
+                        local function calcularCombinacaoElemental()
+                            if sheet == nil then return end;
+                            local fogo  = tostring(sheet.elem_fogo)  == "true";
+                            local agua  = tostring(sheet.elem_agua)  == "true";
+                            local terra = tostring(sheet.elem_terra) == "true";
+                            local vento = tostring(sheet.elem_vento) == "true";
+                            local raio  = tostring(sheet.elem_raio)  == "true";
+                            
+                            local combos = {};
+                            if fogo and raio  then table.insert(combos, "Enton (Inferno)"); end
+                            if fogo and agua  then table.insert(combos, "Futton (Fervura)"); end
+                            if fogo and terra then table.insert(combos, "Youton (Lava)"); end
+                            if fogo and vento then table.insert(combos, "Shakuton (Calor)"); end
+                            if terra and agua  then table.insert(combos, "Mokuton (Madeira)"); end
+                            if vento and agua  then table.insert(combos, "Hyouton (Gelo)"); end
+                            if raio  and agua  then table.insert(combos, "Ranton (Tempestade)"); end
+                            if vento and terra then table.insert(combos, "Jiton (Magnetismo)"); end
+                            if raio  and terra then table.insert(combos, "Bakuton (Explosão)"); end
+                            if fogo and terra and raio then table.insert(combos, "Kouton (Aço)"); end
+                            if vento and terra and agua then table.insert(combos, "Shouton (Cristal)"); end
+                            if vento and terra and fogo then table.insert(combos, "Jinton (Partícula)"); end
+                            if raio  and agua  and vento then table.insert(combos, "Meiton (Escuridão)"); end
+                            
+                            if #combos > 0 then
+                                sheet.elem_combo = table.concat(combos, ", ");
+                            else
+                                sheet.elem_combo = "Nenhuma";
+                            end
+                        end
+                    </script>
+                    
+                    <dataLink fields="{'elem_fogo','elem_agua','elem_terra','elem_vento','elem_raio'}">
+                        <event name="onChange">
+                            calcularCombinacaoElemental();
+                        </event>
+                    </dataLink>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Clã:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="cla_ninja" fontColor="white" textPrompt=""/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Kekkei Genkai:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="kekkei_genkai" fontColor="white" textPrompt=""/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Tipo Sanguíneo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="left" width="200">
+                            <comboBox align="client" name="cb14" hitTest="false" field="tipo_sanguineo" fontColor="white" items="{'Selecione...','A','B','AB','O'}" values="{'','A','B','AB','O'}"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb14:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Mão Dominante:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="left" width="200">
+                            <comboBox align="client" name="cb15" hitTest="false" field="mao_dominante" items="{'Canhoto', 'Destro', 'Ambidestro (Trait)'}" values="{'Canhoto', 'Destro', 'Ambidestro'}" fontColor="white"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb15:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+
+                    <!-- ====== RECONHECIMENTO ====== -->
+                    <layout align="top" height="20" margins="{top=10, bottom=2}">
+                        <rectangle align="client" color="#0E1420" strokeColor="#F97316" strokeSize="1" xradius="6" yradius="6"/>
+                        <label align="client" text="Reconhecimento" horzTextAlign="center" fontColor="#FBBF24" fontSize="12" fontStyle="bold"/>
+                    </layout>
+                    
+                    <!-- Natureza da fama -->
+                    <layout align="top" height="30" margins="{top=4}">
+                        <label align="left" width="160" text="Natureza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="left" width="250">
+                            <comboBox align="client" name="cb16" hitTest="false" field="rec_natureza" items="{'☆ Invisível (sem natureza)', '★ Renome (Dourado/Azul)', '★ Infâmia (Vermelho/Laranja)'}" values="{'0','1','2'}" fontColor="white"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cb16:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+                    
+                    <!-- 6 Estrelas clicáveis -->
+                    <layout align="top" height="35" margins="{top=6}">
+                        <label align="left" width="160" text="Estrelas:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <checkBox align="left" width="28" field="rec_star1" text="" fontColor="#FBBF24"/>
+                        <checkBox align="left" width="28" field="rec_star2" text="" fontColor="#FBBF24"/>
+                        <checkBox align="left" width="28" field="rec_star3" text="" fontColor="#FBBF24"/>
+                        <checkBox align="left" width="28" field="rec_star4" text="" fontColor="#FBBF24"/>
+                        <checkBox align="left" width="28" field="rec_star5" text="" fontColor="#FBBF24"/>
+                        <checkBox align="left" width="28" field="rec_star6" text="" fontColor="#FBBF24"/>
+                        <layout align="left" width="10"/>
+                        <label align="client" field="rec_estrelas_fmt" fontSize="20" fontColor="#FBBF24" horzTextAlign="leading"/>
+                    </layout>
+                    
+                    <!-- Titulo automático -->
+                    <layout align="top" height="32" margins="{top=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
+                        <label align="left" width="160" text="Título:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <label align="client" field="rec_titulo" fontColor="#FBBF24" fontSize="14" fontStyle="bold" horzTextAlign="leading"/>
+                    </layout>
+                    
+                    <!-- Descrição da fama -->
+                    <layout align="top" height="15" margins="{top=6, bottom=2}">
+                        <label align="client" text="Motivo da fama / infâmia:" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
+                    </layout>
+                    <textEditor align="top" height="70" field="rec_descricao" fontColor="white" transparent="false"/>
+                    
+                    <script>
+                        local function calcularReconhecimento()
+                            if sheet == nil then return end;
+                            
+                            -- Contar estrelas marcadas (tostring() trata boolean true E string "true")
+                            local count = 0;
+                            if tostring(sheet.rec_star1) == "true" then count = count + 1; end
+                            if tostring(sheet.rec_star2) == "true" then count = count + 1; end
+                            if tostring(sheet.rec_star3) == "true" then count = count + 1; end
+                            if tostring(sheet.rec_star4) == "true" then count = count + 1; end
+                            if tostring(sheet.rec_star5) == "true" then count = count + 1; end
+                            if tostring(sheet.rec_star6) == "true" then count = count + 1; end
+                            
+                            -- Cor das estrelas conforme natureza
+                            local natureza = sheet.rec_natureza or "0";
+                            local strOn, strOff;
+                            if natureza == "2" then
+                                -- Infâmia: estrelas vermelhas (laranja)
+                                strOn  = "\226\152\133"; -- ★
+                                strOff = "\226\152\134"; -- ☆
+                            else
+                                -- Renome ou invisível: estrelas douradas
+                                strOn  = "\226\152\133"; -- ★
+                                strOff = "\226\152\134"; -- ☆
+                            end
+                            
+                            -- Montar display das estrelas
+                            local estrelas = "";
+                            for i = 1, 6 do
+                                if not (i > count) then
+                                    estrelas = estrelas .. strOn;
+                                else
+                                    estrelas = estrelas .. strOff;
+                                end
+                            end
+                            sheet.rec_estrelas_fmt = estrelas;
+                            
+                            -- Título automático
+                            local titulo;
+                            if count == 0 then
+                                titulo = "Invisível";
+                            elseif count == 1 then
+                                titulo = "Comum";
+                            elseif count == 2 then
+                                titulo = "Herdeiro";
+                            elseif count == 3 then
+                                titulo = "Local";
+                            elseif count == 4 then
+                                titulo = "Regional";
+                            elseif count == 5 then
+                                titulo = "Mundial";
+                            else
+                                titulo = "Lenda";
+                            end
+                            sheet.rec_titulo = titulo;
+                        end
+                    </script>
+                    
+                    <dataLink fields="{'rec_star1','rec_star2','rec_star3','rec_star4','rec_star5','rec_star6','rec_natureza'}">
+                        <event name="onChange">
+                            calcularReconhecimento();
+                        </event>
+                    </dataLink>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Organização:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="organizacao" fontColor="white" textPrompt="(Opcional, somente usado de acordo com a narração/mestre)"/>
+                    </layout>
+
+
+
+                    <layout align="top" height="30" margins="{top=15, bottom=5}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" field="trait_resumo" horzTextAlign="center" vertTextAlign="center" fontStyle="bold" fontColor="white" fontSize="15"/>
+                    </layout>
+                    
+                    <layout align="top" height="20" margins="{top=2, bottom=5}">
+                        <label align="left" width="800" text="Formato para somar automaticamente: Nome do Trait (XXX pontos de Trait)" horzTextAlign="center" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
+                    </layout>
+                    <layout align="top" height="16" margins="{bottom=5}">
+                        <label align="left" width="800" text="Bônus nos cálculos: [bônus: CAMPO +N]  ex: [bônus: forca +2]  [bônus: pv +500]" horzTextAlign="center" fontColor="#7DD3FC" fontSize="10" fontStyle="italic"/>
+                    </layout>
+                    <layout align="top" height="18" margins="{bottom=3}">
+                        <label align="client" field="trait_bonus_resumo" horzTextAlign="center" fontColor="#38BDF8" fontSize="11" fontStyle="bold"/>
+                    </layout>
+                    
+                    <!-- Script LUA para calcular automaticamente os Traits -->
+                    <script>
+                        local function calcularTraits()
+                            if sheet == nil then return end;
+                            
+                            -- Calcular o máximo baseado no nível
+                            local nivel = tonumber(sheet.nivel) or 0;
+                            local max = 450 + (nivel * 10);
+                            
+                            -- Ler o texto puro diretamente do controle textEditor
+                            local gasto = 0;
+                            local texto = "";
+                            
+                            if self.edtTraits ~= nil then
+                                texto = self.edtTraits:getText() or "";
+                            end
+                            
+                            -- Procura todos os padrões '(NUMERO pontos de Trait)' case insensitive
+                            if texto ~= "" then
+                                for valor in string.gmatch(texto:lower(), "%((%d+)%s*pontos.-trait%)") do
+                                    gasto = gasto + tonumber(valor);
+                                end
+                            end
+                            
+                            -- Atualiza o label centralizado
+                            sheet.trait_resumo = "Trait [ " .. gasto .. " / " .. max .. " ]";
+                            
+                            -- === Parsear bônus de traits ===
+                            -- Atributos de combate: [bônus: CAMPO +N] (valor flat)
+                            -- Status:               [bônus: pv +25%]  (multiplicador %)
+                            local cambosCombate = {'taijutsu','bukijutsu','ninjutsu','genjutsu','genjutsu_kai','fuinjutsu','arremesso','esquiva','bloqueio_fisico','bloqueio_chakra','reflexo','iniciativa','tai_bukijutsu','nin_taijutsu','hiraishin','movimentacao'};
+                            local camposStatus  = {'pv','pchakra','pestamina'};
+                            
+                            local totaisBonus = {};
+                            for _, c in ipairs(cambosCombate) do totaisBonus[c] = 0; end
+                            for _, c in ipairs(camposStatus)  do totaisBonus[c] = 0; end
+                            
+                            local textoLower = texto:lower();
+                            
+                            -- Flat: [bonus: CAMPO +/-N]
+                            for campo, sinal, valor in string.gmatch(textoLower, "%[b%o*nus:%s*([%a_]+)%s*([%+%-])(%d+)%]") do
+                                if totaisBonus[campo] ~= nil then
+                                    local n = tonumber(valor) or 0;
+                                    if sinal == "-" then n = -n; end
+                                    totaisBonus[campo] = totaisBonus[campo] + n;
+                                end
+                            end
+                            
+                            -- Percentual: [bonus: CAMPO +/-N%]
+                            for campo, sinal, valor in string.gmatch(textoLower, "%[b%o*nus:%s*([%a_]+)%s*([%+%-])(%d+)%%%]") do
+                                if totaisBonus[campo] ~= nil then
+                                    local n = tonumber(valor) or 0;
+                                    if sinal == "-" then n = -n; end
+                                    totaisBonus[campo] = totaisBonus[campo] + n;
+                                end
+                            end
+                            
+                            -- Salvar bônus no sheet
+                            for campo, v in pairs(totaisBonus) do
+                                sheet["bonus_" .. campo] = tostring(v);
+                            end
+                            
+                            -- Gerar resumo dos bônus ativos
+                            local resumoBonus = "";
+                            for _, c in ipairs(cambosCombate) do
+                                local v = totaisBonus[c];
+                                if v ~= 0 then
+                                    local s = v > 0 and "+" or "";
+                                    resumoBonus = resumoBonus .. c .. ": " .. s .. v .. "  ";
+                                end
+                            end
+                            for _, c in ipairs(camposStatus) do
+                                local v = totaisBonus[c];
+                                if v ~= 0 then
+                                    local s = v > 0 and "+" or "";
+                                    resumoBonus = resumoBonus .. c .. ": " .. s .. v .. "%  ";
+                                end
+                            end
+                            if resumoBonus ~= "" then
+                                sheet.trait_bonus_resumo = "Bônus: " .. resumoBonus;
+                            else
+                                sheet.trait_bonus_resumo = "";
+                            end
+                            
+                            -- Recalcular atributos com os novos bônus
+                            if calcularAtributos ~= nil then
+                                calcularAtributos();
+                            end
+                        end
+                    </script>
+                    
+                    <richEdit name="edtTraits" align="top" height="250" field="traits" defaultFontColor="white" backgroundColor="#0C1018" defaultFontSize="13" hideSelection="false" animateImages="true" margins="{top=5, left=10, right=10}">
+                    </richEdit>
+                    
+                    <!-- Gatilho secundário: recalcular quando o nível muda -->
+                    <dataLink fields="{'nivel'}">
+                        <event name="onChange">
+                            calcularTraits();
+                        </event>
+                    </dataLink>
+                    
+                    <cabecalho texto="Aparência" />
+                    
+                    <layout align="top" height="20" margins="{top=2, bottom=2}">
+                        <label align="client" text="Clique nas imagens abaixo para selecionar fotos do personagem" horzTextAlign="center" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
+                    </layout>
+                    
+                    <!-- Imagens 1-6 em uma fileira -->
+                    <layout align="top" height="280" margins="{top=5, bottom=10}">
+                        <!-- Imagem 1 -->
+                        <layout left="20" top="0" width="270" height="280">
+                            <layout align="top" height="250">
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
+                                <image align="client" field="aparencia_img1" editable="true" style="autoFit"/>
+                            </layout>
+                            <label align="top" height="25" text="Imagem 1" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
+                        </layout>
+                        
+                        <!-- Imagem 2 -->
+                        <layout left="310" top="0" width="270" height="280">
+                            <layout align="top" height="250">
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
+                                <image align="client" field="aparencia_img2" editable="true" style="autoFit"/>
+                            </layout>
+                            <label align="top" height="25" text="Imagem 2" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
+                        </layout>
+                        
+                        <!-- Imagem 3 -->
+                        <layout left="600" top="0" width="270" height="280">
+                            <layout align="top" height="250">
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
+                                <image align="client" field="aparencia_img3" editable="true" style="autoFit"/>
+                            </layout>
+                            <label align="top" height="25" text="Imagem 3" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
+                        </layout>
+                        
+                        <!-- Imagem 4 -->
+                        <layout left="890" top="0" width="270" height="280">
+                            <layout align="top" height="250">
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
+                                <image align="client" field="aparencia_img4" editable="true" style="autoFit"/>
+                            </layout>
+                            <label align="top" height="25" text="Imagem 4" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
+                        </layout>
+                        
+                        <!-- Imagem 5 -->
+                        <layout left="1180" top="0" width="270" height="280">
+                            <layout align="top" height="250">
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
+                                <image align="client" field="aparencia_img5" editable="true" style="autoFit"/>
+                            </layout>
+                            <label align="top" height="25" text="Imagem 5" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
+                        </layout>
+                        
+                        <!-- Imagem 6 -->
+                        <layout left="1470" top="0" width="270" height="280">
+                            <layout align="top" height="250">
+                                <rectangle align="client" color="#0E1420" strokeColor="#1E3A5C" strokeSize="1" xradius="8" yradius="8"/>
+                                <image align="client" field="aparencia_img6" editable="true" style="autoFit"/>
+                            </layout>
+                            <label align="top" height="25" text="Imagem 6" horzTextAlign="center" fontColor="#7A94B0" fontSize="11" margins="{top=5}"/>
+                        </layout>
+                    </layout>
+                    <!-- ====== ATRIBUTOS ====== -->
+                    <cabecalho texto="Atributos" />
+                    
+
+                    <!-- Pontos de Vida / Chakra / Estamina (atual / máximo) -->
+                    <layout align="top" height="110" margins="{top=10}">
+                        <!-- PV -->
+                        <layout name="rowBarraPv" align="top" height="30" margins="{top=2}">
+                            <label align="left" width="160" text="Pontos de Vida:" horzTextAlign="trailing" margins="{right=10}" fontColor="#F87171" fontSize="13" fontStyle="bold"/>
+                            <edit align="left" width="55" field="pv_atual" fontColor="white" horzTextAlign="center"/>
+                            <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
+                            <label align="left" width="55" field="pv" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            <layout align="left" width="10" height="30"/>
+                            <layout name="containerBarraPv" align="client" height="30" margins="{top=5, bottom=5}">
+                                <rectangle name="barraPvFundo" align="client" color="#1A0A10" strokeColor="#2A0E0E" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle name="barraPv" align="left" width="0" color="#10B981" xradius="6" yradius="6"/>
+                            </layout>
+                        </layout>
+                        <layout name="rowBarraChakra" align="top" height="30" margins="{top=5}">
+                            <label align="left" width="160" text="Pontos de Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#818CF8" fontSize="13" fontStyle="bold"/>
+                            <edit align="left" width="55" field="pchakra_atual" fontColor="white" horzTextAlign="center"/>
+                            <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
+                            <label align="left" width="55" field="pchakra" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            <layout align="left" width="10" height="30"/>
+                            <layout name="containerBarraChakra" align="client" height="30" margins="{top=5, bottom=5}">
+                                <rectangle name="barraChakraFundo" align="client" color="#060A12" strokeColor="#0C1828" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle name="barraChakra" align="left" width="0" color="#3B82F6" xradius="6" yradius="6"/>
+                            </layout>
+                        </layout>
+                        <layout name="rowBarraEstamina" align="top" height="30" margins="{top=5}">
+                            <label align="left" width="160" text="Pontos de Estamina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#34D399" fontSize="13" fontStyle="bold"/>
+                            <edit align="left" width="55" field="pestamina_atual" fontColor="white" horzTextAlign="center"/>
+                            <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
+                            <label align="left" width="55" field="pestamina" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            <layout align="left" width="10" height="30"/>
+                            <layout name="containerBarraEstamina" align="client" height="30" margins="{top=5, bottom=5}">
+                                <rectangle name="barraEstaminaFundo" align="client" color="#061210" strokeColor="#0A2015" strokeSize="1" xradius="6" yradius="6"/>
+                                <rectangle name="barraEstamina" align="left" width="0" color="#14B8A6" xradius="6" yradius="6"/>
+                            </layout>
+                        </layout>
+                    </layout>
+                    
+                    <!-- Traits de Status -->
+                    <layout align="top" height="22" margins="{top=12, bottom=2}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
+                        <label align="client" text="Traits de Status" horzTextAlign="center" fontColor="#FBBF24" fontSize="12" fontStyle="bold"/>
+                    </layout>
+                    
+                    <layout align="top" height="60" margins="{top=6}">
+                        <!-- PV Trait -->
+                        <layout align="left" width="290" height="60">
+                            <label align="top" height="18" text="Trait de Vida:" fontColor="#F87171" fontSize="11" fontStyle="bold" horzTextAlign="center"/>
+                            <layout align="top" height="28">
+                                <comboBox align="client" name="cb17" hitTest="false" field="trait_pv" items="{'Nenhum','Vida Extra: ★ ☆ ☆ ☆ ☆ ☆ (+5%)','Vida Extra: ★ ★ ☆ ☆ ☆ ☆ (+10%)','Vida Extra: ★ ★ ★ ☆ ☆ ☆ (+15%)','Vida Extra: ★ ★ ★ ★ ☆ ☆ (+20%)','Vida Extra: ★ ★ ★ ★ ★ ☆ (+25%)','Reencarnação de Asura (+25%)','Linhagem de Hagoromo/Hamura (+35%)','Híbrido: Meio-Õtsutsuki (+60%)','Clã Õtsutsuki (+100%)'}" values="{'0','5','10','15','20','25','25','35','60','100'}" fontColor="white" fontSize="11"/>
+                                <layout align="client" hitTest="true"><event name="onClick">self.cb17:dropDown();</event></layout>
+                            </layout>
+                        </layout>
+                        <layout align="left" width="10" height="60"/>
+                        <!-- Chakra Trait -->
+                        <layout align="left" width="280" height="60">
+                            <label align="top" height="18" text="Trait de Chakra:" fontColor="#818CF8" fontSize="11" fontStyle="bold" horzTextAlign="center"/>
+                            <layout align="top" height="28">
+                                <comboBox align="client" name="cb18" hitTest="false" field="trait_pchakra" items="{'Nenhum','Chakra Extra: ★ ☆ ☆ ☆ ☆ ☆ (+5%)','Chakra Extra: ★ ★ ☆ ☆ ☆ ☆ (+10%)','Chakra Extra: ★ ★ ★ ☆ ☆ ☆ (+15%)','Chakra Extra: ★ ★ ★ ★ ☆ ☆ (+20%)','Chakra Extra: ★ ★ ★ ★ ★ ☆ (+25%)','Células de Hashirama (+25%)','Pseudo Jinchūriki (+25%)','Jinchūriki do Ichibi (+25%)','Jinchūriki do Nibi (+30%)','Jinchūriki do Sanbi (+35%)','Jinchūriki do Yonbi (+35%)','Jinchūriki do Gobi (+35%)','Jinchūriki do Rokubi (+40%)','Jinchūriki do Nanabi (+45%)','Jinchūriki do Hachibi (+50%)','Jinchūriki do Kyūii (+55%)','Jinchūriki do Jūbi (+100%)','Reencarnação de Indra (+40%)','Reencarnação de Asura (+25%)','Linhagem de Hagoromo/Hamura (+35%)','Híbrido: Meio-Õtsutsuki (+60%)','Clã Õtsutsuki (+100%)'}" values="{'0','5','10','15','20','25','25','25','25','30','35','35','35','40','45','50','55','100','40','25','35','60','100'}" fontColor="white" fontSize="11"/>
+                                <layout align="client" hitTest="true"><event name="onClick">self.cb18:dropDown();</event></layout>
+                            </layout>
+                        </layout>
+                        <layout align="left" width="10" height="60"/>
+                        <!-- Estamina Trait -->
+                        <layout align="client" height="60">
+                            <label align="top" height="18" text="Trait de Estâmina:" fontColor="#34D399" fontSize="11" fontStyle="bold" horzTextAlign="center"/>
+                            <layout align="top" height="28">
+                                <comboBox align="client" name="cb19" hitTest="false" field="trait_pestamina" items="{'Nenhum','Estâmina Extra: ★ ☆ ☆ ☆ ☆ ☆ (+5%)','Estâmina Extra: ★ ★ ☆ ☆ ☆ ☆ (+10%)','Estâmina Extra: ★ ★ ★ ☆ ☆ ☆ (+15%)','Estâmina Extra: ★ ★ ★ ★ ☆ ☆ (+20%)','Estâmina Extra: ★ ★ ★ ★ ★ ☆ (+25%)','Reencarnação de Asura (+25%)','Linhagem de Hagoromo/Hamura (+35%)','Híbrido: Meio-Õtsutsuki (+60%)','Clã Õtsutsuki (+100%)'}" values="{'0','5','10','15','20','25','25','35','60','100'}" fontColor="white" fontSize="11"/>
+                                <layout align="client" hitTest="true"><event name="onClick">self.cb19:dropDown();</event></layout>
+                            </layout>
+                        </layout>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=5, bottom=2}">
+                        <label align="client" text="* Somente um atributo interpretativo pode chegar a 10, outros dois podem estar em 8. Os demais atingem máximo de 7." horzTextAlign="center" fontColor="#D97706" fontSize="10" fontStyle="italic"/>
+                    </layout>
+                    <layout align="top" height="20" margins="{bottom=3}">
+                        <label align="client" field="aviso_interp" horzTextAlign="center" fontColor="#EF4444" fontSize="11" fontStyle="bold"/>
+                    </layout>
+                    
+                    <!-- Atributos Core (esquerda) + Interpretativos (direita) -->
+                    <layout align="top" height="560" margins="{top=5}">
+                        
+                        <!-- === COLUNA ESQUERDA: Atributos Core === -->
+                        <layout left="0" top="0" width="430" height="560">
+                            <layout align="top" height="25">
+                                <rectangle align="client" color="#0E1420" strokeColor="#14B8A6" strokeSize="1" xradius="6" yradius="6"/>
+                                <label align="client" text="Atributos Core" horzTextAlign="center" fontColor="#FBBF24" fontSize="13" fontStyle="bold"/>
+                            </layout>
+                            
+                            <layout align="top" height="30" margins="{top=4}">
+                                <label align="left" width="180" text="Força:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="forca" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="180" text="Agilidade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="agilidade" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="180" text="Constituição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="constituicao" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="180" text="Destreza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="destreza" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="180" text="Controle de Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="ctrl_chakra" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="180" text="Concentração:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="concentracao" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="180" text="Força Espiritual:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="forca_espiritual" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="180" text="Inteligência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="inteligencia" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            
+                            <!-- Limite de Atributo -->
+                            <layout align="top" height="35" margins="{top=12}">
+                                <rectangle align="client" color="#0E1420" strokeColor="#FACC15" strokeSize="1" xradius="6" yradius="6"/>
+                                <label align="left" width="185" text="Limite de Atributo:" horzTextAlign="trailing" margins="{right=10}" fontColor="#BAE6FD" fontSize="13" fontStyle="bold"/>
+                                <label align="left" width="55" field="limite_atributo" fontColor="#BAE6FD" fontSize="15" fontStyle="bold" horzTextAlign="center"/>
+                                <label align="client" text="(Soma Core ÷ 8) +3" fontColor="#4B5563" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <!-- Pontos Core -->
+                            <layout align="top" height="28" margins="{top=6}">
+                                <rectangle align="client" color="#0C1828" strokeColor="#1E3A5C" strokeSize="1" xradius="6" yradius="6"/>
+                                <label align="client" field="pontos_core_resumo" horzTextAlign="center" fontColor="#FBBF24" fontSize="12" fontStyle="bold"/>
+                            </layout>
+                        </layout>
+                        
+<!-- === COLUNA DIREITA: Atributos Interpretativos === -->
+                        <layout left="450" top="0" width="430" height="560">
+                            <layout align="top" height="25">
+                                <rectangle align="client" color="#0E1420" strokeColor="#14B8A6" strokeSize="1" xradius="6" yradius="6"/>
+                                <label align="client" text="Atributos Interpretativos" horzTextAlign="center" fontColor="#FBBF24" fontSize="13" fontStyle="bold"/>
+                            </layout>
+                            
+
+                            <layout align="top" height="30" margins="{top=4}">
+                                <label align="left" width="160" text="Sobrevivência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="sobrevivencia" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Armadilha:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="armadilha" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Empatia:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="empatia" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Intimidação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="intimidacao" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Ladinagem:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="ladinagem" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Enganação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="enganacao" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Percepção:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="percepcao" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Persuasão:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="persuasao" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Sedução:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="seducao" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Medicina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="medicina" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="História:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="historia_attr" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Ofício:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="oficio" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Conhecimento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="conhecimento" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Aprendizado:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="aprendizado" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="160" text="Ensinamento:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                                <edit align="left" width="60" field="ensinamento" fontColor="white" horzTextAlign="center"/>
+                            </layout>
+                            <!-- Uso de pontos interpretativos vs máximo -->
+                            <layout align="top" height="35" margins="{top=12}">
+                                <rectangle align="client" color="#0E1420" strokeColor="#FACC15" strokeSize="1" xradius="6" yradius="6"/>
+                                <label align="left" width="190" text="Pontos Interp. Usados:" horzTextAlign="trailing" margins="{right=8}" fontColor="#BAE6FD" fontSize="11" fontStyle="bold"/>
+                                <label align="client" field="interp_uso_resumo" fontColor="#BAE6FD" fontSize="14" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                        </layout>
+                    </layout>
+                    
+                    <!-- Atributos de Combate (esquerda) + Únicos (direita) -->
+                    <layout align="top" height="480" margins="{top=10}">
+                        
+                        <!-- === COLUNA ESQUERDA: Atributos de Combate === -->
+                        <layout left="0" top="0" width="530" height="480">
+                            <layout align="top" height="25">
+                                <rectangle align="client" color="#0E1420" strokeColor="#14B8A6" strokeSize="1" xradius="6" yradius="6"/>
+                                <label align="client" text="Atributos de Combate" horzTextAlign="center" fontColor="#FB923C" fontSize="13" fontStyle="bold"/>
+                            </layout>
+                            
+                            <layout align="top" height="30" margins="{top=4}">
+                                <label align="left" width="155" text="Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="taijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.taijutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Taijutsu"); end;</event>
+                                </button>
+                                <label align="client" text="(Forca + 50% Agilidade)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="bukijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.bukijutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Bukijutsu"); end;</event>
+                                </button>
+                                <label align="client" text="(Destreza + 50% Forca)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Ninjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="ninjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.ninjutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Ninjutsu"); end;</event>
+                                </button>
+                                <label align="client" text="(F. Espiritual + 50% Ctrl Chakra)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Genjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="genjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.genjutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Genjutsu"); end;</event>
+                                </button>
+                                <label align="client" text="(Ctrl Chakra + 50% Inteligencia)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Genjutsu Kai:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="genjutsu_kai" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.genjutsu_kai) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Genjutsu Kai"); end;</event>
+                                </button>
+                                <label align="client" text="(Int + CtrlC + Conc)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Fuinjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="fuinjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.fuinjutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Fuinjutsu"); end;</event>
+                                </button>
+                                <label align="client" text="(Int + 50% F. Espiritual)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Arremesso:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="arremesso" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.arremesso) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Arremesso"); end;</event>
+                                </button>
+                                <label align="client" text="(Concentracao + 50% Destreza)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Esquiva:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="esquiva" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.esquiva) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Esquiva"); end;</event>
+                                </button>
+                                <label align="client" text="(Agi+Conc+Int+Cons)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Bloqueio Fisico:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="bloqueio_fisico" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.bloqueio_fisico) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Bloqueio Fisico"); end;</event>
+                                </button>
+                                <label align="client" text="(For+Des+Cons+Agi)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Bloqueio Chakra:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="bloqueio_chakra" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.bloqueio_chakra) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Bloqueio Chakra"); end;</event>
+                                </button>
+                                <label align="client" text="(CtrlC+FEsp+Cons+Conc)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Reflexo:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="reflexo" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.reflexo) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Reflexo"); end;</event>
+                                </button>
+                                <label align="client" text="(Conc+Agi+Cons+Int)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Iniciativa:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="iniciativa" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.iniciativa) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Iniciativa"); end;</event>
+                                </button>
+                                <label align="client" text="(For+Des+Conc+Agi)/2.5" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <!-- Kekkei Genkai Ativo -->
+                            <layout align="top" height="26" margins="{top=6}">
+                                <rectangle align="client" color="#120E20" strokeColor="#E11D48" strokeSize="1" xradius="6" yradius="6"/>
+                                <label align="left" width="10" text="" />
+                                <label align="client" field="kkg_ativos_label" fontColor="#FB7185" fontSize="11" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                        </layout>
+                        <!-- === COLUNA DIREITA: Atributos de Combate Únicos === -->
+                        <layout left="550" top="0" width="330" height="200">
+                            <layout align="top" height="25">
+                                <rectangle align="client" color="#0E1420" strokeColor="#14B8A6" strokeSize="1" xradius="6" yradius="6"/>
+                                <label align="client" text="Combate Únicos" horzTextAlign="center" fontColor="#FB923C" fontSize="13" fontStyle="bold"/>
+                            </layout>
+                            
+                            <layout align="top" height="30" margins="{top=4}">
+                                <label align="left" width="135" text="Tai-Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="tai_bukijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.tai_bukijutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Tai-Bukijutsu"); end</event>
+                                </button>
+                                <label align="client" text="(Tai+Buki)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="135" text="Nin-Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="nin_taijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.nin_taijutsu) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Nin-Taijutsu"); end</event>
+                                </button>
+                                <label align="client" text="(Tai+Nin)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="135" text="Hiraishin:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="hiraishin" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.hiraishin) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Hiraishin"); end</event>
+                                </button>
+                                <label align="client" text="(Nin+Fuin)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="135" text="Movimentacao:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="movimentacao" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <button align="left" width="28" height="22" text="[d]" fontSize="10" margins="{right=4}">
+                                    <event name="onClick">local _expr = "1d20 + " .. (tonumber(sheet.movimentacao) or 0); local _mesa = Firecast.getMesaDe(sheet); if _mesa then _mesa.chat:rolarDados(Firecast.interpretarRolagem(_expr), "Movimentacao"); end</event>
+                                </button>
+                                <label align="client" text="(Agi + Int/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                        </layout>
+                    </layout>
+                    
+                                        <!-- ====== TRAIT DE COMBATE ====== -->
+                    <layout align="top" height="34" margins="{top=18, bottom=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" text="Trait de Combate" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=4}">
+                        <layout align="left" width="380">
+                            <comboBox align="client" name="cbTraitCombate" hitTest="false" field="trait_combate_tipo" items="{'Nenhum','Artista Marcial: Disciplina de Combate','Dominio das Armas: Mestre de Armaria','Manipulador de Chakra: Mestre dos Fluxos','Ilusionista: Tecelao de Pesadelos','Mente Blindada: Cidadela Psiquica','Bloqueador: Muralha Inabalavel','Intuicao Sensivel: Instinto de Batalha'}" values="{'nenhum','artmarcial','domarmas','manipchakra','ilusionista','menteblind','bloqueador','intuicao'}" fontColor="white"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cbTraitCombate:dropDown();</event></layout>
+                        </layout>
+                        <checkBox align="left" width="22" field="trait_combate_s1" text="" fontColor="#FBBF24" fontSize="14" margins="{left=8}"/>
+                        <checkBox align="left" width="22" field="trait_combate_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_combate_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_combate_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_combate_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+
+                    <!-- ====== TRAITS INTERPRETATIVOS ====== -->
+                    <layout align="top" height="34" margins="{top=18, bottom=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#A78BFA" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" text="Traits Interpretativos" horzTextAlign="center" fontStyle="bold" fontColor="#A78BFA" fontSize="15"/>
+                    </layout>
+
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Olfato Sensivel: Faro Animalesco" fontColor="#84CC16" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="trait_olfato_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_olfato_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_olfato_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_olfato_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_olfato_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(100 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Aparencia Unica: Presenca Marcante" fontColor="#F472B6" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="trait_aparencia_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_aparencia_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_aparencia_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_aparencia_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_aparencia_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Erudito (Nerd): Intelecto Academico" fontColor="#38BDF8" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="trait_erudito_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_erudito_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_erudito_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_erudito_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_erudito_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Sobrevivente: Instinto Primal" fontColor="#34D399" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="trait_sobrevivente_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_sobrevivente_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_sobrevivente_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_sobrevivente_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_sobrevivente_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Mednin Eficiente: Especialista em Campo" fontColor="#2DD4BF" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="trait_mednin_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_mednin_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_mednin_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_mednin_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_mednin_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Manipulador: Mestre das Intencoes" fontColor="#C084FC" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="trait_manipulador_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_manipulador_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_manipulador_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_manipulador_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_manipulador_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Cacador: Predador Invisivel" fontColor="#D97706" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="trait_cacador_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_cacador_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_cacador_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_cacador_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_cacador_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Politico: Lider Maquiavelico" fontColor="#FB923C" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="trait_politico_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_politico_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_politico_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_politico_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="trait_politico_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <label align="left" width="130" text="(50 a 250 pts)" fontColor="#6B7280" fontSize="10" fontStyle="italic" margins="{left=5}"/>
+                    </layout>
+
+<!-- Script de calculo dos Atributos -->
+
+                    <script>
+                        local function atualizarBarras()
+                            if sheet == nil then return end;
+                            
+                            local pvMax = tonumber(sheet.pv) or 0;
+                            local pvAtual = tonumber(sheet.pv_atual) or 0;
+                            local chakraMax = tonumber(sheet.pchakra) or 0;
+                            local chakraAtual = tonumber(sheet.pchakra_atual) or 0;
+                            local estMax = tonumber(sheet.pestamina) or 0;
+                            local estAtual = tonumber(sheet.pestamina_atual) or 0;
+                            
+                            local fixedLabels = 300;
+                            local rowW = math.max((self.rowBarraPv ~= nil and self.rowBarraPv.width or 900), 400);
+                            local barraLargPv = rowW - fixedLabels;
+                            local barraLargChk = barraLargPv;
+                            local barraLargEst = barraLargPv;
+                            
+                            -- Barra PV (cor dinâmica: verde > amarelo > vermelho)
+                            if pvMax > 0 and self.barraPv ~= nil then
+                                local pct = math.min(pvAtual / pvMax, 1);
+                                self.barraPv.width = math.floor(pct * barraLargPv);
+                                if pct > 0.6 then
+                                    self.barraPv.color = "#10B981";
+                                elseif pct > 0.3 then
+                                    self.barraPv.color = "#EAB308";
+                                else
+                                    self.barraPv.color = "#DC2626";
+                                end
+                            end
+                            
+                            -- Barra Chakra (cor dinâmica: azul > amarelo > vermelho)
+                            if chakraMax > 0 and self.barraChakra ~= nil then
+                                local pct = math.min(chakraAtual / chakraMax, 1);
+                                self.barraChakra.width = math.floor(pct * barraLargChk);
+                                if pct > 0.6 then
+                                    self.barraChakra.color = "#3B82F6";
+                                elseif pct > 0.3 then
+                                    self.barraChakra.color = "#EAB308";
+                                else
+                                    self.barraChakra.color = "#DC2626";
+                                end
+                            end
+                            
+                            -- Barra Estamina (cor dinâmica: turquesa > amarelo > vermelho)
+                            if estMax > 0 and self.barraEstamina ~= nil then
+                                local pct = math.min(estAtual / estMax, 1);
+                                self.barraEstamina.width = math.floor(pct * barraLargEst);
+                                if pct > 0.6 then
+                                    self.barraEstamina.color = "#14B8A6";
+                                elseif pct > 0.3 then
+                                    self.barraEstamina.color = "#EAB308";
+                                else
+                                    self.barraEstamina.color = "#DC2626";
+                                end
+                            end
+                        end
+                        
+                        local function validarInterpretativos()
+                            if sheet == nil then return end;
+                            
+                            local campos = {'sobrevivencia','armadilha','empatia','intimidacao','ladinagem','enganacao','percepcao','persuasao','seducao','medicina','historia_attr','oficio','conhecimento','aprendizado','ensinamento'};
+                            local valores = {};
+                            
+                            for i, campo in ipairs(campos) do
+                                valores[i] = tonumber(sheet[campo]) or 0;
+                            end
+                            
+                            -- Ordenar cópia para descobrir ranking
+                            local ordenado = {};
+                            for i, v in ipairs(valores) do
+                                ordenado[i] = {idx = i, val = v};
+                            end
+                            table.sort(ordenado, function(a, b) return a.val > b.val end);
+                            
+                            -- Aplicar caps: 1o pode ser 10, 2o e 3o podem ser 8, demais max 7
+                            local caps = {};
+                            for i = 1, #ordenado do
+                                if i == 1 then
+                                    caps[ordenado[i].idx] = 10;
+                                elseif not (i > 3) then
+                                    caps[ordenado[i].idx] = 8;
+                                else
+                                    caps[ordenado[i].idx] = 7;
+                                end
+                            end
+                            
+                            local corrigido = false;
+                            for i, campo in ipairs(campos) do
+                                local val = valores[i];
+                                local cap = caps[i];
+                                if val > cap then
+                                    sheet[campo] = tostring(cap);
+                                    valores[i] = cap;
+                                    corrigido = true;
+                                end
+                            end
+                            
+                            if corrigido then
+                                sheet.aviso_interp = "⚠ Valor corrigido! (max: 1×10, 2×8, demais 7)";
+                            else
+                                sheet.aviso_interp = "";
+                            end
+                            
+                            return valores;
+                        end
+                        
+                        local function contarPontosJutsu()
+                            if sheet == nil then return end;
+                            
+                            local edits = {self.edtTecTaijutsu, self.edtTecBukijutsu, self.edtTecNinjutsu, self.edtTecElemental, self.edtTecFuinjutsu, self.edtTecKuchiyose, self.edtTecKekkei, self.edtTecGerais};
+                            local totalPontos = 0;
+                            
+                            for _, edt in ipairs(edits) do
+                                if edt ~= nil then
+                                    local texto = edt:getText() or "";
+                                    
+                                    -- Separar em linhas e procurar "Rank" em cada uma
+                                    for linha in string.gmatch(texto, "[^\r\n]+") do
+                                        local upper = string.upper(linha);
+                                        
+                                        -- Pular linhas com Gratuito
+                                        if not string.find(upper, "GRATUITO") then
+                                            -- Procurar "RANK" seguido de separador e letra
+                                            local rankMatch = string.match(upper, "RANK[:%s]*(%S+)");
+                                            if rankMatch ~= nil then
+                                                if rankMatch == "SSS" or rankMatch == "MSS+" then
+                                                    totalPontos = totalPontos + 400;
+                                                elseif rankMatch == "SS+" then
+                                                    totalPontos = totalPontos + 350;
+                                                elseif rankMatch == "SS" then
+                                                    totalPontos = totalPontos + 300;
+                                                elseif rankMatch == "S" then
+                                                    totalPontos = totalPontos + 250;
+                                                elseif rankMatch == "A" then
+                                                    totalPontos = totalPontos + 200;
+                                                elseif rankMatch == "B" then
+                                                    totalPontos = totalPontos + 150;
+                                                elseif rankMatch == "C" then
+                                                    totalPontos = totalPontos + 100;
+                                                elseif rankMatch == "D" then
+                                                    totalPontos = totalPontos + 50;
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                            
+                            local nivel = tonumber(sheet.nivel) or 0;
+                            local maxPontos = nivel * 100;
+                            
+                            sheet.jutsu_pontos_atual = tostring(totalPontos);
+                            sheet.jutsu_pontos_max = tostring(maxPontos);
+                            
+                            local debugRanks = "";
+                            if totalPontos > maxPontos then
+                                sheet.jutsu_status = "Excedido em " .. (totalPontos - maxPontos) .. " pts!";
+                            else
+                                sheet.jutsu_status = "Restam " .. (maxPontos - totalPontos) .. " pts";
+                            end
+                        end
+                        
+                        local function calcularAtributos()
+                            if sheet == nil then return end;
+                            
+                            -- Ler atributos core
+                            local forca = tonumber(sheet.forca) or 0;
+                            local agilidade = tonumber(sheet.agilidade) or 0;
+                            local constituicao = tonumber(sheet.constituicao) or 0;
+                            local destreza = tonumber(sheet.destreza) or 0;
+                            local ctrl_chakra = tonumber(sheet.ctrl_chakra) or 0;
+                            local concentracao = tonumber(sheet.concentracao) or 0;
+                            local forca_espiritual = tonumber(sheet.forca_espiritual) or 0;
+                            local inteligencia = tonumber(sheet.inteligencia) or 0;
+                            
+                            -- Bônus de status: combina multiplier do texto + seleção dos comboboxes
+                            local pctPv       = (tonumber(sheet.bonus_pv) or 0) + (tonumber(sheet.trait_pv) or 0);
+                            local pctChakra   = (tonumber(sheet.bonus_pchakra) or 0) + (tonumber(sheet.trait_pchakra) or 0);
+                            local pctEstamina = (tonumber(sheet.bonus_pestamina) or 0) + (tonumber(sheet.trait_pestamina) or 0);
+                            local multPv       = 1 + pctPv / 100;
+                            local multChakra   = 1 + pctChakra / 100;
+                            local multEstamina = 1 + pctEstamina / 100;
+                            
+                            -- Contador de pontos Core
+                            local totalCore = forca + agilidade + constituicao + destreza + ctrl_chakra + concentracao + forca_espiritual + inteligencia;
+                            sheet.pontos_core_resumo = "Pontos Core: " .. totalCore;
+                            sheet.limite_atributo = tostring(math.floor(totalCore / 8) + 3);
+                            sheet.nivel = tostring(math.floor(totalCore / 2) - 7);
+                            
+                            -- Validar e contar pontos Interpretativos
+                            local interpVals = validarInterpretativos();
+                            local totalInterp = 0;
+                            if interpVals ~= nil then
+                                for i = 1, #interpVals do
+                                    totalInterp = totalInterp + interpVals[i];
+                                end
+                            end
+                            local maxInterp = tonumber(sheet.max_pontos_interp) or 0;
+                            sheet.pontos_interp_resumo = "Pontos Interp.: " .. totalInterp .. " / " .. maxInterp;
+                            sheet.interp_uso_resumo = totalInterp .. " / " .. maxInterp;
+                            
+                            -- Pontos de Vida / Chakra / Estamina (com multiplicadores de bônus %)
+                            sheet.pv       = tostring(math.floor((constituicao + forca) * 45 * multPv));
+                            sheet.pchakra  = tostring(math.floor((ctrl_chakra + forca_espiritual + inteligencia) * 34 * multChakra));
+                            sheet.pestamina= tostring(math.floor((agilidade + destreza + concentracao) * 34 * multEstamina));
+                            
+                            -- Atualizar barras visuais
+                            atualizarBarras();
+                            
+                            -- Atributos de Combate
+                            local taijutsu = math.floor(forca + agilidade * 0.5);
+                            local bukijutsu = math.floor(destreza + forca * 0.5);
+                            local ninjutsu = math.floor(forca_espiritual + ctrl_chakra * 0.5);
+                            local genjutsu = math.floor(ctrl_chakra + inteligencia * 0.5);
+                            local genjutsu_kai = math.floor((inteligencia + ctrl_chakra + concentracao) / 2);
+                            local fuinjutsu = math.floor(inteligencia + forca_espiritual * 0.5);
+                            local arremesso = math.floor(concentracao + destreza * 0.5);
+                            local esquiva = math.floor((agilidade + concentracao + inteligencia + constituicao) / 2.5);
+                            local bloqueio_fisico = math.floor((forca + destreza + constituicao + agilidade) / 2.5);
+                            local bloqueio_chakra = math.floor((ctrl_chakra + forca_espiritual + constituicao + concentracao) / 2.5);
+                            local reflexo = math.floor((concentracao + agilidade + constituicao + inteligencia) / 2.5);
+                            local iniciativa = math.floor((forca + destreza + concentracao + agilidade) / 2.5);
+                            
+                            -- Sharingan / Kekkei Genkai bonus
+                            local kkg_bonus = 0;
+                            local kkg_nome = "";
+                            if tostring(sheet.kkg_sharingan3) == "true" then
+                                kkg_bonus = 4; kkg_nome = "Sharingan 3 Estagio ativo";
+                            elseif tostring(sheet.kkg_sharingan2) == "true" then
+                                kkg_bonus = 3; kkg_nome = "Sharingan 2 Estagio ativo";
+                            elseif tostring(sheet.kkg_sharingan1) == "true" then
+                                kkg_bonus = 2; kkg_nome = "Sharingan 1 Estagio ativo";
+                            end
+                            sheet.kkg_ativos_label = kkg_nome;
+                            
+                            -- Trait de Combate: dropdown + 5 estrelas
+                            local n_tc = 0;
+                            if tostring(sheet.trait_combate_s1) == 'true' then n_tc = n_tc + 1; end
+                            if tostring(sheet.trait_combate_s2) == 'true' then n_tc = n_tc + 1; end
+                            if tostring(sheet.trait_combate_s3) == 'true' then n_tc = n_tc + 1; end
+                            if tostring(sheet.trait_combate_s4) == 'true' then n_tc = n_tc + 1; end
+                            if tostring(sheet.trait_combate_s5) == 'true' then n_tc = n_tc + 1; end
+                            local tc_tipo = tostring(sheet.trait_combate_tipo) or 'nenhum';
+                            local t_artmarcial = 0; local t_domarmas = 0; local t_manipchakra = 0;
+                            local t_ilusionista = 0; local t_menteblind = 0; local t_bloqueador = 0; local t_intuicao = 0;
+                            if n_tc > 0 then
+                                if tc_tipo == 'artmarcial' then t_artmarcial = 2 + (n_tc - 1);
+                                elseif tc_tipo == 'domarmas' then t_domarmas = 2 + (n_tc - 1);
+                                elseif tc_tipo == 'manipchakra' then t_manipchakra = 2 + (n_tc - 1);
+                                elseif tc_tipo == 'ilusionista' then t_ilusionista = 2 + (n_tc - 1);
+                                elseif tc_tipo == 'menteblind' then t_menteblind = 4 + (n_tc - 1);
+                                elseif tc_tipo == 'bloqueador' then t_bloqueador = 1 + (n_tc - 1);
+                                elseif tc_tipo == 'intuicao' then t_intuicao = 2 + (n_tc - 1);
+                                end
+                            end
+                            
+                            sheet.taijutsu = tostring(taijutsu + (tonumber(sheet.bonus_taijutsu) or 0) + kkg_bonus + t_artmarcial);
+                            sheet.bukijutsu = tostring(bukijutsu + (tonumber(sheet.bonus_bukijutsu) or 0) + kkg_bonus + t_domarmas);
+                            sheet.ninjutsu = tostring(ninjutsu + (tonumber(sheet.bonus_ninjutsu) or 0) + kkg_bonus + t_manipchakra);
+                            sheet.genjutsu = tostring(genjutsu + (tonumber(sheet.bonus_genjutsu) or 0) + kkg_bonus + t_ilusionista);
+                            sheet.genjutsu_kai = tostring(genjutsu_kai + (tonumber(sheet.bonus_genjutsu_kai) or 0) + kkg_bonus + t_ilusionista + t_menteblind);
+                            sheet.fuinjutsu = tostring(fuinjutsu + (tonumber(sheet.bonus_fuinjutsu) or 0) + t_manipchakra);
+                            sheet.arremesso = tostring(arremesso + (tonumber(sheet.bonus_arremesso) or 0) + kkg_bonus + t_domarmas);
+                            sheet.esquiva = tostring(esquiva + (tonumber(sheet.bonus_esquiva) or 0) + kkg_bonus + t_intuicao);
+                            sheet.bloqueio_fisico = tostring(bloqueio_fisico + (tonumber(sheet.bonus_bloqueio_fisico) or 0) + kkg_bonus + t_bloqueador);
+                            sheet.bloqueio_chakra = tostring(bloqueio_chakra + (tonumber(sheet.bonus_bloqueio_chakra) or 0) + kkg_bonus + t_bloqueador);
+                            sheet.reflexo = tostring(reflexo + (tonumber(sheet.bonus_reflexo) or 0) + t_intuicao);
+                            sheet.iniciativa = tostring(iniciativa + (tonumber(sheet.bonus_iniciativa) or 0) + t_intuicao);
+                            
+                            -- Atributos de Combate Únicos (com bônus flat + traits)
+                            sheet.tai_bukijutsu = tostring(math.floor((taijutsu + bukijutsu) / 2) + (tonumber(sheet.bonus_tai_bukijutsu) or 0) + t_artmarcial + t_domarmas);
+                            sheet.nin_taijutsu = tostring(math.floor((taijutsu + ninjutsu) / 2) + (tonumber(sheet.bonus_nin_taijutsu) or 0) + t_artmarcial + t_manipchakra);
+                            sheet.hiraishin = tostring(math.floor((ninjutsu + fuinjutsu) / 2) + (tonumber(sheet.bonus_hiraishin) or 0));
+                            sheet.movimentacao = tostring(math.floor(agilidade + inteligencia / 2) + (tonumber(sheet.bonus_movimentacao) or 0) + t_intuicao);
+                            
+                            contarPontosJutsu();
+                        end
+                    </script>
+                    
+                    <!-- Gatilho: recalcular quando qualquer atributo core ou interpretativo muda -->
+                    <dataLink fields="{'forca', 'agilidade', 'constituicao', 'destreza', 'ctrl_chakra', 'concentracao', 'forca_espiritual', 'inteligencia', 'sobrevivencia', 'armadilha', 'empatia', 'intimidacao', 'ladinagem', 'enganacao', 'percepcao', 'persuasao', 'seducao', 'medicina', 'historia_attr', 'oficio', 'conhecimento', 'aprendizado', 'ensinamento', 'trait_pv', 'trait_pchakra', 'trait_pestamina', 'trait_combate_tipo', 'trait_combate_s1', 'trait_combate_s2', 'trait_combate_s3', 'trait_combate_s4', 'trait_combate_s5', 'trait_olfato_s1','trait_olfato_s2','trait_olfato_s3','trait_olfato_s4','trait_olfato_s5', 'trait_aparencia_s1','trait_aparencia_s2','trait_aparencia_s3','trait_aparencia_s4','trait_aparencia_s5', 'trait_erudito_s1','trait_erudito_s2','trait_erudito_s3','trait_erudito_s4','trait_erudito_s5', 'trait_sobrevivente_s1','trait_sobrevivente_s2','trait_sobrevivente_s3','trait_sobrevivente_s4','trait_sobrevivente_s5', 'trait_mednin_s1','trait_mednin_s2','trait_mednin_s3','trait_mednin_s4','trait_mednin_s5', 'trait_manipulador_s1','trait_manipulador_s2','trait_manipulador_s3','trait_manipulador_s4','trait_manipulador_s5', 'trait_cacador_s1','trait_cacador_s2','trait_cacador_s3','trait_cacador_s4','trait_cacador_s5', 'trait_politico_s1','trait_politico_s2','trait_politico_s3','trait_politico_s4','trait_politico_s5'}">
+                        <event name="onChange">
+                            calcularAtributos();
+                        </event>
+                    </dataLink>
+                    
+                    <!-- Gatilho: recalcular quando Kekkei Genkai muda -->
+                    <dataLink fields="{'kkg_sharingan1', 'kkg_sharingan2', 'kkg_sharingan3'}">
+                        <event name="onChange">
+                            calcularAtributos();
+                        </event>
+                    </dataLink>
+                    
+                    <!-- Gatilho: atualizar barras quando PV/Chakra/Estamina atuais mudam -->
+                    <dataLink fields="{'pv_atual', 'pchakra_atual', 'pestamina_atual', 'pv', 'pchakra', 'pestamina'}">
+                        <event name="onChange">
+                            atualizarBarras();
+                        </event>
+                    </dataLink>
+                    
+                </layout>
+            </scrollBox>
+        </tab>
+        
+        <tab title="Técnicas">
+            <layout align="top" height="32" margins="{left=10, right=10, top=4, bottom=2}">
+                <rectangle align="client" color="#0C1828" strokeColor="#60A5FA" strokeSize="1" xradius="8" yradius="8"/>
+                <label align="left" width="140" text="  Pontos de Jutsu:" fontColor="#60A5FA" fontSize="12" fontStyle="bold" horzTextAlign="leading"/>
+                <label name="lblJutsuPontosAtual" align="left" width="60" field="jutsu_pontos_atual" fontColor="#FBBF24" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="12" horzTextAlign="center"/>
+                <label name="lblJutsuPontosMax" align="left" width="60" field="jutsu_pontos_max" fontColor="#34D399" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                <label name="lblJutsuStatus" align="client" field="jutsu_status" fontColor="#F87171" fontSize="11" fontStyle="italic" horzTextAlign="leading" margins="{left=10}"/>
+            </layout>
+            <tabControl align="client">
+                <tab title="Taijutsu">
+                    <richEdit name="edtTecTaijutsu" align="client" field="tec_taijutsu" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                </tab>
+                <tab title="Bukijutsu">
+                    <richEdit name="edtTecBukijutsu" align="client" field="tec_bukijutsu" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                </tab>
+                <tab title="Ninjutsu">
+                    <richEdit name="edtTecNinjutsu" align="client" field="tec_ninjutsu" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                </tab>
+                <tab title="Elemental">
+                    <richEdit name="edtTecElemental" align="client" field="tec_elemental" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                </tab>
+                <tab title="Fuinjutsu">
+                    <richEdit name="edtTecFuinjutsu" align="client" field="tec_fuinjutsu" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                </tab>
+                <tab title="Kuchiyose">
+                    <richEdit name="edtTecKuchiyose" align="client" field="tec_kuchiyose" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                </tab>
+                <tab title="Kekkei Genkai">
+                    <richEdit name="edtTecKekkei" align="client" field="tec_kekkei_genkai" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                </tab>
+                <tab title="Hab. Gerais">
+                    <richEdit name="edtTecGerais" align="client" field="tec_habilidades_gerais" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                </tab>
+                <tab title="Ficha de Kuchiyose">
+                    <scrollBox align="client">
+                        <layout align="top" height="3200" margins="{left=20, right=20, top=10}">
+
+                    <!-- Cabeçalho -->
+                    <layout align="top" height="34" margins="{top=5, bottom=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" text="Ficha de Kuchiyose (Invocação)" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
+                    </layout>
+
+                    <!-- Info Basica -->
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Nome:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="kuchi_nome" fontColor="white" textPrompt="Nome da Invocação"/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Espécie:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="kuchi_especie" fontColor="white" textPrompt="Ex: Sapo, Cobra, Tartaruga..."/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Rank da Invocação:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <layout align="left" width="200">
+                            <comboBox align="client" name="cbKuchiRank" hitTest="false" field="kuchi_rank" items="{'D (-5)','C (-4)','B (-4)','A (-3)','S (-2)','SS (-1)','SS+ (0)'}" values="{'-5','-4','-4b','-3','-2','-1','0'}" fontColor="white"/>
+                            <layout align="client" hitTest="true"><event name="onClick">self.cbKuchiRank:dropDown();</event></layout>
+                        </layout>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Descrição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="client" field="kuchi_descricao" fontColor="white" textPrompt="Breve descrição da invocação"/>
+                    </layout>
+
+                    <!-- Atributos Core -->
+                    <layout align="top" height="34" margins="{top=18, bottom=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" text="Atributos Core" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
+                    </layout>
+
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Força:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="60" field="kuchi_forca" fontColor="white" horzTextAlign="center"/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Agilidade:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="60" field="kuchi_agilidade" fontColor="white" horzTextAlign="center"/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Constituição:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="60" field="kuchi_constituicao" fontColor="white" horzTextAlign="center"/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Destreza:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="60" field="kuchi_destreza" fontColor="white" horzTextAlign="center"/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Ctrl. Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="60" field="kuchi_ctrl_chakra" fontColor="white" horzTextAlign="center"/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Concentração:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="60" field="kuchi_concentracao" fontColor="white" horzTextAlign="center"/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Força Espiritual:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="60" field="kuchi_forca_espiritual" fontColor="white" horzTextAlign="center"/>
+                    </layout>
+                    <layout align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Inteligência:" horzTextAlign="trailing" margins="{right=10}" fontColor="#8BA3C4" fontSize="13"/>
+                        <edit align="left" width="60" field="kuchi_inteligencia" fontColor="white" horzTextAlign="center"/>
+                    </layout>
+
+                    <!-- PV / Chakra / Estamina -->
+                    <layout align="top" height="34" margins="{top=18, bottom=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" text="Pontos Vitais" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
+                    </layout>
+
+                    <layout name="kuchi_rowBarraPv" align="top" height="30" margins="{top=2}">
+                        <label align="left" width="160" text="Pontos de Vida:" horzTextAlign="trailing" margins="{right=10}" fontColor="#F87171" fontSize="13" fontStyle="bold"/>
+                        <edit align="left" width="55" field="kuchi_pv_atual" fontColor="white" horzTextAlign="center"/>
+                        <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
+                        <label align="left" width="55" field="kuchi_pv" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                        <layout align="left" width="10" height="30"/>
+                        <layout name="kuchi_containerBarraPv" align="client" height="30" margins="{top=5, bottom=5}">
+                            <rectangle name="kuchi_barraPvFundo" align="client" color="#1A0A10" strokeColor="#2A0E0E" strokeSize="1" xradius="6" yradius="6"/>
+                            <rectangle name="kuchi_barraPv" align="left" width="0" color="#10B981" xradius="6" yradius="6"/>
+                        </layout>
+                    </layout>
+                    <layout name="kuchi_rowBarraChakra" align="top" height="30" margins="{top=5}">
+                        <label align="left" width="160" text="Pontos de Chakra:" horzTextAlign="trailing" margins="{right=10}" fontColor="#818CF8" fontSize="13" fontStyle="bold"/>
+                        <edit align="left" width="55" field="kuchi_pchakra_atual" fontColor="white" horzTextAlign="center"/>
+                        <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
+                        <label align="left" width="55" field="kuchi_pchakra" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                        <layout align="left" width="10" height="30"/>
+                        <layout name="kuchi_containerBarraChakra" align="client" height="30" margins="{top=5, bottom=5}">
+                            <rectangle name="kuchi_barraChakraFundo" align="client" color="#060A12" strokeColor="#0C1828" strokeSize="1" xradius="6" yradius="6"/>
+                            <rectangle name="kuchi_barraChakra" align="left" width="0" color="#3B82F6" xradius="6" yradius="6"/>
+                        </layout>
+                    </layout>
+                    <layout name="kuchi_rowBarraEstamina" align="top" height="30" margins="{top=5}">
+                        <label align="left" width="160" text="Pontos de Estâmina:" horzTextAlign="trailing" margins="{right=10}" fontColor="#34D399" fontSize="13" fontStyle="bold"/>
+                        <edit align="left" width="55" field="kuchi_pestamina_atual" fontColor="white" horzTextAlign="center"/>
+                        <label align="left" width="20" text=" / " fontColor="#7A94B0" fontSize="13" horzTextAlign="center"/>
+                        <label align="left" width="55" field="kuchi_pestamina" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                        <layout align="left" width="10" height="30"/>
+                        <layout name="kuchi_containerBarraEstamina" align="client" height="30" margins="{top=5, bottom=5}">
+                            <rectangle name="kuchi_barraEstaminaFundo" align="client" color="#061210" strokeColor="#0A2015" strokeSize="1" xradius="6" yradius="6"/>
+                            <rectangle name="kuchi_barraEstamina" align="left" width="0" color="#10B981" xradius="6" yradius="6"/>
+                        </layout>
+                    </layout>
+
+                    <!-- Trait da Kuchiyose -->
+                    <layout align="top" height="30" margins="{top=15, bottom=5}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" field="kuchi_trait_resumo" horzTextAlign="center" vertTextAlign="center" fontStyle="bold" fontColor="white" fontSize="15"/>
+                    </layout>
+                    <layout align="top" height="20" margins="{top=2, bottom=5}">
+                        <label align="left" width="800" text="Formato para somar automaticamente: Nome do Trait (XXX pontos de Trait)" horzTextAlign="center" fontColor="#5E7FA0" fontSize="11" fontStyle="italic"/>
+                    </layout>
+                    <layout align="top" height="16" margins="{bottom=5}">
+                        <label align="left" width="800" text="Bonus nos calculos: [bonus: CAMPO +N]  ex: [bonus: forca +2]  [bonus: pv +500]" horzTextAlign="center" fontColor="#7DD3FC" fontSize="10" fontStyle="italic"/>
+                    </layout>
+                    <layout align="top" height="18" margins="{bottom=3}">
+                        <label align="client" field="kuchi_trait_bonus_resumo" horzTextAlign="center" fontColor="#38BDF8" fontSize="11" fontStyle="bold"/>
+                    </layout>
+
+                    <script>
+                        local function calcularKuchiTraits()
+                            if sheet == nil then return end;
+                            local nivel = tonumber(sheet.nivel) or 0;
+                            local max = 450 + (nivel * 10);
+                            local gasto = 0;
+                            local texto = "";
+                            if self.edtKuchiTraits ~= nil then
+                                texto = self.edtKuchiTraits.text or "";
+                            end
+                            if texto ~= "" then
+                                for valor in string.gmatch(texto:lower(), "%((%d+)%s*pontos.-trait%)") do
+                                    gasto = gasto + tonumber(valor);
+                                end
+                            end
+                            sheet.kuchi_trait_resumo = "Trait [ " .. gasto .. " / " .. max .. " ]";
+
+                            local cambosCombate = {'taijutsu','bukijutsu','ninjutsu','genjutsu','genjutsu_kai','fuinjutsu','arremesso','esquiva','bloqueio_fisico','bloqueio_chakra','reflexo','iniciativa','tai_bukijutsu','nin_taijutsu','hiraishin','movimentacao'};
+                            local camposStatus = {'pv','pchakra','pestamina'};
+                            local totaisBonus = {};
+                            for _, c in ipairs(cambosCombate) do totaisBonus[c] = 0; end
+                            for _, c in ipairs(camposStatus) do totaisBonus[c] = 0; end
+
+                            local textoLower = texto:lower();
+                            for campo, sinal, valor in string.gmatch(textoLower, "%[b%o*nus:%s*([%a_]+)%s*([%+%-])(%d+)%]") do
+                                if totaisBonus[campo] ~= nil then
+                                    local n = tonumber(valor) or 0;
+                                    if sinal == "-" then n = -n; end
+                                    totaisBonus[campo] = totaisBonus[campo] + n;
+                                end
+                            end
+                            for campo, sinal, valor in string.gmatch(textoLower, "%[b%o*nus:%s*([%a_]+)%s*([%+%-])(%d+)%%%]") do
+                                if totaisBonus[campo] ~= nil then
+                                    local n = tonumber(valor) or 0;
+                                    if sinal == "-" then n = -n; end
+                                    totaisBonus[campo] = totaisBonus[campo] + n;
+                                end
+                            end
+
+                            for campo, v in pairs(totaisBonus) do
+                                sheet["kuchi_bonus_" .. campo] = tostring(v);
+                            end
+
+                            local resumoBonus = "";
+                            for _, c in ipairs(cambosCombate) do
+                                local v = totaisBonus[c];
+                                if v ~= 0 then
+                                    local s = v > 0 and "+" or "";
+                                    resumoBonus = resumoBonus .. c .. ": " .. s .. v .. "  ";
+                                end
+                            end
+                            for _, c in ipairs(camposStatus) do
+                                local v = totaisBonus[c];
+                                if v ~= 0 then
+                                    local s = v > 0 and "+" or "";
+                                    resumoBonus = resumoBonus .. c .. ": " .. s .. v .. "%  ";
+                                end
+                            end
+                            if resumoBonus ~= "" then
+                                sheet.kuchi_trait_bonus_resumo = "Bonus: " .. resumoBonus;
+                            else
+                                sheet.kuchi_trait_bonus_resumo = "";
+                            end
+
+                            if calcularKuchiyose ~= nil then
+                                calcularKuchiyose();
+                            end
+                        end
+                    </script>
+
+                    <textEditor name="edtKuchiTraits" align="top" height="250" field="kuchi_traits" fontColor="white" transparent="false" margins="{top=5, left=10, right=10}">
+                        <event name="onChange">
+                            calcularKuchiTraits();
+                        </event>
+                    </textEditor>
+
+                    <!-- Atributos de Combate -->
+                    <layout align="top" height="34" margins="{top=18, bottom=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#FB923C" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" text="Atributos de Combate" horzTextAlign="center" fontStyle="bold" fontColor="#FB923C" fontSize="15"/>
+                    </layout>
+                    <layout align="top" height="20">
+                        <label name="kuchi_rank_penalty_label" align="client" text="" fontColor="#EF4444" fontSize="11" fontStyle="italic" horzTextAlign="center"/>
+                    </layout>
+
+                    <layout align="top" height="500">
+                        <!-- Coluna Esquerda -->
+                        <layout align="left" width="420">
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_taijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <label align="client" text="(For + Agi/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_bukijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <label align="client" text="(Des + For/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Ninjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_ninjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <label align="client" text="(FEsp + CC/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Genjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_genjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <label align="client" text="(CC + Int/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Genjutsu Kai:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_genjutsu_kai" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <label align="client" text="(Int+CC+Conc)/2" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Fuinjutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_fuinjutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <label align="client" text="(Int + FEsp/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Arremesso:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_arremesso" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                                <label align="client" text="(Conc + Des/2)" fontColor="#6B7280" fontSize="10" fontStyle="italic"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Esquiva:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_esquiva" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Bloqueio Físico:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_bloqueio_fisico" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Bloqueio Chakra:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_bloqueio_chakra" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Reflexo:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_reflexo" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="155" text="Iniciativa:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_iniciativa" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                        </layout>
+                        <!-- Coluna Direita: Unicos -->
+                        <layout align="client">
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="135" text="Tai-Bukijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_tai_bukijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="135" text="Nin-Taijutsu:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_nin_taijutsu" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="135" text="Hiraishin:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_hiraishin" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                            <layout align="top" height="30" margins="{top=2}">
+                                <label align="left" width="135" text="Movimentação:" horzTextAlign="trailing" margins="{right=8}" fontColor="#8BA3C4" fontSize="13"/>
+                                <label align="left" width="45" field="kuchi_movimentacao" fontColor="white" fontSize="13" fontStyle="bold" horzTextAlign="center"/>
+                            </layout>
+                        </layout>
+                    </layout>
+
+                    <!-- ====== TRAITS DE COMBATE (KUCHIYOSE) ====== -->
+                    <layout align="top" height="34" margins="{top=18, bottom=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" text="Traits de Combate" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
+                    </layout>
+
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Artista Marcial: Disciplina de Combate" fontColor="#F87171" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_artmarcial_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_artmarcial_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_artmarcial_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_artmarcial_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_artmarcial_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_artmarcial_s6" text="" fontColor="#FBBF24" fontSize="14"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Domínio das Armas: Mestre de Armaria" fontColor="#B45309" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_domarmas_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_domarmas_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_domarmas_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_domarmas_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_domarmas_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_domarmas_s6" text="" fontColor="#FBBF24" fontSize="14"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Manipulador de Chakra: Mestre dos Fluxos" fontColor="#3B82F6" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_manipchakra_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_manipchakra_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_manipchakra_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_manipchakra_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_manipchakra_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_manipchakra_s6" text="" fontColor="#FBBF24" fontSize="14"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Ilusionista: Tecelão de Pesadelos" fontColor="#A855F7" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_ilusionista_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_ilusionista_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_ilusionista_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_ilusionista_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_ilusionista_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_ilusionista_s6" text="" fontColor="#FBBF24" fontSize="14"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Mente Blindada: Cidadela Psíquica" fontColor="#14B8A6" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_menteblind_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_menteblind_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_menteblind_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_menteblind_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_menteblind_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_menteblind_s6" text="" fontColor="#FBBF24" fontSize="14"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Bloqueador: Muralha Inabalável" fontColor="#60A5FA" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_bloqueador_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_bloqueador_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_bloqueador_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_bloqueador_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_bloqueador_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_bloqueador_s6" text="" fontColor="#FBBF24" fontSize="14"/>
+                    </layout>
+                    <layout align="top" height="28" margins="{top=4}">
+                        <label align="left" width="320" text="Intuição Sensível: Instinto de Batalha" fontColor="#F59E0B" fontSize="12" fontStyle="bold" hitTest="true"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_intuicao_s1" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_intuicao_s2" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_intuicao_s3" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_intuicao_s4" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_intuicao_s5" text="" fontColor="#FBBF24" fontSize="14"/>
+                        <checkBox align="left" width="22" field="kuchi_trait_intuicao_s6" text="" fontColor="#FBBF24" fontSize="14"/>
+                    </layout>
+
+                    <!-- Notas / Habilidades da Invocação -->
+                    <layout align="top" height="34" margins="{top=18, bottom=6}">
+                        <rectangle align="client" color="#0C1828" strokeColor="#F97316" strokeSize="2" xradius="8" yradius="8"/>
+                        <label align="client" text="Habilidades e Notas" horzTextAlign="center" fontStyle="bold" fontColor="#F97316" fontSize="15"/>
+                    </layout>
+                    <layout align="top" height="600">
+                        <richEdit name="edtKuchiNotas" align="client" field="kuchi_notas" backgroundColor="#0C1018" defaultFontSize="13" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+                    </layout>
+
+                    <!-- Script de cálculo do Kuchiyose -->
+                    <script>
+                        local function kuchi_atualizarBarras()
+                            if sheet == nil then return end;
+                            local pvMax = tonumber(sheet.kuchi_pv) or 0;
+                            local pvAtual = tonumber(sheet.kuchi_pv_atual) or 0;
+                            local chakraMax = tonumber(sheet.kuchi_pchakra) or 0;
+                            local chakraAtual = tonumber(sheet.kuchi_pchakra_atual) or 0;
+                            local estMax = tonumber(sheet.kuchi_pestamina) or 0;
+                            local estAtual = tonumber(sheet.kuchi_pestamina_atual) or 0;
+
+                            local fixedLabels = 300;
+                            local rowW = math.max((self.kuchi_rowBarraPv ~= nil and self.kuchi_rowBarraPv.width or 900), 400);
+                            local barraLarg = rowW - fixedLabels;
+
+                            if pvMax > 0 and self.kuchi_barraPv ~= nil then
+                                local pct = math.min(pvAtual / pvMax, 1);
+                                self.kuchi_barraPv.width = math.floor(pct * barraLarg);
+                                if pct > 0.6 then self.kuchi_barraPv.color = "#10B981";
+                                elseif pct > 0.3 then self.kuchi_barraPv.color = "#EAB308";
+                                else self.kuchi_barraPv.color = "#DC2626"; end
+                            end
+                            if chakraMax > 0 and self.kuchi_barraChakra ~= nil then
+                                local pct = math.min(chakraAtual / chakraMax, 1);
+                                self.kuchi_barraChakra.width = math.floor(pct * barraLarg);
+                                if pct > 0.6 then self.kuchi_barraChakra.color = "#3B82F6";
+                                elseif pct > 0.3 then self.kuchi_barraChakra.color = "#EAB308";
+                                else self.kuchi_barraChakra.color = "#DC2626"; end
+                            end
+                            if estMax > 0 and self.kuchi_barraEstamina ~= nil then
+                                local pct = math.min(estAtual / estMax, 1);
+                                self.kuchi_barraEstamina.width = math.floor(pct * barraLarg);
+                                if pct > 0.6 then self.kuchi_barraEstamina.color = "#10B981";
+                                elseif pct > 0.3 then self.kuchi_barraEstamina.color = "#EAB308";
+                                else self.kuchi_barraEstamina.color = "#DC2626"; end
+                            end
+                        end
+
+                        local function calcularKuchiyose()
+                            if sheet == nil then return end;
+                            local forca = tonumber(sheet.kuchi_forca) or 0;
+                            local agilidade = tonumber(sheet.kuchi_agilidade) or 0;
+                            local constituicao = tonumber(sheet.kuchi_constituicao) or 0;
+                            local destreza = tonumber(sheet.kuchi_destreza) or 0;
+                            local ctrl_chakra = tonumber(sheet.kuchi_ctrl_chakra) or 0;
+                            local concentracao = tonumber(sheet.kuchi_concentracao) or 0;
+                            local forca_espiritual = tonumber(sheet.kuchi_forca_espiritual) or 0;
+                            local inteligencia = tonumber(sheet.kuchi_inteligencia) or 0;
+
+                            -- PV / Chakra / Estamina
+                            local pvBase = math.floor((constituicao * 10) + (forca * 5));
+                            local chakraBase = math.floor((ctrl_chakra * 10) + (forca_espiritual * 5));
+                            local estBase = math.floor((constituicao * 5) + (agilidade * 5) + (forca * 2));
+                            sheet.kuchi_pv = tostring(pvBase);
+                            sheet.kuchi_pchakra = tostring(chakraBase);
+                            sheet.kuchi_pestamina = tostring(estBase);
+                            kuchi_atualizarBarras();
+
+                            -- Rank penalty
+                            local rankVal = tostring(sheet.kuchi_rank);
+                            local penalty = -5;
+                            if rankVal == '-5' then penalty = -5;
+                            elseif rankVal == '-4' or rankVal == '-4b' then penalty = -4;
+                            elseif rankVal == '-3' then penalty = -3;
+                            elseif rankVal == '-2' then penalty = -2;
+                            elseif rankVal == '-1' then penalty = -1;
+                            elseif rankVal == '0' then penalty = 0;
+                            end
+
+                            if self.kuchi_rank_penalty_label ~= nil then
+                                if penalty == 0 then
+                                    self.kuchi_rank_penalty_label.text = "Rank SS+: Sem penalidade";
+                                else
+                                    self.kuchi_rank_penalty_label.text = "Penalidade de Rank: " .. tostring(penalty) .. " em todos os atributos de combate";
+                                end
+                            end
+
+                            -- Atributos de Combate + penalty + traits
+                            local n_am = 0;
+                            if tostring(sheet.kuchi_trait_artmarcial_s1) == 'true' then n_am = n_am + 1; end
+                            if tostring(sheet.kuchi_trait_artmarcial_s2) == 'true' then n_am = n_am + 1; end
+                            if tostring(sheet.kuchi_trait_artmarcial_s3) == 'true' then n_am = n_am + 1; end
+                            if tostring(sheet.kuchi_trait_artmarcial_s4) == 'true' then n_am = n_am + 1; end
+                            if tostring(sheet.kuchi_trait_artmarcial_s5) == 'true' then n_am = n_am + 1; end
+                            if tostring(sheet.kuchi_trait_artmarcial_s6) == 'true' then n_am = n_am + 1; end
+                            local t_artmarcial = 0; if n_am > 0 then t_artmarcial = 2 + (n_am - 1); end
+
+                            local n_da = 0;
+                            if tostring(sheet.kuchi_trait_domarmas_s1) == 'true' then n_da = n_da + 1; end
+                            if tostring(sheet.kuchi_trait_domarmas_s2) == 'true' then n_da = n_da + 1; end
+                            if tostring(sheet.kuchi_trait_domarmas_s3) == 'true' then n_da = n_da + 1; end
+                            if tostring(sheet.kuchi_trait_domarmas_s4) == 'true' then n_da = n_da + 1; end
+                            if tostring(sheet.kuchi_trait_domarmas_s5) == 'true' then n_da = n_da + 1; end
+                            if tostring(sheet.kuchi_trait_domarmas_s6) == 'true' then n_da = n_da + 1; end
+                            local t_domarmas = 0; if n_da > 0 then t_domarmas = 2 + (n_da - 1); end
+
+                            local n_mc = 0;
+                            if tostring(sheet.kuchi_trait_manipchakra_s1) == 'true' then n_mc = n_mc + 1; end
+                            if tostring(sheet.kuchi_trait_manipchakra_s2) == 'true' then n_mc = n_mc + 1; end
+                            if tostring(sheet.kuchi_trait_manipchakra_s3) == 'true' then n_mc = n_mc + 1; end
+                            if tostring(sheet.kuchi_trait_manipchakra_s4) == 'true' then n_mc = n_mc + 1; end
+                            if tostring(sheet.kuchi_trait_manipchakra_s5) == 'true' then n_mc = n_mc + 1; end
+                            if tostring(sheet.kuchi_trait_manipchakra_s6) == 'true' then n_mc = n_mc + 1; end
+                            local t_manipchakra = 0; if n_mc > 0 then t_manipchakra = 2 + (n_mc - 1); end
+
+                            local n_il = 0;
+                            if tostring(sheet.kuchi_trait_ilusionista_s1) == 'true' then n_il = n_il + 1; end
+                            if tostring(sheet.kuchi_trait_ilusionista_s2) == 'true' then n_il = n_il + 1; end
+                            if tostring(sheet.kuchi_trait_ilusionista_s3) == 'true' then n_il = n_il + 1; end
+                            if tostring(sheet.kuchi_trait_ilusionista_s4) == 'true' then n_il = n_il + 1; end
+                            if tostring(sheet.kuchi_trait_ilusionista_s5) == 'true' then n_il = n_il + 1; end
+                            if tostring(sheet.kuchi_trait_ilusionista_s6) == 'true' then n_il = n_il + 1; end
+                            local t_ilusionista = 0; if n_il > 0 then t_ilusionista = 2 + (n_il - 1); end
+
+                            local n_mb = 0;
+                            if tostring(sheet.kuchi_trait_menteblind_s1) == 'true' then n_mb = n_mb + 1; end
+                            if tostring(sheet.kuchi_trait_menteblind_s2) == 'true' then n_mb = n_mb + 1; end
+                            if tostring(sheet.kuchi_trait_menteblind_s3) == 'true' then n_mb = n_mb + 1; end
+                            if tostring(sheet.kuchi_trait_menteblind_s4) == 'true' then n_mb = n_mb + 1; end
+                            if tostring(sheet.kuchi_trait_menteblind_s5) == 'true' then n_mb = n_mb + 1; end
+                            if tostring(sheet.kuchi_trait_menteblind_s6) == 'true' then n_mb = n_mb + 1; end
+                            local t_menteblind = 0; if n_mb > 0 then t_menteblind = 4 + (n_mb - 1); end
+
+                            local n_bl = 0;
+                            if tostring(sheet.kuchi_trait_bloqueador_s1) == 'true' then n_bl = n_bl + 1; end
+                            if tostring(sheet.kuchi_trait_bloqueador_s2) == 'true' then n_bl = n_bl + 1; end
+                            if tostring(sheet.kuchi_trait_bloqueador_s3) == 'true' then n_bl = n_bl + 1; end
+                            if tostring(sheet.kuchi_trait_bloqueador_s4) == 'true' then n_bl = n_bl + 1; end
+                            if tostring(sheet.kuchi_trait_bloqueador_s5) == 'true' then n_bl = n_bl + 1; end
+                            if tostring(sheet.kuchi_trait_bloqueador_s6) == 'true' then n_bl = n_bl + 1; end
+                            local t_bloqueador = 0; if n_bl > 0 then t_bloqueador = 1 + (n_bl - 1); end
+
+                            local n_in = 0;
+                            if tostring(sheet.kuchi_trait_intuicao_s1) == 'true' then n_in = n_in + 1; end
+                            if tostring(sheet.kuchi_trait_intuicao_s2) == 'true' then n_in = n_in + 1; end
+                            if tostring(sheet.kuchi_trait_intuicao_s3) == 'true' then n_in = n_in + 1; end
+                            if tostring(sheet.kuchi_trait_intuicao_s4) == 'true' then n_in = n_in + 1; end
+                            if tostring(sheet.kuchi_trait_intuicao_s5) == 'true' then n_in = n_in + 1; end
+                            if tostring(sheet.kuchi_trait_intuicao_s6) == 'true' then n_in = n_in + 1; end
+                            local t_intuicao = 0; if n_in > 0 then t_intuicao = 2 + (n_in - 1); end
+
+                            local taijutsu = math.floor(forca + agilidade * 0.5) + penalty;
+                            local bukijutsu = math.floor(destreza + forca * 0.5) + penalty;
+                            local ninjutsu = math.floor(forca_espiritual + ctrl_chakra * 0.5) + penalty;
+                            local genjutsu = math.floor(ctrl_chakra + inteligencia * 0.5) + penalty;
+                            local genjutsu_kai = math.floor((inteligencia + ctrl_chakra + concentracao) / 2) + penalty;
+                            local fuinjutsu = math.floor(inteligencia + forca_espiritual * 0.5) + penalty;
+                            local arremesso = math.floor(concentracao + destreza * 0.5) + penalty;
+                            local esquiva = math.floor((agilidade + concentracao + inteligencia + constituicao) / 2.5) + penalty;
+                            local bloqueio_fisico = math.floor((forca + destreza + constituicao + agilidade) / 2.5) + penalty;
+                            local bloqueio_chakra = math.floor((ctrl_chakra + forca_espiritual + constituicao + concentracao) / 2.5) + penalty;
+                            local reflexo = math.floor((concentracao + agilidade + constituicao + inteligencia) / 2.5) + penalty;
+                            local iniciativa = math.floor((forca + destreza + concentracao + agilidade) / 2.5) + penalty;
+
+                            sheet.kuchi_taijutsu = tostring(taijutsu + t_artmarcial + (tonumber(sheet.kuchi_bonus_taijutsu) or 0));
+                            sheet.kuchi_bukijutsu = tostring(bukijutsu + t_domarmas + (tonumber(sheet.kuchi_bonus_bukijutsu) or 0));
+                            sheet.kuchi_ninjutsu = tostring(ninjutsu + t_manipchakra + (tonumber(sheet.kuchi_bonus_ninjutsu) or 0));
+                            sheet.kuchi_genjutsu = tostring(genjutsu + t_ilusionista + (tonumber(sheet.kuchi_bonus_genjutsu) or 0));
+                            sheet.kuchi_genjutsu_kai = tostring(genjutsu_kai + t_ilusionista + t_menteblind + (tonumber(sheet.kuchi_bonus_genjutsu_kai) or 0));
+                            sheet.kuchi_fuinjutsu = tostring(fuinjutsu + t_manipchakra + (tonumber(sheet.kuchi_bonus_fuinjutsu) or 0));
+                            sheet.kuchi_arremesso = tostring(arremesso + t_domarmas + (tonumber(sheet.kuchi_bonus_arremesso) or 0));
+                            sheet.kuchi_esquiva = tostring(esquiva + t_intuicao + (tonumber(sheet.kuchi_bonus_esquiva) or 0));
+                            sheet.kuchi_bloqueio_fisico = tostring(bloqueio_fisico + t_bloqueador + (tonumber(sheet.kuchi_bonus_bloqueio_fisico) or 0));
+                            sheet.kuchi_bloqueio_chakra = tostring(bloqueio_chakra + t_bloqueador + (tonumber(sheet.kuchi_bonus_bloqueio_chakra) or 0));
+                            sheet.kuchi_reflexo = tostring(reflexo + t_intuicao + (tonumber(sheet.kuchi_bonus_reflexo) or 0));
+                            sheet.kuchi_iniciativa = tostring(iniciativa + t_intuicao + (tonumber(sheet.kuchi_bonus_iniciativa) or 0));
+
+                            -- Unicos
+                            sheet.kuchi_tai_bukijutsu = tostring(math.floor((taijutsu + bukijutsu) / 2) + t_artmarcial + t_domarmas + (tonumber(sheet.kuchi_bonus_tai_bukijutsu) or 0));
+                            sheet.kuchi_nin_taijutsu = tostring(math.floor((taijutsu + ninjutsu) / 2) + t_artmarcial + t_manipchakra + (tonumber(sheet.kuchi_bonus_nin_taijutsu) or 0));
+                            sheet.kuchi_hiraishin = tostring(math.floor((ninjutsu + fuinjutsu) / 2) + (tonumber(sheet.kuchi_bonus_hiraishin) or 0));
+                            sheet.kuchi_movimentacao = tostring(math.floor(agilidade + inteligencia / 2) + penalty + t_intuicao + (tonumber(sheet.kuchi_bonus_movimentacao) or 0));
+                        end
+                    </script>
+
+                    <dataLink fields="{'kuchi_forca', 'kuchi_agilidade', 'kuchi_constituicao', 'kuchi_destreza', 'kuchi_ctrl_chakra', 'kuchi_concentracao', 'kuchi_forca_espiritual', 'kuchi_inteligencia', 'kuchi_rank', 'kuchi_trait_artmarcial_s1','kuchi_trait_artmarcial_s2','kuchi_trait_artmarcial_s3','kuchi_trait_artmarcial_s4','kuchi_trait_artmarcial_s5','kuchi_trait_artmarcial_s6', 'kuchi_trait_domarmas_s1','kuchi_trait_domarmas_s2','kuchi_trait_domarmas_s3','kuchi_trait_domarmas_s4','kuchi_trait_domarmas_s5','kuchi_trait_domarmas_s6', 'kuchi_trait_manipchakra_s1','kuchi_trait_manipchakra_s2','kuchi_trait_manipchakra_s3','kuchi_trait_manipchakra_s4','kuchi_trait_manipchakra_s5','kuchi_trait_manipchakra_s6', 'kuchi_trait_ilusionista_s1','kuchi_trait_ilusionista_s2','kuchi_trait_ilusionista_s3','kuchi_trait_ilusionista_s4','kuchi_trait_ilusionista_s5','kuchi_trait_ilusionista_s6', 'kuchi_trait_menteblind_s1','kuchi_trait_menteblind_s2','kuchi_trait_menteblind_s3','kuchi_trait_menteblind_s4','kuchi_trait_menteblind_s5','kuchi_trait_menteblind_s6', 'kuchi_trait_bloqueador_s1','kuchi_trait_bloqueador_s2','kuchi_trait_bloqueador_s3','kuchi_trait_bloqueador_s4','kuchi_trait_bloqueador_s5','kuchi_trait_bloqueador_s6', 'kuchi_trait_intuicao_s1','kuchi_trait_intuicao_s2','kuchi_trait_intuicao_s3','kuchi_trait_intuicao_s4','kuchi_trait_intuicao_s5','kuchi_trait_intuicao_s6'}">
+                        <event name="onChange">
+                            calcularKuchiyose();
+                        </event>
+                    </dataLink>
+
+                    <dataLink fields="{'kuchi_pv_atual', 'kuchi_pchakra_atual', 'kuchi_pestamina_atual', 'kuchi_pv', 'kuchi_pchakra', 'kuchi_pestamina'}">
+                        <event name="onChange">
+                            kuchi_atualizarBarras();
+                        </event>
+                    </dataLink>
+                    
+                    <timer name="timerJutsu" interval="2000" enabled="true">
+                        <event name="onTimer">
+                            contarPontosJutsu();
+                            calcularTraits();
+                        </event>
+                    </timer>
+
+                        </layout>
+                    </scrollBox>
+                </tab>
+            </tabControl>
+        </tab>
+        
+        <tab title="Inventário">
+            <scrollBox align="client">
+                <richEdit name="edtInventario" align="client" field="inventario_fmt" backgroundColor="#111827" defaultFontSize="14" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+            </scrollBox>
+        </tab>
+        
+        <tab title="História">
+            <scrollBox align="client">
+                <richEdit name="edtHistoria" align="client" field="historia_fmt" backgroundColor="#111827" defaultFontSize="14" defaultFontColor="white" hideSelection="false" animateImages="true"/>
+            </scrollBox>
+        </tab>
+    </tabControl>
+</form>
+
+

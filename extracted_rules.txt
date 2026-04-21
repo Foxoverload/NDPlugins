@@ -1,0 +1,773 @@
+
+
+==================================================
+C:\Users\aaron\Desktop\ND Fichas\Ficha ND\Sistema Destiny\Creation Text.docx
+==================================================
+
+Esses são os textos de criação de técnica utilizados na formulação das técnicas.
+-------------------------- Textos de Criação ----------------------------
+Manter Gasto por Rodada
+Gasto: X pontos de chakra/estâmina para ativar a técnica a primeira vez
+X pontos de chakra/estâmina para manter ativo nas rodadas seguintes
+Dano Elemental
+Dano: X (X*1,25 se possuir afinidade com Elementon)
+Barreira
+Cria uma barreira que possúi X pontos de vida. (X*1,3 pontos de vida se possuir afinidade com Elementon)
+Técnicas de Clone
+Notas:O usuário poderá criar no máximo 2 clones
+O clone replicará os equipamentos de mesmo rank do usuário, exceto Kibaku Fuda.
+Dano: Nenhum
+Gasto: X pontos de Chakra por clone 
+Efeito:O clone pode usar técnicas do mesmo Rank desse jutsu
+O clone pode usar Modos desde que possuam o Rank equivalente ao modo (Se o usuário fizer o clone usar Modo, todos os demais clones irão sumir restando apenas 1 com o modo.)
+Se o clone utilizar uma técnica de Rank equivalente, ele sumirá, exceto se o usuário pagar 40 pontos de chakra extra para o clone não sumir.
+Todos os gastos do clone (Chakra e Estâmina) serão removidos diretamente do usuário.
+O clone possuí um turno próprio.
+[Effeito Unico EX] Caso seja destruído o clone ele explodirá causando 70 pontos de dano no alvo
+O clone possuí X pontos de vida
+Os clones possuem -Y em todas as suas ações de combate
+Rank B = -4 | Rank A = -3 | Rank S = -2 | Rank SS = -1 | Rank SS+ = 0
+Técnica de Prisão/Aprisionar:
+Gasto: X pontos de chakra/estâmina para ativar a técnica a primeira vez
+X pontos de chakra/estâmina para manter ativo nas rodadas seguintes
+Efeito:Cria uma prisão de ???? que possui X pontos de vida. (X pontos de vida se possuir afinidade com Elemento)
+O alvo dentro da prisão de ???? não poderá realizar nenhuma ação de movimentação enquanto estiver preso.
+O alvo dentro da prisão não poderá utilizar o atributo esquiva em suas defesas.
+O alvo poderá em seu turno, consumir suas 2 ações de suporte para fazer sua ação de tentar se libertar da prisão de ?????, e receberão um redutor de -X em sua rolagem.
+O alvo poderá em seu turno, rolar Taijutsu ou Ninjutsu pagando o resultado da rolagem como gasto pela tentativa, sendo Taijutsu o gasto em estâmina e Ninjutsu em gasto de chakra.
+O alvo poderá em seu turno, pagar Gasto*2 pontos de chakra/estâmina e duas ações de suporte para sair instântaneamente da prisão de ????.
+O alvo poderá usar uma barreira de rank equivalente ou superior para negar esta técnica. Isso iniciara o Cooldown da barreira. Não pode ser feito se a barreira estiver em cooldown.
+Enquanto estiver preso o alvo receberá um redutor de -X em suas rolagens de ATBs [Se receber dano não receberá redutor]
+Técnicas de Elemento causam metade do seu dano contra a prisão de ????
+Técnicas de Elemento causam o dobro do seu dano contra a prisão de ????
+Area
+Todos os alvos na área da técnica recebem um redutor de -X em suas rolagens de movimentação para se defender
+Controle Mental
+Gasto: X Pontos de Chakra
+Efeito:Permite o usuário controlar o alvo o forçando a fazer qualquer ação que o usuário desejar por X rodadas
+O usuário irá controlar o alvo no turno do alvo, tomando controle de sua ação ofensiva, movimentação e suporte.
+Se o alvo receber X pontos de dano o efeito desta técnica é automaticamente cancelado
+Se o alvo pagar Gasto*2 pontos de Chakra ele poderá se libertar automaticamente desta técnica
+O alvo poderá em seu turno, rolar Genjutsu Kai pagando o resultado da rolagem em pontos de chakra como gasto pela tentativa
+O alvo receberá um redutor de -X em sua rolagem para tentar resistir a ação de controle
+Sensor
+Rank: Interior | Exterior
+C: 010 D | 030 D
+B: 020 D | 050 D
+A: 030 D | 090 D
+S: 040 D | 150 D
+SS: 050 D | 500 D
+SS+: 070 D | 2km D
+MSS+: 100 D | 4km D
+Furtividade:
+Gasto: X pontos de chakra/estâmina para ativar a técnica a primeira vez
+X pontos de chakra/estâmina para manter ativo nas rodadas seguintes
+Efeito:O usuário receberá um bônus de +X em suas rolagens de Ladinagem
+Permite o usuário ficar furtivo, o usuário deverá rolar Ladinagem contra a Percepção de todos os alvos inimigos no combate.
+Os alvos que passarem no teste terão visão do usuário em seu turno ofensivo e defensivo somente.
+O alvo caso seja sensor, em seu turno poderá utilizar uma técnica de Rank equivalente ou superior desta técnica para revelar o usuário instântaneamente
+O alvo caso seja usuário de Dõjutsu que possua visão de chakra poderá ter visão do usuário automaticamente durante seu turno de ataque e defesa somente.
+O usuário em seu primeiro ataque forçará o alvo a rolar reflexo como defesa. Isso só poderá acontecer uma vez a cada duas rodadas.
+Assim que o usuário atacar um alvo, esta técnica será cancelada automaticamente
+MULTISHOT
+Dano:x por Ataque
+Gasto:X pontos de chakra/estâmina por ataque
+Efeito:É permitido utilizar um máximo de X ataque em até X inimigos diferentes.
+REQ de ATB Médio
+Rank E: 1 pontos de atb
+Rank D: 2 pontos de atb
+Rank C: 3 pontos de atb
+Rank B: 5 pontos de atb
+Rank A: 7 pontos de atb
+Rank S: 11 pontos de atb
+Rank SS: 15 pontos de atb
+Rank SS+: 18 pontos de atb
+Rank MSS+: 23 pontos de atb
+
+==================================================
+C:\Users\aaron\Desktop\ND Fichas\Ficha ND\Sistema Destiny\Sistema\1 - Combate.docx
+==================================================
+
+[Last Update 26/08/2025]
+ 
+Combate
+Neste NPC, serão apresentadas explicações detalhadas sobre o funcionamento do sistema de combate, o que você pode ou não fazer, as principais mecânicas e as dúvidas comuns dos jogadores em relação ao sistema.
+Básico
+Rolagem de Dados
+Neste sistema, um dado de 20 faces será usado em todas as rolagens elacionadas a todas as ações possíveis do personagem.
+As rolagens de combate são compostas pelo seguinte conjunto: 1d20+Atributo de Combate Usado+Bônus-Redutores. 
+A formula mais completa de combate será: 1d20+Atributo de Combate+(Modo+Estilo até um maximo de +4 devido ao limite de bonus)+Modificadores que passam do limite-Redutor de Efeito - Redutores que passam do limite.
+As rolagens de atributos interpretativos constituem-se de: 1d20+Atributo Interpretativo+Bônus-Redutores.
+Todas as técnicas possuem um indicador declarando qual atributo de combate será utilizado pela técnica.
+Testes interpretativos têm seus atributos declarados pelo mestre conforme a necessidade ou situação interpretativa.
+Turnos 
+Iniciativa
+A iniciativa é declarada pelo mestre quando colocado no chat "Ordem de Turnos". Quando anunciado, o mestre irá pedir o valor de iniciativa de todos os envolvidos no combate para determinar a ordem de ação de todos os envolvidos no combate. Aquele com o maior atributo iniciativa irá agir primeiro, depois aquele que possui o segundo maior valor, e assim sucessivamente, até que chegue aquele com o menor valor de iniciativa. Uma vez que isso seja determinada, a ordem do combate estará formada.
+Caso haja um empate no número inteiro, será avaliado a casa decimal do atributo iniciativa. Aquele que possui 6.8 irá agir antes daquele que possui 6.3 em seu valor de iniciativa por exemplo.
+Caso haja um empate mesmo entre os números decimais, será considerado o atributo core agilidade dos envolvidos. Aquele que possuir o maior atributo de agilidade irá agir na frente. 
+Caso haja um empate mesmo entre o atributo agilidade, então os empatados irão rolar 1d20 sem bonificação, e aquele que obtiver o maior resultado irá agir primeiro. Isso será repetido até que haja uma ordem de ação clara, no qual aquele que desempatou na frente irá permanecer com a posição do seu valor, enquanto os outros irão ficar abaixo, mas ainda como se tivessem o valor inicial. Por exemplo, caso três indivíduos possuam o valor 10 em sua iniciativa, mesmo após os critérios de desempate, eles continuarão agindo na frente de qualquer um que tenha o valor de iniciativa 9 ou inferior.
+Turno Ofensivo
+O Turno Ofensivo é o turno do seu personagem agir em combate. Neste momento, seu personagem tem acesso a 1 Ação de Ataque, 2 Ações de Suporte e 1 Ação de Movimentação.
+Abaixo será explicado todas as ações ou manobras que podem ser utilizadas pelo seu personagem assim como o custo dessas ações.
+Ataque Básico
+Seu personagem pode realizar um simples ataque básico de Taijutsu ou Bukijutsu consumindo 1 Ação de Ataque. 
+Para realizar um ataque básico de Bukijutsu seu personagem deverá ter sua arma sacada. Caso não tenha sacado sua arma, você deverá consumir 1 Ação de Suporte para saca-la.
+Atacar com Técnica ou Jutsu
+Seu personagem poderá utilizar Técnicas ou Jutsus que possuam a função "Ataque", consumindo 1 Ação de Ataque.
+Atacar com um Genjutsu
+Seu personagem poderá utilizar uma técnica de Genjutsu que possua a função "Ataque", consumindo 1 Ação de Ataque.
+Utilizar Ação de Suporte
+Seu personagem poderá utilizar Ações de Suporte (Recuperar arma, Sacar Arma etc.), técnicas de suporte, ativar modos, ativar estilo de luta ou ativar avatar consumindo 1 Ação de Suporte 
+Utilizar Ação de Movimentação
+Seu personagem poderá se movimentar para se aproximar ou afastar de algo ou alguém a sua escolha ao consumir 1 Ação de Movimentação.
+Alvos que não sejam objetos poderão reagir ao se movimentar em conjunto com seu personagem para manterem suas distâncias atuais, assim será rolado sua movimentação contra a movimentação do alvo.
+Se você vencer no teste, sua ação é validada e a dos alvos será negada.
+Se você falhar o teste, sua ação será negada e a distância ficara a mesma do alvo.
+Utilizar Técnicas de Cura ou Sensores
+As técnicas de cura ou sensores quando utilizadas consumirão 1 Ação de Ataque.
+Caso o sensor encontre um alvo furtivo ou utilizando técnica de furtividade em sua rodada, ele será revelado para todos os aliados do sensor no combate e a técnica de furtividade será negado.
+Tirar um aliado de um genjutsu
+Seu personagem poderá remover o Genjutsu de um aliado que esteja a distância Física ao consumir 1 Ação de Suporte e 2x o gasto do Genjutsu afetando seu aliado sem necessitar rolagem de dados.
+Utilizar Armadilha
+Seu personagem poderá utilizar uma Armadilha podendo consumir 1 Ação de Ataque ou 1 Ação Suporte.
+Atacar diretamente um alvo com uma Armadilha irá consumir a armadilha e 1 Ação de Ataque a troco da ativação instântanea da armadilha.
+Você poderá consumir 1 Ação de Suporte para preparar uma armadilha no qual se ativará automaticamente em uma condição especifica combinada com o narrador ou uma das das condições abaixo diretamente.
+O Atacante da armadilha irá rolar o Atributo de Combate da Armadilha somado ao seu atributo de armadilha ignorando o limite contra o atributo de defesa do alvo somado a armadilha dele. (1d20+Atributo+Armadilha)
+Condições Validas
+- Ativar armadilha quando o alvo se mover a uma distância especifica (Físico á Longa).
+- Ativar armadilha quando o alvo entrar em contato com um objeto especifico.
+- Ativar armadilha quando o alvo se mover em uma área especifica.
+- Ativar armadilha caso o alvo tente fugir do combate.
+Furtividade
+Seu personagem poderá ficar furtivo ao consumir 1 Ação de Suporte.
+Ao realizar esta ação, será rolado a Ladinagem do usuário contra a Percepção de todos os alvos no combate que possuírem visão de seu personagem.
+Seu personagem ficará furtivo contra todos os alvos que ele venceu nos testes.
+Personagens que venceram de você no teste ainda poderão vê-lo e atacá-lo normalmente.
+Existem níveis de Furtividade que seu personagem alcançara de acordo com a forma em que ele ficou furtivo.
+Grau 1 - Ocultação Parcial
+Seu personagem se escondeu em uma sombra, cobertura, fumaça ou usou uma distração.
+Todos os alvos que falharam no teste recebem um redutor de -2 ignorando o limite para atacá-lo ou detectá-lo a distância média ou superior.
+Atacar qualquer alvo irá desfazer sua furtividade contra todos os alvos.
+Se seu personagem estiver na área de uma técnica de sensor, você será detectado imediatamente por ele.
+Se seu personagem estiver no campo de visão de um usuário de Dõjutsu, você será detectado imediatamente por ele.
+Grau 2 - Ocultação Avançada
+Seu personagem utilizou uma técnica de Rank C ou Superior para se ocultar no ambiente.
+Todos os alvos que falharam no teste não sabem sua área exata não podendo atacá-lo em seus turnos ofensivos.
+Seu próximo ataque contra um alvo que falhou no teste receberá um bônus de +1 ignorando o limite.
+Atacar qualquer alvo irá desfazer sua furtividade contra todos os alvos.
+Se seu personagem estiver na área de uma técnica de sensor, você será detectado imediatamente por ele.
+Se seu personagem estiver no campo de visão de um usuário de Dõjutsu, você será detectado imediatamente por ele.
+Se seu personagem não atacar ninguém por 2 Turnos, você será revelado imediatamente a todos e não poderá ficar furtivo novamente por 3 rodadas.
+Grau 3 - Invisibilidade Completa
+Seu personagem utilizou uma técnica de Rank A ou Superior para se ocultar no ambiente.
+Todos os alvos que falharam no teste não sabem sua área exata não podendo atacá-lo em seus turnos ofensivos.
+Seu próximo ataque contra um alvo que falhou no teste receberá um bônus de +1 ignorando o limite.
+Atacar qualquer alvo não irá desfazer a furtividade desde que você pague novamente o gasto da técnica.
+Se seu personagem estiver na área de uma técnica de sensor, você será detectado imediatamente por ele.
+Se seu personagem estiver no campo de visão de um usuário de Dõjutsu, você será detectado imediatamente por ele.
+Se seu personagem não atacar ninguém por 2 Turnos, você será revelado imediatamente a todos e não poderá ficar furtivo novamente por 3 rodadas.
+Encontrar alvo oculto
+Seu personagem poderá tentar encontrar alvos escondidos ao consumir 1 Ação de Movimentação.
+Será rolado Percepção do seu personagem contra Ladinagem dos alvos escondidos.
+Todos os alvos que você vencer no teste serão revelados a seu personagem.
+Todos os alvos que você falhar no teste se manterão escondidos.
+Prontidão
+Seu personagem poderá ativar o estado de prontidão consumindo 1 Ação de Ataque, 2 Ações de Suporte e 1 Ação de Movimentação.
+Com a prontidão ativada, seu personagem recebe 1 Ação de Defesa extra que pode ser utilizada em seu turno defensivo ou no turno defensivo de um aliado.
+Sua ação defensiva com prontidão recebe um bônus de +3 ignorando o limite.
+Pontidão não pode ser utilizado mais de uma vez seguida. Se o seu personagem já possui prontidão ativa, ele não poderá utilizar prontidão novamente.
+Invocações, ou Clones não podem utilizar prontidão em seus turnos ofensivos.
+Cobertura
+Seu personagem pode se esconder atrás de um objeto, pessoa ou obstáculo que esteja a uma distância Física ou Curta consumindo 1 Ação de Movimentação.
+Devido à multitude de possibilidades, o mestre irá declarar o que pode ou não ser utilizado como cobertura e o quanto de resistência (Pontos de Vida) a coisa usada como cobertura possuí.
+Todos os ataques utilizados contra um personagem em cobertura obrigatoriamente deverão passar pela cobertura para depois atingir o personagem.
+Se a cobertura for receber um ataque no qual irá destrui-la e afetar o personagem atrás dela, o personagem ainda terá direito a seu Turno Defensivo.
+Clones não podem ser utilizados como cobertura.
+Agarrar
+Seu personagem poderá tentar agarrar e segurar um alvo que está a distância Física ao consumir 1 Ação de Ataque.
+Será rolado Taijutsu do usuário contra a o dado utilizado na ação de defesa do alvo. 
+Em caso de sucesso, o usuário irá restringir fisicamente o alvo o impedindo de rolar esquiva, utilizar ação de movimentação e aplicando um redutor de -2 em ações de ataque contra outros alvos e defesa do alvo enquanto ele estiver preso.
+O alvo não poderá em seu turno defensivo utilizar o usuário que o agarra como cobertura ou como alvo para ataques adversários.
+O alvo poderá em seu turno ofensivo utilizar sua ação de ataque, dois suportes e uma ação de movimentação para se soltar imediatamente da agarrada.
+O alvo poderá em seu turno ofensivo consumir sua ação de ataque para rolar Taijutsu ou Bukijutsu contra o Taijutsu do usuário para tentar se soltar da agarrada.
+O usuário e o alvo poderão ser alvos de ataques em área de aliados ou adversários.
+O usuário deverá em seu turno ofensivo consumir sua ação de ataque para manter o alvo preso na agarrada. O gasto desta ação será o resultado da rolagem de Taijutsu em estamina.
+O usuário poderá em seu turno ofensivo soltar o alvo sem consumir nenhuma ação de ataque, movimentação ou suporte.
+Desarme
+Seu personagem poderá tentar desarmar um alvo que esteja a distância Física e que possuí 70% ou menos pontos de vida ao consumir 1 Ação de Ataque.
+O usuário do desarme irá rolar um ataque básico Taijutsu ou Bukijutsu para desarmar o alvo ou com técnicas específicas que possuam o desarme declarado em seus efeitos.
+O alvo desarmado terá sua arma arremessada a uma distância Física ou Curta ficando imune a desarme por três rodadas após a reobter a arma.
+O alvo poderá recuperar sua arma em seu turno ofensivo ao consumir uma ação de suporte. Está ação segue a regra de Reação contra Suporte.
+A ação de desarme não causará danos ao armamento do alvo.
+Atacando armas
+Seu personagem pode atacar armas de usuários desde que não estejam sendo empunhadas por ninguém.
+Marionetes podem ser atacadas livremente com técnicas de alvo único. Caso sejam atacadas por ataques de área e o titereiro e a marionete estejam no alcance, será possível fazer uma defesa para o titereiro e uma para cada marionete.
+Passar o Ataque
+Seu personagem poderá passar seu ataque para um aliado próximo ao consumir 1 Ação de Ataque.
+O aliado receberá então uma ação exclusivamente de ataque para utilizar, seguindo as regras normais de ataque.
+O aliado não irá perder seu próximo turno de ataque ao receber sua ação de ataque.
+O aliado não receberá ações de suporte ou movimento, sendo estas preservadas para o dono original do turno.
+Turno Defensivo
+O Turno Defensivo é garantido a seu personagem quando ele é alvo de alguma Ação de Ataque ou para impedir uma Ação de Movimentação ou uma Ação de Suporte que o afete negativamente.
+O usuário sempre receberá 1 turno defensivo para cada ataque recebido independente de quantos ataques forem. (Se receber 4 ataques, receberá 4 ações defensivas.)
+Neste momento, seu personagem tem acesso a 1 Ação de Defesa, 1 Ação de Impedir Suporte e 1 Ação de Impedir Movimentação.
+Caso o atacante tenha ativado Modo, Estilo de Luta ou Avatar como ações de suporte antes de ataca-lo, você poderá reativamente ativar seu Modo, Estilo de Luta ou avatar.
+Abaixo será explicado todas as ações ou manobras que podem ser utilizadas pelo seu personagem assim como o custo dessas ações.
+Bloquear Físicamente
+Seu personagem poderá tentar Bloquear o ataque fisicamente ou com técnicas físicas com a função Defesa ao consumir 1 Ação de Defesa.
+Você só poderá bloquear fisicamente ataques físicos ou solidos utilizando Bloqueio Físico.
+Ataques de Ninjutsu, Genjutsu ou Kekkei Genkais que não possuem natureza sólida não podem ser bloqueados fisicamente.
+Se o seu personagem estiver a distância física do atacante e ele utilizar selos de mão em seu jutsu, você poderá utilizar Bloqueio Físico para impedir o jutsu.
+Bloquear com Chakra
+Seu personagem poderá tentar Bloquear o ataque com chakra ao utilizar técnicas de chakra com a função Defesa ao consumir 1 Ação de Defesa.
+Bloquear com Barreira
+Seu personagem poderá se defender utilizando uma técnica de Barreira ao utilizar uma técnica com a função Barreira consumindo 1 Ação de Defesa.
+Ao utilizar a barreira você não irá rolar dados, somente seu adversário irá rolar para definir dano ou critico no ataque.
+Todo dano do ataque será reduzido da barreira incialmente e se o dano for inferior aos pontos de vida da barreira você não sofrerá nenhum dano. 
+Se o dano for superior ao pontos de vida da barreira, o dano restante será causado a você.
+Após utilizar a Barreira, seu personagem não poderá usar outra por 2 rodadas.
+Barreiras de área podem proteger aliados que estejam a distância física do usuário, caso contrário protegerão somente o usuário.
+Clones e Invocações dividem o tempo de recarga da barreira com seu invocador.
+É possível utilizar sua arma como barreira improvisada contra técnicas de alvo único. Ela irá receber dano diretamente nos seus pontos de vida e não consumirá pontos de status. Marionetes recebem dano dobrado caso sejam utilizadas como barreira.
+Bloquear com Genjutsu
+O personagem poderá utilizar Genjutsus para se defender de ataques, desde que o Genjutsu possua a função defesa ou contra-ataque consumindo 1 Ação de Defesa.
+Esquivar de um Ataque
+Seu personagem poderá se esquivar de um ataque que não seja de área maior a 15m² ao consumir 1 Ação de Defesa.
+Contra Atacar
+Seu personagem poderá contra-atacar ao utilizar uma técnica com a função Contra-Ataque ao consumir 1 Ação de Defesa.
+Ao vencer um teste de contra-ataque, o ataque do atacante é negado e ele receberá seu contra-ataque com todo dano e efeito descrito na técnica.
+Perder um teste de contra-ataque causará que você recebá o dano do ataque com um aumento de 25% de dano extra.
+Contra-Ataques SEMPRE devem ser direcionados ao atacante e nunca redirecionados a outros alvos, mesmo sendo contra-ataque de área.
+Bloquear um Genjutsu
+Seu peronagem poderá bloquear um Genjutsu consumindo 1 Ação de Defesa
+Você deverá rolar o atributo Genjutsu Kai contra o atributo Genjutsu do alvo.
+Sucesso no teste irá negar o Genjutsu e consumirá o gasto do Genjutsu em seu chakra.
+Falhar no teste fará você ser atingindo pelo Genjutsu, porém seu personagem não perderá nada de chakra.
+Impedir uma Ação de Suporte
+Você poderá tentar impedir uma Ação de Suporte do atacante consumirá 1 Ação de Impedir Suporte.
+Devido as possibilidades, sua ação de impedir o suporte deve ser coerente com sua distância e a distância do alvo.
+Ter sucesso em sua ação de impedir o suporte irá naturalmente negar a ação de suporte do alvo e ele não poderá mais repetir essa ação de suporte nesta rodada.
+Falhar sua ação não irá impedir o alvo como também garantir um bônus de +1 ignorando o limite para a Ação de Ataque do alvo.
+Impedir uma Ação de Movientação
+Seu personagem pode impedir um alvo de se afastar ou aproximar ao consumir 1 Ação de Impedir Movimentação
+Sucesso nessa ação irá impedir o alvo de se afastar ou aproximar do seu personagem.
+Falhar nessa ação apenas resultara no alvo se afastar ou aproximar.
+Ser Defendido por um Aliado
+Seu personagem poderá passar sua defesa para um aliado próximo ao consumir 1 Ação de Defesa.
+Se o aliado ter sucesso na defesa, você será defendido conforme a ação utilizada pelo aliado ainda sendo valido as demais regras de defesa.
+Se o aliado falhar em defende-lo, você recebera o dano e efeito do atacante normalmente.
+Empate de Jutsu
+Seu personagem pode empatar um jutsu com o jutsu de um adversário uma vez por combate consumindo 1 Ação Defensiva.
+A sua técnica deverá ser da mesma distância e categoria da técnica do alvo (Exemplo: Taijutsu vs Taijutsu, Ninjutsu vs Ninjutsu) e não poderá conter vantagem elemental.
+Iniciado o empate de jutsu, você e o alvo irão rolar seus dados. Aquele que vencer duas vezes primeiro, vencerá o empate.
+Dados criticos não possuem nenhuma caracteristica unica durante o empate.
+Aquele que perder o empate recebera o dano e efeito da técnica do defensor e atacante.
+Defesa Contra Fuuinjutsu
+Técnicas de Fuuinjutsu ignoram a armadura física do alvo, porém podem ser barradas por revestimentos, armaduras, barreiras de chakra ou avatares que protejam o personagem com chakra
+Para utilizar uma barreira contra um fuuinjutsu é necessário que a barreira seja de ranking equivalente ou superior ao do fuuinjutsu utilizado
+Defesa Contra Ninjutsu
+Técnicas de Ninjutsu não podem ser defendidas normalmente com o uso de bloqueio físico, com exceção de ninjutsus de natureza física (Mokuton, Doton, Hyouton etc.). 
+    Técnicas de Ninjutsu podem ser defendidas com bloqueio físico independente de sua natureza ser física ou não, caso o defensor esteja a distância física do atacante, e o atacante utilize uma técnica com selos de mão. Nesse tipo de     situação, o defensor poderá impedir a realização de selos de mão. Caso esteja em distância além da física, sua ação defensiva não poderá impedir o usuário de realizar selos.
+    Caso o ninjutsu não possua selos, o defensor precisará lidar com a técnica lançada, sem poder impedir sua execução.
+    Essa regra não é válida caso você possua uma técnica/modo/estilo de luta que permite você reagir a selos de mão fora da distância física.
+Técnicas de Defesa
+Todas as técnicas de Defesa com no qual utilizem Bloqueio Fisico ou Bloqueio de Chakra e não sejam Estilo de Luta, Modo ou Avatar possuem carteristicas unicas.
+Se tiverem sucesso em sua rolagem contra um ataque, todo o dano e efeito causado pelo ataque será negado ao defensor.
+Se falharem em sua rolagem contra um ataque, o dano recebido será reduzido ou ampliado de acordo com a diferença de rank do jutsu atacante contra o jutsu defensivo.
+Abaixo representa os valores a serem utilizados baseado quantos ranks acima ou abaixo o jutsu defensivo está comparado ao jutsu atacante.
+Redução de Dano:
+-7 Ranks: Aumenta o dano recebido em 50%
+-6 Ranks: Aumenta o dano recebido em 40%
+-5 Ranks: Aumenta o dano recebido em 30%
+-4 Ranks: Aumenta o dano recebido em 20%
+-3 Ranks: Aumenta o dano recebido em 10%
+-2 Ranks: Reduz o dano recebido em 0%
+-1 Ranks: Reduz o dano recebido em 10%
++0 Ranks: Reduz o dano recebido em 20%
++1 Ranks: Reduz o dano recebido em 30%
++2 Ranks: Reduz o dano recebido em 40%
++3 Ranks: Reduz o dano recebido em 50%
++4 Ranks: Reduz o dano recebido em 60%
+Crítico
+Crítico
+O crítico é considerado quando você rolar o d20 e tirar 20.
+Críticos não garantem acerto automático em sua ação. Se você tirar crítico e o alvo rolar os dados e o valor total superar o seu, a ação do adversário ainda será considerada como a vitoriosa.
+Crítico em uma Ação de Ataque
+Se você tirar crítico em sua rolagem de ataque, seu dano causado será dobrado contra o alvo.
+Crítico em uma Ação de Defesa
+Se você tirar critico em sua ação defensiva, você receberá uma ação de contra-ataque imediato.
+A ação de contra-ataque não significa Turno Ofensivo. Apenas significa que você recebeu 1 Ação de Ataque somente para utilizar imediatamente contra o alvo.
+Erro Crítico
+O erro crítico se constitui em tirar 1 no d20 assim garantindo desvantagens ao personagem. 
+Erro Crítico em uma Ação de Ataque
+Um erro crítico em uma ação de ataque reduz o dano da técnica em 50%. Ou poderá ser aplicado uma penalidade a vontade do mestre.
+Erro Crítico em uma Ação de Defesa
+Um erro crítico em uma ação defensiva garante 50% de dano extra no ataque do adversário contra você. Ou poderá ser aplicado uma penalidade a vontade do mestre.
+Crítico em prisões
+Acertos ou erros críticos na rolagem para se soltar ou manter o alvo preso não geram efeitos adicionais.
+Acertos críticos para prender o alvo fazem com que você não tenha que pagar a primeira rodada para manter o alvo preso.
+Zero Status
+0 Pontos em Status
+Se algum dos status (Vida, Chakra ou Estâmina) do seu personagem acabarem, o personagem sofrerá efeitos adversos negativos como descrito nas categorias abaixo.
+Dano extra durante o combate será desconsiderado e o alvo ficara com 0 pontos de vida no minimo, exceto se o mestre quiser considerar.
+Pontos de Vida zerados
+Caso seus pontos de vida sejam zerados, seu personagem se torna incapaz de lutar, agir fisicamente e utilizar chakra podendo estar ou não consciênte de acordo com quão negativo seus pontos de vida estão.
+Uma vez que atingido os 0 pontos de vida, o personagem perderá todos os efeitos o afetando não podendo mais ser afetado por efeitos e seus pontos ficaram estaveis. Golpes, técnicas de dano ou prisão que causem dano poderão ser utilizadas contra o personagem reduzindo mais seus pontos de vida. 
+Status (Pontos de Vida): Descrição
+Derrotado (0 á -20): O corpo do personagem já não responde a suas ações, porém ainda consegue falar com dificuldade e ouvir claramente o que acontece a sua volta. Técnicas Iryõ de Rank C ainda podem cura-lo.
+Torturado (-21 á -40):  O corpo do personagem apenas sente dor, mas ainda pode falar com dificuldade e ouvir claramente, o personagem recebe um teste de -5 em persuasão e intimidação. Somente técnicas de Iryõ Rank B ou maior podem te curar
+Nocauteado (-41 á -50): O personagem agora está inconsciênte por 1d12 horas. Técnicas de Iryõ Rank A ou maior podem te trazer de volta imediatamente.
+Morrendo (41 á -80,): O personagem recebeu dano grave físico e corre um leve risco de morte. Se o personagem não for curado em 2 horas, seu estado avança para Crítico. Somente técnicas de Iryõ Rank S ou maior podem cura-lo.
+Crítico (-81 á -99): O personagem está em um estado muito próximo a morte. Suas funções vitais estão prejudicadas severamente. Se não curado com uma técnica de Iryõ rank SS ou mais dentro de 2 horas, seu estado avança para Morto.
+Morto: (-100 ou menos): O fim, acabou. Sem mais sofrimentos, sem mais uma chance. Sua sorte se esvaiu por uma ultima vez. Seu personagem está morto. Quem sabe retorna um dia como um Edo Tensei.
+Pontos de chakra ou estâmina zerados
+Se os pontos de chakra ou estâmina do personagem zerarem, ele receberá um redutor para cada status zerado.
+Se zerar Chakra ou Estâmina, o persnagem recebera -4 ignorando o limite em todas as suas ações até o final do combate.
+Se zerar ambos os status, o personagem receberá -8 ignorando o limite em todas as suas ações até o final do combate.
+Outras Mêcanicas
+Gasto de Estamina
+Todas as ações físicas do personagem como Ataques básicos como socos, chutes, arremessos e golpes armados consomem estamina equivalente ao dado rolado pelo jogador. 
+(Exemplo: Você dá um soco no adversário e rola 1d20+Taijutsu. Digamos que você tire 18 contando seu dado + atributo. Esses 18 serão removidos diretamente de sua estamina mesmo que você não passe no dado, esse valor sempre será removido.)
+Mão Dominante
+Seu personagem possuí um lado do corpo dominante sendo lado esquerdo (Canhoto) ou direito (Destro) podendo ser os dois (Ambidestro) comprando a trait correspondente.
+Qualquer ação feita com o lado não dominante resultará em um redutor de -3 ignorando o limite.
+Efeitos de Técnica
+Seu personagem poderá causar ou sofrer efeitos de técnicas nos quais poderão ter duração temporaria ou permanente (Até o final do combate).
+Esses efeitos podem ou não serem levados para pós combate de acordo com o mestre ou técnicas especificas.
+Todos os personagens podem receber no máximo 2 efeitos distintos por vez.
+Receber um terceiro efeito o fará sobrepor um efeito mais fraco ou temporario. Caso não haja nenhum dos casos, ele será negado.
+Efeitos da mesma categoria como queimadura, se utilizados duas vezes no mesmo alvo, a que possuir o dano maior por turno será aplicado.
+Efeitos de Outras Fontes
+Uma terceira linha de efeitos póde ser aplicada ao personagem com base no ambiente ou consequência de algo que o afete de forma externa ou não provinda de técnica.
+Essa linha de efeitos são modificadores no personagem e podem ser aplicados um ou mais de acordo com o mestre e a situação.
+Combinação de Técnicas
+Seu personagem podera combinar duas técnicas compativeis em uma consumindo 2 Ações de Ataque.
+Dois personagens também poderão consumir suas Ação de Ataque da rodada para combinar duas técnicas compativeis em uma.
+Seu personagem e sua invocação também são capazes de combinar técnicas compativeis. Clones não podem combinar técnicas.
+Combinações elementais compativeis recebem seus devidos danos ampliados de acordo com sua caracteristica elemental.
+Abaixo segue o resultado da soma dos Ranks das Combinações de Técnicas:
+E + E = D
+D + D = C
+C + C = A
+B + B = S
+A + A = SS
+S + S = SS+
+SS + SS = SSS
+SS+ + SS+ = SSS
+SSS + SSS = SSS+
+Limite de Arremesso Simultâneo
+Seu personagem é capaz de arremessar multiplos objetos pequenos simultâneamente com a quantidade sendo equivalente a metade de seu atributo Bukijutsu.
+É possivel arremessar um máximo de 10 objetos pequenos simultâneamente.
+Devido a grande quantidade de objetos possiveis que podem ser arremssados simultâneamente, o mestre decidirá se é possivel ou não e a quantidade conforme o bom senso.
+Equipamento Armadura
+Se o seu personagem estiver utilizando uma mascara, óculos, armadura ou qualquer tipo de proteção corporal, essa receberá todo dano antes do personagem.
+Armaduras não podem receber nenhum tipo de efeito.
+Dano Multiplo
+Todas as técnicas que podem atingir um mesmo alvo multiplas vezes terá o dano extra provindo de Estilo de Luta, Modo ou Avatar constado somente no primeiro dano.
+Bônus de Rank
+Todas as técnicas utilizadas pelo seu personagem e pelo adversário serão medidos as diferenças entre o rank entre elas.
+A cada Rank superior, o usuário da técnica receberá um bônus de +1 ignorando o limite em sua rolagem.
+Técnicas de Estilo de Luta, Modo ou Avatar não são considerados nesta regra.
+Limite de Bônus ou Redutor
+Seu personagem possui um limite de bônus ou Redutor máximo recebido em cada atributo de combate não podendo passar desse limite exceto por regras ou técnicas que especifiquem ignorar esse limite.
+O limite total de bônus que seu personagem pode receber por atributo de combate é +4 independente de quantas fontes ampliem o valor.
+O limite total de Redutor que seu personagem pode receber por atributo de combate é -4 independente de quantas fontes reduzam o valor.
+Atributos interpretativos podem alcancar no máximo 10 pontos mesmo que recebam bônus de qualquer outra fonte não podendo exceder esse limite com bonificadores.
+Sorte
+Seu personagem começa com 3 pontos de sorte.
+Um ponto de sorte pode ser utilizado por vez a qualquer momento pelo jogador, sendo declarado antes ou depois de uma rolagem a vontade do jogador.
+Para utilizar um ponto de Sorte o jogador deverá declarar [Sorte] e assim um ponto de sorte será consumido.
+O ponto de sorte utilizado irá alterar a rolagem de um dado de qualquer valor para o valor 15, sendo possível passar da maioria dos testes possíveis.
+Pontos de sorte podem ser dado aos jogadores a qualquer momento ou motivo arbirtrario a vontade do mestre.
+Perguntas Frequentes
+Posso utilizar o bônus de rolagem da técnica de Avatar e Estilo de luta na mesma ação de Ataque ou Defesa?
+Avatares não podem utilizar Estilo de Luta, então eles não recebem bônus de rolagem dos Estilos de Luta.
+Minha técnica possuí rank escalar. Posso utiliza-la em um Rank diferente ao Rank máximo?
+Sim, você pode. Técmicas que possuem multiplos Rank podem ser utilizados no Rank que o usuário quiser, com exceção a Modos.
+Meu modo possuí multiplos estágios, se eu estiver com ele ativo em um estágio, preciso pagar a ativação novamente para subir o estágio?
+Não, você não precisa pagar uma nova ativação, somente a diferença de gasto entre uma ativação e outra.
+Ativar "continuações" de modos, como passar do selo amaldiçoado estágio 1 para o 2, manto de biju versão 1 para 2, entre outros, não necessitam que você coloque pague o preço de ativação completo. Para passar do Sharingan no terceiro estágio para o Mangekyou Sharingan em uma luta, é necessário pagar apenas a diferença do gasto de ativação de chakra.
+Meu personagem pode iniciar um combate com Modo, Estilo de Luta ou Avatar ativo?
+Não. O combate sempre é iniciado de forma neutra com todos os combatentes inciando sem nenhum Modo, Estilo de Luta ou Avatar ativos.
+Claro que pode haver exceções de acordo com o Mestre por motivos de narrativa.
+Estilos de Luta, Modo ou Avatar que causam dano extra podem fazer técnicas com 0 de dano causarem dano?
+Não. Um Estilo de Luta, Modo ou Avatar só amplifica o dano pré-existente de uma técnica. Caso a técnica não possua dano, ela nunca poderá causar dano direto.
+Porque técnica de Cura ou Sensor consome 1 Ação de Ataque e não 1 Ação de Suporte?
+Essa decisão foi feita por questão de balanceamento do sistema evitando personagens de Spammarem cura e atacarem ou negarem furtividade com técnica sensora e atacarem toda rodada. Existem técnicas que permitem que você se cure ou encontre alvos invisíveis e ataque na mesma rodada, e nelas estarão especificados nas notas que isso é possível.
+
+==================================================
+C:\Users\aaron\Desktop\ND Fichas\Ficha ND\Sistema Destiny\Sistema\2 - Evolução dos Personagens.docx
+==================================================
+
+Evolução dos Personagens
+Ao longo das sessões seu personagem irá recebendo pontos de experiência e consequentemente ganhando níveis. Aqui será explicado como funciona o sistema de níveis e mostrando comparações com quais ranks esses níveis são representados na hierarquia ninja dentro das vilas.
+Alcançar o nível de um dos ranks não significa que narrativamente ou dentro da trama seu personagem automaticamente subirá de Rank na vila, isso é apenas demonstrativo do rank de poder que seu personagem se encaixa.
+Subindo de Nível
+Ao alcançar 100% de experiência, seu personagem irá avançar 1 nível, sua experiência será zerada e sua experiência máxima irá aumentar em 100 pontos.
+Ao subir de nível será concedido ao seu personagem: 2 pontos de atributo, 1 ponto de atributo interpretativo, 100 pontos de Jutsu e 10 pontos de trait.
+Limite de Atributos
+Cada Rank possuí um limite de pontos máximos possíveis de serem alocados em um único atributo.
+Os Atributos interpretativos possuem um limite fixo de 10 pontos máximos em um único atributo.
+-------------------------------------------------------------
+ 
+Aluno da Academia
+Alunos da Academia (忍者学校生, Akademi-sei) compõem o corpo docente da Academia, onde eles são treinados e preparados para a vida como um shinobi. Eles não são uma parte real da força de shinobi, como eles ainda estão no processo de dominar o básico do básico do estilo de vida ninja. No entanto, eles podem ser recrutados como parte em potencial de guerra em tempos de emergência.
+Alunos da Academia gastam seu tempo aprimorando as várias habilidades que eles são obrigados a ter e submetidos a vários testes e exames para ver como eles progridem. Além das disciplinas escolares normais, tais como história e matemática, são ensinados os conceitos básicos de ninjutsu, Taijutsu, e muito provavelmente também Genjutsu. Isso inclui aprender sobre chakra e como controlá-la, táticas, selos de mão, eles são levados através do manuseio de armas e ferramentas ninja, como shuriken e kunai, aprendendo como jogar e utilizá-las através da prática de alvo, e várias técnicas de rank E, tais como a técnica do clone e a técnica de transformação. Eles também são treinados em trabalhar individualmente e em equipes.
+Eventualmente, eles recebem um teste de graduação para ver se eles estão prontos para tentar se tornar Genin. Passando este teste não concede automaticamente a eles este título, pois terão de passar por um segundo teste dado por seu instrutor Jōnin, mas recebem um protetor na testa. Aqueles que não se enquadrem nesses testes são enviados de volta para a Academia. Os requisitos para a graduação variam de vila em vila. Em Konohagakure, os alunos da Academia simplesmente têm que mostrar a sua proficiência em uma técnica Rank E, sendo selecionada aleatoriamente. Em Kirigakure, no entanto, o teste foi uma batalha de vida ou morte entre estudantes de graduação de uma só vez, uma prática que desde então mudou após o ainda-não-qualificado Zabuza Momochi massacrar toda uma classe de graduação.
+Nível: 1
+Atributos: 16 de Core e 16 Interpretativo
+Pontos de Jutsus Inicial: 100
+Limite de Atributo Core: 5
+Limite de Atributo de Combate: 7
+Ponto de Trait Total: 460
+-------------------------------------------------------------
+ 
+Genin
+Genin (下忍Literalmente significa: ninja baixo ou ninja júnior) é o menor nível de ninja e aqueles que apresentam a maior diferença no poder. Quando se torna Genin, o ninja começar a fazer a sua parte para a economia da sua vila, sendo enviado em missões que a vila é paga para fazer. Eles são normalmente enviados em missões rank-D, que são empregos quase inteiramente livre de risco, porém com muito trabalho manual ou raramente, em missões de rank C, que são um rank acima disso e começam a beira de ser um ninja "real", Rank C é o trabalho que têm uma muito baixa possibilidade de risco de terem ninjas inimigos envolvidos. Quando Konohagakure estava com falta de ninjas de nível superior por causa da invasão, a vila teve que eventualmente enviar Genin em missões mais elevados do ranking.
+Genin são colocados em grupos de quatro pessoas, ou esquadrão, que consiste em três Genin e um Jōnin-sensei, a fim de aprender o trabalho em equipe e experiência de vida ninja real sob a supervisão e proteção de um shinobi de elite. A montagem destas equipes é baseada nas habilidades individuais do Genin, de modo que haverá um equilíbrio entre as equipes. Por exemplo, Naruto Uzumaki, que passou com as notas mais baixas, foi colocado em uma equipe com Sasuke Uchiha e Sakura Haruno, que passaram com as notas mais altas e mais alta pontuação do exame escrito, respectivamente. Devido ao fato de que Genin é o nível mais baixo ninja, eles são normalmente atribuídos a missões Rank D ou missões rank C de forma que ganhem experiência antes de assumir missões mais difíceis ou serem promovidos ao posto de Chūnin, ao concluir com êxito o exame Chūnin, um conjunto de tarefas difíceis feitas para testar as habilidades de Genin para ver se eles são ou não apto para se tornar Chūnin.
+Nível: 5
+Atributos: 24 de Core e 24 Interpretativo
+Pontos de Jutsu: 500
+Limite de Atributo Core: 6
+Limite de Atributo de Combate: 9
+Ponto de Trait Total: 500
+-------------------------------------------------------------
+ 
+Chūnin
+Chūnin (中 忍, literalmente significa: Ninja Médio) são ninjas que atingiram um nível de maturidade e habilidade que consiste principalmente em habilidades de liderança e proeza tática. Os Chūnin são normalmente enviados em missões C ou B. Alguns Chūnin, como Iruka Umino e Shino Aburame, passam a se tornar professores da Academia.
+Para se tornar um Chūnin, o Genin participa de um grande exame, conhecido como Exame Chūnin. Aqueles que passam no teste e se tornam Chūnin são elegíveis para usar uma jaqueta de identificação que contém pergaminhos de ninjutsu. Este colete não é obrigatório; em vez disso, alguns optam por roupas mais elaboradas, como capas e roupões.
+Como resultado da era pacífica que os Cinco Grandes Países Shinobi estabeleceram após a Quarta Guerra Mundial Shinobi, o número de Chūnin diminuiu.
+Nível: 10
+Atributos: 34 de Core e 30 Interpretativo
+Pontos de Jutsu: 1000
+Limite de Atributo Core: 7
+Limite de Atributo de Combate: 10
+Ponto de Trait Total: 550
+-------------------------------------------------------------
+ 
+Tokubetsu Jōnin
+Tokubetsu Jōnin (特別 上 Tok, Tokubetsu Jōnin) são ninjas que, em vez de ter habilidades gerais de Jōnin, são excelentes apenas em uma área específica, muito parecido com subtenentes das forças armadas do mundo real. Por exemplo, Ibiki Morino pode entender completamente o funcionamento da mente humana, fazendo dele um especialista em interrogatório. No entanto, eles possuem habilidades suficientes no geral, pois são conhecidos por terem a mesma oportunidade que um Jōnin em liderar suas próprias equipes de Genin.
+Nível: 20
+Atributos: 54 de Core e 32 Interpretativo
+Pontos de Jutsu: 2.000
+Limite de Atributo Core: 9
+Limite de Atributo de Combate: 13
+Ponto de Trait Total: 650
+-------------------------------------------------------------
+ 
+Jõnin
+Jōnin (上 忍, Jōnin, literalmente significa: Alto Ninja, Significado (Viz): Ninja de Elite) geralmente são shinobi altamente experientes e altamente qualificados que servem como capitães militares. Os Jōnin geralmente são capazes de usar pelo menos dois tipos de chakra elemental. Não é incomum que Jōnin faça missões sozinho. Eles são frequentemente enviados em missões de Rank A e, se tiver experiência suficiente, também em missões de Rank S.
+Para se tornar um Jōnin, um Chūnin pode ser recomendado. Se um número suficiente de civis e os respectivos Kage considerarem o shinobi adequado para o posto, ele será promovido. No anime, outra maneira de se tornar um Jōnin é participar do Exame Jōnin.
+Quando um ninja se torna um Jōnin, ele pode ser designado para supervisionar uma equipe de três pessoas. O dever deles será instruí-los e treiná-los para se tornarem ninjas competentes. Eles também podem decidir quando o genin está pronto para participar do exame Chūnin.
+Em Konohagakure, cabe ao Jōnin decidir se um candidato a Hokage receberia a posição permanentemente. Eles também têm um posto especial conhecido como Comandante Jōnin.
+Nível: 30
+Atributos: 74 de Core e 34 Interpretativo
+Pontos de Jutsu: 3.000
+Limite de Atributo Core: 12
+Limite de Atributo de Combate: 18
+Ponto de Trait Total: 750
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++300 pontos de vida
++350 pontos de chakra
++350 pontos de estâmina
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+-------------------------------------------------------------
+ 
+Capitão Jõnin
+O Capitão Jōnin (上忍班長, Jounin Hanchou) é uma posição no sistema shinobi de Konohagakure. Como representante das forças shinobi regulares, eles são um membro do conselho, dando-lhes uma palavra a dizer em questões importantes, tais como a escolha de um novo Hokage. Eles são os shinobis do mais alto escalão na vila, mas ainda oficialmente um Jōnin em si. A pessoa mais recente conhecida a deter o título de Capitão Jōnin foi Shikaku Nara.
+Nível: 40
+Atributos: 94 de Core e 36 Interpretativo
+Pontos de Jutsu: 4.000
+Limite de Atributo Core: 15
+Limite de Atributo de Combate: 22
+Ponto de Trait Total: 850
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++400 pontos de vida
++700 pontos de chakra
++700 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+------------------------------------------------------------
+ 
+ANBU
+Os ANBU (部 部, Lado Negro), abreviação de Ansatsu Senjutsu Tokushu Butai (暗殺 戦 術 特殊 部隊, literalmente significa: Assassinato Especial e Esquadrão Tático), são agentes secretos ninjas capazes que são despachados pelo líder da aldeia. Aparentemente, não existem ranks dentro da Anbu; a liderança e a hierarquia da equipe parecem se basear no mérito e na experiência. Os líderes das equipes são chamados de líderes de esquadrão (unta 隊長, Buntaichō), uma posição respeitada.
+Por causa da escuridão envolvida na carreira de um Anbu, a personalidade de alguém determina sua elegibilidade para a força, levando a shinobi habilidosos excepcionais cujas personalidades não combinam com a organização a ser rejeitada. Já na Academia, crianças bem-sucedidas são examinadas para eventualmente ingressar. Durante o recrutamento, os shinobi são escolhidos a dedo pelo líder de sua aldeia, por suas capacidades individuais e habilidades especiais. Idade, origem, sexo ou classificação anterior não têm significado nesta decisão; no entanto, na tradição, os shinobi de Konohagakure não são selecionados como Anbu, a menos que tenham pelo menos 13 anos de idade, com Itachi Uchiha tendo 11 anos sendo uma exceção rara. Uma vez ingressados, eles passam por treinamento, incluindo o estudo do corpo humano, e começam a usar máscaras para ocultar sua identidade, levando-os a usar codinomes para se identificar.
+Os Anbu quase sempre aparecem em missões importantes dentro e nas proximidades de sua vila, mas são principalmente encarregados de assassinatos ou distúrbios em países estrangeiros. As tarefas que eles realizam para proteger a vila de ameaças excepcionais incluem infiltração de alto risco no território inimigo, lidando com ninjas extremamente fortes, rastreamento, vigilância, interrogando ninjas inimigos para aprender informações e missões que exigem ninjas especialmente treinados. Devido às ações do grupo, um membro pode parecer desprovido de bondade. Devido à natureza muitas vezes sensível de suas missões e às habilidades únicas que às vezes possuem, espera-se que os Anbu destruam seus próprios corpos se forem gravemente feridos em uma missão para que não possam ser capturados.
+Em Kirigakure, existe um ramo especial de Anbu conhecido como Oinin: Os Oinin rastreia e matam Nukenins de Kiri, recuperando a cabeça como prova e descartando o resto do corpo para não deixar nenhuma informação para seus inimigos. Enquanto os Anbu geralmente estão em esquadrões e recebem ordens de seus capitães, alguns Anbu de elite foram escolhidos a dedo por seus Kage para servir diretamente sob eles. Como tal, toda e qualquer ordem que eles recebam vem de seus Kage e de mais ninguém. Os Anbu não gostam de deixar ninguém saber suas identidades e, como tal, a maioria dos cidadãos de Konoha não sabe quem é ou não é um Anbu.
+Em Konoha, Anbu, ao lado da Polícia Militar de Konoha, são as duas forças que mantêm a paz. Como tal, não há uma linha clara sobre qual é a jurisdição da polícia e qual é o assunto a ser investigado pelo Anbu. A critério do Hokage, a natureza da investigação mudaria simplesmente de uma para a outra, levando o confronto das duas facções. Como os Anbu são vitais para as operações da vila, eles não podem ser presos pela polícia sem um mandado. Konoha anteriormente tinha um ramo especial de Anbu chamado Raiz, que agia como uma força policial secreta que mantinha a ordem pública do subsolo. Seus membros foram treinados para abandonar todas as formas de emoção, a fim de seguir as ordens de Danzou Shimura sem questionar, mesmo nas consequências do resto da vila.  Os membros da Raiz tinham um selo na língua que impedia os membros de falar sobre sua organização.
+Após a Quarta Guerra Mundial Shinobi, na qual os Cinco Grandes Países Shinobi decidiram se unir totalmente em prol da paz, Kido Tsumiki acreditava que a paz estável seria inevitável para os Anbu sofrerem uma diminuição no financiamento, pois seus serviços não são mais vitais. Kido teve que orquestrar alguns pequenos incidentes de segurança para garantir que esse financiamento não fosse afetado.
+Nível: 50
+Atributos: 114 pontos de Atributo Core e 38 Interpretativo
+Pontos de Jutsu: 5.000
+Limite de Atributo Core: 17
+Limite de Atributo de Combate: 25
+Ponto de Trait Total: 950
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++500 pontos de vida
++1200 pontos de chakra
++1200 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+-------------------------------------------------------------
+ 
+Comandante ANBU 
+Aparentemente, não há verdadeiros ranks dentro da ANBU; liderança de equipe e hierarquia parecem ser baseadas no mérito e experiência. Os líderes das equipes são chamados de líderes de esquadrão (unta 隊長, Buntaichō), uma posição respeitada.
+Nível: 60
+Atributos: 134 de Core e 40 Interpretativo
+Pontos de Jutsu: 6.000
+Limite de Atributo Core: 20
+Limite de Atributo de Combate: 30
+Ponto de Trait Total: 1050
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++900 pontos de vida
++3500 pontos de chakra
++3500 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+-------------------------------------------------------------
+ 
+Nukenin
+Nukenin (抜 け 忍, Nukenin, TV inglesa: Ninja Traidor, literalmente significando: Ninja Perdido) são ninjas que abandonam sua vila sem intenção de retornar. Os Nukenin são criminosos, se não antes de sua deserção, certamente depois de abandonarem seus deveres. Como tal, os Nukenin são listados no Bingo Book da sua vila para serem mortos à vista; Os Oinins de Kirigakure são designados especificamente para eliminar esses Nukenin. Embora alguns Nukenin possam continuar usando a bandana de sua vila, eles não juram lealdade à sua vila; membros da Akatsuki, a maioria deles desaparecidos, esculpem arranhões na bandana para simbolizar que rejeitaram sua vila.
+Sair da vila não necessariamente faz de alguém um Nukenin. Tsunade se retira da vida como ninja e parte de Konoha após a Segunda Guerra Mundial Shinobi, mas ela nunca é considerada um Nukenin pela aldeia. Jiraiya informa, no entanto, que se ela ajudar Orochimaru, um inimigo de Konoha, que seu status mudará e ele será forçado a matá-la. Roushi deixou Iwagakure para aprender mais e controlar melhor o Yonbi que estava selado dentro dele, mas apesar de tomar um poder de guerra tão potencial da vila, ele também não foi considerado um Nukenin.
+Da mesma forma, ser marcado como Nukenin não garante que sua antiga vila os procure como criminosos. Itachi Uchiha se torna um Nukenin após a queda do clã Uchiha, mas ele faz isso sob ordens da liderança de Konoha; Embora a maioria da população de Konoha considere Itachi um criminoso e o trate como tal, seus líderes sabem que ele permanece leal a Konoha. Da mesma forma, quando Sasuke Uchiha deserta de Konoha e se torna um Nukenin, o Quinto Hokage decide não o perseguir como criminoso, como um favor a Naruto Uzumaki. Danzou, quando nomeado "Candidato a Sexto Hokage", mais tarde retira essa clemência e ordena sua execução, em parte por causa de sua ação indesculpável de atacar Kumogakure. Por sua ajuda durante a Quarta Guerra Mundial Shinobi e a boa palavra do sexto Hokage, Sasuke é finalmente perdoado por seus crimes.
+Após a Quarta Guerra Mundial Shinobi, há um aumento das atividades de Nukenin em todo o continente devido aos shinobi deixarem suas vilas, pois consideravam seu modo de vida ameaçado ou por outras razões. Nesta época, eles também se tornaram muito mais cruéis, até dispostos a matar a pessoa que os contratou, se houver uma chance de um pagamento maior.
+Nível: 80
+Atributos: 174 de Core e 42 Interpretativo
+Pontos de Jutsu: 8.000
+Limite de Atributo Core: 25
+Limite de Atributo de Combate: 37
+Ponto de Trait Total: 1250
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++1100 pontos de vida
++4000 pontos de chakra
++4000 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+-------------------------------------------------------------
+ 
+Oinin
+A Corporação Oinin (Oinin Butai), também conhecida como Equipe de Processamento de Cadáveres (Shitai Shori Han), é uma equipe especial da Anbu de Kirigakure, composta por Oinins (追 い い, Oinin, TV inglesa: Ninja Rastreador), que têm o dever específico de caçar os Nukenins. Eles apagam completamente a pessoa que estão procurando por meio de suas técnicas superiores de assassinato e habilidades médicas.
+Eles podiam ser vistos vestindo uniforme padrão Anbu ou, em alguns casos (como Haku e Ao), um quimono azul com uma camiseta listrada com gola alta. Eles também podem usar uma máscara com um orifício fino para os olhos e um desenho ondulado no lugar da boca, e o símbolo da aldeia na testa. Suas máscaras têm semelhanças humanas, em vez da semelhança animal típica que a maioria das máscaras Anbu possui. Eles matam seu alvo, pegando a cabeça como prova e, em seguida, eliminam completamente o corpo usando vários métodos, como cremação ou invocando corvos selvagens para devorar o cadáver. Isso é feito para garantir que os segredos da vila que o corpo de um ninja mantém, como tipos de chakra, ervas consumidas, ninjutsu, remédios especiais e kekkei genkai, não sejam revelados aos forasteiros.
+Oinins deve destruir o cadáver no mesmo local em que o corpo está deitado; não deve ser movido depois de morto, e apenas a cabeça é retirada para provar que o Nukenin está de fato morto. Como requisito, eles devem possuir um conhecimento profundo e íntimo da anatomia humana. Devido à sua reputação de obliterar total e completamente os restos de seus alvos, eles recebem o codinome "O Esquadrão do Submundo" (当 る At, Atarutai).
+No início da série, Haku se apresenta como um Oinin para resgatar o supostamente morto Zabuza Momochi. Ao, como um verdadeiro Oinin, demonstrou grande habilidade em rastrear, pois seus alvos ficavam nervosos o suficiente para colocar armadilhas para detê-lo. No anime, um esquadrão de Oinins liderado por Tsurugi foi enviado para caçar o  Jinchuuriki Utakata.
+No anime, o cenário da equipe é expandido ainda mais, com alguns de seus membros (um dos quais é visto com uma máscara e um penteado idênticos aos de Haku, sugerindo que eles podem ser típicos do grupo) sendo revelados usando coletes e usando técnicas especiais , como empunhar cordas de água para conter os inimigos, que podem ser eletrificados para prejudicar as vítimas e criar névoa que suga o chakra dos oponentes.
+Oinins também possui uma barreira de ninjutsu para proteger certas partes do corpo, como um olho. Essa técnica é de extrema importância e é tão secreta que ninguém além dos membros dos Oinins sabe como desfazê-la, nem mesmo os Mizukage.
+Nível: 90
+Atributos: 194 de Core e 44 Interpretativo
+Pontos de Jutsu: 9.000
+Limite de Atributo Core: 27
+Limite de Atributo de Combate: 40
+Ponto de Trait Total: 1350
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++1300 pontos de vida
++5000 pontos de chakra
++5000 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+-------------------------------------------------------------
+ 
+Sannin
+Os Sannin (伝 説 の 三 忍, Densetsu no Sannin, que literalmente significam: Três Ninjas Lendários) são três ninjas de renome de Konohagakure, aclamados como os melhores de seu tempo. Os Sannin, ou Três Ninjas Lendários, são figuras de destaque na história de Konohagakure, a Vila da Folha. Composto por Jiraiya, Orochimaru e Tsunade, este trio excepcional de ninjas alcançou um status lendário devido às suas habilidades notáveis, proezas em batalha e contribuições significativas para a segurança e prosperidade da vila. Apesar das diferenças de personalidade e caminhos escolhidos, os Sannin eram unidos por um vínculo profundo de camaradagem e respeito mútuo. Seus feitos lendários ecoaram através das eras, inspirando gerações de ninjas em Konoha e além, e seu legado continua a moldar o destino do mundo ninja.
+Nível: 120
+Atributos: 254 de Core e 46 Interpretativo
+Pontos de Jutsu: 12.000
+Limite de Atributo Core: 35
+Limite de Atributo de Combate: 52
+Ponto de Trait Total: 1650
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++1500 pontos de vida
++7000 pontos de chakra
++7000 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+-------------------------------------------------------------
+ 
+Kage
+Kage (影, literalmente significa: Sombra) é um título reservado ao líder de uma das vilas ocultas dos Cinco Grandes Países Shinobi. Eles são conhecidos coletivamente como os Cinco Kage (五 影, Gokage, literalmente significando: Cinco Sombras). Um Kage supervisiona as atividades de sua vila, desde o envio de ninjas em missões até a tomada de decisões difíceis em relação à segurança de seu povo. O Kage de uma vila é geralmente reconhecido como seu ninja mais poderoso. Os Kage são conhecidos como os principais shinobi do continente.
+O título foi criado originalmente por Hashirama Senju logo após a formação de Konohagakure, fazendo dele o primeiro Kage a existir depois de ser eleito pela população de sua vila e país. Após a criação da posição, outras nações elogiaram o sistema inovador que havia sido criado e logo começaram a imitar.
+Como a principal preocupação de um Kage é sua vila, a interação entre os Kage é rara; somente durante cerimônias de assinatura de tratados ou eventos públicos compartilhados é visto um Kage interagindo com um de seus colegas. O único momento em que todos os cinco Kage estão juntos é durante uma Cúpula Kage, que pode ser convocada por qualquer um dos cinco para discutir tópicos que se aplicam a todas as suas vilas.
+Como um Kage é designado parece diferir de uma vila para outra. Em Konoha, o Hokage normalmente indica seu sucessor. Se o Hokage morre ou fica incapacitado antes que eles possam escolher um sucessor, a seleção recai sobre o daimyou do país do Fogo, que é aconselhado por seu comitê, bem como os anciãos da vila, o comandante Jounin e um representante da Anbu. Esse compromisso deve ser aprovado pelos jounin de Konoha. Em Kumo, depois que o Terceiro Raikage morreu, seu filho tornou-se automaticamente o Quarto Raikage, uma decisão tomada muitos anos antes. Se um Kage decidir se aposentar, ele manterá seu título pelo resto da vida e poderá ajudar o novo Kage a tomar decisões e outras responsabilidades. Um Kage aposentado pode até voltar à liderança em tempo integral se o sucessor morrer, como o Terceiro Hokage fez quando o Quarto Hokage deu sua vida para salvar Konoha, sendo incapaz de encontrar alguém adequado e disposto a assumir o título de Quinto Hokage.
+Como os jinchuuriki eram tão importantes para sua vila, era uma tradição que um jinchuuriki fosse parente do Kage atual, tanto para fortalecer a lealdade do jinchuuriki com a vila quanto para mostrar o poder do Kage. Por exemplo, Killer B é o irmão adotivo do Quarto Raikage e Gaara é o filho do Quarto Kazekage.
+Nível: 140
+Atributos: 294 de Core e 48 Interpretativo
+Pontos de Jutsu: 14.000
+Limite de Atributo Core: 40
+Limite de Atributo de Combate: 60
+Ponto de Trait Total: 1850
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++1700 pontos de vida
++10.000 pontos de chakra
++10.00 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+-------------------------------------------------------------
+ 
+Fushi
+O título de Fushi, abreviação de Fumetsu Shinobi (不滅の忍, literalmente traduzido: Shinobi Imortal) é dado a shinobis que foram os mais fortes da história, superando facilmente um Kage ou até mesmo os cinco como no caso de Madara Uchiha, que derrotou todos os cinco Kages sozinho. Um Fushi é raramente visto, geralmente possuí um poder semelhante a de um Kage, porém conseguindo superar seus próprios limites a partir de uma fonte natural, como foi o caso de Hashirama Senju com seu Mokuton e Modo Sennin ou Madara quando despertou seu Eien Mangekyou Sharingan. Também é possível se tornar um Fushi através de métodos externos, assim como Obito ao usar as células Senju de Hashirama e se tornando Jinchuuriki do Juubi.  Durante a grande quarta guerra mundial ninja, Naruto Uzumaki e Sasuke Uchiha atingiram este nível Shinobi.
+Nível: 160
+Atributos: 334 de Core e 50 Interpretativo
+Pontos de Jutsu: 16.000
+Limite de Atributo Core: 45
+Limite de Atributo de Combate: 67
+Ponto de Trait Total: 2050
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++2000 pontos de vida
++11.000 pontos de chakra
++11.00 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+
+==================================================
+C:\Users\aaron\Desktop\ND Fichas\Ficha ND\Sistema Destiny\Sistema de Criação\3 - Criação de Jutsus.docx
+==================================================
+
+Criando Seu Jutsu
+Agora que você leu todo o sistema e entendeu como ele funciona, você não precisa se limitar aos jutsu existentes, que tal criar seu estilo próprio? Seus ataques suas habilidades, seus poderes, tudo em suas mãos.
+Para criar seu jutsu você deve ter a manipulação livre do jutsu (caso seja elemental) e seguir a seguinte formula:
+Formulação
+Primeiramente, não altere a fonte, tamanho das letras ou apague campos da fórmula, se aquele campo não possuir utilidade (ah meu jutsu não usa selos de mão) apenas deixe "Nenhum" escrito no campo.
+------------------------ Formula do Jutsu -------------------------------------
+Imagem representando o jutsu
+Nome do jutsu em Japônes
+(Significado do nome do jutsu em Português)
+Quem usa: Coloque o nome de quem criou o jutsu e se houver, dos demais usuários desta técnica.
+Primeira Aparição: Em qual Episódio do Anime ou Qual saga e capítulo da Saga essa técnica foi usada a primeira vez
+Função: Escolha uma ou mais funções de seu jutsu (Exemplo: Ataque, Contra-Ataque, Defesa, Suporte, Passivo ou Barreira)
+Rank: Rank no qual define a intensidade da Técnica (Exemplo: D, C, B, A, S, SS, SS+ ou SSS)
+Distância: Distância que o jutsu pode ser utilizado (Exemplo: Físico, Curta, Média, Longa ou em metros quadrados)
+Atributo: Atributo rolado ao utilizar esta técnica
+Selos: Selos necessários para utilizar o jutsu.
+Requisito: O que é necessário para realizar o jutsu.
+Notas: Caso haja regras especificas para esse jutsu
+Descrição: Descreva a estética e mecânica de seu jutsu
+Dano:Dano causado pelo jutsu.
+Gasto:Gasto do jutsu. 
+Efeito:O que seu jutsu tem de efeito
+----------------------- Fim da Formula do Jutsu ------------------------------
+Após criar seu jutsu, o mestre deverá revisá-lo para ver se está tudo dentro dos conformes, e se para o mestre tiver sentido sua técnica ele poderá aprová-la ou caso para ele não faça sentido ele poderá reprová-la mesmo que esteja dentre os conformes do sistema.
+Rank
+Rank X: Gasto Mínimo de Chakra/Estâmina á Gasto Máximo de Chakra/Estâmina
+Rank E: 01 a 10
+Rank D: 11 a 20
+Rank C: 21 a 40
+Rank B: 41 a 70
+Rank A: 71 a 100
+Rank S: 101 a 150
+Rank SS: 151 a 250
+Rank SS+: 251 a 350
+Rank SSS: 351 a 1300
+Rank SSS+: 1301 em diante
+Função
+Ataque e Contra-Ataque
+Dano: A cada 1 de gasto em Chakra, causará: 1 de Dano ou 1.25 de Dano se for Elemental com Afinidade ou 1.3 de Dano se for Hiden ou 1.4 de Dano se for Kekkei Genkai/Kekkei Genkai Elemental ou 1.6 de Dano se for Kekkei Touta ou 2 de Dano se for Kekkei Mõra. Um valor arbitrário extra poderá ser adicionado se necessário.
+Manter Ativo: Para manter a técnica ativa por Rodada, se paga 50% do valor total da técnica em Chakra e/ou Estâmina
+Contra-Ataque: Segue as mesmas regras acima, mas deverão ser aprovados com bom senso para evitar spam de contra-ataque. Contra-Ataques recebem um redutor natural de -2 em sua rolagem.
+Efeito: Efeitos adicionam:
+Rank E a B: 33 pontos de gasto
+Rank A a SS: 66 pontos de gasto
+Rank SS+ a SSS+: 300 pontos de gasto
+Defesa
+Para manter a técnica ativa por Rodada, se paga 25% do valor total da técnica em Chakra e/ou Estâmina
+Suportes e Passivo
+A cada +1 de bônus em uma ação, adiciona-se 15 de chakra. Máximo de +4 em um único atributo.
+Não é possível manter técnicas de suporte ativas por rodada
+Armamento: Pagando o máximo incluso em cada ranking de jutus, é possível criar uma arma que segue a criação de equipamentos. Possíveis efeitos da arma ficam a cargo do narrador, e essa arma não possui custo para ser mantida, podendo também ser desfeita a partir da vontade do usuário.
+Armadura:  Pagando o máximo incluso em cada ranking de jutsu, é possível criar uma armadura que segue a criação de equipamentos. Possíveis efeitos da armadura ficam a cargo do narrador, e essa armadura não possui custo para ser mantida, podendo também ser desfeita a partir da vontade do usuário.
+Cura: A cada 1 de gasto em Chakra, irá curar: 1 de Vida ou 1.2 de Vida se for Hiden ou 1.3 de Vida se for Kekkei Genkai
+Sensorial: O usuário poderá focar 100% de sua atenção para dobrar a distância de alcance de sua técnica sensorial, porém, o usuário não poderá perceber nada do que acontece a sua volta. O usuário poderá focar 100% de sua atenção para dobrar a distância de alcance de sua técnica sensorial, porém, o usuário não poderá perceber nada do que acontece a sua volta. Alvos detectados por técnicas sensoriais podem ter seu chakra atual lido pelo usuário.
+Teletransporte:  A cada 100 metros em que o usuário poder se teletransportar, adiciona-se 60 de gasto em Chakra
+A cada Pessoa extra que o usuário teletransportar com ele, adiciona-se 40 de gasto em Chakra
+A cada alvo pequeno que o usuário teletransportar com ele, adiciona-se 20 de gasto em Chakra
+A cada alvo médio que o usuário teletransportar com ele, adiciona-se 40 de gasto em chakra
+A cada alvo grande que o usuário teletransportar com ele, adiciona-se 60 de gasto em Chakra
+A cada Bijuu que o usuário teletransportar com ele, adiciona-se 200 de gasto em Chakra
+Passivos: Podem seguir as regras acima, mas deverão ser aprovados com bom senso para evitar passivas quebradas.
+Barreira
+A cada 1 de gasto em Chakra, a barria possuíra: 1.2 Pontos de Vida ou 1.3 Pontos de Vida se for Elemental ou 1.4 Pontos de Vida se for Hiden ou 1.5 Pontos de Vida se for Kekkei Genkai ou 1.7 Pontos de Vida se for Kekkei Touta ou 2.1 Pontos de Vida se for Kekkei Mõra
+A Barreira pode ser regenerada caso o usuário pague o valor total da técnica novamente
+Barreiras são defesas automaticas, as barreiras absorvem o dano equivalente a barreira, o excesso passa como dano ao personagem. 
+Vantagem elemental: +50% de dano caso a barreira elemental tenha fraqueza ao seu ataque. Ex: Um jutsu de fogo dará 50% de dano a mais contra uma barreira de vento.
+Desvantagem elemental: -50% de dano caso a barreira tenha vantagem elemental contra você. Ex: Um jutsu de fogo dará 50% de dano a menos contra uma barreira de água.
+Distância
+Física, Curta, Média ou Longa (Alvo Único)
+Aqui estão os preços em Chakra e/ou Estâmina da distância no qual sua técnica utiliza. As distâncias de alvo único custam 6 de Chakra por cada distância (Curta á Média) custaria 12 de Chakra.
+Jutsus de Distância Física:(0 metros) +0 de gasto em Chakra e/ou Estamina.
+Jutsus de Curta Distância:(0 metros á 5 metros) +6 de gasto em Chakra e/ou Estamina.
+Jutsus de Média Distância:(10 metros á 20 metros) +6 de gasto em Chakra e/ou Estamina.
+Jutsus de Longa Distância:(21 metros á 40 metros) +6 de gasto em Chakra e/ou Estamina.
+Jutsus de Todas as Distâncias:(0 metros á 40 metros) +18 de gasto em Chakra e/ou Estamina.
+Área (Alvos Múltiplos)
+Jutsus de Área: +1 de gasto em Chakra e/ou Estâmina para adicionar 1m² de área de acerto do jutsu e A cada 15m² adiciona-se -1 de redutor na ação defensiva do alvo
+Área de Efeito:Deverá ser declarado qual o formato da área que a técnica afeta. (Cone em frente ao usuário, Círculo em volta do usuário, Área escolhida em quadrado etc.)
+Selos de Mão
+ 
+Selos de Mão
+A cada selo de mão que a técnicas possuir, reduz o gasto da técnica em -2 pontos em Chakra e/ou Estâmina
+Acima de 5 Selos de mão, adiciona-se um redutor de -2 no acerto de ataque e defesa do usuário (Exceto para Chūnin e acima)
+Acima de 10 Selos de mão, adiciona-se um redutor de -3 no acerto de ataque e defesa do usuário (Exceto para Jounins e acima)
+=================================================================================
+ Tabela de Efeitos
+=================================================================================
+Efeitos com Duração Permanente
+EFEITO:
+Corrosão (Ácido)*:Causa Corrosão Futon resultando em X*1,4 pontos de Dano por rodada até o final do combate
+Congelamento*: Causa Congelamento resultando em um redutor de -X em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e Reflexo até o final do combate.
+Cristalização*: Causa Cristalização resultando em um redutor de -X em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e Reflexo até o final do combate.
+Desidratação*: Causa Desidratação resultando em um redutor de -X em todas as rolagens de ataque e defesa até o final do combate.
+Desintegração:Causa Desintegração resultando em execução do alvo caso ele possua X% ou menos pontos de vida (Não passar de 10%)
+Esmagamento: Causa Esmagamento em um membro escolhido pelo usuário, resultando em um redutor de -X nas ações com o membro afetado e Y pontos de dano por rodada até o final do combate (Foco no RED do que no DMG)
+Envenenamento: Causa Envenenamento resultando em um redutor de -X em todas as ações de ataque e defesa e Y pontos de dano por rodada até o final do combate (Focar mais DMG rodada do que RED)
+Explosão: Causa Explosão resultando em um aumento de X de dano adicional desta técnica. (A ideia é Burst)
+Explosão Bakuton*:Causa Explosão Bakuton resultando em um redutor de -X em ações de defesa do alvo por 2 rodadas e X de dano adicional desta técnica (Burst com Red temp)
+Magnetização*: Causa Magnetização resultando em um redutor de -X contra técnicas de Jiton e Armamentos Metálicos até o final do combate (Facilitar acerto de Jiton contra o alvo)
+Perfuração: Causa Perfuração em um membro escolhido pelo usuário, resultando em um redutor de -X nas ações com o membro afetado e Y pontos de dano por rodada até o final do combate (Foco no DMG do que no RED)
+Corrosão:Causa Corrosão resultando em X pontos de Dano por rodada até o final do combate
+Queimadura:Causa Queimadura resultando em X pontos de dano por rodada até o final do combate
+Queimadura Lava*: Causa Queimadura Lava resultando em X*1,4 pontos de dano por rodada até o final do combate
+Amaterasu*:Causa Queimadura Amaterasu resultando em X*1,4 pontos de dano por rodada até o final do combate
+Sangramento: Causa sangramento resultando em X pontos de dano por rodada até o final do combate.
+Tenketsu Fechado: Causa Fechamento de Tenketsu resultando em um redutor de -X em todas as rolagens até o final do combate.
+Efeitos Temporarios (1 a 2 Rodadas, No Máximo 3 se condizer com a Técnica)
+EFEITO:
+Afogamento: Causa Afogamento Resultando em X pontos de dano e -Y pontos de estâmina por X rodadas.
+Atordoamento:Causa Atordoamento resultando em um redutor de -X em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e Reflexo por X Rodadas.
+Alterar Ctrl de CHK: Causa Alterar Controle de Chakra resultando em um gasto de +X pontos de chakra nas próximas X técnicas que consumam chakra que o usuário utilizar
+Eletrocutar: Causa Eletrocussão resultando em -X em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e X Pontos de Vida por X rodadas.
+Eletrocutar Ranton:Causa Eletrocussão Ranton resultando em -X em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e X*1,3 Pontos de Vida por X rodadas.
+Exaustão: Causa Exaustão resultando em um redutor de -X em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e Reflexo por 2 Rodadas. E um gasto de +X pontos de estâmina nas próximas X técnicas que consumam estâmina que o alvo utilizar
+Exaustão Ilusória: Causa Exaustão Ilusória resultando em um gasto de +X pontos de estâmina nas próximas X técnicas que consumam estâmina que o usuário utilizar
+Genjutsu: Causa Genjutsu resultando em um redutor de -X em Esquiva, Bloqueio Físico, Bloqueio de Chakra, Genjutsu Kai e Reflexo por X rodadas
+Perca de Visão: Causa Perca de Visão resultando em um redutor de -X em todos os testes relacionados a visão por X rodadas
+Redução de Res.: Causa Redução de Resistência resultando em +X pontos de dano de todas as fontes por X rodadas.
+Dreno de CHK: ?????
+Sufocamento: Causa Sufocamento Resultando em X pontos de dano e -Y pontos de estâmina por X rodadas.
+*Pulverização, desarmamento, ignorar proteção poderão ser aplicados mesmo em um alvo que já esteja sob 2 efeitos.
+*Corrosão normalmente não afeta equipamentos
+=================================================================================
+ Efeitos Arbitrários
+=================================================================================
+EFEITO:
+Molhado:Seu personagem está encharcado de água assim recebendo 30% de dano extra de técnicas de relâmpago e 30% de dano reduzido de técnicas de fogo
+Recebe um redutor de -2 em rolagens de esquiva e bloquieo físico devido as roupas molhadas
+Aquecido:Seu personagem está aquecido e muito seco recebendo 30% de dano extra de técnicas de fogo.
+Caído:Seu personagem foi derrubado no chão recebendo um redutor de -3 em sua próxima rolagem defensiva
+Intimidado:Seu personagem está intimidado pelo oponente recebendo um redutor de -2 em suas próximas duas rolagens de ataque
+O personagem também recebe um redutor de -4 em rolagens de Empatia, Intimidação, Ladinagem, Enganação, Persuasão e Sedução.
+Seduzido:Seu personagem está encantado pelo alvo recebendo um redutor de -4 em Intimidação, Ladinagem e Enganação
+Porém recebe um bônus de +2 em sedução
+NOTAS
+Quando se desaparece da visão do alvo com desaparecer, o ataque entra como furtivo, portanto, a defesa deverá ser feita com o atributo reflexo, caso nada anule esse desaparecimento. Desaparecer médio e grave podem ser utilizados contra Dõjutsu que tenham campo de visão. Será considerado que o usuário saiu do campo visual do Dõjutsu. (Exceto Byakugan)
+Desarme: Caso o alvo seja desarmado ele deverá rolar Taijutsu para tentar recuperar a arma.
+Ignorar proteção é valido contra: Armaduras, Barreiras, Escudos, Armas ou qualquer técnica que utilize PV para reduzir dano.
+Corrosão é efeito exclusivo de Futton (Vapor Ácido)
+Congelamento é efeito exclusivo de Hyouton (Gelo)
+Cristalização é efeito exclusivo de Shouton (Cristal)
+Se o membro cristalizado for uma perna, aquele membro se torna inutilizado. Se for um braço, o usuário é incapaz de realizar selos ou segurar equipamentos naquele braço.
+Desidratação é efeito exclusivo de Shakuton (Desidratação)
+Eletrocutar Ranton é efeito exclusivo de Ranton (Laser)
+Explosão Bakuton é efeito exclusivo de Bakuton(Explosão) e Kibaku Nendo (Árgila Explosiva)
+Magnetização é efeito exclusivo de Jiton (Magnetismo)
+Queimadura Enton é efeito exclusivo de Enton e Amaterasu (Mangekyõ Sharingan)
+Queimadura Lava é efeito exclusivo de Youton (Lava)
+Movimentação só pode ser colocado no 100% e só dura durante a ação ofensiva do usuário
+Pulverização é um efeito exclusivo de Jinton (Partícula)
