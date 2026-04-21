@@ -55,6 +55,105 @@ local function criarFichaAvancada(sheet, parentForm)
         return "";
     end;
 
+    -- Forward declarations for RichEdit references
+    local editsTecnicas = {};
+    local tecFieldNames = {};
+    local edtTraits; -- forward ref for traits RichEdit
+    local edtHistoria; -- forward ref for historia RichEdit
+    local edtInventario; -- forward ref for inventario RichEdit
+
+    -- Map of standalone RichEdit widgets by field name
+    local richEditMap = {};
+
+    -- Helper: extract plain text from RichEdit or NDB field
+    -- editIndex: index into editsTecnicas (for technique tabs)
+    local function getRichText(fieldName, editIndex)
+        local texto = "";
+        
+        -- Strategy 1: Try RichEdit widget via _obj_invokeEx + getText (technique tabs)
+        if editIndex and editsTecnicas[editIndex] then
+            pcall(function()
+                local h = editsTecnicas[editIndex].handle;
+                if h then texto = _obj_invokeEx(h, "LGetText") or ""; end;
+            end);
+            if texto == "" then
+                pcall(function() texto = editsTecnicas[editIndex]:getText() or ""; end);
+            end;
+        end;
+        
+        -- Strategy 2: Try standalone RichEdit widget from map
+        if texto == "" and richEditMap[fieldName] then
+            local w = richEditMap[fieldName];
+            pcall(function()
+                local h = w.handle;
+                if h then texto = _obj_invokeEx(h, "LGetText") or ""; end;
+            end);
+            if texto == "" then pcall(function() texto = w:getText() or ""; end); end;
+            if texto == "" then pcall(function() texto = w.text or ""; end); end;
+        end;
+        
+        -- Strategy 3: NDB - try to iterate child nodes for text content
+        if texto == "" then
+            pcall(function()
+                local raw = sheet[fieldName];
+                if raw == nil then return; end;
+                local rawStr = tostring(raw);
+                -- If it's already a plain string (not a table ref), use it
+                if not rawStr:find("^table:") then
+                    texto = rawStr;
+                    return;
+                end;
+                -- It's a table (NDB structured data). Try to extract text.
+                -- Method A: use ndb.getChildNodes if available
+                local children = nil;
+                pcall(function() children = ndb.getChildNodes(raw); end);
+                if children then
+                    local parts = {};
+                    for _, child in ipairs(children) do
+                        pcall(function()
+                            local t = tostring(child.text or child.valor or child.value or child);
+                            if t and not t:find("^table:") then
+                                table.insert(parts, t);
+                            end;
+                        end);
+                    end;
+                    if #parts > 0 then
+                        texto = table.concat(parts, "\n");
+                    end;
+                end;
+                -- Method B: try pairs() on the table
+                if texto == "" then
+                    local parts = {};
+                    for k, v in pairs(raw) do
+                        local vs = tostring(v or "");
+                        if not vs:find("^table:") and vs ~= "" then
+                            table.insert(parts, vs);
+                        end;
+                    end;
+                    if #parts > 0 then
+                        texto = table.concat(parts, "\n");
+                    end;
+                end;
+            end);
+        end;
+        
+        -- Strip HTML tags if present
+        if texto ~= "" then
+            texto = texto:gsub("<br[^>]*>", "\n");
+            texto = texto:gsub("</p>", "\n");
+            texto = texto:gsub("</div>", "\n");
+            texto = texto:gsub("<[^>]+>", "");
+            texto = texto:gsub("&nbsp;", " ");
+            texto = texto:gsub("&amp;", "&");
+            texto = texto:gsub("&lt;", "<");
+            texto = texto:gsub("&gt;", ">");
+            -- Clean up excess whitespace
+            texto = texto:gsub("\n\n\n+", "\n\n");
+            texto = texto:match("^%s*(.-)%s*$") or texto;
+        end;
+        return texto;
+    end;
+
     local function sfn(field)
         return tonumber(sf(field)) or 0;
     end;
@@ -158,15 +257,344 @@ local function criarFichaAvancada(sheet, parentForm)
     scroll1.parent = tab1;
     scroll1.align = "client";
 
-    -- --- Status Bars (top of profile) ---
-    local statusCard = ui.card(scroll1, {
-        title = "Status",
-        height = 150,
-        headerColor = "#0D1B2A",
-        borderColor = "#1E3A5C",
-        margins = {top = 6, left = 6, right = 6},
-    });
-    local statusBody = statusCard._body;
+    -- ===== EXPORT HTML FUNCTION =====
+    local function exportarHTML()
+        local s = sf; -- shortcut
+        local html = {};
+        local function add(line) table.insert(html, line); end;
+
+        add("<!DOCTYPE html>");
+        add("<html lang='pt-BR'><head><meta charset='UTF-8'>");
+        add("<title>Ficha ND - " .. s("nome") .. "</title>");
+        add("<style>");
+        add("body{font-family:'Segoe UI',sans-serif;background:#0D1117;color:#C9D1D9;padding:20px;max-width:900px;margin:0 auto}");
+        add("h1{color:#F97316;border-bottom:2px solid #F97316;padding-bottom:8px}");
+        add("h2{color:#818CF8;border-bottom:1px solid #1E3A5C;padding-bottom:4px;margin-top:24px}");
+        add("h3{color:#22C55E;margin-top:16px}");
+        add("table{border-collapse:collapse;width:100%;margin:8px 0}");
+        add("th,td{border:1px solid #1E3A5C;padding:6px 12px;text-align:left}");
+        add("th{background:#161B22;color:#8BA3C4;font-weight:600}");
+        add("td{background:#0D1117}");
+        add(".tag{display:inline-block;padding:2px 8px;border-radius:12px;margin:2px;font-size:12px}");
+        add(".tag-on{background:#22C55E;color:#000}.tag-off{background:#1A2332;color:#556677}");
+        add(".section{background:#161B22;border:1px solid #1E3A5C;border-radius:8px;padding:16px;margin:12px 0}");
+        add(".star-pos{color:#22C55E}.star-neg{color:#EF4444}.star-neu{color:#FFF}");
+        add("pre{background:#161B22;padding:12px;border-radius:6px;white-space:pre-wrap;font-size:13px}");
+        add("</style></head><body>");
+
+        -- Header
+        add("<h1>Ficha de Personagem: " .. s("nome") .. "</h1>");
+        add("<p><em>Exportado para contexto de IA Narradora - Naruto Destiny RPG</em></p>");
+
+        -- Dados Pessoais
+        add("<h2>Dados Pessoais</h2>");
+        add("<div class='section'><table>");
+        local pessoais = {
+            {"Nome", "nome"}, {"Idade", "idade"}, {"Vila", "vila_nascimento"},
+            {"Cla", "cla_ninja"}, {"Kekkei Genkai", "kekkei_genkai"},
+            {"Sensei", "sensei"}, {"Kuchiyose", "kuchiyose"}, {"Ryo", "ryo"},
+            {"Natureza", "natureza"}, {"Comportamento", "comportamento"},
+            {"Qualidade", "qualidade"}, {"Defeito", "defeito"},
+            {"Altura", "altura"}, {"Peso", "peso"},
+            {"Interesse Romantico", "interesse_romantico"},
+            {"Tipo Sanguineo", "tipo_sanguineo"}, {"Mao Dominante", "mao_dominante"},
+            {"Rank", "rank_shinobi"}, {"Nivel", "nivel"},
+        };
+        for _, p in ipairs(pessoais) do
+            add("<tr><th>" .. p[1] .. "</th><td>" .. s(p[2]) .. "</td></tr>");
+        end;
+
+        -- Reconhecimento
+        local recoVal = tonumber(s("reconhecimento")) or 0;
+        local recoTipo = s("reconhecimento_tipo");
+        if recoTipo == "" then recoTipo = "neutro"; end;
+        local starClass = "star-neu";
+        if recoTipo == "positivo" then starClass = "star-pos"; end;
+        if recoTipo == "negativo" then starClass = "star-neg"; end;
+        local stars = "";
+        for i = 1, 6 do
+            if i <= recoVal then stars = stars .. "★";
+            else stars = stars .. "☆"; end;
+        end;
+        add("<tr><th>Reconhecimento</th><td><span class='" .. starClass .. "'>" .. stars .. "</span> (" .. recoTipo .. ", " .. recoVal .. "/6)</td></tr>");
+        add("</table></div>");
+
+        -- Elementos
+        add("<h2>Elementos (Naturezas de Chakra)</h2>");
+        add("<div class='section'>");
+        local elems = {
+            {"Katon (Fogo)", "elem_fogo"}, {"Suiton (Agua)", "elem_agua"},
+            {"Doton (Terra)", "elem_terra"}, {"Fuuton (Vento)", "elem_vento"},
+            {"Raiton (Raio)", "elem_raio"}, {"Hyoton (Gelo)", "elem_hyoton"},
+            {"Mokuton (Madeira)", "elem_mokuton"}, {"Yoton (Lava)", "elem_yoton"},
+            {"Futton (Vapor)", "elem_futton"}, {"Shakuton (Calor)", "elem_shakuton"},
+            {"Ranton (Tempestade)", "elem_ranton"}, {"Bakuton (Explosao)", "elem_bakuton"},
+            {"Jinton (Particula)", "elem_jinton"}, {"Shoton (Cristal)", "elem_shoton"},
+            {"Jiton (Magnetismo)", "elem_jiton"}, {"Enton (Chamas)", "elem_enton"},
+        };
+        for _, el in ipairs(elems) do
+            local active = (s(el[2]) == "true");
+            if active then
+                add("<span class='tag tag-on'>" .. el[1] .. "</span>");
+            end;
+        end;
+        add("</div>");
+
+        -- Status
+        add("<h2>Status Vitais</h2>");
+        add("<div class='section'><table>");
+        add("<tr><th>HP</th><td>" .. s("pv_atual") .. " / " .. s("pv") .. "</td></tr>");
+        add("<tr><th>Chakra</th><td>" .. s("pchakra_atual") .. " / " .. s("pchakra") .. "</td></tr>");
+        add("<tr><th>Stamina</th><td>" .. s("pestamina_atual") .. " / " .. s("pestamina") .. "</td></tr>");
+        add("<tr><th>XP</th><td>" .. s("xp_atual") .. " / " .. s("xp_max") .. "</td></tr>");
+        add("</table></div>");
+
+        -- Atributos Core
+        add("<h2>Atributos Core</h2>");
+        add("<div class='section'><table>");
+        local cores = {
+            {"Forca", "forca"}, {"Agilidade", "agilidade"},
+            {"Constituicao", "constituicao"}, {"Destreza", "destreza"},
+            {"Controle de Chakra", "ctrl_chakra"}, {"Concentracao", "concentracao"},
+            {"Inteligencia", "inteligencia"}, {"Forca Espiritual", "forca_espiritual"},
+        };
+        for _, c in ipairs(cores) do
+            add("<tr><th>" .. c[1] .. "</th><td>" .. s(c[2]) .. "</td></tr>");
+        end;
+        add("</table></div>");
+
+        -- Atributos de Combate
+        add("<h2>Atributos de Combate</h2>");
+        add("<div class='section'><table>");
+        add("<tr><th>Atributo</th><th>Valor</th><th>Formula</th></tr>");
+        local combates = {
+            {"Taijutsu", "taijutsu", "FOR + AGI*0.5"},
+            {"Bukijutsu", "bukijutsu", "DES + FOR*0.5"},
+            {"Ninjutsu", "ninjutsu", "FEP + CCH*0.5"},
+            {"Genjutsu", "genjutsu", "CCH + INT*0.5"},
+            {"Genjutsu Kai", "genjutsu_kai", "(INT+CCH+CON)/2"},
+            {"Fuinjutsu", "fuinjutsu", "INT + FEP*0.5"},
+            {"Arremesso", "arremesso", "CON + DES*0.5"},
+            {"Esquiva", "esquiva", "(AGI+CON+INT+CST)/2.5"},
+            {"Bloqueio Fisico", "bloqueio_fisico", "(FOR+DES+CST+AGI)/2.5"},
+            {"Bloqueio Chakra", "bloqueio_chakra", "(CCH+FEP+CST+CON)/2.5"},
+            {"Reflexo", "reflexo", "(CON+AGI+CST+INT)/2.5"},
+            {"Iniciativa", "iniciativa", "(FOR+DES+CON+AGI)/2.5"},
+            {"Tai-Bukijutsu", "tai_bukijutsu", "(TAI+BUKI)/2"},
+            {"Nin-Taijutsu", "nin_taijutsu", "(TAI+NIN)/2"},
+            {"Hiraishin", "hiraishin", "(NIN+FUIN)/2"},
+            {"Movimentacao", "movimentacao", "AGI + INT/2"},
+        };
+        for _, cb in ipairs(combates) do
+            add("<tr><th>" .. cb[1] .. "</th><td>" .. s(cb[2]) .. "</td><td><em>" .. cb[3] .. "</em></td></tr>");
+        end;
+        add("</table></div>");
+
+        -- Atributos Interpretativos
+        add("<h2>Atributos Interpretativos</h2>");
+        add("<div class='section'><table>");
+        local interps = {
+            {"Sobrevivencia", "sobrevivencia"}, {"Armadilhas", "armadilha"},
+            {"Empatia", "empatia"}, {"Intimidacao", "intimidacao"},
+            {"Ladinagem", "ladinagem"}, {"Enganacao", "enganacao"},
+            {"Percepcao", "percepcao"}, {"Persuasao", "persuasao"},
+            {"Seducao", "seducao"}, {"Medicina", "medicina"},
+            {"Historia", "historia_attr"}, {"Oficio", "oficio"},
+            {"Conhecimento", "conhecimento"}, {"Aprendizado", "aprendizado"},
+            {"Ensinamento", "ensinamento"},
+        };
+        for _, ip in ipairs(interps) do
+            add("<tr><th>" .. ip[1] .. "</th><td>" .. s(ip[2]) .. "</td></tr>");
+        end;
+        add("</table></div>");
+
+        -- Traits
+        add("<h2>Traits</h2>");
+        local traitsText = getRichText("traits", nil);
+        if traitsText == "" then traitsText = s("traits"); end;
+        if traitsText:find("^table:") then traitsText = "(dados de traits indisponiveis)"; end;
+        add("<div class='section'><pre>" .. traitsText .. "</pre></div>");
+
+        -- Tecnicas
+        add("<h2>Tecnicas e Jutsus</h2>");
+        local tecExport = {
+            {"Taijutsu", "tec_taijutsu", 1}, {"Bukijutsu", "tec_bukijutsu", 2},
+            {"Ninjutsu", "tec_ninjutsu", 3}, {"Genjutsu", "tec_genjutsu", 4},
+            {"Elemental", "tec_elemental", 5}, {"Fuinjutsu", "tec_fuinjutsu", 6},
+            {"Kuchiyose", "tec_kuchiyose", 7}, {"Kekkei Genkai", "tec_kekkei_genkai", 8},
+            {"Habilidades Gerais", "tec_habilidades_gerais", 9},
+        };
+        for _, tc in ipairs(tecExport) do
+            local val = getRichText(tc[2], tc[3]);
+            if val ~= "" then
+                add("<h3>" .. tc[1] .. "</h3>");
+                add("<div class='section'><pre>" .. val .. "</pre></div>");
+            end;
+        end;
+
+        -- Personalidade
+        add("<h2>Personalidade e Aparencia</h2>");
+        add("<div class='section'>");
+        local persFields = {
+            {"Gostos", "gostos"}, {"Desgostos", "desgostos"},
+            {"Hobbies", "hobbies"}, {"Sonho", "sonho"}, {"Objetivo", "objetivo"},
+        };
+        add("<table>");
+        for _, pf in ipairs(persFields) do
+            add("<tr><th>" .. pf[1] .. "</th><td>" .. s(pf[2]) .. "</td></tr>");
+        end;
+        add("</table>");
+        add("</div>");
+
+        -- Historia
+        add("<h2>Historia do Personagem</h2>");
+        local histText = getRichText("historia_fmt", nil);
+        if histText == "" then histText = s("historia_fmt"); end;
+        if histText:find("^table:") then histText = ""; end;
+        add("<div class='section'><pre>" .. histText .. "</pre></div>");
+
+        -- Inventario
+        add("<h2>Inventario</h2>");
+        local invText = getRichText("inventario_fmt", nil);
+        if invText == "" then invText = s("inventario_fmt"); end;
+        if invText:find("^table:") then invText = ""; end;
+        add("<div class='section'><pre>" .. invText .. "</pre></div>");
+
+        -- Kuchiyose (invocacao)
+        add("<h2>Kuchiyose (Invocacao)</h2>");
+        add("<div class='section'><table>");
+        local kuchiAttrs = {
+            {"Forca", "kuchi_forca"}, {"Agilidade", "kuchi_agilidade"},
+            {"Constituicao", "kuchi_constituicao"}, {"Destreza", "kuchi_destreza"},
+            {"Ctrl. Chakra", "kuchi_ctrl_chakra"}, {"Concentracao", "kuchi_concentracao"},
+            {"Forca Espiritual", "kuchi_forca_espiritual"}, {"Inteligencia", "kuchi_inteligencia"},
+            {"Rank", "kuchi_rank"},
+            {"PV", "kuchi_pv"}, {"Chakra", "kuchi_pchakra"}, {"Stamina", "kuchi_pestamina"},
+            {"Taijutsu", "kuchi_taijutsu"}, {"Bukijutsu", "kuchi_bukijutsu"},
+            {"Ninjutsu", "kuchi_ninjutsu"}, {"Genjutsu", "kuchi_genjutsu"},
+            {"Esquiva", "kuchi_esquiva"}, {"Reflexo", "kuchi_reflexo"},
+            {"Iniciativa", "kuchi_iniciativa"},
+        };
+        for _, ka in ipairs(kuchiAttrs) do
+            add("<tr><th>" .. ka[1] .. "</th><td>" .. s(ka[2]) .. "</td></tr>");
+        end;
+        add("</table>");
+        add("<h3>Notas da Kuchiyose</h3><pre>" .. s("kuchi_notas") .. "</pre>");
+        add("</div>");
+
+        -- KKG Sharingan
+        local kkgLabel = s("kkg_ativos_label");
+        if kkgLabel ~= "" then
+            add("<h2>Kekkei Genkai Ativo</h2>");
+            add("<div class='section'><p><strong>" .. kkgLabel .. "</strong></p></div>");
+        end;
+
+        -- Footer
+        add("<hr><p style='color:#555;font-size:11px'>Gerado automaticamente pela Ficha ND v2.0 | Naruto Destiny RPG | " .. os.date("%d/%m/%Y %H:%M") .. "</p>");
+        add("</body></html>");
+
+        -- Write file
+        local fullHtml = table.concat(html, "\n");
+        local nome = s("nome");
+        if nome == "" then nome = "personagem"; end;
+        local safeName = nome:gsub("[^%w_%-]", "_");
+        local fileName = "Ficha_" .. safeName .. ".html";
+
+        -- Auto-discover user Desktop via fcext.listDir
+        local savePath = nil;
+        pcall(function()
+            local drives = {"C", "D"};
+            for _, drv in ipairs(drives) do
+                local ok2, users = pcall(fcext.listDir, drv .. ":\\Users");
+                if ok2 and users then
+                    for _, u in ipairs(users) do
+                        if u ~= "Public" and u ~= "Default" and u ~= "Default User" and u ~= "All Users" then
+                            -- Try Desktop first
+                            local desktopPath = drv .. ":\\Users\\" .. u .. "\\Desktop\\" .. fileName;
+                            local fcPath = drv .. ":\\Users\\" .. u .. "\\AppData\\Local\\Firecast\\" .. fileName;
+                            -- Check if Desktop folder exists by trying to list it
+                            local ok3, _ = pcall(fcext.listDir, drv .. ":\\Users\\" .. u .. "\\Desktop");
+                            if ok3 then
+                                savePath = desktopPath;
+                            else
+                                savePath = fcPath;
+                            end;
+                            if savePath then break; end;
+                        end;
+                    end;
+                end;
+                if savePath then break; end;
+            end;
+        end);
+
+        if not savePath then
+            savePath = "C:\\" .. fileName;
+        end;
+
+        -- Write and verify
+        fcext.writeFile(savePath, fullHtml);
+
+        -- Verify the file was actually written
+        local written = fcext.fileExists(savePath);
+        if written then
+            pcall(function() GUI.toast("Ficha exportada: " .. savePath); end);
+            pcall(function() os.execute('start "" "' .. savePath .. '"'); end);
+        else
+            -- File wasn't written there, try Firecast dir as fallback
+            local fallback = nil;
+            pcall(function()
+                local drives = {"C", "D"};
+                for _, drv in ipairs(drives) do
+                    local ok2, users = pcall(fcext.listDir, drv .. ":\\Users");
+                    if ok2 and users then
+                        for _, u in ipairs(users) do
+                            if u ~= "Public" and u ~= "Default" and u ~= "Default User" and u ~= "All Users" then
+                                fallback = drv .. ":\\Users\\" .. u .. "\\AppData\\Local\\Firecast\\" .. fileName;
+                                break;
+                            end;
+                        end;
+                    end;
+                    if fallback then break; end;
+                end;
+            end);
+            if fallback then
+                fcext.writeFile(fallback, fullHtml);
+                if fcext.fileExists(fallback) then
+                    pcall(function() GUI.toast("Ficha exportada: " .. fallback); end);
+                    pcall(function() os.execute('start "" "' .. fallback .. '"'); end);
+                else
+                    pcall(function() GUI.toast("Erro: arquivo nao foi gravado!"); end);
+                end;
+            else
+                pcall(function() GUI.toast("Erro: nao foi possivel encontrar pasta para salvar!"); end);
+            end;
+        end;
+    end;
+
+    -- Export button
+    local exportRow = GUI.newLayout();
+    exportRow.parent = scroll1;
+    exportRow.align = "top";
+    exportRow.height = 34;
+    exportRow.margins = {left = 6, right = 6, top = 6};
+
+    local exportBtn = GUI.newButton();
+    exportBtn.parent = exportRow;
+    exportBtn.align = "right";
+    exportBtn.width = 200;
+    exportBtn.text = "Exportar HTML (IA)";
+    pcall(function() exportBtn.fontColor = "#FFFFFF"; end);
+    exportBtn:addEventListener("onClick", function()
+        local ok, err = pcall(exportarHTML);
+        if not ok then
+            pcall(function() GUI.toast("Erro: " .. tostring(err)); end);
+        end;
+    end);
+
+    -- Status bars will be added to tab2 (Atributos) later
+    -- We define the helper function here, create bars after scroll2 exists
+    local statusCard; -- forward declaration
+    local statusBody; -- forward declaration
 
     -- Helper function to create a status bar row
     local function criarBarraStatus(parent, label, color, bgColor, fieldAtual, fieldMax, extraMaxCalc)
@@ -253,19 +681,9 @@ local function criarFichaAvancada(sheet, parentForm)
         return {row = row, bar = bar, lblMax = lblMax, editAtual = editAtual};
     end;
 
-    -- Create the 4 status bars
-    local hp = criarBarraStatus(statusBody, "HP", "#EF4444", "#1A0A10", "pv_atual", "pv");
-    local ck = criarBarraStatus(statusBody, "Chakra", "#818CF8", "#0A0A1A", "pchakra_atual", "pchakra");
-    local st = criarBarraStatus(statusBody, "Stamina", "#22C55E", "#0A1A0A", "pestamina_atual", "pestamina");
-    local xp = criarBarraStatus(statusBody, "XP", "#A855F7", "#120A1A", "xp_atual", "xp_max");
-
-    -- Expose bar/val references for atualizarBarras
-    local hpBar = hp.bar;
-    local hpVal = hp.lblMax;
-    local ckBar = ck.bar;
-    local ckVal = ck.lblMax;
-    local stBar = st.bar;
-    local stVal = st.lblMax;
+    -- Status bar instances will be created after scroll2 exists
+    local hp, ck, st, xp;
+    local hpBar, hpVal, ckBar, ckVal, stBar, stVal;
 
     -- --- Dados Pessoais ---
     ui.section(scroll1, {text = "Dados Pessoais", margins = {top = 10, bottom = 4}});
@@ -274,7 +692,7 @@ local function criarFichaAvancada(sheet, parentForm)
     local perfilRow = GUI.newLayout();
     perfilRow.parent = scroll1;
     perfilRow.align = "top";
-    perfilRow.height = 240;
+    perfilRow.height = 520;
     perfilRow.margins = {left = 6, right = 6};
 
     -- Left column: avatar
@@ -301,11 +719,35 @@ local function criarFichaAvancada(sheet, parentForm)
     pcall(function() avatarImg.field = "aparencia_img1"; end);
     pcall(function() avatarImg.editable = true; end);
 
-    -- Right column: info fields
+    -- Right column: second image
+    local imgRightCol = GUI.newLayout();
+    imgRightCol.parent = perfilRow;
+    imgRightCol.align = "right";
+    imgRightCol.width = 200;
+
+    local imgRightBg = GUI.newRectangle();
+    imgRightBg.parent = imgRightCol;
+    imgRightBg.align = "client";
+    imgRightBg.color = "#0E1420";
+    imgRightBg.strokeColor = "#F97316";
+    imgRightBg.strokeSize = 1;
+    imgRightBg.xradius = 10;
+    imgRightBg.yradius = 10;
+    imgRightBg.margins = {left = 4, right = 4, top = 4, bottom = 4};
+
+    local imgRight = GUI.newImage();
+    imgRight.parent = imgRightCol;
+    imgRight.align = "client";
+    imgRight.margins = {left = 8, right = 8, top = 8, bottom = 8};
+    pcall(function() imgRight.style = "autoFit"; end);
+    pcall(function() imgRight.field = "aparencia_img2"; end);
+    pcall(function() imgRight.editable = true; end);
+
+    -- Center column: info fields
     local infoCol = GUI.newLayout();
     infoCol.parent = perfilRow;
     infoCol.align = "client";
-    infoCol.margins = {left = 10};
+    infoCol.margins = {left = 10, right = 10};
 
     local campos = {
         {"Nome", "nome"},
@@ -315,12 +757,123 @@ local function criarFichaAvancada(sheet, parentForm)
         {"Kekkei Genkai", "kekkei_genkai"},
         {"Sensei", "sensei"},
         {"Kuchiyose", "kuchiyose"},
+        {"Ryo", "ryo"},
+        {"Natureza", "natureza"},
+        {"Comportamento", "comportamento"},
+        {"Qualidade", "qualidade"},
+        {"Defeito", "defeito"},
+        {"Altura", "altura"},
+        {"Peso", "peso"},
+        {"Int. Romantico", "interesse_romantico"},
     };
     for _, c in ipairs(campos) do
         ui.field(infoCol, {label = c[1], field = c[2], labelWidth = 110, margins = {top = 1}});
     end;
 
-    -- Rank + Level row
+    -- Tipo Sanguineo (dropdown)
+    ui.field(infoCol, {
+        label = "Tipo Sanguineo", field = "tipo_sanguineo", labelWidth = 110, margins = {top = 1},
+        items = {"", "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"},
+    });
+
+    -- Mao Dominante (dropdown)
+    ui.field(infoCol, {
+        label = "Mao Dominante", field = "mao_dominante", labelWidth = 110, margins = {top = 1},
+        items = {"", "Destro", "Canhoto", "Ambidestro [Trait]"},
+    });
+
+    -- Reconhecimento (star rating system)
+    local recoRow = GUI.newLayout();
+    recoRow.parent = infoCol;
+    recoRow.align = "top";
+    recoRow.height = 24;
+    recoRow.margins = {top = 2};
+
+    local recoLabel = GUI.newLabel();
+    recoLabel.parent = recoRow;
+    recoLabel.align = "left";
+    recoLabel.width = 110;
+    recoLabel.text = "Reconhecimento:";
+    recoLabel.horzTextAlign = "trailing";
+    recoLabel.fontColor = "#8BA3C4";
+    recoLabel.fontSize = 12;
+    recoLabel.margins = {right = 10};
+
+    -- Stars container
+    local starsContainer = GUI.newLayout();
+    starsContainer.parent = recoRow;
+    starsContainer.align = "left";
+    starsContainer.width = 180;
+
+    local starLabels = {};
+    for i = 1, 6 do
+        local star = GUI.newLabel();
+        star.parent = starsContainer;
+        star.align = "left";
+        star.width = 22;
+        star.height = 22;
+        star.fontSize = 16;
+        star.horzTextAlign = "center";
+        star.text = "☆";
+        star.fontColor = "#555555";
+        starLabels[i] = star;
+    end;
+
+    local function atualizarEstrelas()
+        local val = tonumber(sf("reconhecimento")) or 0;
+        local tipo = sf("reconhecimento_tipo");
+        if tipo == "" then tipo = "neutro"; end;
+        local cor = "#FFFFFF";
+        if tipo == "positivo" then cor = "#22C55E"; end;
+        if tipo == "negativo" then cor = "#EF4444"; end;
+        for i = 1, 6 do
+            if i <= val then
+                starLabels[i].text = "★";
+                starLabels[i].fontColor = cor;
+            else
+                starLabels[i].text = "☆";
+                starLabels[i].fontColor = "#555555";
+            end;
+        end;
+    end;
+    atualizarEstrelas();
+
+    -- Reconhecimento controls row
+    local recoCtrlRow = GUI.newLayout();
+    recoCtrlRow.parent = infoCol;
+    recoCtrlRow.align = "top";
+    recoCtrlRow.height = 26;
+    recoCtrlRow.margins = {top = 0};
+
+    -- Spacer for label alignment
+    local recoSpacer = GUI.newLayout();
+    recoSpacer.parent = recoCtrlRow;
+    recoSpacer.align = "left";
+    recoSpacer.width = 120;
+
+    -- Tipo selector (dropdown)
+    local recoTipoCombo = GUI.newComboBox();
+    recoTipoCombo.parent = recoCtrlRow;
+    recoTipoCombo.align = "left";
+    recoTipoCombo.width = 100;
+    recoTipoCombo.fontColor = "white";
+    recoTipoCombo.fontSize = 11;
+    pcall(function() recoTipoCombo.items = {"Positivo", "Neutro", "Negativo"}; end);
+    pcall(function() recoTipoCombo.values = {"positivo", "neutro", "negativo"}; end);
+    pcall(function() recoTipoCombo.field = "reconhecimento_tipo"; end);
+
+    -- Valor selector (dropdown 0-6)
+    local recoValCombo = GUI.newComboBox();
+    recoValCombo.parent = recoCtrlRow;
+    recoValCombo.align = "left";
+    recoValCombo.width = 60;
+    recoValCombo.fontColor = "white";
+    recoValCombo.fontSize = 11;
+    recoValCombo.margins = {left = 6};
+    pcall(function() recoValCombo.items = {"0", "1", "2", "3", "4", "5", "6"}; end);
+    pcall(function() recoValCombo.field = "reconhecimento"; end);
+
+    -- Rank row
     local rankRow = GUI.newLayout();
     rankRow.parent = scroll1;
     rankRow.align = "top";
@@ -344,18 +897,23 @@ local function criarFichaAvancada(sheet, parentForm)
     rankVal.fontSize = 16;
     rankVal.fontStyle = "bold";
 
+    -- Nivel row (below Rank)
+    local nivelRow = GUI.newLayout();
+    nivelRow.parent = scroll1;
+    nivelRow.align = "top";
+    nivelRow.height = 28;
+    nivelRow.margins = {left = 6, right = 6, top = 0};
+
     local nivelLabel = GUI.newLabel();
-    nivelLabel.parent = rankRow;
+    nivelLabel.parent = nivelRow;
     nivelLabel.align = "left";
-    nivelLabel.width = 80;
-    nivelLabel.text = "Nivel:";
+    nivelLabel.width = 120;
+    nivelLabel.text = "  Nivel:";
     nivelLabel.fontColor = "#8BA3C4";
     nivelLabel.fontSize = 13;
-    nivelLabel.horzTextAlign = "trailing";
-    nivelLabel.margins = {right = 10};
 
     local nivelVal = GUI.newLabel();
-    nivelVal.parent = rankRow;
+    nivelVal.parent = nivelRow;
     nivelVal.align = "left";
     nivelVal.width = 50;
     nivelVal.text = sf("nivel");
@@ -532,7 +1090,8 @@ local function criarFichaAvancada(sheet, parentForm)
     traitBorder.xradius = 6;
     traitBorder.yradius = 6;
 
-    local edtTraits = ui.richEdit(traitTextBox, {field = "traits", align = "client", margins = {top = 4, bottom = 4, left = 4, right = 4}, onChange = function() if calcularTraits then calcularTraits(); end; end});
+    edtTraits = ui.richEdit(traitTextBox, {field = "traits", align = "client", margins = {top = 4, bottom = 4, left = 4, right = 4}, onChange = function() if calcularTraits then calcularTraits(); end; end});
+    richEditMap["traits"] = edtTraits;
 
     -- Campos mecanicos de Traits (afetam calculos)
     ui.label(scroll1, {text = "  Modificadores Manuais:", color = t.textDim, fontSize = 11, italic = true, margins = {left = 6, top = 2}});
@@ -649,6 +1208,28 @@ local function criarFichaAvancada(sheet, parentForm)
     scroll2.parent = tab2;
     scroll2.align = "client";
 
+    -- --- Status Bars (top of Atributos tab) ---
+    statusCard = ui.card(scroll2, {
+        title = "Status",
+        height = 150,
+        headerColor = "#0D1B2A",
+        borderColor = "#1E3A5C",
+        margins = {top = 6, left = 6, right = 6},
+    });
+    statusBody = statusCard._body;
+
+    hp = criarBarraStatus(statusBody, "HP", "#EF4444", "#1A0A10", "pv_atual", "pv");
+    ck = criarBarraStatus(statusBody, "Chakra", "#818CF8", "#0A0A1A", "pchakra_atual", "pchakra");
+    st = criarBarraStatus(statusBody, "Stamina", "#22C55E", "#0A1A0A", "pestamina_atual", "pestamina");
+    xp = criarBarraStatus(statusBody, "XP", "#A855F7", "#120A1A", "xp_atual", "xp_max");
+
+    hpBar = hp.bar;
+    hpVal = hp.lblMax;
+    ckBar = ck.bar;
+    ckVal = ck.lblMax;
+    stBar = st.bar;
+    stVal = st.lblMax;
+
     -- Core Attributes
     ui.section(scroll2, {text = "Atributos Core", margins = {top = 6, bottom = 4}});
 
@@ -675,29 +1256,31 @@ local function criarFichaAvancada(sheet, parentForm)
     ui.section(scroll2, {text = "Atributos de Combate", margins = {top = 12, bottom = 4}});
 
     local combatAttrs = {
-        {"Taijutsu", "taijutsu"},
-        {"Bukijutsu", "bukijutsu"},
-        {"Ninjutsu", "ninjutsu"},
-        {"Genjutsu", "genjutsu"},
-        {"Genjutsu Kai", "genjutsu_kai"},
-        {"Fuinjutsu", "fuinjutsu"},
-        {"Arremesso", "arremesso"},
-        {"Esquiva", "esquiva"},
-        {"Bloq. Fisico", "bloqueio_fisico"},
-        {"Bloq. Chakra", "bloqueio_chakra"},
-        {"Reflexo", "reflexo"},
-        {"Iniciativa", "iniciativa"},
-        {"Tai-Bukijutsu", "tai_bukijutsu"},
-        {"Nin-Taijutsu", "nin_taijutsu"},
-        {"Hiraishin", "hiraishin"},
-        {"Movimentacao", "movimentacao"},
+        {"Taijutsu", "taijutsu", "FOR + AGI*0.5"},
+        {"Bukijutsu", "bukijutsu", "DES + FOR*0.5"},
+        {"Ninjutsu", "ninjutsu", "FEP + CCH*0.5"},
+        {"Genjutsu", "genjutsu", "CCH + INT*0.5"},
+        {"Genjutsu Kai", "genjutsu_kai", "(INT + CCH + CON) / 2"},
+        {"Fuinjutsu", "fuinjutsu", "INT + FEP*0.5"},
+        {"Arremesso", "arremesso", "CON + DES*0.5"},
+        {"Esquiva", "esquiva", "(AGI+CON+INT+CST) / 2.5"},
+        {"Bloq. Fisico", "bloqueio_fisico", "(FOR+DES+CST+AGI) / 2.5"},
+        {"Bloq. Chakra", "bloqueio_chakra", "(CCH+FEP+CST+CON) / 2.5"},
+        {"Reflexo", "reflexo", "(CON+AGI+CST+INT) / 2.5"},
+        {"Iniciativa", "iniciativa", "(FOR+DES+CON+AGI) / 2.5"},
+        {"Tai-Bukijutsu", "tai_bukijutsu", "(TAI + BUKI) / 2"},
+        {"Nin-Taijutsu", "nin_taijutsu", "(TAI + NIN) / 2"},
+        {"Hiraishin", "hiraishin", "(NIN + FUIN) / 2"},
+        {"Movimentacao", "movimentacao", "AGI + INT/2"},
     };
 
     for i = 1, #combatAttrs, 2 do
         local gridR = ui.grid(scroll2, {cols = 2, totalWidth = 900, height = 30, margins = {top = 1}});
-        ui.attribute(gridR._cols[1], {label = combatAttrs[i][1], field = combatAttrs[i][2], labelWidth = 120, readOnly = true});
+
+        ui.attribute(gridR._cols[1], {label = combatAttrs[i][1], field = combatAttrs[i][2], labelWidth = 100, readOnly = true, inputWidth = 40, desc = combatAttrs[i][3]});
+
         if combatAttrs[i+1] then
-            ui.attribute(gridR._cols[2], {label = combatAttrs[i+1][1], field = combatAttrs[i+1][2], labelWidth = 120, readOnly = true});
+            ui.attribute(gridR._cols[2], {label = combatAttrs[i+1][1], field = combatAttrs[i+1][2], labelWidth = 100, readOnly = true, inputWidth = 40, desc = combatAttrs[i+1][3]});
         end;
     end;
 
@@ -892,8 +1475,7 @@ local function criarFichaAvancada(sheet, parentForm)
         {"Hab. Gerais", "tec_habilidades_gerais"},
     };
 
-    local editsTecnicas = {};
-    local tecFieldNames = {};
+    -- Populate the forward-declared editsTecnicas/tecFieldNames
     for _, tData in ipairs(tecCampos) do
         local tTab = GUI.newTab();
         tTab.parent = tecTabs;
@@ -909,7 +1491,8 @@ local function criarFichaAvancada(sheet, parentForm)
     local tab5 = GUI.newTab();
     tab5.parent = tabs;
     tab5.title = "Inventario";
-    ui.richEdit(tab5, {field = "inventario_fmt", margins = {left = 8, right = 8, top = 8, bottom = 8}});
+    edtInventario = ui.richEdit(tab5, {field = "inventario_fmt", margins = {left = 8, right = 8, top = 8, bottom = 8}});
+    richEditMap["inventario_fmt"] = edtInventario;
 
     -- ==========================================
     -- TAB 6: HISTORIA
@@ -917,7 +1500,8 @@ local function criarFichaAvancada(sheet, parentForm)
     local tab6 = GUI.newTab();
     tab6.parent = tabs;
     tab6.title = "Historia";
-    ui.richEdit(tab6, {field = "historia_fmt", margins = {left = 8, right = 8, top = 8, bottom = 8}});
+    edtHistoria = ui.richEdit(tab6, {field = "historia_fmt", margins = {left = 8, right = 8, top = 8, bottom = 8}});
+    richEditMap["historia_fmt"] = edtHistoria;
 
     -- ==========================================
     -- TAB 7: KUCHIYOSE
@@ -1421,6 +2005,10 @@ local function criarFichaAvancada(sheet, parentForm)
             -- Campo de traits dispara calculo de traits
             if attribute == "traits" then
                 pcall(calcularTraits);
+            end;
+            -- Reconhecimento (estrelas reativas)
+            if attribute == "reconhecimento" or attribute == "reconhecimento_tipo" then
+                pcall(atualizarEstrelas);
             end;
         end);
     end;
