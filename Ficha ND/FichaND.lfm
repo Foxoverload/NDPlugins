@@ -18,7 +18,8 @@
 
         local function logFCEXT(msg)
             pcall(function()
-                local f = io.open("C:\\Users\\aaron\\AppData\\Local\\Firecast\\fcext_ficha_log.txt", "a");
+                local appdata = os.getenv("LOCALAPPDATA") or "";
+                local f = io.open(appdata .. "\\Firecast\\fcext_ficha_log.txt", "a");
                 if f then
                     f:write(os.date("[%H:%M:%S] ") .. tostring(msg) .. "\n");
                     f:close();
@@ -47,7 +48,8 @@
             logFCEXT("fcext carregado com sucesso");
 
             -- Load script from Firecast local app data
-            local code = fcext.readFile("C:\\Users\\aaron\\AppData\\Local\\Firecast\\fcext_ficha_nd.lua");
+            local appdata = os.getenv("LOCALAPPDATA") or "";
+            local code = fcext.readFile(appdata .. "\\Firecast\\fcext_ficha_nd.lua");
             if not code then
                 logFCEXT("ERRO: fcext_ficha_nd.lua nao encontrado");
                 self.fallbackError.visible = true;
