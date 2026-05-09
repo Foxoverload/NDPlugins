@@ -4,8 +4,8 @@ color 0A
 
 echo.
 echo  ===================================================
-echo  =   NARUTO DESTINY - SCRIPT EXTENDER v2.0.0      =
-echo  =              Instalador Automatico              =
+echo  =   NARUTO DESTINY - SCRIPT EXTENDER v3.0.0      =
+echo  =         Instalador Automatico + IA              =
 echo  ===================================================
 echo.
 
@@ -57,29 +57,37 @@ echo.
 REM Backup do DLL original (se ainda nao foi feito)
 if not exist "%FC%\lua54x64_original.dll" (
     if exist "%FC%\lua54x64.dll" (
-        echo [1/4] Fazendo backup do DLL original...
+        echo [1/5] Fazendo backup do DLL original...
         copy /Y "%FC%\lua54x64.dll" "%FC%\lua54x64_original.dll" >nul
         echo       Backup salvo como: lua54x64_original.dll
     ) else (
-        echo [1/4] DLL original nao encontrado, pulando backup...
+        echo [1/5] DLL original nao encontrado, pulando backup...
     )
 ) else (
-    echo [1/4] Backup ja existe, pulando...
+    echo [1/5] Backup ja existe, pulando...
 )
 
 REM Instalar Proxy DLL
-echo [2/4] Instalando Proxy DLL...
+echo [2/5] Instalando Proxy DLL...
 copy /Y "%~dp0lua54x64.dll" "%FC%\lua54x64.dll" >nul
 echo       lua54x64.dll instalado.
 
 REM Instalar scripts Lua
-echo [3/4] Instalando scripts Lua...
+echo [3/5] Instalando scripts Lua...
 copy /Y "%~dp0fcext_ficha_nd.lua" "%FC%\fcext_ficha_nd.lua" >nul
 echo       fcext_ficha_nd.lua instalado.
 
-echo [4/4] Instalando biblioteca UI...
+echo [4/5] Instalando biblioteca UI...
 copy /Y "%~dp0fcext_ui.lua" "%FC%\fcext_ui.lua" >nul
 echo       fcext_ui.lua instalado.
+
+echo [5/5] Instalando modulo IA Narradora...
+if exist "%~dp0fcext_ai.lua" (
+    copy /Y "%~dp0fcext_ai.lua" "%FC%\fcext_ai.lua" >nul
+    echo       fcext_ai.lua instalado.
+) else (
+    echo       fcext_ai.lua nao encontrado, pulando...
+)
 
 echo.
 echo  ===================================================
@@ -89,6 +97,8 @@ echo.
 echo  1. Abra o Firecast normalmente
 echo  2. Abra/crie uma ficha Naruto Destiny
 echo  3. Os calculos automaticos estarao ativos!
+echo  4. Clique no botao "IA Narradora" para configurar
+echo  5. Use /ia no chat para interagir com a IA
 echo.
 echo  Para desinstalar, execute:
 echo  desinstalar_script_extender.bat

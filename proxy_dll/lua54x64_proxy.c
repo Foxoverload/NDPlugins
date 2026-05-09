@@ -4,6 +4,7 @@
  */
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <winhttp.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -577,9 +578,260 @@ static int fcext_exec(void *L) {
     return 1;
 }
 
+/* fcext.execCapture(cmd [, stdinData]) -> exitCode, stdout  OR  nil, errorMsg
+   Runs a command via cmd /c, optionally pipes stdinData, captures stdout */
+static int fcext_execCapture(void *L) {
+    const char *cmd = proxy_tostring(L, 1);
+    const char *stdinData = proxy_tostring(L, 2);
+    if (!cmd) {
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "execCapture: command required");
+        return 2;
+    }
+
+    SECURITY_ATTRIBUTES sa;
+    sa.nLength = sizeof(sa);
+    sa.bInheritHandle = TRUE;
+    sa.lpSecurityDescriptor = NULL;
+
+    HANDLE hStdoutRead = NULL, hStdoutWrite = NULL;
+    if (!CreatePipe(&hStdoutRead, &hStdoutWrite, &sa, 0)) {
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "execCapture: CreatePipe stdout failed");
+        return 2;
+    }
+    SetHandleInformation(hStdoutRead, HANDLE_FLAG_INHERIT, 0);
+
+    HANDLE hStdinRead = NULL, hStdinWrite = NULL;
+    if (stdinData && stdinData[0]) {
+        if (!CreatePipe(&hStdinRead, &hStdinWrite, &sa, 0)) {
+            CloseHandle(hStdoutRead); CloseHandle(hStdoutWrite);
+            orig_lua_pushnil(L);
+            orig_lua_pushstring(L, "execCapture: CreatePipe stdin failed");
+            return 2;
+        }
+        SetHandleInformation(hStdinWrite, HANDLE_FLAG_INHERIT, 0);
+    }
+
+    size_t cmdLen = strlen(cmd) + 32;
+    char *cmdLine = (char*)malloc(cmdLen);
+    snprintf(cmdLine, cmdLen, "cmd /c \"%s\"", cmd);
+
+    STARTUPINFOA si;
+    memset(&si, 0, sizeof(si));
+    si.cb = sizeof(si);
+    si.dwFlags = STARTF_USESTDHANDLES;
+    si.hStdOutput = hStdoutWrite;
+    si.hStdError = hStdoutWrite;
+    si.hStdInput = hStdinRead ? hStdinRead : GetStdHandle(STD_INPUT_HANDLE);
+
+    PROCESS_INFORMATION pi;
+    memset(&pi, 0, sizeof(pi));
+
+    BOOL ok = CreateProcessA(NULL, cmdLine, NULL, NULL, TRUE,
+                             CREATE_NO_WINDOW, NULL, NULL, &si, &pi);
+    free(cmdLine);
+
+    if (!ok) {
+        CloseHandle(hStdoutRead); CloseHandle(hStdoutWrite);
+        if (hStdinRead) CloseHandle(hStdinRead);
+        if (hStdinWrite) CloseHandle(hStdinWrite);
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "execCapture: CreateProcess failed");
+        return 2;
+    }
+
+    CloseHandle(hStdoutWrite);
+
+    if (stdinData && stdinData[0] && hStdinWrite) {
+        DWORD written;
+        WriteFile(hStdinWrite, stdinData, (DWORD)strlen(stdinData), &written, NULL);
+        CloseHandle(hStdinWrite);
+    }
+    if (hStdinRead) CloseHandle(hStdinRead);
+
+    char *outBuf = NULL;
+    DWORD totalRead = 0;
+    DWORD bufSize = 0;
+    char readBuf[4096];
+    DWORD bytesRead;
+
+    while (ReadFile(hStdoutRead, readBuf, sizeof(readBuf), &bytesRead, NULL) && bytesRead > 0) {
+        if (totalRead + bytesRead + 1 > bufSize) {
+            bufSize = totalRead + bytesRead + 8192;
+            outBuf = (char*)realloc(outBuf, bufSize);
+        }
+        memcpy(outBuf + totalRead, readBuf, bytesRead);
+        totalRead += bytesRead;
+    }
+
+    CloseHandle(hStdoutRead);
+    WaitForSingleObject(pi.hProcess, INFINITE);
+    DWORD exitCode = 0;
+    GetExitCodeProcess(pi.hProcess, &exitCode);
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+
+    orig_lua_pushinteger(L, (lua_Integer)exitCode);
+    if (outBuf) {
+        orig_lua_pushlstring(L, outBuf, totalRead);
+        free(outBuf);
+    } else {
+        orig_lua_pushstring(L, "");
+    }
+    return 2;
+}
+
 static int fcext_version(void *L) {
-    orig_lua_pushstring(L, "fcext 2.1.0 - Firecast Script Extender");
+    orig_lua_pushstring(L, "fcext 3.0.0 - Firecast Script Extender + AI");
     return 1;
+}
+
+/* ============ HTTP POST (WinHTTP) ============ */
+/* fcext.httpPost(url, body [, contentType]) -> statusCode, responseBody  OR  nil, errorMsg */
+static int fcext_httpPost(void *L) {
+    const char *url = proxy_tostring(L, 1);
+    const char *body = proxy_tostring(L, 2);
+    const char *ctype = proxy_tostring(L, 3);
+    if (!url || !body) {
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "httpPost: url and body required");
+        return 2;
+    }
+    if (!ctype) ctype = "application/json";
+
+    /* Convert URL to wide string */
+    int wUrlLen = MultiByteToWideChar(CP_UTF8, 0, url, -1, NULL, 0);
+    wchar_t *wUrl = (wchar_t*)malloc(wUrlLen * sizeof(wchar_t));
+    MultiByteToWideChar(CP_UTF8, 0, url, -1, wUrl, wUrlLen);
+
+    /* Parse URL */
+    URL_COMPONENTS uc;
+    memset(&uc, 0, sizeof(uc));
+    uc.dwStructSize = sizeof(uc);
+    wchar_t hostBuf[256] = {0};
+    wchar_t pathBuf[2048] = {0};
+    uc.lpszHostName = hostBuf;
+    uc.dwHostNameLength = 256;
+    uc.lpszUrlPath = pathBuf;
+    uc.dwUrlPathLength = 2048;
+
+    if (!WinHttpCrackUrl(wUrl, 0, 0, &uc)) {
+        free(wUrl);
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "httpPost: invalid URL");
+        return 2;
+    }
+    free(wUrl);
+
+    BOOL useSSL = (uc.nScheme == INTERNET_SCHEME_HTTPS);
+    DWORD port = uc.nPort;
+
+    HINTERNET hSession = WinHttpOpen(L"FCEXT/3.0", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY,
+                                     WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
+    if (!hSession) {
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "httpPost: WinHttpOpen failed");
+        return 2;
+    }
+
+    HINTERNET hConnect = WinHttpConnect(hSession, hostBuf, (INTERNET_PORT)port, 0);
+    if (!hConnect) {
+        WinHttpCloseHandle(hSession);
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "httpPost: WinHttpConnect failed");
+        return 2;
+    }
+
+    DWORD flags = useSSL ? WINHTTP_FLAG_SECURE : 0;
+    HINTERNET hRequest = WinHttpOpenRequest(hConnect, L"POST", pathBuf, NULL,
+                                            WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, flags);
+    if (!hRequest) {
+        WinHttpCloseHandle(hConnect);
+        WinHttpCloseHandle(hSession);
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "httpPost: WinHttpOpenRequest failed");
+        return 2;
+    }
+
+    /* Set timeout: 60 seconds for connect/send/receive */
+    WinHttpSetTimeouts(hRequest, 10000, 10000, 60000, 60000);
+
+    /* Build Content-Type header */
+    wchar_t wCtype[256];
+    swprintf(wCtype, 256, L"Content-Type: %hs", ctype);
+    WinHttpAddRequestHeaders(hRequest, wCtype, (DWORD)-1, WINHTTP_ADDREQ_FLAG_REPLACE | WINHTTP_ADDREQ_FLAG_ADD);
+
+    /* Add Authorization header if body contains api key pattern - headers passed via body JSON */
+    /* Extra headers from Lua: passed as 4th param (string of raw headers) */
+    const char *extraHeaders = proxy_tostring(L, 4);
+    if (extraHeaders && extraHeaders[0]) {
+        int wHdrLen = MultiByteToWideChar(CP_UTF8, 0, extraHeaders, -1, NULL, 0);
+        wchar_t *wHdr = (wchar_t*)malloc(wHdrLen * sizeof(wchar_t));
+        MultiByteToWideChar(CP_UTF8, 0, extraHeaders, -1, wHdr, wHdrLen);
+        WinHttpAddRequestHeaders(hRequest, wHdr, (DWORD)-1, WINHTTP_ADDREQ_FLAG_ADD);
+        free(wHdr);
+    }
+
+    /* Send request */
+    DWORD bodyLen = (DWORD)strlen(body);
+    BOOL sent = WinHttpSendRequest(hRequest, WINHTTP_NO_ADDITIONAL_HEADERS, 0,
+                                   (LPVOID)body, bodyLen, bodyLen, 0);
+    if (!sent) {
+        DWORD err = GetLastError();
+        char errMsg[128];
+        snprintf(errMsg, sizeof(errMsg), "httpPost: WinHttpSendRequest failed (error %lu)", err);
+        WinHttpCloseHandle(hRequest);
+        WinHttpCloseHandle(hConnect);
+        WinHttpCloseHandle(hSession);
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, errMsg);
+        return 2;
+    }
+
+    if (!WinHttpReceiveResponse(hRequest, NULL)) {
+        WinHttpCloseHandle(hRequest);
+        WinHttpCloseHandle(hConnect);
+        WinHttpCloseHandle(hSession);
+        orig_lua_pushnil(L);
+        orig_lua_pushstring(L, "httpPost: WinHttpReceiveResponse failed");
+        return 2;
+    }
+
+    /* Get status code */
+    DWORD statusCode = 0;
+    DWORD statusSize = sizeof(statusCode);
+    WinHttpQueryHeaders(hRequest, WINHTTP_QUERY_STATUS_CODE | WINHTTP_QUERY_FLAG_NUMBER,
+                        NULL, &statusCode, &statusSize, NULL);
+
+    /* Read response body */
+    char *respBuf = NULL;
+    DWORD totalRead = 0;
+    DWORD bufSize = 0;
+    DWORD bytesAvail = 0;
+
+    while (WinHttpQueryDataAvailable(hRequest, &bytesAvail) && bytesAvail > 0) {
+        if (totalRead + bytesAvail + 1 > bufSize) {
+            bufSize = totalRead + bytesAvail + 4096;
+            respBuf = (char*)realloc(respBuf, bufSize);
+        }
+        DWORD bytesRead = 0;
+        WinHttpReadData(hRequest, respBuf + totalRead, bytesAvail, &bytesRead);
+        totalRead += bytesRead;
+    }
+
+    WinHttpCloseHandle(hRequest);
+    WinHttpCloseHandle(hConnect);
+    WinHttpCloseHandle(hSession);
+
+    orig_lua_pushinteger(L, (lua_Integer)statusCode);
+    if (respBuf) {
+        orig_lua_pushlstring(L, respBuf, totalRead);
+        free(respBuf);
+    } else {
+        orig_lua_pushstring(L, "");
+    }
+    return 2;
 }
 
 /* fcext.openForm(name) -> tries Firecast.forms[name]:newEditor() */
@@ -640,6 +892,10 @@ static void register_fcext(void *L) {
         {"overlayClose",   fcext_overlayClose},
         /* v2.1 - Firecast forms */
         {"openForm",       fcext_openForm},
+        /* v3.0 - HTTP */
+        {"httpPost",       fcext_httpPost},
+        /* v3.0 - CLI capture */
+        {"execCapture",    fcext_execCapture},
         {NULL, NULL}
     };
     for (int i = 0; funcs[i].name; i++) {

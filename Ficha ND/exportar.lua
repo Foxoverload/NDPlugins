@@ -1,4 +1,4 @@
-﻿function exportarFichaHTML(sheet, selfForm)
+function exportarFichaHTML(sheet, selfForm)
     require("dialogs.lua");
     require("utils.lua");
     
@@ -102,6 +102,7 @@
     row("Mao Dominante", "mao_dominante");
     row("Nivel", "nivel");
     row("Kekkei Genkai", "kekkei_genkai");
+    row("Reconhecimento", "rec_titulo");
     tableClose();
     
     -- Personalidade
@@ -114,6 +115,17 @@
     row("Desgostos", "desgostos");
     row("Hobbies", "hobbies");
     row("Interesse Romantico", "interesse_romantico");
+    tableClose();
+    
+    -- Familia e Amigos
+    h2("Familia e Amigos");
+    tableOpen();
+    row("Pais", "familia_pais");
+    row("Irmaos", "familia_irmaos");
+    row("Amigos", "familia_amigos");
+    row("Inimigos", "familia_inimigos");
+    row("Neutros", "familia_neutros");
+    row("Relativos", "familia_relativos");
     tableClose();
     
     -- Atributos Core

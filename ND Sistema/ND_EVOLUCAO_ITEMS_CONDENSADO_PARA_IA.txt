@@ -1,0 +1,3664 @@
+﻿# NARUTO DESTINY - EVOLUCAO, TRAITS, ITEMS E LOJA
+# Extraido de: Biblioteca.bib
+# Atualizado: 02/05/2026 15:17
+# Documentos: 11
+
+=== Armadilhas ===
+[Last Update 21/08/2025]
+Nawa Wana
+(Armadilha de Cordas)
+Quem usa:
+Habilidade Geral
+Primeira aparição:
+Naruto: Episódio 6
+Função:
+Equipamento
+Rank:
+C á SS+
+Distância:
+Usuário
+Requisito:
+Ser de alguma forma injetado no alvo
+Notas:
+Pode ser produzido por ninjas de acordo com o nível (C: 5 | B: 10 | A: 15 | S: 20 | SS: 30 | SS+: 50)
+Requer (C: 2 | B: 4 | A: 5 | S: 6 | SS: 7 | SS+: 8) pontos em Armadilha para utilizar e produzir.
+Descrição:
+A Nawa Wana é uma técnica engenhosa que utiliza cordas infundidas com chakra para capturar e imobilizar o inimigo. O usuário espalha fios finos e quase invisíveis pelo campo de batalha, conectados a selos de ativação. Quando o alvo cruza a área marcada, as cordas se movem com velocidade surpreendente, envolvendo braços, pernas e até o pescoço, restringindo os movimentos com força proporcional ao chakra do usuário.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Prisão: Cria uma prisão com amarras que possui (C: 50 | B: 70 | A: 90 | S: 110 | SS: 225 | SS+: 325) pontos de vida.
+O alvo aprisionado pelas amarras não poderá realizar nenhuma ação de movimentação enquanto estiver preso.
+O alvo poderá em seu turno, consumir suas 2 ações de suporte para fazer sua ação de tentar se libertar do aprisionamento, e receberão um redutor de -(C:1 | B:2 | A:3 | S+:4) em sua rolagem.
+O alvo poderá em seu turno, rolar Taijutsu ou Ninjutsu pagando o resultado da rolagem como gasto pela tentativa, sendo Taijutsu o gasto em estâmina e Ninjutsu em gasto de chakra.
+O alvo poderá em seu turno, pagar (C:66 | B:88 | A:108 | S: 220) pontos de estâmina e duas ações de suporte para sair instântaneamente do aprisionamento.
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000 | SS: 400,000 | SS+: 600,000) Ryous
+Preço de Produção:
+(C: 42,000 | B: 70,000 | A: 105,000 | S: 210,000 | SS: 280,000 | SS+: 420,000) Ryous
+Bakuhatsu Wana
+(Armadilha Explosiva)
+Quem usa:
+Habilidade Geral
+Primeira aparição:
+Naruto: Episódio 6
+Função:
+Equipamento
+Rank:
+C á SS+
+Distância:
+(C : 10 |  B : 20 | A : 30 | S : 40 | SS: 50) metros dentro da área.
+Requisito:
+Nenhum
+Notas:
+Pode ser produzido por ninjas de acordo com o nível (C: 5 | B: 10 | A: 15 | S: 20 | SS: 30 | SS+: 50)
+Requer (C: 2 | B: 4 | A: 5 | S: 6 | SS: 7 | SS+: 8) pontos em Armadilha para utilizar e produzir.
+Descrição:
+A Armadilha Explosiva é uma técnica engenhosa que combina selos explosivos com chakra sensorial. O usuário espalha pequenos dispositivos camuflados no terreno — pedras, folhas, ou até animais artificiais — cada um contendo um selo explosivo ativado por presença de chakra inimigo ou movimento.
+Ao detectar o alvo, os selos se ativam em cadeia, criando uma explosão estratégica que não apenas causa dano físico, mas também desorienta os sentidos do inimigo com uma onda de som e luz. A técnica é ideal para emboscadas, defesa de perímetro ou missões de sabotagem.
+Dano:
+(C: 40 | B: 70 | A: 100 | S: 150 | SS: 250 | SS+: 350)
+Gasto:
+Nenhum
+Efeito:
+Nenhum
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000 | SS: 400,000 | SS+: 600,000) Ryous
+Preço de Produção:
+(C: 42,000 | B: 70,000 | A: 105,000 | S: 210,000 | SS: 280,000 | SS+: 420,000) Ryous
+Atributo:
+Bukijutsu ou Arremesso (a critério do usuário)
+Atributo:
+Bukijutsu ou Arremesso (a critério do usuário)
+
+=== sen ===
+=================================================================================
+Bashōsen
+(Bashousen)
+Quem usa:
+Hagoromo Otsutuski, Kikaku e Tenten
+Primeira aparição:
+Naruto Shippuden: Episódio 269
+Função:
+Equipamento
+Rank:
+SS+
+Distância:
+Físico á Média
+Requisito:
+Bukijutsu 19
+Notas:
+Nenhum
+Descrição:
+O Bashousen (芭蕉扇, literalmente significa: Leque de Folha de Bananeira) é um grande leque que é capaz de gerar todas as cinco naturezas básicas dos chakras elementares. Para isso, o usuário precisa apenas dizer um comando mental, que produz quantidades substanciais do elemento desejado quando o leque é acionado. No anime, o leque também pode ser usado como escudo e foi capaz de defender Kinkaku contra o Ranton de Darui.
+O Bashousen é reverenciado como uma das ferramentas preciosas do Sábio dos Seis Caminhos. Todas as cinco ferramentas consomem enormes quantidades de chakra quando usadas, tanto que seres humanos normais morrem após o uso das ferramentas por apenas um curto período de tempo. Quando as ferramentas mais tarde chegaram à posse de Kumogakure, apenas os Irmãos Ouro e Prata tinham as grandes reservas de chakra necessárias para manejar constantemente os tesouros sem repercussões fatais. Enquanto não estava em uso, Kinkaku tinha o leque armazenado em seu próprio corpo, retirando-o da boca quando necessário.
+Kinkaku ainda possuía o Bashousen quando reencarnou por Kabuto Yakushi, mas o deixou cair durante a batalha contra Darui. Depois que Kinkaku foi selado, Tenten encontrou o Bashousen e o usou em batalha pelo menos uma vez, destruindo a máscara do elemento relâmpago de Kakuzu, antes de desmoronar devido à seu alto consumo de chakra.
+Dano:
+Dado + 170
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Permite o usuário utilizar as 5 Naturezas de Chakra até o rank SS+ com afinidade através da arma
+Possuí 180 Pontos de Vida
+Preço:
+18,000,000 Ryous
+=================================================================================
+Técnicas
+=================================================================================
+Bashōsen: Hi no Maki
+(Leque do Palmo de Banana: Hélice de Fogo)
+Quem usa:
+Kinkaku e Tenten
+Primeira aparição:
+Naruto Shippuden: Episódio 269
+Função:
+Ataque
+Rank:
+SS+
+Atributo:
+Bukijutsu
+Distância:
+Médio
+Selos:
+Nenhum
+Requisito:
+Bashōsen
+(Bashousen)
+Notas:
+O Bashōsen é reverenciado como uma das ferramentas preciosas do Sábio dos Seis Caminhos.
+Todas as cinco ferramentas consomem enormes quantidades de chakra quando usadas, tanto que humanos normais morreriam após usar as ferramentas por apenas um curto período de tempo.
+Descrição:
+Usando o Bashōsen, o usuário desencadeia ondas a partir do leque, provocando um enorme rastro de torrentes de chamas intensas, que vão na direção de seu alvo pretendido.
+Dano:
+700 + Bashōsen
+Gasto:
+700 Pontos de Chakra
+Efeito:
+Nenhum
+Bashōsen: Kaze no Maki
+(Leque do Palmo de Banana: Hélice de Vento)
+Quem usa:
+Kinkaku e Tenten
+Primeira aparição:
+Naruto Shippuden: Episódio 273
+Função:
+Ataque
+Rank:
+SS+
+Atributo:
+Bukijutsu
+Distância:
+Todas
+Selos:
+Nenhum
+Requisito:
+Bashōsen
+(Bashousen)
+Notas:
+O Bashōsen é reverenciado como uma das ferramentas preciosas do Sábio dos Seis Caminhos.
+Todas as cinco ferramentas consomem enormes quantidades de chakra quando usadas, tanto que humanos normais morreriam após usar as ferramentas por apenas um curto período de tempo.
+Descrição:
+Usando o Bashōsen, o usuário cria uma forte rajada de vento. Essa rajada é poderosa o suficiente para destruir a máscara de raios de Kakuzu.
+Dano:
+700 + Bashōsen
+Gasto:
+700 Pontos de Chakra
+Efeito:
+Nenhum
+Bashōsen
+=================================================================================
+
+=== Armaduras ===
+Hitai-ate
+(Protetor de Testa)
+Quem usa:
+Equipamento Ninja Básico
+Primeira aparição:
+Naruto Episódio 1
+Função:
+Armadura
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Nenhum
+Descrição:
+Um protetor de testa (額当て, Hitai-ate) é uma faixa de cabeça composta por uma placa de metal e uma faixa de tecido. Protetores de testa são usados pela maioria dos shinobi e estão gravados com o símbolo de sua aldeia escondida. Protetores de testa são usados pelo menos desde a época de Asura Ōtsutsuki, embora não houvesse nenhuma gravação na época.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 70 Pontos de Vida
+Preço:
+25,000 Ryous
+Flak Jacket
+(Colete de Proteção)
+Quem usa:
+Chuunins e Jounins
+Primeira aparição:
+Naruto Episódio 1
+Função:
+Armadura
+Rank:
+A
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Ser Chuunin ou Jounin
+Notas:
+Nenhum
+Descrição:
+Um colete de proteção é um item de roupa de proteção popular entre os ninjas. Os coletes têm vários bolsos e bolsas que podem ser usados para armazenar e acessar rapidamente armas e outros suprimentos. Quando em missões, eles fornecem pelo menos proteção parcial contra danos causados por traumas de força brusca, estilhaços, outros projéteis e até mesmo lâminas. Os coletes de proteção começaram a ser usados na época da Primeira Guerra Mundial Shinobi, substituindo a armadura de placas comum durante o Período dos Reinos Combatentes. Eles podem ser usados por ninjas de todos os níveis, mas são usados principalmente por chuunin rank ou superior.
+Cada aldeia oculta, nação e várias outras facções armadas têm seu próprio design ou desenhos de colete de proteção.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 230 Pontos de Vida
+Preço:
+150,000 Ryous
+ANBU Soukou
+(Armadura ANBU)
+Quem usa:
+ANBU
+Primeira aparição:
+Naruto Clássico Episódio
+Função:
+Armadura
+Rank:
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Pertencer a ANBU
+Notas:
+Nenhum
+Descrição:
+Por padrão, usa-se máscaras para esconder a identidade. Os uniformes também não fogem da tradicionalidade; consistindo em uma vestimenta preta com armadura cinza no peito, braceletes da mesma cor, luvas e sandálias abertas, para Konoha; em Kiri, as luvas são azuis e as armaduras são marrons para os membros normais, enquanto um kimono azul de listras amarelas para os considerados ninjas-caçadores; por fim, em Suna, são usadas vestimentas de mangas curtas, com luvas pretas e armaduras marrons. Os líderes de esquadrão podem usar capas, muitas vezes de cor bege ou preta. Atribui-se uma tatuagem no braço e uma katana nas costas de todo membro desta especialização, exceto para as subdivisões, tais como os membros da Raiz e os ninjas-caçadores, de modo com que apenas este último tenha como padrão estético a de uma gueixa, com armação no cabelo a fim de soltar em duas tranças presas por um tique metálico na extremidade e unhas pintadas.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 350 Pontos de Vida
+Preço:
+300,000 Ryous
+Samurai Soukou
+(Armadura Samurai)
+Quem usa:
+Samurais do País do Ferro
+Primeira aparição:
+Naruto Shippuden Episódio 199
+Função:
+Armadura
+Rank:
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Nenhum
+Descrição:
+Uma armadura de placa pesada e segmentada que cobre os ombros, peito, estômago e região lombar, parte superior das costas, lados inferiores e coxas. Ela também possui luvas, caneleiras e capacete, oficiais superiores adornam seus capacetes com chifres. A másca têm rádio embutidos e funciona como respiradores para combater o veneno usado regularmente pelos shinobi.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 300 Pontos de Vida
+O usuário ficará imune a técnicas áerosois que sejam nocivas ao usuário até o Rank S ou inferior.
+Preço:
+200,000 Ryous
+Chakura no Yoroi
+(Armadura de Chakra)
+Quem usa:
+Nadare Rouga, Fubuki Kakuyoku, Mizore Fuyukuma, Dotou Kazahana
+Primeira aparição:
+Naruto o Filme: Batalha Ninja no País da Neve
+Função:
+Armadura
+Rank:
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Somente pode ser comprada no País da Neve
+Notas:
+Caso seja destruida, a armadura explode caso absorva mais chakra do que sua capacidade a armadura explode.
+Descrição:
+A Armadura de Chakra (チャクラの鎧, Chakura no Yoroi) é um tipo único de armadura que drena o chakra do ninjutsu e do genjutsu e, ao mesmo tempo, amplifica o chakra do usuário. Um protótipo de armadura preta foi usado por Dotou Kazahana. Dito isto, a armadura também é vista bloqueando e defendendo contra projéteis lançados que não exigem nenhum chakra, levantando a questão de em que exatamente sua armadura está baseada. A armadura demonstrou ser forte o suficiente para proteger seu portador de múltiplos papeis bomba, embora tenha se tornado fortemente danificada no processo.
+Apesar da vantagem que dá ao usuário, vários usuários devem ter cuidado para não ficarem muito próximos um do outro, já que a armadura é altamente instável e, se for suficientemente danificada, explodirá em contato com outro traje. O fato de que a principal força dessa armadura é a absorção de chakra também torna o usuário vulnerável ao taijutsu e a outros traumas físicos. Além disso, o Chidori de Sasuke foi capaz de quebrar a armadura de Dotou, e Naruto foi capaz de lidar com o golpe que destruiu sua defesa, sugerindo que a armadura tem seus limites em absorver o chakra.
+Além dessas características, a Armadura de Chakra também vem embutida com um lançador de fios montado no pulso, permitindo ao usuário mover-se rapidamente usando o fio, ou amarrar e restringir um oponente. Algumas armaduras também foram mostradas com asas embutidas para planar, como as usadas por Fubuki Kakuyoku e Dotou.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 500 Pontos de Vida
+Permite absorver um total de 250 Pontos de Chakra e é destruída se passar deste limite
+Essa armadura repele projeteis até Rank A
+Preço:
+Rank SS = 3,000,000 Ryous
+Shinobi Battle Armour
+(Armadura de Batalha Shinobi)
+Quem usa:
+Clã Senju (Guerra dos Estados), Clã Uchiha (Guerra dos Estados)
+Primeira aparição:
+Naruto Episódio 59
+Função:
+Armadura
+Rank:
+SS+
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Nenhum
+Descrição:
+Durante a era anterior às aldeias ocultas, os ninjas usavam armaduras semelhantes às dos samurais. Datando pelo menos da era de Indra Ōtsutsuki, ostentava uma defesa maior do que as simples roupas furtivas que os shinobi usariam em missões que enfatizavam a ocultação em vez do combate. Os Shinobi em Konoha continuaram a usar a armadura pelo menos até a Primeira Guerra Mundial Shinobi, quando na segunda começou a transição para coletes à prova de balas. O clã Akimichi de Konohagakure parece ter persistido no uso de armaduras, às vezes até combinando-as com os atuais coletes à prova de balas. Hiruzen Sarutobi tinha um pequeno conjunto personalizado de armadura que lhe dava muito mais flexibilidade em cima de um capacete kabuto do que a armadura de placas usual.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 700 Pontos de Vida
+Preço:
+10,200,000 Ryous
+Rank:
+C
+Kusari Katabira
+(Cota de Malha)
+Quem usa:
+Ferramenta Ninja Básica
+Primeira aparição:
+Naruto Episódio 1
+Função:
+Armadura
+Rank:
+C
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Nenhum
+Descrição:
+A Cota de Malha (鎖かたびら) é produto fino, criado da ligação de vários anéis de metal, e feito sob encomenda que se ajusta às formas do corpo. Este tipo de equipamento é corriqueiramente utilizado debaixo das vestes dos guerreiros de todo o mundo ninja, servindo para protege-los de ataques em diferentes partes do corpo, como no tronco, antebraços ou canelas.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 35 Pontos de Vida
+Preço:
+60,000 Ryous
+Significado
+Protetores de testa são geralmente usados como um sinal de orgulho e fidelidade à aldeia. Os Ninja consideram-no uma parte honrosa e importante de sua tradição, e fazem questão de usá-lo em todos os momentos, especialmente quando lutam com um camarada da mesma aldeia. Embora não usar protetor de testa seja frequentemente visto como desrespeito à aldeia e aos colegas, um ninja que não o usa ainda pode ser leal à sua aldeia. Da mesma forma, ter o protetor removido é denotar a indignidade do nome "ninja", como Naruto fez com Boruto por trapacear durante os Exames Chūnin. Quando um ninja for destituído de sua posição no Sistema Organizacional Shinobi devido a uma transgressão de protocolos, ele também deverá renunciar a seus protetores, assim como Boruto, Sarada e Mitsuki deveriam renunciar a seus protetores de testa por sua entrada não autorizada em Iwagakure. (apesar de Naruto elogiá-los pessoalmente por suas nobres ações).
+Alguns nukenin, como Zabuza Momochi, continuam usando seu protetor de testa mesmo depois de deixarem sua aldeia. Os membros da Akatsuki que mantêm seus protetores de testa fazem um longo arranhão horizontal no símbolo, para mostrar que rescindiram suas lealdades e rejeitaram suas aldeias. Os aldeões de Amegakure alinhados com Pain apresentam os mesmos arranhões em seus protetores de testa, mas permanecem leais à aldeia; simboliza sua vitória durante a guerra civil contra Hanzō.
+Em preparação para a Quarta Guerra Mundial Shinobi, Mifune projeta um novo protetor de testa para ser usado por membros das Forças Aliadas Shinobi. Gravado com o kanji de shinobi (忍), simboliza que, embora antes cada ninja lutasse por suas aldeias separadamente, agora eles estão unidos sob uma bandeira pela mesma causa. Os membros da Aliança usam isso no lugar do protetor de testa original.
+Só pode ser alvejado se o usuário possuír 50% ou menos pontos de vida
+
+=== rios ===
+Shugyō Omori
+(Pesos de Treinamento)
+Quem usa:
+Rock Lee e Idade Morino
+Primeira aparição:
+Naruto Clássico: Episódio 48
+Função:
+Equipamento
+Rank:
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+7 de Taijutsu
+Notas:
+Nenhum
+Descrição:
+Os Pesos de Treinamento são unidades que causam pressão no usuário, sendo bastante utilizado em métodos de treinamento antigos. Esses pesos foram inicialmente inseridos na série como meio de treinamento em que Might Guy submeteu Rock Lee, fazendo-o utilizar eles em seus dois calcanhares a fim de ampliar gradativamente sua velocidade, mobilidade e aspecto físico. Os pesos normalmente são colocados sob os aquecedores na parte inferior das pernas do usuário, para que seja usado como último caso. Possivelmente eles podem ser usados em outras partes do corpo, dependendo muito da maneira em que o aplicador irá desenvolvê-lo.
+Nos pesos utilizados por Lee, os pesos eram pesados o suficiente para criar uma cratera pequena no chão. Eles aumentavam progressivamente a velocidade de Lee e sua mobilidade, contornando até mesmo a defesa absoluta de Gaara. Em toda parte dos pesos havia kanji para "coragem" (根性, Konjō), como estímulo de confiança para o último não perder o ritmo após a remoção destes. No anime, Idate Morino foi visto usando pesos semelhantes a esse, porém, com uma quantidade menor de detalhes, sendo utilizado exclusivamente pelas provas de corrida livre em que realizava
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 60 Pontos de Vida
+Deve ser utilizado por no mínimo duas sessões com combate.
+Enquanto permanecer com pesos, o Taijutsu e Bukijutsu do usuário serão reduzidos em -2. Esse redutor vai além do limite de -4 normal.
+Ao remover os pesos o usuário garante bônus de +2 em suas ações de Bukijutsu e Taijutsu até o fim de um combate. Esse bônus vai além do limite de +4 normal.
+Preço:
+50.000 Ryous.
+Eye Scope
+(Olhoscópio)
+Quem usa:
+Deidara
+Primeira aparição:
+Naruto Shippuden Episódio 2
+Função:
+Equipamento
+Rank:
+A
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Possuír olho direito ou esquerdo
+Notas:
+Nenhum
+Descrição:
+Este equipamento foi desenvolvido por Deidara, possuindo a função de telescópio. Como ele é um combatente de longa distância por natureza, esse aparelho permite o usuário ver seus alvos a longa distância e também permite que o usuário saiba a distância que está de um objeto.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Permite o usuário utilizar técnicas de áreas grandes enquanto se mantém fora da área de impacto.
+Possuí 90 Pontos de Vida
+Preço:
+200,000 Ryous
+Shodai Hokage no Kubikazari
+(Colar do Primeiro Hokage)
+Quem usa:
+Hashirama Senju e Yamato
+Primeira aparição:
+Naruto Episódio 85
+Função:
+Equipamento
+Rank:
+A
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Jinchūriki
+Notas:
+Nenhum
+Descrição:
+O colar do Primeiro Hokage (初代火影の首飾り, Shodai Hokage no Kubikazari) era um colar originalmente pertencente a Hashirama Senju, o Primeiro Hokage. Foi feito a partir de uma "Jóia de Cristal" especial (結晶石, Kesshōseki) e aumentou suas habilidades para capturar e controlar Bestas com Cauda. Se fosse vendido, três montanhas contendo minas de ouro poderiam ser compradas com os lucros.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 150 Pontos de Vida
+Preço:
+200,000 Ryous
+A neta do Primeiro Hokage, Tsunade, herdou-o várias décadas antes do início da série. Ela, por sua vez, deu-o a seu irmão mais novo, Nawaki, e a seu amante, Dan Katō, na esperança de que isso os ajudasse a realizar seus sonhos de se tornarem Hokage. Ambos morreram logo após receberem o colar, devolvendo o colar para Tsunade e levando outros a acreditarem que o colar estava amaldiçoado. Acreditando nisso, Tsunade guardou o colar para si pelos próximos anos e perdeu a fé naqueles que compartilhavam o sonho de Nawaki e Dan de se tornar Hokage. Ao longo dos anos, apesar do vício em jogos de Tsunade, ela não apostou o colar, como Jiraiya pensava que teria feito há muito tempo.
+Na Parte I, Tsunade conheceu Naruto Uzumaki. Ele não apenas sonhava em se tornar Hokage, mas também tinha alguma semelhança com Nawaki e Dan. Decidindo desafiar o destino mais uma vez, Tsunade fez uma aposta com Naruto: se ele conseguisse dominar o Rasengan em uma semana, provando-se digno da posição de Hokage, ela lhe daria seu colar; se ele falhar, ela ganha seu Gama-chan cheio de dinheiro. Ele concordou e foi capaz de realizar a tarefa, o que levou Tsunade a confiar no título de Hokage e no colar mais uma vez.
+Na Parte II, quando Naruto perdeu o controle ao avançar para sua forma de seis caudas, o colar foi ativado na tentativa de impedir a transformação. No entanto, devido à influência avassaladora da Raposa Demoníaca de Nove Caudas, ela quebrou o colar. Yamato, que herdou a Liberação de Madeira de Hashirama e, portanto, sua habilidade de controlar a Nove-Caudas, afirmou que sem o colar, seria impossível para ele ajudar Naruto a suprimir o chakra da Nove-Caudas por mais tempo, caso ele ressurgisse. No entanto, isso pode não ser totalmente verdade, já que Yamato mais uma vez tentou suprimir a transformação enquanto eles estavam nas Cataratas da Verdade, sem a ajuda do colar.
+Habilidade
+Hashirama foi capaz de controlar uma Besta com Cauda e, por procuração, seu jinchūriki. Esta habilidade foi reforçada pelo colar, que respondeu ao seu chakra, permitindo-lhe controlar o chakra das Bestas com Cauda. Diz-se que a técnica Hokage-Shiki Jijun Jutsu — Kakuan Nitten Suishu responde a este colar para suprimir o chakra da Nove-Caudas quando ele influencia Naruto. Yamato, em algum momento, adicionou um selo ao colar que seria ativado quando Naruto invocasse muito do chakra da Nove-Caudas, tentando contê-lo e alertando Yamato sobre o que estava acontecendo.
+Amplia a capacidade de retroceder estágios da técnica
+Hokage-Shiki Jijun Jutsu — Kakuan Nitten Suishu
+aumentando para dois estágios por rodada contra o Jinchuriki que possuír este colar.
+Hidden Kunai Mechanism
+(Mecanismo de Kunai Escondido)
+Quem usa:
+Naruto Uzumaki, Boruto Uzumaki e Jiraiya
+Primeira aparição:
+Naruto Shippuuden: Episódio 34
+Função:
+Equipamento
+Rank:
+C á S
+Distância:
+Física
+Requisito:
+Bukijutsu 4
+Kunai
+Notas:
+Nenhum
+Descrição:
+Este item permite ao usuário estender e retrair instantaneamente a kunai de sua manga usando um fio com mola.
+Dano:	+
+(C:33 | B:44 | A:54 | S:74) pontos de dano
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Se utilizado como arremesso ou em conjunto com uma técnica de Arremesso recebe um bônus de +(B:2 | A:3 | S:4) na rolagem de acerto em Arremesso
+Possuí (C:70 | B:90 | A:110 | S:130) pontos de vida
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000) Ryous
+Shinigami no Men
+(Mascara do Shinigami)
+Quem usa:
+Orochimaru
+Primeira aparição:
+Naruto Shippuden Episódio 365
+Função:
+Equipamento
+Rank:
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Nenhum
+Descrição:
+Uma máscara que lembra o rosto dos Shinigami, residia em uma parede dentro do Templo de Armazenamento de Máscaras do Clã Uzumaki, localizado nos arredores de Konohagakure, junto com outras 26 máscaras de aparência semelhante. Ele permite que o usuário invoque e controle o Shinigami, permitindo que ele possua o usuário. Isso permite que o usuário execute o Shiki Fuujin: Kai.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Permite o usuário utilizar a técnica Shiki Fuujin: Kai
+Possuí 200 Pontos de Vida
+Preço:
+10,000,000 Ryous
+Os pesos são destruídos quando são retirados após duas sessões.
+Sealing Arm Braces
+(Braços de Vedação)
+Quem usa:
+Danzou Shimura
+Primeira aparição:
+Naruto Shippuden Episódio 198
+Função:
+Equipamento
+Rank:
+A
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Doujutsu Implantado e/ou células do Hashirama ou Karma
+Notas:
+Nenhum
+Descrição:
+Um conjunto de três braçadeiras douradas que foram usadas para selar o braço direito de Danzō Shimura, elas foram usadas para manter as múltiplas células do Sharingan e Hashirama Senju - ambas embutidas no braço de Danzō - sob controle. Eles exigem algum tempo para serem removidos, pois cada suporte é preso por parafusos.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Permite o usuário selar os efeitos de algo implantado em seu corpo.
+Possuí 90 Pontos de Vida
+Preço:
+200,000 Ryous
+
+=== cnicas ===
+=================================================================================
+Chigiri Tōhō: Honenuki
+(Arte da Espada da Névoa Sangrenta: Mutilação de Ossos)
+Quem usa:
+Chōjūrō
+Primeira aparição:
+Boruto: Episódio 64
+Função:
+Ataque
+Rank:
+MSS+
+Distância:
+Curta/Média
+Selos:
+Nenhum
+Requisito:
+Hiramekarei
+Notas:
+Nenhum
+Descrição:
+A Chigiri Tōhō: Honenuki é uma técnica exclusiva de Kirigakure. Usando a Hiramekarei, o usuário cria uma grande quantidade de agulhas de chakra azul claro para atacar o inimigo. Uma vez empalado, as agulhas causam dano no Sistema de Circulação de Chakra, enquanto é restringido pouco a pouco de acordo com o selo de mão do usuário. Em vez de receber uma morte rápida, o inimigo sofre lentamente.
+Dano:
+Hiramekarei
+Gasto:
+912 de Chakra
+Efeito:
+100% de chance de causar Perfuração Grave e Paralisação Grave.
+O alvo não poderá utilizar Ninjutsu e Genjutsu enquanto estiver com agulhas presa ao seu corpo.
+As agulhas possuem 360 Pontos de Vida e permanecem enquanto o alvo sofrer a Paralisação Grave.
+=================================================================================
+Esta arma não possui técnicas exclusivas.
+=================================================================================
+Sandāsōdo no jutsu: Rimōtokontorōru
+(Técnica das Espadas Trovão: Controle Remoto)
+Quem usa:
+Buntan Kurosuki
+Primeira aparição:
+Boruto: Episódio 30
+Função:
+Ataque
+Rank:
+Distância:
+Físico a Média
+Selos:
+Boi, Dragão, Macaco e Bode
+Requisito:
+Kiba
+Raiton no Jutsu rank B
+Afinidade com Raiton
+Notas:
+Nenhum
+Descrição:
+Esta técnica permite ao usuário manipular o Kiba independentemente de longe. Isso permite que o usuário mantenha as mãos livres para o combate e também ataque de vários ângulos de uma só vez. O usuário também pode manipular as lâminas para atacar de várias maneiras.
+Dano:
+Dado + Kiba + 70
+Gasto:
+70 pontos de Chakra
+Efeito:
+Todos os golpes que atingirem o alvo causa Eletrocussão resultando em -4 em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e 100 Pontos de Vida por 3 rodadas.
+Ikazuchi no Kiba
+(Presas do Trovão)
+Quem usa:
+Raiga Kurosuki
+Primeira aparição:
+Naruto Episódio 153
+Função:
+Ataque
+Rank:
+Distância:
+Todas
+Selos:
+Nenhum
+Requisito:
+Kiba
+Raiton no Jutsu rank S
+Afinidade com Raiton
+Notas:
+Nenhum
+Descrição:
+Ao levantar as suas espadas gêmeas, Raiga pode enviar uma carga elétrica para as nuvens, o que lhe permite criar relâmpagos em qualquer local desejado.
+Dano:
+Dados + Kiba + 165
+Gasto:
+150 pontos de Chakra
+Efeito:
+Todos os golpes que atingirem o alvo causa Eletrocussão resultando em -4 em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e 100 Pontos de Vida por 3 rodadas.
+Raiton: Raiga
+(Libertação do Raio: Presa Relâmpago)
+Quem usa:
+Ameyuri Ringo
+Primeira aparição:
+Naruto Shippuden Episódio 289
+Função:
+Ataque
+Rank:
+Distância:
+15m² em frente ao usuário
+Selos:
+Nenhum
+Requisito:
+Kiba
+Raiton no Jutsu rank SS+
+Afinidade com Raiton
+Notas:
+Nenhum
+Descrição:
+Usando Kiba, o usuário envia raios de relâmpago para eletrocutar seus inimigos.
+Dano:
+Dados + Kiba + 140
+Gasto:
+150 pontos de Chakra
+Efeito:
+Todos os golpes que atingirem o alvo causa Eletrocussão resultando em -4 em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e 100 Pontos de Vida por 3 rodadas.
+Rairyū no Tatsumaki
+(Tornado Relâmpago do Dragão)
+Quem usa:
+Raiga Kurosuki
+Primeira aparição:
+Naruto Episódio 157
+Função:
+Ataque
+Rank:
+Distância:
+Físico a Média
+Selos:
+Nenhum
+Requisito:
+Kiba
+Raiton no Jutsu rank SS+
+Afinidade com Raiton
+Notas:
+Nenhum
+Descrição:
+Raiga irá atrair raios sobre seu corpo. A corrente será contida dentro e ao redor da forma de Raiga. Ele então começará a girar no lugar, formando um redemoinho de vento e eletricidade. O redemoinho assumirá a forma da cabeça de um dragão e cobrirá a área à sua frente. Em seguida, ele atacará seu oponente e os prenderá dolorosamente no redemoinho. Mesmo que o ataque não se conecte diretamente com seu inimigo, o relâmpago pode saltar do redemoinho para atingir um alvo próximo.
+Dano:
+Dados + Kiba + 298
+Gasto:
+250 pontos de Chakra
+Efeito:
+Todos os golpes que atingirem o alvo causa Eletrocussão resultando em -4 em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e 100 Pontos de Vida por 3 rodadas.
+Raiton: Sandāgēto
+(Libertação do Raio: Portão do Trovão)
+Quem usa:
+Ameyuri Ringo
+Primeira aparição:
+Naruto Shippuden: Episódio 289
+Função:
+Ataque
+Rank:
+SS+
+Distância:
+100m em frente ao usuário em linha reta
+Selos:
+Nenhum
+Requisito:
+Kiba
+Raiton no Jutsu rank SS+
+Afinidade com Raiton
+Notas:
+Nenhum
+Descrição:
+O usuário primeiro enterra as lâminas de Kiba no chão e então envia uma carga elétrica em direção ao céu, o que, por sua vez, faz com que raios caiam do céu, devastando a área imediata ao redor do usuário, queimando tudo até virar cinzas.
+Dano:
+Dados + Kiba + 415
+Gasto:
+350 pontos de Chakra
+Efeito:
+Todos os golpes que atingirem o alvo causa Eletrocussão resultando em -4 em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e 100 Pontos de Vida por 3 rodadas.
+=================================================================================
+Chōtō Ninpō Jigumo Nui
+(Espada Rotativa Voadora)
+Quem usa:
+Kushimaru Kuriarare e Hebiichigo
+Primeira aparição:
+Naruto Shippuden: Episódio 288
+Função:
+Ataque
+Rank:
+Distância:
+30m² na áera escolhida
+Selos:
+Cobra
+Requisito:
+Nuibari
+Notas:
+Nenhum
+Descrição:
+Usando o Nuibari, o usuário enterra o fio afiado preso na espada no subsolo. Assim que a pessoa pisa na área, ela puxa o fio para prender os pés em uma formação de arame, decepando as canelas. A potência e a força por trás dos fios podem ser controladas pelo usuário aplicando força adicional.
+Kakashi foi capaz de neutralizar a técnica pousando sobre os fios em vez de entre eles. Might Guy também foi capaz de neutralizar a técnica usando uma kunai para impedir que os fios convergissem.
+Dano:
+155 + Nuibari
+Gasto:
+250 pontos de Estâmina
+Efeito:
+Causa sangramento resultando em 170 pontos de dano por rodada até o final do combate.
+Reduz a defesa do adversário em -2.
+=================================================================================
+Suirou Sameodori no Jutsu
+(Técnica da Prisão de Água do Tubarão Dançante)
+Quem usa:
+Kisame Hoshigake
+Primeira aparição:
+Naruto Shippuden Episódio 207
+Função:
+Ataque/Suporte
+Rank:
+SS+
+Distância:
+105m²
+Selos:
+Nenhum
+Requisito:
+Samehada
+Suiton no Jutsu Rank SS+
+Afinidade com Suiton
+Suiton: Dai Bakusui Shōha ou Terreno com grande quantidade de água
+Fundir com a Samehada
+Notas:
+-x-
+Descrição:
+Depois de usar o Suiton: Dai Bakusui Shouha e fundindo-se com Samehada, Kisame Hoshigaki atua como o centro da cúpula gigante resultante de água. Uma vez que esta técnica tenha sido ativada, a cúpula altera a sua posição, a fim de refletir a direção de seus movimentos, tornando-se difícil para o seu alvo para escapar enquanto ele continua a sua perseguição. Esta técnica proporciona Kisame uma vantagem enorme de campo, como sua forma fundida concede-lhe a capacidade de respirar e mover livremente debaixo d&apos;água, enquanto o seu alvo continua a se afogar enquanto eles tentam escapar inutilmente da grande massa de água. Esta técnica é extremamente eficaz em lutas um contra um, mas o utilizador, provavelmente, não seria capaz de conter dois inimigos fugindo em direções opostas.
+Dano:
+243
+Gasto:
+300 de Chakra e 150 de Chakra por rodada para manter
+Efeito:
+100% de chance de causar Afogamento Médio
+Os adversários tem um redutor de -7 para se mover dentro da água
+Samehada Fusion
+(Fusão com a Samehada)
+Quem usa:
+Kisame Hoshigaki
+Primeira aparição:
+Naruto Shippuden: Episódio 250
+Função:
+Ataque
+Rank:
+SS+
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Samehada
+Notas:
+Adicione o dano e os efeitos da espada caso opte por atacar com taijutsu
+Não é possível utilizar a samehada como forma de ataque, portanto não é possível rolar Bukijutsu, a menos que se tenha outra arma que não a Samehada
+Descrição:
+Um portador como Kisame pode levar essa fusão um passo adiante, fundindo-se completamente com a Samehada. Isso faz com que ele se torne muito mais parecido com um tubarão, com nadadeiras em crescimento e mãos palmadas que permitem que ele se mova na água com considerável facilidade. Kisame também recebe algumas das habilidades de Samehada nesta forma, como ser capaz de estender picos de seu corpo para ofender e absorver chakra quando outros entram em contato direto com ele, bem como a habilidade de rastrear chakra e evitar sensores.  Ele se fundirá com um portador enfraquecido ou inexperiente por conta própria, assumindo o controle e fazendo com que eles fiquem alvoroçados até que sejam separados.
+Dano:
++210  de dano em taijutsu e suiton
+Gasto:
+350 de Chakra para ativar e 140 por rodada para manter
+Efeito:
++7 em ações ofensivas e defensivas
+Torna o usuário imune a afogamento
+Suirou Sameodori no Jutsu
+(Técnica da Prisão de Água do Tubarão Dançante)
+Quem usa:
+Kisame Hoshigaki
+Primeira aparição:
+Naruto Shippuden: Episódio 207
+Função:
+Modo
+Rank:
+MSS+
+Distância:
+105m²
+Selos:
+Nenhum
+Requisito:
+Samehada
+Suiton no Jutsu Rank MSS+
+Suiton: Dai Bakusui Shōha
+Notas:
+Nenhum
+Descrição:
+Depois de usar o Suiton: Dai Bakusui Shouha e fundindo-se com Samehada, Kisame Hoshigaki atua como o centro da cúpula gigante resultante de água. Uma vez que esta técnica tenha sido ativada, a cúpula altera a sua posição, a fim de refletir a direção de seus movimentos, tornando-se difícil para o seu alvo para escapar enquanto ele continua a sua perseguição. Esta técnica proporciona Kisame uma vantagem enorme de campo, como sua forma fundida concede-lhe a capacidade de respirar e mover livremente debaixo d&apos;água, enquanto o seu alvo continua a se afogar enquanto eles tentam escapar inutilmente da grande massa de água. Esta técnica é extremamente eficaz em lutas um contra um, mas o utilizador, provavelmente, não seria capaz de conter dois inimigos fugindo em direções opostas.
+Dano:
+Nenhum
+Gasto:
+615 de Chakra [Ativar] 123 [Manter]
+Efeito:
+100% de chance de causar Afogamento Grave.
+Os adversários tem um redutor de -7 para se mover dentro da água.
+O usuário recebe +7 em suas Ações Ofensivas e Defensivas.
+=================================================================================
+Bakutō Jutsu: Happa Rokujūshi
+(Espada Rotativa Voadora)
+Quem usa:
+Jinpachi Munashi
+Primeira aparição:
+Naruto Shippuden: Episódio 288
+Função:
+Ataque
+Rank:
+Distância:
+30m
+Selos:
+Nenhum
+Requisito:
+Shibuki
+Notas:
+Nenhum
+Descrição:
+Jogando um largo rolo de papéis explosivos da Shibuki, Jinpachi envia-a para seu inimigo em um movimento circular, cortando qualquer rota de fuga e engolindo-o em uma explosão generalizada.
+Dano:
+220 + Kubikiribōchō
+Gasto:
+250 de Chakra
+Efeito:
+Nenhum
+Atributo:
+Ninjutsu
+Atributo:
+Ninjutsu
+Raitō Jutsu: Rakurai
+(Técnica das Espadas Trovão: Raio)
+Quem usa:
+Ameyuri Ringo
+Primeira aparição:
+Naruto Shippuden: Episódio 289
+Função:
+Ataque
+Rank:
+A
+Distância:
+Todas
+Selos:
+Nenhum
+Requisito:
+Kiba
+Raiton no Jutsu rank A
+Afinidade com Raiton
+Notas:
+Nenhum
+Descrição:
+Segurando as espadas Kiba acima de sua cabeça, como para-raios, o usuário canaliza um raio do céu para dar um choque imediato em qualquer oponente que esteja próximo do usuário.
+Dano:
+Dado + Kiba + 103
+Gasto:
+100 pontos de Chakra
+Efeito:
+Todos os golpes que atingirem o alvo causa Eletrocussão resultando em -4 em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e 100 Pontos de Vida por 3 rodadas.
+Atributo:
+Ninjutsu
+Arrmessa o alvo para distância longa
+Kiba
+=================================================================================
+Kabutowari
+=================================================================================
+Hiramekarei
+=================================================================================
+Nuibari
+=================================================================================
+Samehada
+=================================================================================
+Shibuki
+=================================================================================
+Chōtō Ninpō: Gyakusatsu Hōjin
+(Arte Ninja da Espada Longa: Crucificação de Arame)
+Quem usa:
+Kushimaru Kuriarare e Hebiichigo
+Primeira aparição:
+Naruto Shippuden: Episódio 288
+Função:
+Ataque
+Rank:
+SSS
+Distância:
+Todas
+Selos:
+Nenhum
+Requisito:
+Nuibari
+Notas:
+Nenhum
+Descrição:
+O usuário lança a Nuibari a fim de perfurar e prender seus oponentes com os fios de aço de uma forma a deixar seus corpos como se eles estivessem crucificados. O golpe final é dado ao perfurá-los com Nuibari, deixando-os para uma morte lenta e dolorosa.
+Atributo:
+Bukijutsu
+Gasto:
+1300 pontos de estâmina
+Efeito:
+Cria uma prisão de fios que causa Nuibari + 1500 de dano em pontos de vida
+O alvo dentro da prisão de fios não poderá realizar nenhuma ação de movimentação enquanto estiver preso.
+O alvo dentro da prisão não poderá utilizar o atributo esquiva ou defesa física em suas defesas.
+O alvo poderá em seu turno, consumir suas 2 ações de suporte para fazer sua ação de tentar se libertar da prisão de fios, e receberão um redutor de -4 em sua rolagem.
+O alvo poderá em seu turno, rolar Taijutsu ou Ninjutsu pagando o resultado da rolagem como gasto pela tentativa, sendo Taijutsu o gasto em estâmina e Ninjutsu em gasto de chakra.
+O alvo poderá em seu turno, pagar 2600 pontos de chakra ou estâmina e duas ações de suporte para sair instântaneamente da prisão de fios.
+O alvo poderá usar uma barreira de rank equivalente ou superior para negar esta técnica. Isso iniciara o Cooldown da barreira. Não pode ser feito se a barreira estiver em cooldown.
+A prisão de fios possuí 200 pontos de vida.
+Causa sangramento resultando em 200 pontos de dano por rodada até o final do combate.
+
+=== veis ===
+Doku
+(Veneno)
+Quem usa:
+Chiyo, Gouzu, Hanzou, Ibuse, Kabuto Yakushi, Kankurou, Meizu, Orochimaru, Raidou Namiashi, Sakura Haruno, Shikuro Aburame, Shizune, Tsunade, Aniki, Aoi Rokushou, Fuen, Garaga, Kotohime, Sasame e Urashiki Otsutsuki
+Primeira aparição:
+Naruto Episódio 6
+Função:
+Equipamento
+Rank:
+C á SS+
+Distância:
+Usuário
+Requisito:
+Ser de alguma forma injetado no alvo
+Notas:
+Pode ser produzido por Medinins de acordo com o nível (C: 5 | B: 10 | A: 15 | S: 20 | SS: 30 | SS+: 50)
+Descrição:
+Venenos e toxinas são substâncias venenosas e intoxicantes (pós, líquidos ou gases) que podem ser usados pelos shinobi em combate. Venenos vêm com uma variedade de efeitos, variando de fraqueza corporal a paralisia e/ou morte.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Permite o usuário revestir um equipamento, objeto ou liquido com veneno
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000 | SS: 400,000 | SS+: 600,000) Ryous
+Gedokuyaku
+(Antidoto)
+Quem usa:
+Chiyo, Hanzou, Sakura Haruno, Shikuro Aburame, Shizune, Torune, Tsunade e Yamato.
+Primeira aparição:
+Naruto Shippuden Episódio 11
+Função:
+Equipamento
+Rank:
+C e SS+
+Distância:
+Usuário
+Requisito:
+Injetar no Alvo
+Notas:
+Pode ser produzido por Medinins de acordo com o nível (C: 5 | B: 10 | A: 15 | S: 20 | SS: 30 | SS+: 50)
+Descrição:
+Antídotos são tipos de medicamentos que agem como uma cura para vários venenos. Eles podem ser administrados a uma pessoa infectada através de vários meios. Alguns venenos são complexos e, portanto, criar o antídoto vai exigir muita atenção ou então ele poderia matar a vítima; Sasori observou que ao fazer antídotos nem mesmo um erro da linha fina pode ser feita ou então ele não iria funcionar. No entanto, especialmente treinados, gênio mednin como Tsunade, Shizune ou Sakura Haruno pode realmente analisar e decifrar os muitos elementos diferentes usados em venenos complexos e criar facilmente uma cura. Eles são geralmente um líquido engarrafado, mas pode ser qualquer coisa de uma flor ou em pó.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Zouketsugan
+(Pilulas de Ampliação de Sangue)
+Quem usa:
+Kabuto Yakushi
+Primeira aparição:
+Naruto Episódio 93
+Função:
+Equipamento
+Rank:
+C á SS
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Pode ser produzido por Medinins de acordo com o nível (C: 5 | B: 10 | A: 15 | S: 20 | SS: 30)
+Descrição:
+O sangue Aumento do comprimido é um comprimido usado por shinobi para acelerar a formação e aumento de sangue no corpo. Depois de ter perdido uma quantidade significativa de sangue na batalha, um ninja pode usar essa pílula para repor o sangue deles para que eles possam continuar lutando.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Permite o usuário recuperar (C: 40 | B: 75 | A: 150 | S: 200 | SS: 300) pontos de vida
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000 | SS: 400,000) Ryous
+Preço de Produção:
+(C: 42,000 | B: 70,000 | A: 105,000 | S: 210,000 | SS: 280,000) Ryous
+Tougarashibomu
+(Bomba de Pimenta)
+Quem usa:
+Sakune e Tanishi
+Primeira aparição:
+Naruto Shippuden Episódio 187
+Função:
+Equipamento
+Rank:
+C, B e SS+
+Distância:
+Curta
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Pode ser produzido por Medinins de acordo com o nível (C: 5 | B: 10 | SS+: 50)
+Descrição:
+Estes são os itens usados pelos aldeões da Vila da Arvore Ilusória para repelir o genjutsu causada pela floresta circundante. Porque a área é cercada por árvores que naturalmente causam genjutsu os moradores criaram estas bombas, a fim de ajudá-los a quebrar a técnica. Ele também é capaz de quebrar genjutsu utilizados pelas pessoas.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Efeito:
+Permite o Remover efeitos de Genjutsu de Rank Equivalente ou inferior ao deste item
+Preço:
+(C: 60,000 | B: 100,000 | SS+: 600,000) Ryous
+Sanshoku no Gan&apos;yaku
+(Três comprimidos coloridos)
+Quem usa:
+Clã Akimichi
+Primeira aparição:
+Naruto Episódio 113
+Função:
+Suporte
+Rank:
+A
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Pode ser produzido por Medinins de acordo com o nível 15
+Descrição:
+Os três comprimidos coloridos são remédios secretos usados ​​pelo clã Akimichi. Como o nome sugere, existem três comprimidos, cada um com uma cor diferente. Primeiro é a pílula de espinafre verde (Hōrengan), depois a pílula de curry amarela (Kar丸gan) e a última é a pílula de pimenta vermelha (Tongarashigan).
+Ao converter à força as reservas de gordura do corpo em chakra, cada pílula sucessiva ingerida fornece um tremendo aumento de poder. Diz-se que a pílula de pimenta aumenta o poder da pessoa cem vezes. No entanto, os comprimidos têm uma desvantagem. Cada comprimido danifica o corpo, envenenando-o e, como o terceiro converte todas as reservas de gordura, o usuário fica perigosamente emaciado. Dizem que após a terceira pílula, a morte é iminente. No entanto, o clã Nara aparentemente fez uma extensa pesquisa sobre as pílulas, e esse conhecimento permitiu ao Quinto Hokage neutralizar o veneno e reparar os danos a Chōji Akimichi, depois que ele tomou as três pílulas para lutar e matar Jirōbō. As pílulas permitem um uso mais fácil do controle calórico do clã Akimichi.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Cada Pilula regenera 150 pontos de chakra e estâmina
+Tomar uma pilula Causa Envenenamento resultando em um redutor de -1 em todas as ações de ataque e defesa e 20 pontos de dano por rodada
+Tomar duas pilulas Causa Envenenamento resultando em um redutor de -2 em todas as ações de ataque e defesa e 40 pontos de dano por rodada
+Tomar três pilulas Causa Envenenamento resultando em um redutor de -3 em todas as ações de ataque e defesa e 100 pontos de dano por rodada
+Tomar as três pilulas garante um bônus de +6 em ações de ataque e defesa por 3 Rodadas
+Preço:
+34,000 Ryous por Pilula
+Genjutsu Yaku
+(Pílulas Ilusórias)
+Quem usa:
+Orochimaru
+Primeira aparição:
+Naruto Shippuden Episódio 318
+Função:
+Suporte
+Rank:
+SS+
+Distância:
+Usuário
+Selos:
+Nenhuma
+Requisito:
+Nenhum
+Notas:
+É um item raro de ser encontrado
+Descrição:
+Essas Genjutsu Yaku, foram desenvolvidas por Orochimaru. Uma vez ingerido, as pílulas lançam um genjutsu sobre o alvo que paralisa o corpo. As drogas também afetam a mente do alvo em algum grau como Gyuuki teve problemas lembrando seu último tumulto após Blue B tomar as pílulas.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+[Efeito Geral]
+Preço:
+1,000,000 Ryous
+Só pode ser utilizado duas vezes por combate
+Causa Envenenamento resultando em um redutor de -(C:1 | B:2 | A:3 | S+:4) em todas as ações de ataque e defesa e (C:30 | B:50 | A:80 | S:130 | SS: 230 | SS+: 330) pontos de dano por rodada até o final do combate.
+Preço de Produção:
+(C: 42,000 | B: 70,000 | A: 105,000 | S: 210,000 | SS: 280,000 | SS+: 420,000) Ryous
+Efeito:
+Permite o usuário revestir um equipamento, objeto ou liquido com veneno
+Cura envenenamento que cause até (C:30 | B:50 | A:80 | S:130 | SS: 230 | SS+: 330) pontos de dano
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000 | SS: 400,000 | SS+: 600,000) Ryous
+Preço de Produção:
+(C: 42,000 | B: 70,000 | A: 105,000 | S: 210,000 | SS: 280,000 | SS+: 420,000) Ryous
+Eiyu no Mizu
+(Água Heroíca)
+Quem usa:
+Hisen, Shibuki e Suien
+Primeira aparição:
+Naruto Episódio 93
+Função:
+Equipamento
+Rank:
+C á SS
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Pode ser produzido por Medinins de acordo com o nível (C: 5 | B: 10 | A: 15 | S: 20 | SS: 30)
+Descrição:
+A Água Heroica (英雄の水, Eiyu no Mizu) é um líquido especializado de Takigakure. É produzido uma vez a cada cem anos a partir da árvore gigante que esconde a aldeia.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Permite o usuário recuperar (C: 40 | B: 75 | A: 150 | S: 200 | SS: 300) pontos de chakra
+Só pode ser utilizado duas vezes por combate
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000 | SS: 400,000) Ryous
+Preço de Produção:
+(C: 42,000 | B: 70,000 | A: 105,000 | S: 210,000 | SS: 280,000) Ryous
+Overview
+Ao beber a água, permite que um ninja tenha um aumento de chakra de pelo menos dez vezes por um curto período de tempo. O aumento de chakra foi tão potente que, como Suien demonstrou, o usuário pode criar um escudo de chakra para desviar a kunai, semelhante ao Oito Trigramas Palmas Giratórias do Céu.
+Recua
+Em troca desse poder, a água encurta a vida do usuário proporcionalmente ao número de vezes que seu chakra aumentou, já que o pai de Shibuki morreu devido aos efeitos colaterais.
+Requer (C: 2 | B: 4 | A: 5 | S: 6 | SS: 7) pontos em Oficio e Medicina para produzir
+Requer a Trait Mednin para produzir
+Requer (C: 2 | B: 4 | A: 5 | S: 6 | SS: 7) pontos em Oficio e Medicina para produzir
+Requer a Trait Mednin para produzir
+Requer (C: 2 | B: 4 | A: 5 | S: 6 | SS: 7 | SS+: 8) pontos em Oficio e Medicina para produzir
+Requer a Trait Mednin para produzir
+Requer (C: 2 | B: 4 | A: 5 | S: 6 | SS: 7 | SS+: 8) pontos em Oficio e Medicina para produzir
+Requer a Trait Mednin para produzir
+Requer (C: 2 | B: 4 | A: 5 | S: 6 | SS: 7) pontos em Oficio e Medicina para produzir
+Requer a Trait Mednin para produzir
+Preço de Produção:
+(C: 42,000 | B: 70,000 | SS+: 420,000) Ryous
+Requer 5 pontos em Oficio e Medicina para produzir
+Requer a Trait Mednin para produzir
+Se um Akimichi tomar as três pilulas. O modo
+Chō Mōdo
+será ativado no Rank S sem o usuário precisar pagar para ativar. O usuário recebe +100 de dano extra em seu modo.
+O usuário que tomar uma pilua dessa receberá os efeitos abaixo
+Causa Envenenamento resultando em um redutor de -4 em todas as ações de ataque e defesa e 100 pontos de dano por rodada
+Causa Exaustão resultando em um gasto de 100 pontos de estâmina nas próximas 3 técnicas que consumam estâmina que o alvo utilizar
+Causa Redução de Resistência resultando em +100 pontos de dano de todas as fontes por 1 rodada
+[Jinchūriki]
+Se consumido por um Jinchūriki, ele ficará inconsciênte em 5 minutos e seu Bijuu assumirá seu corpo.
+O selamento do corpo do usuário perderá 30 pontos de vida
+Após 5 Rodadas, o Jinchūriki retornará a sua forma normal, mas ainda ficará inconsciênte
+Pode ser produzido por Medinins de acordo com o nível 90
+Requer 9 pontos em Oficio e Medicina para produzir
+Requer a Trait Mednin para produzir
+Nurigusuri
+(Pomada)
+Quem usa:
+Hinata Hyuga e Naruto Uzumaki
+Primeira aparição:
+Naruto Episódio 46
+Função:
+Suporte
+Rank:
+B á SS+
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Nenhum
+Notas:
+Pode ser produzido por Medinins de acordo com o nível (C: 5 | B: 10 | A: 15 | S: 20 | SS: 30 | SS+: 50)
+Descrição
+:Este é um creme de cura usado para tratar ferimentos. Hinata dá um pouco da pomada para Naruto e Kiba, embora Kiba tenha pedido para ela guardar um pouco para si mesma, para curar seus ferimentos após a batalha durante os Exames Chūnin.
+No filme "The Last: Naruto the Movie", Hinata mais uma vez oferece esta pomada para Naruto usar para curar uma ferida em suas costas. No entanto, como ele não consegue alcançar a ferida, Hinata espalha a pomada em suas costas.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Remove um efeito de: Corrosão (Ácido), Corrosão, Perfuração, Queimadura, Queimadura Lava ou Sangramento que causem até (B: 50 | A:80 | S:130 | SS: 230 | SS+: 330) pontos de dano
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000 | SS: 400,000 | SS+: 600,000) Ryous
+Preço de Produção:
+(C: 42,000 | B: 70,000 | A: 105,000 | S: 210,000 | SS: 280,000 | SS+: 420,000) Ryous
+Requer (C: 2 | B: 4 | A: 5 | S: 6 | SS: 7 | SS+: 8) pontos em Oficio e Medicina para produzir
+Requer a Trait Mednin para produzir
+
+=== Armas Unicas ===
+Hakkou Chakura Tu
+(Sabre de Chakra da Luz Branca)
+Quem usa:
+Kakashi Hatake e Sakumo Hatake
+Primeira aparição:
+Naruto Shippuden Episódio 119
+Função:
+Equipamento
+Rank:
+A
+Distância:
+Físico
+Requisito:
+Bukijutsu 9
+Notas:
+Nenhum
+Descrição:
+O Sabre de Chakra da Luz Branca era um tantou que originalmente pertencia a Sakumo Hatake, que o passou a seu filho, Kakashi. Era um tantou de lâmina reta com um pequeno protetor de mão circular. Ele emite uma faixa branca de chakra quando foi balançado, ganhando assim a Sakumo o título de "Presa Branca de Konoha" (ono ノ 葉 の 白 い 牙 K, Konoha no Shiroi Kiba). Esta lâmina foi destruída durante a Terceira Guerra Mundial Shinobi durante a luta de Kakashi com Kakkou. No anime, mais tarde foi mostrado reparado com Kakashi ainda o usando para missões.
+Dano:
++55
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 110 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 75 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 95 pontos totais
+Preço:
+250,000 Ryous
+Sōshūga
+(Presas Gêmeas de Ataque)
+Quem usa:
+Maito Gai
+Primeira aparição:
+Naruto Shippuden Episódio 342
+Função:
+Equipamento
+Rank:
+Distância:
+Físico
+Requisito:
+Bukijutsu 12
+Notas:
+Nenhum
+Descrição:
+Sōshūga (双襲牙, que significa literalmente: Twin Attacking Fangs) é o nome de um par de nunchaku usado por Might Guy. Cada cabo dessas armas é intrinsecamente esculpido na forma de uma criatura semelhante a um dragão chinês, com escamas gravadas ao longo de seu comprimento e uma cabeça perto da base do cabo, enquanto parecem estar ligadas entre si por um pedaço de corda torcida. Guy os maneja com grande destreza, às vezes utilizando todos os seus membros, fazendo uso deles principalmente em situações onde o contato físico direto deve ser evitado. As armas são vistas pela primeira vez em uso durante os últimos estágios da Quarta Guerra Mundial Shinobi, mas, durante o confronto com Tobi, logo foram absorvidas pela primeira. Após a guerra, Guy empunha um par de nunchaku mais uma vez.
+Dano:
++75
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 110 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 95 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 105 pontos totais
+Preço:
+400,000 Ryous
+Chō Biburāto Raitontō
+(Espada de Libertação do Relâmpago Supervibrato)
+Quem usa:
+Killer B e Yurui
+Primeira aparição:
+Naruto Shippuden Episódio 143
+Função:
+Equipamento
+Rank:
+Distância:
+Físico
+Requisito:
+Bukijutsu 13 e Akurobatto
+Notas:
+Nenhum
+Descrição:
+Chou Biburato Raitontou, é o termo usado para se referir as espadas distintas utilizadas pelos shinobis de Kumogakure; Essas espadas são parte do estilo de luta inortodoxo de Killer B. A forma característica de cada espada não só as faz ideal para cortes pelos dois lados da espada, como também significam que podem ser arremessadas com grande precisão. As espadas recebem este nome pelo fato de que elas podem canalizar chakra de Raiton, ao aumentar sua frequência vibratória, dando-a um grande poder de corte e perfuração, a ponto de exceder o poder de técnicas de Fuuton.
+Dano:
++75
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 130 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 95 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 115 pontos totais
+[Efeito Geral Interpretativo]
+A cada 10% de vida que o armamento perde equivale a uma arma destruida
+Preço:
+500,000 Ryous
+Kuriba Ken
+(Espada Cutelo)
+Quem usa:
+Darui
+Primeira aparição:
+Naruto Shippuden Episódio 200
+Função:
+Equipamento
+Rank:
+Distância:
+Físico
+Requisito:
+Bukijutsu 11
+Notas:
+Nenhum
+Descrição:
+Esta é uma lâmina de cutelo gigante empunhada por Darui. É amplo com um longo cabo e tem três dobradiças que correm ao longo da própria lâmina que lhe permite dobrá-lo quando não estiver em uso e desdobrá-lo na batalha. Darui também pode infundi-lo com Raiton para aumentar sua letalidade, e a lâmina também é capaz de manter a carga, mesmo se ele não está mais segurando a lâmina.
+Dano:
++75
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 130 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra e ampliando o dano da arma para 95 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra e ampliando o dano da arma para 115 pontos totais
+Preço:
+500,000 Ryous
+Hikikomi-shiki
+(Lança Retrátil)
+Quem usa:
+Hidan
+Primeira aparição:
+Naruto Shippuden Episódio 313
+Função:
+Equipamento
+Rank:
+Distância:
+Físico
+Requisito:
+Estender a ponta da lança
+Bukijutsu 12
+Notas:
+Nenhum
+Descrição:
+A lança é um cilindro retrátil que pode ser estendido para seu tamanho completo rapidamente. É usado regularmente como o movimento de matança principal de Hidan durante seu ritual, esfaqueando-se no coração. Os rituais de Hidan costumam ser longos devido a ele gostar de brincar com seu oponente, como esfaquear-se em várias áreas diferentes de seu corpo, para fazê-los sofrer antes de terminá-los. Hidan também pode usá-lo para o combate, embora isso só tenha sido mostrado para ser usado como um último recurso quando sua foice de três lâminas estava indisponível para ele. Ele é mostrado escondendo pelo menos duas dessas lanças em seu manto da Akatsuki.
+Dano:
++75
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 130 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 95 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 115 pontos totais
+Preço:
+500,000 Ryous
+Tsurukame
+(Tsurukame)
+Quem usa:
+Iõ e Kusune
+Primeira Aparição:
+Naruto Shippuden Episódio 184
+Função:
+Equipamento
+Rank:
+Distância:
+Físico
+[Disparos] Todas
+Requisito:
+Bukijutsu 17
+Notas:
+Nenhum
+Descrição:
+É um protótipo de arma semelhante a um escudo que foi criado por Iō. Foi durável o suficiente para resistir a um ataque direto de Jidanda. Equipado com capacidades ofensivas, contém um mecanismo de disparo integrado que permite ao usuário lançar uma variedade de ferramentas ninja. Kusune carregou-o com manriki-gusari, bombas e senbon. Se ficar sem ferramentas, o usuário pode recarregá-lo inserindo um pergaminho contendo mais ferramentas em um compartimento na parte traseira.
+Dano:
++100
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 300 pontos de vida
+O usuário poderá rolar Bloqueio Físico em sua ação defensiva para bloquear um ataque. Se o usuário passar no teste, o dano que seria recebido é negado. Se o usuário falhar o teste, o usuário poderá escolher receber o dano ou o escudo receber o dano
+Armamentos arremessados por este equipamento rolarão Bukijutsu
+Permite arremessar Kunais, Shurikens, Senbons, Hikaridama e Kemuridama como ação de contra-ataque
+Preço:
+1,300,000 Ryous
+Hiruko
+(Hiruko)
+Quem usa:
+Sasori
+Primeira aparição:
+Naruto Shippuden Episódio 2
+Função:
+Equipamento
+Rank:
+Distância:
+Todas
+Requisito:
+Ninjutsu 17
+Notas:
+Nenhum
+Descrição:
+Hiruko (ヒルコ) era uma marionete usada pelo shinobi da Akatsuki, Sasori. Servindo como uma "armadura de marionetes", permitiu que Sasori se escondesse dentro dela. Sasori também adornou Hiruko com as vestes da Akatsuki e se escondeu dentro delas com tanta frequência que outros passaram a reconhecê-lo apenas quando ele as usava. No anime, Hiruko é uma marionete humana feita do cadáver de um renomado shinobi. Segundo Chiyo, Hiruko era o fantoche favorito de Sasori.
+Dano:
+100 pontos de dano
+Gasto:
+Nenhum
+Efeito:
+Possuí 600 pontos de vida
+Ataques com a ponta da cauda de Hiruko causa Envenenamento resultando em um redutor de -3 em todas as ações de ataque e defesa e 80 pontos de dano por rodada.
+Preço:
+1,500,000 Ryous
+Sasori
+(Sasori)
+Quem usa:
+Sasori e Kankurõ
+Primeira aparição:
+Naruto Shippuden Episódio 21
+Função:
+Equipamento
+Rank:
+Distância:
+Todas
+Requisito:
+Ninjutsu 17
+Notas:
+Nenhum
+Descrição:
+Este é o boneco criado por Sasori feito para se parecer com seu corpo original. Quando ele o habitou, continha seu "núcleo de carne viva" (生身の核, namami no kaku) no compartimento esquerdo do peito.
+Dano:
+200 pontos de dano
+Gasto:
+Nenhum
+Efeito:
+Possuí 1500 pontos de vida
+Preço:
+1,700,000 Ryous
+Double-Bladed Scythe
+(Foice de Lâmina Dupla)
+Quem usa:
+Ryūki
+Primeira aparição:
+Boruto Episódio 110
+Função:
+Equipamento
+Rank:
+Distância:
+Física á Média
+Requisito:
+Bukijutsu 17
+Notas:
+Nenhum
+Descrição:
+A foice de lâmina dupla é a principal arma de Ryūki, que, como Hidan, é projetada para obter o sangue da vítima necessário para os rituais. Ao contrário da de Hidan, a foice de Ryūki não possui cabo, sendo utilizada apenas pelo cabo, e também não é tão pesada, o que permite que Ryūki seja mais rápido e manobrável.
+Dano:
++120 pontos de dano
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 150 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 130 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 150 pontos totais
+Causa sangramento resultando em 80 pontos de dano por rodada até o final do combate
+Preço:
+2,000,000 Ryous
+Kurosawa
+(Pantano Negro)
+Quem usa:
+Mifune
+Primeira aparição:
+Naruto Shippuden Episódio 256
+Função:
+Equipamento
+Rank:
+Distância:
+Físico
+Requisito:
+Bukijutsu 17
+Notas:
+Nenhum
+Descrição:
+Kurosawa (黒 澤, literalmente significa: Pântano Negro) é o nome da espada de Mifune. A espada é bastante longa e fina, e possui um protetor de mão retangular e um cabo longo envolto em bandagens. Mifune mostrou grande habilidade e destreza em empunhar a espada, realizando Iaidou com a lâmina. Ele também usou para cortar a cabeça de Ibuse quando a salamandra o engoliu.
+Dano:
++120
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 150 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 130 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 150 pontos totais
+Causa sangramento resultando em 50 pontos de dano por rodada até o final do combate
+Preço:
+2,000,000 Ryous
+Hinoken
+(Espada de Fogo)
+Quem usa:
+Houki e Seimei
+Primeira aparição:
+Naruto Episódio 217
+Função:
+Equipamento
+Rank:
+Distância:
+Curta á Média
+[Feixe de Chamas] Todas
+Requisito:
+Bukijutsu 16
+Notas:
+Não requer técnica especifica para conduzir chakra de Katon
+Descrição:
+A Espada do Fogo foi utilizada por Hōki, e depois por Seimei. Ele é capaz de emitir e livremente manipular grandes quantidades de fogo, capazes de incinerar o que estiver em seu caminho. Ele pode ser usada para enviar feixes de luz, como os sinais através da esfera verde no final da lâmina. Ela também pode ser usado para chamar a Armadura Infinita, a Espada de Garian, e as Espadas de Dois Gumes. Quando Seimei veste a Armadura Infinita, ele fica com esta espada integrada por sua empunhadura na cabeça da armadura na sua parte da testa.
+Dano:
++90 ou 200 do feixe de chamas
+Gasto:
+Resultado do acerto em pontos de estâmina ou 250 pontos de chakra pelo feixe de chamas
+Efeito:
+Possuí 150 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 110 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 130 pontos totais
+O feixe de chamas causa queimadura resultando em 50 pontos de dano por rodada até o final do combate
+Preço:
+3,000,000 Ryous
+Kusanagi no Tsurugi
+(Espada de Kusanagi)
+Quem usa:
+Orochimaru
+Primeira aparição:
+Naruto Episódio 71
+Função:
+Equipamento
+Rank:
+Distância:
+Físico
+Requisito:
+Bukijutsu 17
+Notas:
+Nenhum
+Descrição:
+A espada Kusanagi é a Kusanagi da lenda japonesa. Orochimaru recupera sua Kusanagi, abrindo a boca e estendendo uma cobra que então abre a boca e produz a espada. Orochimaru foi visto produzindo o punho da espada primeiro para que ele pudesse usá-lo livremente, ou lâmina primeiro para atacar seu oponente instantaneamente.
+A espada pode estender e retrair rapidamente sua lâmina para atacar a longas distâncias, ser controlada telecineticamente de acordo com o comando de Orochimaru e cortar quase tudo. Mesmo Enma, que é capaz de se transformar em um cajado de diamante, observou que a lâmina Kusanagi o deixaria consideravelmente dolorido. Note-se que Kusanagi de Orochimaru não conseguiu perfurar a forma de quatro caudas de Naruto Uzumaki. A espada foi vista se transformando em uma pequena cobra e retornando a Orochimaru.
+Depois que Orochimaru ressurgiu de Sasuke Uchiha através de sua Técnica Yamata bo Orochi, ele foi selado pela Espada de Totsuka de Itachi Uchiha. Como resultado, a Kusanagi foi posteriormente selada com ele. Como ele foi trazido de volta pelo Método de Liberação do Mal, o destino da espada é desconhecido.
+Dano:
++120
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 150 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 140 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 150 pontos totais
+Causa sangramento resultando em 50 pontos de dano por rodada até o final do combate
+Caso utilizado contra barreiras, causa +(Base: 180 | Chakra: 200 | Chakra Elemental: 210) pontos de dano
+Preço:
+4,000,000 Ryous
+Kusanagi no Tsurugi
+(Espada de Kusanagi)
+Quem usa:
+Sasuke Uchiha
+Primeira aparição:
+Naruto Shippuden: Episódio 51
+Função:
+Equipamento
+Rank:
+Distância:
+Físico
+Requisito:
+Bukijutsu 17
+Notas:
+Nenhum
+Descrição:
+O chokutõ de Sasuke Uchiha referido como uma Espada de Kusanagi foi sua arma pessoal durante toda a Parte II. Tinha uma bainha preta e punho correspondente, e era um tamanho maior que um chokutou normal. Não possuía nenhuma das especialidades naturais como a que Orochimaru exerce, como a extensão da lâmina e a capacidade de cortar quase tudo, ambos atributos naturais dos Kusanagi, mas mostrou-se repetidamente muito durável e capaz cortar vários materiais.
+Sasuke podia expandir o poder de sua espada canalizando seu chakra do raio para a lâmina com o fluxo de chakra, o que aumentaria seu fio de corte através de vibrações de alta frequência, além de aumentar seu alcance de corte. Isso permitiria que Sasuke cortasse quase qualquer coisa, além de entorpecer o alvo que foi perfurado por esta lâmina de raio. Durante a Quarta Guerra Mundial Shinobi, Itachi Uchiha reencarnado, enquanto cooperava com seu irmão, empunhou temporariamente a lâmina para combater Kabuto Yakushi. Mais tarde Sasuke foi mortalmente ferido após ser esfaqueado no coração com esta lâmina por Madara Uchiha.
+Mais tarde, a espada foi descartada durante sua batalha com Madara, enquanto a bainha foi destruída durante sua batalha com Kaguya Otsutsuki em sua dimensão. Algum tempo depois da guerra, Sasuke substituiu a espada por uma nova.
+Dano:
++120
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 150 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 140 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 150 pontos totais
+Causa sangramento resultando em 50 pontos de dano por rodada até o final do combate
+Caso utilizado contra barreiras, causa +(Base: 180 | Chakra: 200 | Chakra Elemental: 210) pontos de dano
+Preço:
+4 ,000,000 Ryous
+Raijin no Ken
+(Espada do Deus do Trovão)
+Quem usa:
+Mifune
+Primeira aparição:
+Naruto Shippuden Episódio 256
+Função:
+Equipamento
+Rank:
+SS+
+Distância:
+Físico
+Requisito:
+Bukijutsu 19
+Notas:
+Nenhum
+Descrição:
+A Espada do Deus do Trovão é uma lâmina que já foi empunhada por Tobirama Senju. A espada em si tinha muitos usos que envolviam sua capacidade de manipular raios. Por ser feito de raios concentrados, ao entrar em contato com o inimigo, daria a eles um forte choque elétrico capaz de incapacitá-los posteriormente. A espada era capaz de produzir anéis de eletricidade que podem paralisar o inimigo enquanto o choca continuamente; até mesmo suspendê-los magneticamente no ar. Defensivamente, a lâmina pode canalizar suas propriedades elétricas no ar para bloquear ataques. Como mostrado na luta de Aoi com Naruto e Sasuke, a lâmina mostrou não apenas ser capaz de cortar facilmente qualquer objeto sólido, mas também através de chakra, incluindo técnicas de rank A como o Chidori e o Rasengan.
+Dano:
++190
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 200 Pontos de Vida
+Pode ser utilizado para defender técnicas de chakra ao corta-las ao meio pagando o gasto equivalente a técnica defendida
+Causa Eletrocussão resultando em -4 em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e 120 Pontos de Vida por 2 rodadas
+Preço:
+15,000,000 Ryous
+Sanjin no Ōgama
+(Foice de lâmina tripla)
+Quem usa:
+Hidan e Kabuto Yakushi
+Primeira aparição:
+Naruto Shippuden Episódio 71
+Função:
+Equipamento
+Rank:
+SS+
+Distância:
+Física á Média
+Requisito:
+Bukijutsu 19
+Notas:
+Nenhum
+Descrição:
+A Foice Tripla é a principal arma do membro da Akatsuki, Hidan. Seu principal objetivo é ajudá-lo a coletar sangue para seu ritual de maldição. Por causa disso, ele foi projetado não tanto para matar o alvo, mas para feri-lo, não importa quão grande ou pequeno seja o ferimento.
+As três lâminas ficam menores de cima para baixo, dando à foice um alcance maior, apesar de diminuir sua letalidade. A foice está presa a um longo cabo de metal enrolado em dois carretéis no quadril esquerdo de Hidan. Este cabo é forte o suficiente para bloquear kunai e permite que Hidan aumente ainda mais o alcance da foice balançando-a no ar. O cabo foi posteriormente destruído por uma etiqueta explosiva. A foice pode se dividir e possui diversas outras funções que nunca foram mostradas.
+Devido ao seu grande tamanho, Hidan afirmou que isso inibe bastante sua velocidade de ataque e faz dele o membro mais lento da Akatsuki. Apesar disso, ele é extremamente ágil em manipulá-lo, sendo até mesmo capaz de usar a foice para desviar a entrada de shuriken.
+A foice foi abandonada quando Shikamaru forçou Hidan a largá-la e deixar a área. No anime, após a Reunião dos Cinco Kage, Kabuto Yakushi adquiriu a Foice Tripla da Floresta do Clã Nara, onde a guardou em um pergaminho para uso posterior. Quando o clone de Hidan foi convocado mais tarde, Kabuto convocou a foice do pergaminho para ser usada novamente pelo primeiro.
+Nos especiais do filme Estrada para Naruto, o Filme Road to Ninja, um Zetsu Branco, disfarçado de Hidan, foi mostrado empunhando sua própria foice idêntica.
+Dano:
++150 pontos de dano
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 150 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 170 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 180 pontos totais
+Causa sangramento resultando em 120 pontos de dano por rodada até o final do combate
+Preço:
+16,000,000 Ryous
+Sandaime Kazekage
+(Terceiro Kazekage)
+Quem usa:
+Hidan e Kabuto Yakushi
+Primeira aparição:
+Naruto Shippuden Episódio 21
+Função:
+Equipamento
+Rank:
+SS+
+Distância:
+Física á Média
+Requisito:
+Bukijutsu 19
+Notas:
+Nenhum
+Descrição:
+Este é o boneco humano criado por Sasori a partir do corpo do Terceiro Kazekage de Sunagakure. Os esforços que Sasori fez para adquirir o boneco fizeram dele o seu favorito. No final, Sakura Haruno destruiu o boneco e no anime, quando Chiyo tentou usar a cabeça para atacar Sasori, ele simplesmente o incinerou.
+Depois de convertê-lo em uma marionete, Sasori ganhou acesso às habilidades que o Kazekage tinha enquanto estava vivo, como sua kekkei genkai Jiton. Ele também instalou várias armas em seu corpo, todas embebidas em seu tipo especial de veneno – que mata a vítima após três dias de paralisia dolorosa. Isto também foi aplicado à Areia de Ferro do Kazekage. Foi notado no anime, no entanto, que seu uso não era nada comparado ao quão forte era quando usado pelo Terceiro quando ele estava vivo.
+Dano:
++150 pontos de dano
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 1500 Pontos de Vida
+Permite o usuário utilizar Jiton no Jutsu Rank SSS através da Marionete
+Preço:
+17,000,000 Ryous
+Shirohigi: Jikki Chikamatsu no Shū
+(Técnica Secreta Branca: A Coleção de Dez Bonecos de Chikamatsu)
+Quem usa:
+Monzaemon Chikamatsu ou Chiyo
+Primeira aparição:
+Naruto Shippuden Episódio 26
+Função:
+Equipamento
+Rank:
+SS+
+Distância:
+Física á Média
+Requisito:
+Bukijutsu 19
+Notas:
+Nenhum
+Descrição:
+A Técnica Secreta Branca: A Coleção de Dez Bonecos de Chikamatsu é uma técnica ninja inventada por Monzaemon Chikamatsu.
+Uso
+Após desenrolar o pergaminho de transporte, a Coleção de Chikamatsu aparece a partir do emblema do portão (門, mon). Usar a Técnica de Bonecos para manipulá-los à vontade é o que é conhecido como o método "um número correspondente aos dedos" (指に数, Yubi ni sū). Com esta coleção de bonecos, é literalmente possível usar um boneco com cada dedo — cada um ostentando um poder equivalente a mil bonecos juntos. No entanto, usar todos esses mecanismos secretos exige expertise e habilidade de classe extremamente alta.
+Esses dez bonecos foram criados pelo primeiro manipulador de bonecos, Monzaemon Chikamatsu, e mais tarde vieram para posse de Chiyo, cujo uso lhe rendeu grande fama. Esses bonecos são muito poderosos, já que Sasori afirmou que havia rumores de que eles foram usados para derrubar um castelo inteiro em determinado momento. A Coleção de Chikamatsu tem uma habilidade aterrorizante em taijutsu, ninjutsu, bukijutsu, e assim por diante. Além disso, como podem alterar seus números combinando, o número de habilidades que podem mostrar se torna ainda maior. Os bonecos foram construídos de forma que todos possam trabalhar em conjunto tanto ofensiva quanto defensivamente.
+Dano:
++170 pontos de dano
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 1200 Pontos de Vida
+Preço:
+19,000,000 Ryous
+Cursed Seal Device
+(Dispositivo de Selo Amaldiçoado)
+Quem usa:
+Momo, Sasami e Tosaka
+Primeira aparição:
+Boruto Episódio 99
+Função:
+Equipamento
+Rank:
+SS+
+Distância:
+Usuário
+Requisito:
+Nenhum
+Notas:
+Nenhum
+Descrição:
+Esses dispositivos são incorporados com um juinjutsu criado por Tosaka, que confere ao usuário habilidades aprimoradas, capazes de tornar um indivíduo sem treinamento ninja forte o suficiente para derrotar aqueles de nível genin ou superior. Tosaka afirmou que seu dispositivo (criado a partir dos dados da Transformação do Sábio de Jūgo) era a “arma definitiva do Selo Amaldiçoado”, antes de sua derrota total na transformação completa de Jūgo.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Possuí 300 Pontos de Vida
+Transforma o usuário em uma das formas do Juinjutsu
+Uma vez escolhido a forma, o usuário poderá somente transformar nesta forma do Juinjutsu escolhido
+Se o colar for destruido a forma do Juinjutsu é desfeita
+Preço:
+20,000,000 Ryous
+Ryūjin
+(Lâmina do Dragão)
+Quem usa:
+Naruto Uzumaki
+Primeira aparição:
+Naruto Shippuden: As Crônicas da Lâmina do Dragão
+Função:
+Equipamento
+Rank:
+SS+
+Distância:
+Físico
+Requisito:
+Bukijutsu 21
+Notas:
+O usuário deverá trocar a esfera no centro da arma para usar o elemento de sua vontade. Essa ação não consome um suporte, mas pode ser impedida.
+Capaz de conduzir qualquer tipo de chakra
+Descrição:
+Esta arma tem a capacidade de permitir ao seu usuário executar qualquer técnica e permite que ela use qualquer uma das transformações básicas da natureza. A Ryuujin também permite ao usuário cortar e absorver o chakra de seus oponentes, similar a Samehada. Finalmente, uma habilidade muito útil que a espada tem é ficar ligada de forma parcial a seu dono, por isso está sempre tentando se conectar com Naruto. No entanto, parece que há um limite para essa habilidade, pois foi perdida depois que Naruto a perdeu no Monte Koryuu. Usar esta lâmina não é sem suas desvantagens; a fim de ter controle completo sobre a lâmina, o usuário deve ter níveis excepcionalmente altos de chakra. Naruto é capaz de empunhar a lâmina sem inconvenientes devido à Raposa Demônio de Nove Caudas dentro dele.
+O que dá ao Dragon Blade a capacidade de usar todos os elementos básicos são cinco orbes que são inseridos no centro. Os orbes são coloridos por seus elementos, similarmente aos chapéus Kage; vermelho para fogo, verde para vento, amarelo para relâmpago, laranja para terra e azul para água.
+Dano:
++170
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 200 Pontos de Vida
+Se a lâmina cortar um alvo que possua chakra, 170 pontos de chakra do alvo serão transferidos ao usuário. Só podee ocorrer uma vez a cada 2 rodadas.
+O usuário pode trocar a gema da Ryujin alterando o efeito que seu corte causa de acordo com a lista abaixo
+O usuário receberá a afinidade elemental no Rank SS+ de acordo com a gema elemental equipada no Ryujin
+[Efeitos Gerais Elementais]
+Vento:
+Causa Sangramento resultando em 100 pontos de dano por rodada até o final do combate
+Fogo:
+Causa Queimadura resultando em 100 pontos de dano por rodada até o final do combate
+Raio:
+Causa Eletrocussão resultando em -4 em Taijutsu, Bukijutsu, Arremesso, Esquiva, Bloqueio Físico e 50 Pontos de Vida por 3 rodadas
+Terra:
+Causa Esmagamento em um membro escolhido pelo usuário, resultando em um redutor de -4 nas ações com o membro afetado e 70 pontos de dano por rodada
+Preço:
+25,000,000 Ryous
+Double Bladed Bracers
+(Braçadeiras de lâmina dupla)
+Quem usa:
+Líder do Time Goji
+Primeira aparição:
+Naruto Shippuden Episódio 398
+Função:
+Equipamento
+Rank:
+Distância:
+Usuário
+Selos:
+Nenhum
+Requisito:
+Bukijutsu 5
+Notas:
+Nenhum
+Descrição:
+Essas armas são braçadeiras de metal com duas lâminas afiadas. O usuário os empunha em combate corpo a corpo, tentando ferir um oponente. Além disso, durante a defesa contra ataques, as lâminas também podem causar ferimentos.
+Dano:
++65
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 90 Pontos de Vida
+Permite o usuário contra-atacar golpes físicos no qual o adversário utiliza seu corpo para bater
+Preço:
+60,000 Ryous
+Hiraishin Kunai
+(Kunai do Deus Voador do Trovão)
+Quem usa:
+Kakashi Hatake, Minato Namikaze e Naruto Uzumaki
+Primeira aparição:
+Naruto Shippuuden Episódio 119
+Função:
+Equipamento
+Rank:
+E ou B
+Distância:
+Físico á Curta ou [Arremesso] Todas
+Requisito:
+Hiraishin no Jutsu
+Bukijutsu (E: 1 | B: 7)
+Arremesso (E: 1 | B: 7)
+Notas:
+Capaz de conduzir chakra neutro
+Descrição:
+As Hiraishin Kunai são Kunais feitas de forma personalizada e são armas de assinatura de Minato Namikaze, que as utiliza em conjunto com sua técnica de espaço-tempo o Hiraishin no Jutsu. Elas se diferem de uma Kunai ao possuír três lâminas ao invés de uma e seu cabo (que é mais grosso que o normal) serve como "marcador" para as habilidades de teleporte de Minato. Minato também diz que as lâminas são mais pesadas do que uma Kunai normal. Suas lâminas extra também as tornam mais letais em uma batalha de curta distância.
+Dano:	+
+(E:20 | B:46) pontos de dano
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí (E:20 | B:90) pontos de vida
+A kunai possuí uma marcação do Hiraishin permitindo o usuário se teleportar a ela caso possua a técnica
+Preço:
+(E:500 | B:100,000) Ryous
+Konoha Chakura Tou
+(Lâmina de Chakra de Konoha)
+Quem usa:
+Naruto Uzumaki, Sai, Sakura Haruno, Sãra e Yamato
+Primeira aparição:
+Naruto Shippuden o Filme: A Torre Perdida
+Função:
+Equipamento
+Rank:
+A
+Distância:
+Física
+Requisito:
+Bukijutsu 9
+Notas:
+Nenhum
+Descrição:
+A Lâmina de Chakra de Konoha é uma arma condutora de chakra padrão usada pelos shinobis de Konohagakure. Essas lâminas têm aparência de kunai alongada, mas são mais parecidas com espadas. Tem o símbolo Konohagakure na base. Sendo capaz de se revestir chakra, a Equipe 7 usou essas lâminas para cortar os fios de chakras de Mukade conectados aos seus bonecos. Naruto dá sua lâmina de chakra para Sāra, que eventualmente a passa para sua filha.
+Dano:
++50
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 110 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 70 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 90 pontos totais
+Preço:
+250,000 Ryous
+Chakura Ha no Tsumi
+(Tripla Lâmina da Garra de Chakra Aprimorado)
+Quem usa:
+Sora, Kazuma e Gensui Amagiri
+Primeira aparição:
+Naruto Shippuden Episódio 57
+Função:
+Equipamento
+Rank:
+A
+Distância:
+Físico
+Requisito:
+Bukijutsu 9
+Notas:
+Nenhum
+Descrição:
+Este tipo de tekagi-Shuko é uma arma usada por Sora e seu pai. É uma garra com três lâminas, que podem ser melhoradas com o chakra do usuário, mesmo chakra natureza do usuário. Ele tem o mesmo efeito que as facas de trincheira de Asuma Sarutobi.
+A arma original que Sora exercia foi quebrado em uma batalha com Kazuma. Mas, devido a um ato de bondade de Asuma, foi mais tarde reforjada com o mesmo material especial que foi usado para fazer suas facas de trincheira. Durante o confronto de Naruto com o Sora quatro cauda, ele usa um pedaço quebrado da garra para ferir a si mesmo em uma tentativa de evitar sua própria transformação.
+Dano:
++50
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 110 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 70 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 90 pontos totais
+Preço:
+250,000 Ryous
+Chakura Tō
+(Lâminas de Chakra)
+Quem usa:
+Asuma Sarutobi, Shikamaru Nara, Naruto Uzumaki e Sora
+Primeira aparição:
+Naruto Episódio 70
+Função:
+Equipamento
+Rank:
+A
+Distância:
+Físico
+Requisito:
+Bukijutsu 9
+Notas:
+Nenhum
+Descrição:
+A Chakura Tou, é uma faca de trincheira projetada exclusivamente para Asuma Sarutobi. Essas lâminas são usadas como soqueiras, mas cada um tem "dentes" em forma de ziguezague em cada junta, e uma lâmina saindo do fim. As facas são feitas de um metal especial que pode ser infundida através de "fluxo chakra" com chakra elemental ou até mesmo chakra Yin-Yang  para produzir efeitos adicionados. De acordo com Shikamaru, as lâminas são capazes de absorver o tipo chakra do utilizador , e tornar-se a origem de uma técnica, para o utilizador.
+Dano:
++50
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 110 Pontos de Vida
+Permite o usuário revestir a lâmina com chakra pagando 20 pontos de chakra por rodada e ampliando o dano da arma para 70 pontos totais
+Permite o usuário revestir a lâmina com chakra elemental pagando 30 pontos de chakra por rodada e ampliando o dano da arma para 90 pontos totais
+Preço:
+250,000 Ryous
+Wrist Launcher
+(Lançador de Pulso)
+Quem usa:
+Kihõ
+Primeira aparição:
+Naruto Shippuden Episódio 96
+Função:
+Equipamento
+Rank:
+Distância:
+Usuário
+Requisito:
+Doku
+(Veneno) [Opcional]
+Notas:
+Nenhum
+Descrição:
+Kihō usava um lançador de pulso de oito canos em seu braço direito, que estava preso às costas e lhe permitia borrifar ou atirar diferentes tipos de fumaça nos oponentes, como cortinas de fumaça e fumaça venenosa. Isso também pode ser usado para realizar ninjutsu baseados em fumaça, como Maegan e Enryu.
+Dano:
++50 em técnicas que tenham o Wrist Launcher como requisito
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí 80 Pontos de Vida
+Permite o usuário arremessar seu Doku a todas as distâncias
+É possível também liberar seu Doku em uma área de 10m² contra alvos, entretanto, isso fará com que o efeito do veneno seja diminuído em um ranking. Requer o Doku no mínimo rank B
+Preço:
+120.000 Ryous
+Kemuridama
+(Bomba de Fumaça) [Opcional]
+É possível utilizar uma Kemuridama através do lançador fazendo com que a bomba de fumaça tenha uma área de 30m²
+Jutsu Absorption Arm
+(Braço de Absorção de Jutsu)
+Quem usa:
+Ao, Boruto Uzumaki, Katasuke Tono
+Primeira aparição:
+Boruto Episódio 184
+Função:
+Equipamento
+Rank:
+A
+Distância:
+Física
+Requisito:
+Nenhum
+Notas:
+Nenhum
+Descrição:
+Este braço é uma ferramenta de reabilitação modificada que permite ao seu portador criar esferas absorventes de ninjutsu.
+Dano:
+Nenhum
+Gasto:
+Nenhum
+Efeito:
+Recebe o Ninjutsu neutro Chakra Absorbing Sphere enquanto o equipamento durar
+Preço:
+250,000 Ryous
+Possui 150 Pontos de Vida
+
+=== o de Avatar ===
+Criando Seu Avatar
+Neste NPC será explicado e ensinado como criar um Avatar Customizado para seu personagem.
+Formulação
+Primáriamente, não altere a fonte, tamanho das letras ou apague campos da formula, se aquele campo não possuir utilidade (ah meu jutsu não usa selos de mão) apenas deixe "Nenhum" escrito no campo.
+Nome do Avatar em Japonês Katakana
+(Tradução do nome do Avatar em Português)
+Quem usa:
+Liste quem usa ou já usou esta tecnica
+Função:
+Avatar (Não altere a Função. Pois ela determina o tipo de técnica)
+Rank:
+S á SSS
+Distância:
+S+: Todas | SS+: 100m² em volta do alvo | SSS: 200m² em volta do alvo
+Atributo:
+Atributo de Comabate a ser Rolado no ataque
+Requisito:
+O que é necessário para utilizar o Avatar
+Descrição:
+Descreva a Aparência, Lore e como funciona seu Avatar.
+Dano:
+Dano que o Avatar causa ou amplifica
+Gasto:
+pontos de chakra para ativar a técnica a primeira vez
+Rank em
+Rank/2 em pontos de chakra para manter ativo nas rodadas seguintes
+Efeito:
+[Efeito Geral]
+Coloque as mecânicas do Avatar aqui
+[Efeito Geral Interpretativo]
+Coloque mecânicas interpretativas do Avatar Aqui
+Primeira Aparição:
+Em qual Episódio do Anime ou Qual saga e capitulo da Saga essa técnica foi usada a primeira vez
+Atributo de Combate a ser Rolado na defesa
+Selos:
+Selos necessários para utilizar o avatar.
+Notas:
+Caso haja regras especificas para esse Avatar
+Rank
+Rank X: Gasto Minimo de Chakra/Estâmina á Gasto Máximo de Chakra/Estâmina
+Rank A: 100
+Rank S: 150
+Rank SS: 250
+Rank SS+: 360
+Rank SSS: 650
+Rank SSS+: 800+
+Função Avatar
+Dano
+A		|	40		|	70				|	90			|	100
+Gasto
+Manter Ativo:
+Para manter o Avatar ativo por Rodada, se paga 50% do valor total da técnica em Chakra e/ou Estâmina
+Proteção
+Dano
+Amplificação:
+O dano causado pelo avatar poderá seru utilizado para ampliar o dano de técnicas utilizadas através ou em conjunto com o Avatar.
+Rank	|	Hiden	| 	Kekkei Genkai 		| 	Kekkei Tõta 	| 	Kekkei Mõra
+S		|	70		|	100				|	120			|	150
+SS		|	150		|	200				|	230			|	270
+SS+		|	250		|	300				|	340			|	380
+SSS		|	500		|	600				|	660			|	720
+SSS+		|	700		|	800				|	890			|	1000
+Vida
+Rank	|	Hiden	| 	Kekkei Genkai 		| 	Kekkei Tõta 	| 	Kekkei Mõra
+A		|	70		|	100				|	130			|	180
+S		|	150		|	250				|	270			|	320
+SS		|	300		|	450				|	470			|	540
+SS+		|	570		|	650				|	700			|	850
+SSS		|	1100		|	1300				|	1500			|	1800
+SSS+		|	1500		|	1700				|	2000			|	2600
+Efeito
+Derrotado:
+Se o Avatar for destruido o usuário não poderá refaze-lo por (S: 2 | SS: 3 | SS+ 4 | SSS: 5) rodadas
+Amplificação:
+O Avatar poderá utilizar habilidades até o Rank A recebendo seu bônus de dano em conjunto com o dano da técnica, exceto por técnicas unicas do próprio Avatar;
+Irrestrito:
+Se o usuário ativar o Avatar enquanto está sob efeito de uma prisão, ele causará o dano do avatar na prisão.
+
+=== o de Equipamentos ===
+Criando seu Equipamento/Armamento
+Caso o equipamento que você queira não esteja na loja ou você queria criar seu próprio equipamento, basta seguir os passos abaixo.
+FORMULAÇÃO
+Primáriamente, não altere a fonte, tamanho das letras ou apague campos da formula, se aquele campo não possuir utilidade apenas deixe "Nenhum" escrito no campo.
+Imagem do Equipamento se houver
+EXEMPLO
+MECÂNICAS
+Armas
+Danos:
+Rank E	= 10 á 19
+Rank D	= 20 á 29
+Rank C	= 30 á 39
+Rank B	= 40 á 49
+Rank A	= 50 á 59
+Rank S	= 60 á 79
+Rank SS 	= 80 á 99
+Rank SS+ 	= 100 á 149
+Rank SSS 	= 150 á 250
+Rêsistência
+Armas:
+Rank E	= 20 á 39 Pontos de Vida
+Rank D	= 40 á 49 Pontos de Vida
+Rank C	= 60 á 79 Pontos de Vida
+Rank B	= 80 á 99 Pontos de Vida
+Rank A	= 100 á 119 Pontos de Vida
+Rank S	= 120 á 139 Pontos de Vida
+Rank SS 	= 140 á 159 Pontos de Vida
+Rank SS+ 	= 160 á 179 Pontos de Vida
+Rank SSS 	= 180 á 280 Pontos de Vida
+Armaduras:
+Rank E	= 20 á 40 Pontos de Vida
+Rank D	= 40 á 60 Pontos de Vida
+Rank C	= 60 á 90 Pontos de Vida
+Rank B	= 90 á 200 Pontos de Vida
+Rank A	= 200 á 250 Pontos de Vida
+Rank S	= 250 á 350 Pontos de Vida
+Rank SS 	= 350 á 600 Pontos de Vida
+Rank SS+ 	= 600 á 800 Pontos de Vida
+Rank SSS 	= 800+ Pontos de Vida
+Condução de Chakra
+Armas podem conduzir Chakra Neutro no Rank B
+Armas podem conduzir Chakra Elemental no Rank A
+Armas podem conduzir qualquer tipo de chakra apartir do Rank S
+Akeu no Katana
+(Espada de Akeru)
+Quem usa:
+Akeru Hatake
+Primeira aparição:
+NNaruto Destiny: Otogakure - Capítulo 01
+Função:
+Equipamento
+Rank:
+C á S
+Distância:
+Física á Curta
+Requisito:
+Bukijutsu (C: 3 | B: 5 | A: 7 | S: 11)
+Notas:
+Pode conduzir chakra neutro a partir do ranking B
+Pode conduzir chakra elemental a partir do ranking A
+Descrição:
+Esta é a katana de Akeru. Esta katana fora forjada por seu pai Togutso quando a garota era nova. A katana possuí uma lâmina metálica levemente curvada, uma guarda para proteger as mãos e um cabo no qual fora enfaixado com couro de arraia.
+Dano:	+
+(C:33 | B:44 | A:54 | S:74) pontos de dano
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí (C:70 | B:90 | A:110 | S:130) pontos de vida
+Preço:
+(C: 60,000 | B: 100,000 | A: 150,000 | S: 300,000) Ryous
+(Tradução do nome do Equipamento)
+Quem usa:
+Usuários do Equipamento (Liste quem usa ou já usou)
+Primeira aparição:
+Em qual capitulo/sessão esse equipamento foi mostrado a primeira vez
+Função:
+Equipamento (Não deve ser alterado. Serve para indicar que não é um jutsu)
+Rank:
+Rank no qual o equipamento possuí e se ele pode ser evoluido com forja/comprado em ranks maiores
+Distância:
+Distância no qual o equipamento alcança
+Requisito:
+Atributo de Comabte Rank (C: 3 | B: 5 | A: 7 | S: 11)
+Notas:
+Pode conduzir chakra neutro a partir do ranking B
+Pode conduzir chakra elemental a partir do ranking A
+Descrição:
+Descreva o equipamento. Sua aparência e suas peculiariedades.
+Dano:
++Rankpontos de dano
+Gasto:
+Resultado do acerto em pontos de estâmina
+Efeito:
+Possuí (Rank) pontos de vida
+Preço:	(
+Rank) Ryous
+Nome do Equipamento
+arbitrariedade
+Naturalmente existem coisas extras que podem ser adicionadas ao equipamento como efeitos ou mecanicas unicas. Mas essas são reservadas a criatividade do jogador e decisão final do mestre.
+
+=== o dos Personagens ===
+Evolução dos Personagens
+Ao longo das sessões seu personagem irá recebendo pontos de experiência e consequentemente ganhando níveis. Aqui será explicado como funciona o sistema de níveis e mostrando comparações com quais ranks esses níveis são representados na hierarquia ninja dentro das vilas.
+Aluno da Academia
+Alunos da Academia (忍者学校生, Akademi-sei) compõem o corpo docente da Academia, onde eles são treinados e preparados para a vida como um shinobi. Eles não são uma parte real da força de shinobi, como eles ainda estão no processo de dominar o básico do básico do estilo de vida ninja. No entanto, eles podem ser recrutados como parte em potencial de guerra em tempos de emergência.
+Alunos da Academia gastam seu tempo aprimorando as várias habilidades que eles são obrigados a ter e submetidos a vários testes e exames para ver como eles progridem. Além das disciplinas escolares normais, tais como história e matemática, são ensinados os conceitos básicos de ninjutsu, taijutsu, e muito provavelmente também genjutsu. Isso inclui aprender sobre chakra e como controlá-la, táticas, selos de mão, eles são levados através do manuseio de armas e ferramentas ninja, como shuriken e kunai, aprendendo como jogar e utilizá-las através da prática de alvo, e várias técnicas de rank E , tais como a técnica do clone e a técnica de transformação. Eles também são treinados em trabalhar individualmente e em equipes.
+Eventualmente, eles recebem um teste de graduação para ver se eles estão prontos para tentar se tornar Genin. Passando este teste não concede automaticamente a eles este título, pois terão de passar por um segundo teste dado por seu instrutor Jounin, mas recebem um protetor na testa. Aqueles que não se enquadrem nesses testes são enviados de volta para a Academia. Os requisitos para a graduação variam de vila em vila. Em Konohagakure, os alunos da Academia simplesmente têm que mostrar a sua proficiência em uma técnica Rank E, sendo selecionada aleatoriamente. Em Kirigakure, no entanto, o teste foi uma batalha de vida ou morte entre estudantes de graduação de uma só vez, uma prática que desde então mudou após o ainda-não-qualificado Zabuza Momochi massacrar toda uma classe de graduação.
+Nível:
+1
+Atributos:
+16 de Core e 16 Interpretativo
+Pontos de Jutsus Inicial:
+100
+Limite de Atributo Core:
+5
+-------------------------------------------------------------
+Genin
+Genin (下忍Literalmente significa: ninja baixo ou ninja júnior) é o menor nível de ninja e também aqueles que apresentam a maior diferença no poder. Quando se torna genin, o ninja começar a fazer a sua parte para a economia da sua vila, sendo enviado em missões que a vila é paga para fazer. Eles são normalmente enviados em missões rank-D, que são empregos quase inteiramente livre de risco porém com muito trabalho manual ou raramente, em missões de rank C, que são um rank acima disso e começam a beira de ser um ninja "real", Rank C é o trabalho que têm uma muito baixa possibilidade de risco de terem ninjas inimigos envolvidos. Quando Konohagakure estava com falta de ninjas de nível superior por causa da invasão, a vila teve que eventualmente enviar genin em missões mais elevados do ranking.
+Genin são colocados em grupos de quatro pessoas, ou esquadrão, que consiste em três genin e um Jounin-sensei, a fim de aprender o trabalho em equipe e experiência de vida ninja real sob a supervisão e proteção de um shinobi de elite. A montagem destas equipes é baseada nas habilidades individuais do genin, de modo que haverá um equilíbrio entre as equipes. Por exemplo, Naruto Uzumaki, que passou com as notas mais baixas, foi colocado em uma equipe com Sasuke Uchiha e Sakura Haruno, que passaram com as notas mais altas e mais alta pontuação do exame escrito, respectivamente. Devido ao fato de que genin é o nível mais baixo ninja, eles são normalmente atribuídos a missões Rank D ou missões rank C de forma que ganhem experiência antes de assumir missões mais difíceis ou serem promovidos ao posto de chuunin, ao concluir com êxito o exame Chuunin, um conjunto de tarefas difíceis feitas para testar as habilidades de genin para ver se eles são ou não apto para se tornar chuunin.
+Nível:
+5
+Atributos:
+24 de Core e 24 Interpretativo
+Pontos de Jutsu:
+500
+6
+Limite de Atributo Core:
+Ponto de Trait Total:
+500
+-------------------------------------------------------------
+Chūnin
+Chūnin (中 忍, literalmente significa: Ninja Médio) são ninjas que atingiram um nível de maturidade e habilidade que consiste principalmente em habilidades de liderança e proeza tática. Os Chuunin são normalmente enviados em missões C ou B. Alguns chuunin, como Iruka Umino e Shino Aburame, passam a se tornar professores da Academia.
+Para se tornar um chuunin, o genin participa de um grande exame, conhecido como Exame Chuunin. Aqueles que passam no teste e se tornam chuunin são elegíveis para usar uma jaqueta de identificação que contém pergaminhos de ninjutsu. Este colete não é obrigatório; em vez disso, alguns optam por roupas mais elaboradas, como capas e roupões.
+Como resultado da era pacífica que os Cinco Grandes Países Shinobi estabeleceram após a Quarta Guerra Mundial Shinobi, o número de chuunin diminuiu.
+Nível:
+10
+Atributos:
+34 de Core e 30 Interpretativo
+Pontos de Jutsu:
+1000
+7
+Limite de Atributo Core:
+Ponto de Trait Total:
+550
+-------------------------------------------------------------
+Tokubetsu Jōnin
+Tokubetsu Jōnin (特別 上 Tok, Tokubetsu Jōnin) são ninjas que, em vez de ter habilidades gerais de jōnin, são excelentes apenas em uma área específica, muito parecido com subtenentes das forças armadas do mundo real. Por exemplo, Ibiki Morino pode entender completamente o funcionamento da mente humana, fazendo dele um especialista em interrogatório. No entanto, eles possuem habilidades suficientes no geral, pois são conhecidos por terem a mesma oportunidade que um Jounin em liderar suas próprias equipes de genin.
+Nível:
+20
+Atributos:
+54 de Core e 32 Interpretativo
+Pontos de Jutsu:
+2.000
+9
+Limite de Atributo Core:
+Ponto de Trait Total:
+650
+-------------------------------------------------------------
+Jõnin
+Jounin (上 忍, Jōnin, literalmente significa: Alto Ninja, Significado (Viz): Ninja de Elite) geralmente são shinobi altamente experientes e altamente qualificados que servem como capitães militares. Os Jounin geralmente são capazes de usar pelo menos dois tipos de chakra elemental. Não é incomum que jounin faça missões sozinho. Eles são frequentemente enviados em missões de Rank A e, se tiver experiência suficiente, também em missões de Rank S.
+Para se tornar um jounin, um Chuunin pode ser recomendado. Se um número suficiente de civis e os respectivos Kage considerarem o shinobi adequado para o posto, ele será promovido. No anime, outra maneira de se tornar um jounin é participar do Exame Jounin.
+Quando um ninja se torna um jounin, ele pode ser designado para supervisionar uma equipe de três pessoas. O dever deles será instruí-los e treiná-los para se tornarem ninjas competentes. Eles também podem decidir quando o genin está pronto para participar do exame Chuunin.
+Em Konohagakure, cabe ao jounin decidir se um candidato a Hokage receberia a posição permanentemente. Eles também têm um posto especial conhecido como Comandante Jounin.
+Nível:
+30
+Atributos:
+74 de Core e 34 Interpretativo
+Pontos de Jutsu:
+3.000
+12
+Limite de Atributo Core:
+Ponto de Trait Total:
+750
+-------------------------------------------------------------
+Capitão Jõnin
+O Capitão Jounin (
+上忍班長
+, Jounin Hanchou) é uma posição no sistema shinobi de Konohagakure. Como representante das forças shinobi regulares, eles são um membro do conselho, dando-lhes uma palavra a dizer em questões importantes, tais como a escolha de um novo Hokage. Eles são os shinobis do mais alto escalão na vila, mas ainda oficialmente um Jounin em si. A pessoa mais recente conhecida a deter o título de Capitão Jounin foi Shikaku Nara.
+Nível:
+40
+Atributos:
+94 de Core e 36 Interpretativo
+Pontos de Jutsu:
+4.000
+15
+Limite de Atributo Core:
+Ponto de Trait Total
+: 850
+------------------------------------------------------------
+ANBU
+Os ANBU (部 部, Lado Negro), abreviação de Ansatsu Senjutsu Tokushu Butai (暗殺 戦 術 特殊 部隊, literalmente significa: Assassinato Especial e Esquadrão Tático), são agentes secretos ninjas capazes que são despachados pelo líder da aldeia. Aparentemente, não existem ranks dentro da Anbu; a liderança e a hierarquia da equipe parecem se basear no mérito e na experiência. Os líderes das equipes são chamados de líderes de esquadrão (unta 隊長
+, Buntaichō), uma posi
+ção respeitada.
+Por causa da escuridão envolvida na carreira de um Anbu, a personalidade de alguém determina sua elegibilidade para a força, levando a shinobi habilidosos excepcionais cujas personalidades não combinam com a organização a ser rejeitada. Já na Academia, crianças bem-sucedidas são examinadas para eventualmente ingressar. Durante o recrutamento, os shinobi são escolhidos a dedo pelo líder de sua aldeia, por suas capacidades individuais e habilidades especiais. Idade, origem, sexo ou classificação anterior não têm significado nesta decisão; no entanto, na tradição, os shinobi de Konohagakure não são selecionados como Anbu, a menos que tenham pelo menos 13 anos de idade, com Itachi Uchiha tendo 11 anos sendo uma exceção rara. Uma vez ingressados, eles passam por treinamento, incluindo o estudo do corpo humano, e começam a usar máscaras para ocultar sua identidade, levando-os a usar codinomes para se identificar.
+Os Anbu quase sempre aparecem em missões importantes dentro e nas proximidades de sua vila, mas são principalmente encarregados de assassinatos ou distúrbios em países estrangeiros. As tarefas que eles realizam para proteger a vila de ameaças excepcionais incluem infiltração de alto risco no território inimigo, lidando com ninjas extremamente fortes, rastreamento, vigilância, interrogando ninjas inimigos para aprender informações e missões que exigem ninjas especialmente treinados. Devido às ações do grupo, um membro pode parecer desprovido de bondade. Devido à natureza muitas vezes sensível de suas missões e às habilidades únicas que às vezes possuem, espera-se que os Anbu destruam seus próprios corpos se forem gravemente feridos em uma missão para que não possam ser capturados.
+Em Kirigakure, existe um ramo especial de Anbu conhecido como Oinin: Os Oinin rastreia e matam Nukenins de Kiri, recuperando a cabeça como prova e descartando o resto do corpo para não deixar nenhuma informação para seus inimigos. Enquanto os Anbu geralmente estão em esquadrões e recebem ordens de seus capitães, alguns Anbu de elite foram escolhidos a dedo por seus Kage para servir diretamente sob eles. Como tal, toda e qualquer ordem que eles recebam vem de seus Kage e de mais ninguém. Os Anbu não gostam de deixar ninguém saber suas identidades e, como tal, a maioria dos cidadãos de Konoha não sabe quem é ou não é um Anbu.
+Em Konoha, Anbu, ao lado da Polícia Militar de Konoha, são as duas forças que mantêm a paz. Como tal, não há uma linha clara sobre qual é a jurisdição da polícia e qual é o assunto a ser investigado pelo Anbu. A critério do Hokage, a natureza da investigação mudaria simplesmente de uma para a outra, levando o confronto das duas facções. Como os Anbu são vitais para as operações da vila, eles não podem ser presos pela polícia sem um mandado. Konoha anteriormente tinha um ramo especial de Anbu chamado Raiz, que agia como uma força policial secreta que mantinha a ordem pública do subsolo. Seus membros foram treinados para abandonar todas as formas de emoção, a fim de seguir as ordens de Danzou Shimura sem questionar, mesmo nas consequências do resto da vila.  Os membros da Raiz tinham um selo na língua que impedia os membros de falar sobre sua organização.
+Após a Quarta Guerra Mundial Shinobi, na qual os Cinco Grandes Países Shinobi decidiram se unir totalmente em prol da paz, Kido Tsumiki acreditava que a paz estável seria inevitável para os Anbu sofrerem uma diminuição no financiamento, pois seus serviços não são mais vitais. Kido teve que orquestrar alguns pequenos incidentes de segurança para garantir que esse financiamento não fosse afetado.
+Nível:
+50
+Atributos:
+114 pontos de Atributo Core e 38 Interpretativo
+Pontos de Jutsu:
+5.000
+Limite de Atributo Core:
+17
+Ponto de Trait Total:
+950
+-------------------------------------------------------------
+Comandante ANBU
+Aparentemente, não há verdadeiros ranks dentro da ANBU; liderança de equipe e hierarquia parecem ser baseadas no mérito e experiência. Os líderes das equipes são chamados de líderes de esquadrão (unta 隊長, Buntaichō), uma posição respeitada.
+Nível:
+60
+Atributos:
+134 de Core e 40 Interpretativo
+Pontos de Jutsu:
+6.000
+20
+Limite de Atributo Core:
+Ponto de Trait Total:
+1050
+-------------------------------------------------------------
+Nukenin
+Nukenin (抜 け 忍, Nukenin, TV inglesa: Ninja Traidor, literalmente significando: Ninja Perdido) são ninjas que abandonam sua vila sem intenção de retornar. Os Nukenin são criminosos, se não antes de sua deserção, certamente depois de abandonarem seus deveres. Como tal, os Nukenin são listados no Bingo Book da sua vila para serem mortos à vista; Os Oinins de Kirigakure são designados especificamente para eliminar esses Nukenin. Embora alguns Nukenin possam continuar usando a bandana de sua vila, eles não juram lealdade à sua vila; membros da Akatsuki, a maioria deles desaparecidos, esculpem arranhões na bandana para simbolizar que rejeitaram sua vila.
+Sair da vila não necessariamente faz de alguém um Nukenin. Tsunade se retira da vida como ninja e parte de Konoha após a Segunda Guerra Mundial Shinobi, mas ela nunca é considerada um Nukenin pela aldeia. Jiraiya informa, no entanto, que se ela ajudar Orochimaru, um inimigo de Konoha, que seu status mudará e ele será forçado a matá-la. Roushi deixou Iwagakure para aprender mais e controlar melhor o Yonbi que estava selado dentro dele, mas apesar de tomar um poder de guerra tão potencial da vila, ele também não foi considerado um Nukenin.
+Da mesma forma, ser marcado como Nukenin não garante que sua antiga vila os procure como criminosos. Itachi Uchiha se torna um Nukenin após a queda do clã Uchiha, mas ele faz isso sob ordens da liderança de Konoha; Embora a maioria da população de Konoha considere Itachi um criminoso e o trate como tal, seus líderes sabem que ele permanece leal a Konoha. Da mesma forma, quando Sasuke Uchiha deserta de Konoha e se torna um Nukenin, o Quinto Hokage decide não o perseguir como criminoso, como um favor a Naruto Uzumaki. Danzou, quando nomeado "Candidato a Sexto Hokage", mais tarde retira essa clemência e ordena sua execução, em parte por causa de sua ação indesculpável de atacar Kumogakure. Por sua ajuda durante a Quarta Guerra Mundial Shinobi e a boa palavra do sexto Hokage, Sasuke é finalmente perdoado por seus crimes.
+Após a Quarta Guerra Mundial Shinobi, há um aumento das atividades de Nukenin em todo o continente devido aos shinobi deixarem suas vilas, pois consideravam seu modo de vida ameaçado ou por outras razões. Nesta época, eles também se tornaram muito mais cruéis, até dispostos a matar a pessoa que os contratou, se houver uma chance de um pagamento maior.
+Nível:
+80
+Atributos:
+174 de Core e 42 Interpretativo
+Pontos de Jutsu:
+8.000
+25
+Limite de Atributo Core:
+Ponto de Trait Total:
+1250
+-------------------------------------------------------------
+Oinin
+A Corporação Oinin (Oinin Butai), também conhecida como Equipe de Processamento de Cadáveres (Shitai Shori Han), é uma equipe especial da Anbu de Kirigakure, composta por Oinins (追 い い, Oinin, TV inglesa: Ninja Rastreador), que têm o dever específico de caçar os Nukenins. Eles apagam completamente a pessoa que estão procurando por meio de suas técnicas superiores de assassinato e habilidades médicas.
+Eles podiam ser vistos vestindo uniforme padrão Anbu ou, em alguns casos (como Haku e Ao), um quimono azul com uma camiseta listrada com gola alta. Eles também podem usar uma máscara com um orifício fino para os olhos e um desenho ondulado no lugar da boca, e o símbolo da aldeia na testa. Suas máscaras têm semelhanças humanas, em vez da semelhança animal típica que a maioria das máscaras Anbu possui. Eles matam seu alvo, pegando a cabeça como prova e, em seguida, eliminam completamente o corpo usando vários métodos, como cremação ou invocando corvos selvagens para devorar o cadáver. Isso é feito para garantir que os segredos da vila que o corpo de um ninja mantém, como tipos de chakra, ervas consumidas, ninjutsu, remédios especiais e kekkei genkai, não sejam revelados aos forasteiros.
+Oinins deve destruir o cadáver no mesmo local em que o corpo está deitado; não deve ser movido depois de morto, e apenas a cabeça é retirada para provar que o Nukenin está de fato morto. Como requisito, eles devem possuir um conhecimento profundo e íntimo da anatomia humana. Devido à sua reputação de obliterar total e completamente os restos de seus alvos, eles recebem o codinome "O Esquadrão do Submundo" (当 る At, Atarutai).
+No início da série, Haku se apresenta como um Oinin para resgatar o supostamente morto Zabuza Momochi. Ao, como um verdadeiro Oinin, demonstrou grande habilidade em rastrear, pois seus alvos ficavam nervosos o suficiente para colocar armadilhas para detê-lo. No anime, um esquadrão de Oinins liderado por Tsurugi foi enviado para caçar o  Jinchuuriki Utakata.
+No anime, o cenário da equipe é expandido ainda mais, com alguns de seus membros (um dos quais é visto com uma máscara e um penteado idênticos aos de Haku, sugerindo que eles podem ser típicos do grupo) sendo revelados usando coletes e usando técnicas especiais , como empunhar cordas de água para conter os inimigos, que podem ser eletrificados para prejudicar as vítimas e criar névoa que suga o chakra dos oponentes.
+Oinins também possui uma barreira de ninjutsu para proteger certas partes do corpo, como um olho. Essa técnica é de extrema importância e é tão secreta que ninguém além dos membros dos Oinins sabe como desfazê-la, nem mesmo os Mizukage.
+Nível:
+90
+Atributos:
+194 de Core e 44 Interpretativo
+Pontos de Jutsu:
+9.000
+27
+Limite de Atributo Core:
+Ponto de Trait Total:
+1350
+-------------------------------------------------------------
+Sannin
+Os Sannin (伝 説 の 三 忍, Densetsu no Sannin, que literalmente significam: Três Ninjas Lendários) são três ninjas de renome de Konohagakure, aclamados como os melhores de seu tempo. Os Sannin, ou Três Ninjas Lendários, são figuras de destaque na história de Konohagakure, a Vila da Folha. Composto por Jiraiya, Orochimaru e Tsunade, este trio excepcional de ninjas alcançou um status lendário devido às suas habilidades notáveis, proezas em batalha e contribuições significativas para a segurança e prosperidade da vila. Apesar das diferenças de personalidade e caminhos escolhidos, os Sannin eram unidos por um vínculo profundo de camaradagem e respeito mútuo. Seus feitos lendários ecoaram através das eras, inspirando gerações de ninjas em Konoha e além, e seu legado continua a moldar o destino do mundo ninja.
+Nível:
+120
+Atributos:
+254 de Core e 46 Interpretativo
+Pontos de Jutsu:
+12.000
+35
+Limite de Atributo Core:
+Ponto de Trait Total:
+1650
+-------------------------------------------------------------
+Kage
+Kage (影, literalmente significa: Sombra) é um título reservado ao líder de uma das vilas ocultas dos Cinco Grandes Países Shinobi. Eles são conhecidos coletivamente como os Cinco Kage (五 影, Gokage, literalmente significando: Cinco Sombras). Um Kage supervisiona as atividades de sua vila, desde o envio de ninjas em missões até a tomada de decisões difíceis em relação à segurança de seu povo. O Kage de uma vila é geralmente reconhecido como seu ninja mais poderoso. Os Kage são conhecidos como os principais shinobi do continente.
+O título foi criado originalmente por Hashirama Senju logo após a formação de Konohagakure, fazendo dele o primeiro Kage a existir depois de ser eleito pela população de sua vila e país. Após a criação da posição, outras nações elogiaram o sistema inovador que havia sido criado e logo começaram a imitar.
+Como a principal preocupação de um Kage é sua vila, a interação entre os Kage é rara; somente durante cerimônias de assinatura de tratados ou eventos públicos compartilhados é visto um Kage interagindo com um de seus colegas. O único momento em que todos os cinco Kage estão juntos é durante uma Cúpula Kage, que pode ser convocada por qualquer um dos cinco para discutir tópicos que se aplicam a todas as suas vilas.
+Como um Kage é designado parece diferir de uma vila para outra. Em Konoha, o Hokage normalmente indica seu sucessor. Se o Hokage morre ou fica incapacitado antes que eles possam escolher um sucessor, a seleção recai sobre o daimyou do país do Fogo, que é aconselhado por seu comitê, bem como os anciãos da vila, o comandante Jounin e um representante da Anbu. Esse compromisso deve ser aprovado pelos jounin de Konoha. Em Kumo, depois que o Terceiro Raikage morreu, seu filho tornou-se automaticamente o Quarto Raikage, uma decisão tomada muitos anos antes. Se um Kage decidir se aposentar, ele manterá seu título pelo resto da vida e poderá ajudar o novo Kage a tomar decisões e outras responsabilidades. Um Kage aposentado pode até voltar à liderança em tempo integral se o sucessor morrer, como o Terceiro Hokage fez quando o Quarto Hokage deu sua vida para salvar Konoha, sendo incapaz de encontrar alguém adequado e disposto a assumir o título de Quinto Hokage.
+Como os jinchuuriki eram tão importantes para sua vila, era uma tradição que um jinchuuriki fosse parente do Kage atual, tanto para fortalecer a lealdade do jinchuuriki com a vila quanto para mostrar o poder do Kage. Por exemplo, Killer B é o irmão adotivo do Quarto Raikage e Gaara é o filho do Quarto Kazekage.
+Nível:
+140
+Atributos:
+294 de Core e 48 Interpretativo
+Pontos de Jutsu:
+14.000
+40
+Limite de Atributo Core:
+Ponto de Trait Total:
+1850
+-------------------------------------------------------------
+Fushi
+O título de Fushi, abreviação de Fumetsu Shinobi (不滅の忍, literalmente traduzido: Shinobi Imortal) é dado a shinobis que foram os mais fortes da história, superando facilmente um Kage ou até mesmo os cinco como no caso de Madara Uchiha, que derrotou todos os cinco Kages sozinho. Um Fushi é raramente visto, geralmente possuí um poder semelhante a de um Kage porém conseguindo superar seus próprios limites a partir de uma fonte natural, como foi o caso de Hashirama Senju com seu Mokuton e Modo Sennin ou Madara quando despertou seu Eien Mangekyou Sharingan. Também é possível se tornar um Fushi através de métodos externos, assim como Obito ao usar as células Senju de Hashirama e se tornando Jinchuuriki do Juubi.  Durante a grande quarta guerra mundial ninja, Naruto Uzumaki e Sasuke Uchiha atingiram este nível Shinobi.
+Nível:
+160
+Atributos:
+334 de Core e 50 Interpretativo
+Pontos de Jutsu:
+16.000
+45
+Limite de Atributo Core:
+Ponto de Trait Total:
+2050
+-------------------------------------------------------------
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++300 pontos de vida
++350 pontos de chakra
++350 pontos de estâmina
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++400 pontos de vida
++700 pontos de chakra
++700 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++500 pontos de vida
++1200 pontos de chakra
++1200 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++900 pontos de vida
++3500 pontos de chakra
++3500 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++1100 pontos de vida
++4000 pontos de chakra
++4000 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++1300 pontos de vida
++5000 pontos de chakra
++5000 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++1500 pontos de vida
++7000 pontos de chakra
++7000 pontos de estâmina
+Esse aumento de status irá substituir o anterior
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++1700 pontos de vida
+Esse aumento de status irá substituir o anterior
+Nesse ranking o jogador irá receber um aumento passivo em seus status:
++2000 pontos de vida
+Esse aumento de status irá substituir o anterior
++10.000 pontos de chakra
++10.00 pontos de estâmina
++11.000 pontos de chakra
++11.00 pontos de estâmina
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Caso o jogador possua a trait de status extra, esse bônus de status só será adicionado após o cálculo do status extra
+Ponto de Trait Total:
+460
+Subindo de Nível
+Ao subir de nível será conceedido ao seu personagem: 2 pontos de atributo, 1 ponto de atributo interpretativo, 100 pontos de jutsu e 10 pontos de trait.
+Limite de Atributos
+Alcançar o nível de um dos ranks não significa que narrativamente ou dentro da trama seu personagem automaticamente subi´ra de Rank na vila, isso é apenas demonstrativo do rank de poder que seu personagem se encaixa.
+Ao alcançar 100% de experiência, seu personagem irá avançar 1 nível, sua experiência será zerada e sua experiência máxima irá aumentar em 100 pontos.
+Cada Rank possuí um limite de pontos máximos possiveis de serem alocados em um unico atributo.
+Os Atributos interpretativos possuem uim limite fixo de 10 pontos máximos em um unico atributo.
+-------------------------------------------------------------
+Limite de Atributo de Combate:
+7
+Limite de Atributo de Combate:
+9
+Limite de Atributo de Combate:
+10
+Limite de Atributo de Combate:
+13
+Limite de Atributo de Combate:
+18
+Limite de Atributo de Combate:
+22
+Limite de Atributo de Combate:
+25
+Limite de Atributo de Combate:
+30
+Limite de Atributo de Combate:
+37
+Limite de Atributo de Combate:
+40
+Limite de Atributo de Combate:
+52
+Limite de Atributo de Combate:
+60
+Limite de Atributo de Combate:
+67
+
+=== 09 - Traits ===
+Traits
+Se você é novo por aqui, pode estar olhando para essa lista enorme de nomes e símbolos e pensando: "Tá, mas o que eu faço com isso?"
+Não se preocupe. Imagine as Traits (Traços) como o "DNA" do seu personagem. Se os Atributos (Força, Agilidade) dizem o quão forte você é, as Traits dizem quem você é.
+Aqui está o guia rápido para você não se perder:
+◆ ◆ ◆ ◆ ◆
+- 500 pontos de trait
+Jinchūriki
+Pseudo Jinchūriki
+★ ★ ★ ★ ★ ★
+(300 pontos de Trait)
+Diferente de um Jinchūriki comum, que serve como hospedeiro para a alma e o corpo de uma Besta com Cauda (Bijū), o Pseudo-Jinchūriki é um indivíduo que, por meios externos ou acidentais, assimilou uma porção significativa do Chakra de uma dessas entidades. Seja através do consumo da carne da fera, de experimentos laboratoriais ou da selagem de resquícios de energia, o seu sistema circulatório de chakra tornou-se permanentemente alterado e fundido à essência da Bijū.
+Requisito:
+A escolha da Bijū de origem deve ser feita obrigatoriamente durante a criação da ficha e não pode ser alterada posteriormente.
+Vantagens:
+O usuário recebe um bônus passivo de
+Desvantagens:
+O usuário jamais poderá acessar o "Modo Bijū" (a transformação completa na forma da besta). Seu corpo não possui a conexão espiritual necessária para manifestar a forma física da criatura. Caso a Bijū escolhida seja a Kyūbi (Nove-Caudas), o usuário está terminantemente proibido de acessar o Kyūbi Chakura Mōdo (Modo de Chakra da Nove-Caudas) e qualquer uma de suas evoluções ou variações.
++25% de Chakra Extra
+, calculado sobre o seu total atual. Esse excedente regenera-se conforme as regras normais de recuperação da ficha. Permite o aprendizado e o uso de técnicas exclusivas de Jinchūriki (como o Bijū-ken ou variações básicas de mantos), desde que respeitados os requisitos de Rank e Pontos. O usuário pode utilizar Jutsus que tenham como pré-requisito a Bijū específica escolhida no momento da criação da ficha (Ex: Manipulação de Areia para a Ichibi, Chamas Azuis para a Nibi, Tinta para a Hachibi, etc.).
+Jinchūriki do Ichibi
+★
+(450 pontos de Trait)
+O personagem é o hospedeiro oficial de Shukaku, a Besta de Uma Cauda. Diferente de um Pseudo-Jinchūriki, o usuário possui a própria entidade selada em seu corpo, estabelecendo uma conexão profunda e perigosa com a alma do Tanuki de Areia. Ser o Jinchūriki do Ichibi significa ser um exército de um homem só, capaz de moldar o campo de batalha e utilizar selamentos ancestrais que poucos no mundo shinobi sequer compreendem.
+Vantagens:
+O usuário recebe um acréscimo de
+Fūton (Vento)
+e
+Doton (Terra
+com Afinidade. O Jinchūriki desperta o controle sobre o magnetismo recebendo o
+J
+inicialmente. Esta habilidade permite a manipulação de areia ou partículas metálicas (conforme a especialização do ninja)
+iton (Magnetismo)
+Desvantagem:
+Diferente de outros Jinchūrikis, o selo do Ichibi é vulnerável durante o estado de repouso do hospedeiro. Sempre que o Jinchūriki dorme, o Shukaku tenta assumir o controle da consciência e do corpo do usuário, podendo causar destruição involuntária ao redor. O personagem sofre de insônia crônica ou corre o risco de libertar a besta parcialmente toda vez que perder a consciência. Caso o jogador desenvolva o "Controle de Bijū" (através de treino narrativo ou outras Traits), este efeito negativo é anulado, permitindo que o ninja durma normalmente e utilize o poder da fera com segurança.
++25% de Chakra Extra
+em sua reserva total, proveniente da energia densa e arenosa do Ichibi. O personagem manifesta afinidade imediata com as naturezas de chakra
+)
+◆ ◆ ◆ ◆
+Jinchūriki do Nibi
+O hospedeiro de Matatabi, a Besta de Duas Caudas, torna-se um canalizador das chamas azuis espirituais. Diferente do fogo comum, o chakra da Nibi é composto por labaredas de alta temperatura e natureza espectral. O Jinchūriki não apenas ganha reservas massivas de energia, mas seu domínio sobre o Elemento Fogo atinge patamares que superam qualquer mestre convencional, tornando suas chamas progressivamente mais letais e difíceis de resistir.
++30% de Chakra Extra
+, refletindo a vasta energia da besta felina. O personagem recebe automaticamente a natureza de chakra
+Katon (Fogo)
+.
+Ganha o
+Katon no Jutsu de Rank C
+sem custo de pontos. Todo o Katon utilizado pelo Jinchūriki é visualmente azul.
+Vantagem:
+O usuário recebe um bônus passivo de
+★
+(350 pontos de Trait)
+◆ ◆ ◆
+Jinchūriki do Sanbi
+O hospedeiro de Isobu, a gigantesca tartaruga de três caudas, ganha uma conexão profunda com o domínio aquático. O chakra de Isobu é denso e pesado, permitindo ao Jinchūriki manipular a água com uma pressão muito superior à de qualquer ninja comum. Além de uma reserva de energia massiva, o usuário torna-se um mestre das marés, capaz de esmagar defesas inimigas com a força de tsunamis concentrados.
++35% de Chakra Extra
+, uma das maiores reservas entre as Bestas com Cauda devido à natureza resiliente de Isobu. O personagem recebe automaticamente a natureza de chakra
+Suiton (Água)
+. Ganha o
+Suiton no Jutsu de Rank C
+sem custo de pontos. Todo o Suiton utilizado pelo Jinchūriki é imbuído com o chakra denso do Sanbi.
+Vantagem:
+O usuário recebe um bônus passivo de
+◆ ◆ ◆ ◆
+(400 pontos de Trait)
+Jinchūriki do Yonbi
+★
+(550 pontos de Trait)
+O hospedeiro de Son Gokū, o Rei dos Macacos Sábios de quatro caudas, torna-se um mestre da geologia destrutiva. O chakra de Son Gokū é uma mistura fervente de chamas e rocha sólida, permitindo ao Jinchūriki manifestar a Liberação de Lava (Yōton). Este ninja não apenas possui reservas de energia colossais, mas é capaz de transformar o campo de batalha em um cenário vulcânico, derretendo defesas e incinerando oponentes com matéria fundida.
+Vantagens:
+O usuário recebe um bônus passivo de
++35% de Chakra Extra
+, calculado sobre sua reserva total. Devido à natureza composta da besta, o personagem desperta múltiplas afinidades simultaneamente:
+Katon (Fogo)
+: Afinidade nata e recebe o
+Katon no Jutsu de Rank C
+gratuito e
+Doton (Terra)
+: Afinidade nata e recebe o
+Doton no Jutsu de Rank C
+gratuito. O usuário também ganha a habilidade de fundir Fogo e Terra para criar lava recebendo automaticamente o
+Yōton no Jutsu de Rank C
+◆ ◆ ◆ ◆ ◆
+(550 pontos de Trait)
+Jinchūriki do Gobi
+◆ ◆ ◆ ◆ ◆
+★
+O hospedeiro de Kokuō, o Rei Respeitoso de cinco caudas, torna-se um reservatório de energia digna e avassaladora. O chakra de Kokuō combina a fluidez da água com a intensidade do fogo para gerar a poderosa Liberação de Vapor (Futton). O Jinchūriki herda a natureza polida e reservada da besta, mas em combate, é capaz de ferver o próprio chakra para aumentar sua força física a níveis colossais, manifestando uma pressão térmica capaz de romper defesas e envolver o campo de batalha em névoas escaldantes.
++35% de Chakra Extra
+, calculado sobre sua reserva total. Devido à natureza composta da besta, o personagem desperta múltiplas afinidades simultaneamente:
+Vantagens:
+O usuário recebe um bônus passivo de
+Katon (Fogo)
+: Afinidade nata e recebe o
+Katon no Jutsu de Rank C
+gratuito e
+Suiton (Água)
+: Afinidade nata e recebe o
+Suiton no Jutsu de Rank C
+gratuito. O usuário também ganha a habilidade de fundir Fogo e Água para criar vapor, recebendo automaticamente o
+Futton no Jutsu de Rank C
+.
+(450 pontos de Trait)
+Jinchūriki do Rokubi
+◆ ◆ ◆ ◆
+★
+O hospedeiro de Saiken, a enorme lesma bípede de seis caudas conhecida como o "Cão Rinoceronte", torna-se um mestre de substâncias viscosas e fluidos corrosivos. O chakra de Saiken é uma substância espessa, alcalina e altamente energética, permitindo ao Jinchūriki manifestar um Estilo Água (Suiton) densamente modificado por toxinas e muco. Este ninja possui uma reserva de energia massiva e uma natureza resiliente, sendo capaz de dominar o campo de batalha através da erosão lenta e da aderência, dissolvendo defesas e incapacitando adversários com uma presença borbulhante e letal.
+Vantagens:
+O usuário recebe um bônus passivo de
++40% de Chakra Extra
+, calculado sobre sua reserva total. Devido à simbiose com a besta, o personagem desperta uma conexão profunda com o elemento líquido:
+Suiton (Água)
+: Afinidade nata e recebe o
+Suiton no Jutsu de Rank C
+gratuito. Além disso, o hospedeiro recebe uma Maestria Corrosiva que escala o poder de suas técnicas de Água conforme seu próprio desenvolvimento
+(450 pontos de Trait)
+Jinchūriki do Nanabi
+◆ ◆ ◆ ◆
+★
+O hospedeiro de Chōmei, o "Lucky Seven" de sete caudas, torna-se o portador do Brilho Pesado e de uma fortuna inabalável. Representando a "Vida Principal", Chōmei é a personificação da evolução e do crescimento, sendo a única besta que passou por uma metamorfose completa de um estágio larval para um imponente besouro rinoceronte blindado. O Jinchūriki deste espírito despreocupado herda uma vitalidade radiante e uma essência vibrante, agindo como um farol de energia no campo de batalha. Através dessa conexão, o ninja adquire uma resistência insectoide e uma capacidade de sobrevivência excepcional, onde a própria sorte parece dobrar-se à sua vontade.
+Vantagens:
+O usuário recebe um bônus passivo de
++45% de Chakra Extra
+, calculado sobre sua reserva total. Esta reserva colossal reflete a "Vida Principal" de Chōmei, garantindo ao hospedeiro um fôlego energético quase inesgotável. Essa abundância de chakra permite que o ninja sustente combates de longa duração e utilize técnicas de alto custo com uma facilidade natural, simbolizando a vitalidade plena da besta alada.
+(500 pontos de Trait)
+Jinchūriki do Hachibi
+◆ ◆ ◆ ◆ ◆
+O hospedeiro de Gyūki, o imponente "Ogro de Boi" de oito caudas, torna-se uma fortaleza viva de resistência e intelecto estratégico. Combinando a força bruta e chifres de um touro com a versatilidade tática de um polvo, o Hachibi é uma das poucas bestas capazes de estabelecer uma parceria de respeito mútuo e disciplina com seu portador. O Jinchūriki desta fera não apenas herda uma vitalidade física massiva, mas também a habilidade de produzir tinta negra para cegar oponentes ou selar inimigos. Sob a tutela severa e analítica de Gyūki, o ninja torna-se capaz de manter a calma mesmo nos combates mais caóticos, utilizando uma força muscular avassaladora e membros regenerativos de chakra.
+Vantagens:
+O usuário recebe um bônus passivo de
++50% de Chakra Extra
+, calculado sobre sua reserva total. Devido à biologia única da fera, o hospedeiro desperta uma habilidade exótica de manipulação biológica:
+Ink Creation (Criação de Tinta)
+: O personagem recebe a técnica
+Ink Creation em Rank C
+gratuitamente, permitindo-lhe expelir tinta de sua boca ou corpo para obscurecer a visão do inimigo, criar clones ou preparar selamentos. Além disso, a natureza resiliente de Gyūki garante que o ninja possua uma das maiores capacidades de armazenamento de energia entre todos os Jinchūrikis, sendo superado apenas pelo lendário Kyuubi.
+Jinchūriki do Kyubi
+★
+(550 pontos de Trait)
+◆ ◆ ◆ ◆ ◆
+O hospedeiro de Kurama, a lendária Raposa de Nove Caudas, torna-se o receptáculo da força mais avassaladora e orgulhosa entre todas as Bestas com Cauda. Kurama é a personificação da astúcia e do poder bruto, uma criatura que, ao longo dos séculos, foi temida como um desastre natural vivo e a encarnação do ódio. O Jinchūriki deste espírito não apenas possui reservas de chakra que desafiam a lógica e o cansaço, mas também herda uma determinação inquebrável. Este ninja carrega em si a "Raposa Celestial", capaz de eclipsar o poder de seus irmãos e manifestar uma energia dourada e incandescente que pode moldar o destino de nações inteiras, tornando-se o ápice da pirâmide shinobi.
+Vantagens:
+O usuário recebe um bônus passivo de
++55% de Chakra Extra
+, calculado sobre sua reserva total. Sendo a Besta com Cauda detentora do maior volume de energia pura do mundo, o hospedeiro da Kyūbi possui a reserva energética mais massiva do sistema Naruto Destiny. Esta abundância sem precedentes permite que o ninja utilize Jutsus de Rank SSS e mantenha Modos de Chakra ativos por períodos exaustivos sem sofrer fadiga imediata. Além disso, a presença de Kurama concede ao portador uma aura de autoridade e um vigor espiritual que simbolizam a nona cauda de um Tenko — a raposa que ascende ao status de divindade.
+Combinação de Kekkei Genkai
+Dupla Genética: O Herdeiro de Duas Linhagens
+Descrição:
+O mundo shinobi é moldado por linhagens e heranças, mas raramente o destino permite que dois sangues distintos se fundam em um único ser. O personagem é um prodígio genético, fruto de uma união entre dois clãs de renome, resultando em uma tapeçaria de chakra complexa e multifacetada. Esta característica confere ao usuário uma versatilidade biológica sem precedentes, permitindo que ele manifeste habilidades, características físicas e Kekkei Genkais que normalmente seriam exclusivas de famílias separadas. No entanto, equilibrar tamanha herança exige um corpo resiliente e uma mente focada, pois o usuário carrega o peso e as expectativas de dois legados históricos em suas veias.
+★ ★ ☆ ☆ ☆ ☆
+(100 a 500 pontos de Trait)
+Vantagens:
+O personagem torna-se um híbrido legítimo, recebendo as seguintes propriedades:
+Quimerismo de Linhagem:
+O usuário tem acesso total às Traits e Habilidades Passivas de ambos os clãs escolhidos. Isso inclui bônus de atributos, capacidades regenerativas ou particularidades anatômicas (como os olhos de um clã e a vitalidade de outro).
+Dualidade de Kekkei Genkai:
+O personagem pode aprender e utilizar as técnicas exclusivas (Kekkei Genkai) de ambos os clãs, permitindo combinações táticas que seriam impossíveis para um shinobi comum.
+Herança Elemental:
+O personagem recebe os elementos iniciais apenas se as Traits dos clãs escolhidos os fornecerem especificamente.
+Regras e Custos:
+Custo Variável:
+O valor final desta Trait é a soma exata dos pontos das duas Traits de clã escolhidas (variando entre 100 e 500 pontos totais).
+Requisito de Criação:
+Só pode ser selecionada durante a criação do personagem e requer aprovação expressa do Mestre para garantir o equilíbrio narrativo.
+Restrições Biológicas (Proibidas):
+Devido à instabilidade celular e ao risco de desequilíbrio de poder (prevenindo o despertar precoce de poderes divinos), as seguintes combinações são estritamente proibidas:
+Uchiha + Senju
+Uzumaki + Senju
+Uchiha + Uzumaki
+Status Extra
+Vida Extra: Constituição Robusta
+★ ☆ ☆ ☆ ☆ ☆
+(50 á 250 pontos de Trait)
+Descrição:
+Alguns shinobis nascem com uma resiliência física que desafia a lógica médica. Seja por uma densidade muscular superior, uma estrutura óssea reforçada ou uma vontade de viver que mantém o corpo funcionando mesmo após ferimentos fatais, este personagem possui um "corpo de ferro". Ele é capaz de suportar punições que derrubariam um ninja comum, aguentando o impacto de jutsus e golpes físicos com uma tenacidade impressionante.
+Chakra Extra: Reservas Espirituais
+★ ☆ ☆ ☆ ☆ ☆
+(50 á 250 pontos de Trait)
+Descrição:
+Este ninja possui uma rede de canais de chakra (Keirakukei) naturalmente mais larga e eficiente. Desde o nascimento, sua energia espiritual e física se fundem em quantidades anormais, resultando em uma "piscina" de energia profunda e vibrante. Enquanto outros shinobis precisam medir cada selo de mão com medo da exaustão, este personagem pode manter um fluxo constante de jutsus, sustentando batalhas prolongadas através da pura abundância de sua energia vital.
+Vantagem:
+O personagem recebe um bônus passivo de
+Nível Máximo (250 pts):
++5% em seus Pontos de Chakra (PC)
+para cada 50 pontos investidos nesta Trait.
++25% de Chakra Extra.
+Estâmina Extra: Vigor Incansável
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Definido por pulmões de aço e um sistema cardiovascular incansável, este shinobi é um motor de energia física pura. Sua capacidade de oxigenação e recuperação muscular é de elite, permitindo que execute esforços físicos hercúleos, Taijutsu de alta intensidade e deslocamentos velozes sem demonstrar sinais de fadiga. Para este ninja, o cansaço é um conceito distante, e sua presença física no campo de batalha é constante e aterradora.
+Vantagem:
+O personagem recebe um bônus passivo de
+Nível Máximo (250 pts):
++5% em seus Pontos de Estâmina (PE)
+para cada 50 pontos investidos nesta Trait.
++25% de Estâmina Extra.
+Restrições de Genética:
+O limite do vigor físico é uma característica de nascimento e não permite evolução após a criação. É incompatível com: Chakra Extra, Vida Extra, Traits Jinchūriki, Células de Hashirama ou Traits de Reencarnação.
+Habilidades Unicas
+Ninja Sensor: Percepção Extrassensorial
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de Trait)
+Descrição:
+O personagem nasceu com uma sensibilidade espiritual aguçada, permitindo-lhe "enxergar" o mundo não pelos olhos, mas pelo pulsar do chakra ao seu redor. Como um radar humano, ele pode detectar presenças ocultas, identificar assinaturas de energia familiares e prever emboscadas muito antes que elas ocorram. Esta habilidade é o pilar de qualquer equipe de rastreamento e inteligência.
+Requisitos:
+Vantagem:
+Mínimo de 5 em Ninjutsu e 5 em Percepção.
+O personagem desperta a capacidade de sentir e rastrear chakra em uma vasta área. O usuário recebe automaticamente a habilidade
+Kanchi Taipu (Tipo Sensor) em Rank C.
+Utilidade:
+Permite identificar a força, a localização e a intenção de outros shinobis, além de detectar irregularidades em fluxos de chakra (como Genjutsus ativos).
+Ambidestria: Coordenação Perfeita
+★ ☆ ☆ ☆ ☆ ☆
+(50 pontos de Trait)
+Descrição:
+Através de um treinamento exaustivo ou de uma predisposição neurológica rara, o personagem eliminou a distinção entre mão principal e mão oposta. Ele possui uma coordenação motora absoluta, sendo capaz de manejar armas, realizar selos ou desferir golpes com a mesma precisão e força em ambos os lados do corpo. Em combate, essa dualidade o torna imprevisível e dobra sua capacidade de ataque básico.
+Vantagem:
+O personagem não sofre penalidades de precisão ou dano ao utilizar a mão oposta.
+Ataque Duplo:
+Ao empunhar duas armas (ou lutar com Taijutsu puro), o personagem é capaz de realizar dois ataques básicos em uma única ação ofensiva.
+Restrições Técnicas:
+O segundo ataque é estritamente básico. Ele não aplica efeitos de Estilos de Luta (como o dano dobrado do Ansatsu ou o ataque em área do Bushinjutsu). Além disso, este bônus não se acumula com Modos de Transformação ou técnicas que já concedam ataques múltiplos.
+Interpretativas
+Contatos Influentes: Rede de Favores
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+(150 pontos de Trait)
+Fortuna Nobre: Recursos Financeiros
+★ ★ ★ ☆ ☆ ☆
+Descrição:
+Enquanto muitos shinobis dependem exclusivamente do pagamento de missões para sobreviver, este personagem possui uma base financeira sólida. Pode ser herdeiro de um clã mercante, ter recebido uma herança vultosa ou gerir negócios lucrativos. Essa riqueza não se traduz apenas em moedas, mas em qualidade de vida, equipamentos de primeira linha e a capacidade de subornar ou financiar operações complexas.
+Requisito:
+Combinar com o Mestre a origem da riqueza e como ela é acessada.
+Vantagem:
+Recebe uma quantia inicial generosa de Ryous e possui uma "mesada" ou acesso a itens de luxo/conveniência conforme o mestre definir.
+Restrição:
+Comprada apenas uma vez por personagem.
+Traits de Bonificação
+Bônus em Interpretativos
+Aparência Única: Presença Marcante
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+O personagem possui traços físicos ou um carisma natural que o destaca em qualquer multidão. Seja por uma beleza estonteante, marcas de clã exóticas ou uma aura de autoridade, as pessoas tendem a ser magnetizadas por sua presença.
+Bônus Inicial (50 pts):
++2 em Persuasão e Sedução.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Olfato Sensível: Faro Animalesco
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de pontos de Trait)
+Descrição:
+O personagem possui um desenvolvimento olfativo que rivaliza com os membros do clã Inuzuka. Ele é capaz de distinguir indivíduos pelo cheiro, detectar substâncias químicas no ar e seguir rastros deixados há dias. No entanto, essa sensibilidade é uma faca de dois gumes.
+Vantagem:
+Bônus de +6 em todos os testes que envolvam rastreio, identificação ou detecção baseada no cheiro.
+Desvantagem:
+Em ambientes com cheiros extremamente fortes, gases fétidos ou perfumes intensos, o personagem sofre um redutor de -4 em testes que exijam concentração, foco ou precisão, devido à sobrecarga sensorial.
+Bônus em Combate
+Intuição Sensível: Instinto de Batalha
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Algumas pessoas simplesmente "sentem" o perigo antes que ele se materialize. O personagem possui reflexos motores e uma percepção espacial que beiram o premonitório. Seu corpo reage a vibrações no ar, intenções assassinas ou mudanças sutis na luz, permitindo que ele se mova e esquive com uma velocidade de reação sobre-humana.
+Bônus Inicial (50 pts):
++2 em Iniciativa, Reflexo, Esquiva e Movimentação.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Traits de Técnicas
+Kekkei Tōta Elemental: A Trindade da Natureza
+◆ ◆ ◆ ◆
+(400 pontos de Trait)
+Descrição:
+Poucos shinobis na história alcançaram o nível de controle necessário para fundir três naturezas de chakra simultaneamente. O personagem é um mestre da transmutação elemental, capaz de criar uma substância ou estado de energia inteiramente novo e devastador (como o Estilo Poeira). Esta habilidade não é apenas uma técnica, mas uma prova de intelecto e precisão molecular.
+Requisito:
+Nível 50 (Mínimo). Não pode ser adquirida na criação.
+Vantagem:
+O personagem recebe uma Kekkei Tōta Elemental em Rank SS+ e a afinidade com os três elementos componentes.
+Progressão de Custo:
+O preço é reduzido conforme as afinidades que o jogador já possua: 300 pts (1 elemento), 200 pts (2 elementos) ou 100 pts (se já possuir as 3 afinidades).
+Kekkei Genkai Elemental: Fusão Sanguínea
+★ ★ ★ ★
+(200 pontos de Trait)
+Descrição:
+O personagem possui a rara anomalia genética que permite a mistura de dois elementos básicos para criar uma nova forma de poder (Lava, Gelo, Vapor, etc.). Esta "Linhagem Sanguínea" define o estilo de combate do ninja, tornando seu chakra uma ferramenta híbrida única e difícil de ser copiada por métodos convencionais.
+Requisito:
+Nível 20 (Mínimo)
+Vantagem:
+Recebe uma Kekkei Genkai Elemental em Rank B e a afinidade com os dois elementos componentes.
+Restrições:
+As linhagens Mokuton, Hyōton e Jiton possuem regras específicas e não estão incluídas nesta Trait.
+Progressão de Custo:
+Reduzido para 100 pts (se já tiver 2 afinidades)
+☆
+☆
+Criativo: O Arquiteto de Jutsus
+★ ★ ★ ★
+☆
+☆
+(200 pontos de Trait)
+Descrição:
+Este shinobi não se contenta em apenas repetir o que está nos pergaminhos; ele é um inovador. Passou anos desenvolvendo uma técnica assinatura que reflete sua própria alma e estilo de luta. Este jutsu é único no mundo e evolui junto com a maestria do seu criador.
+Vantagem:
+Cria um Jutsu Único de Rank equivalente ao seu Rank atual e uma variação deste jutsu um Rank acima, sem custo de pontos.
+Evolução Automática:
+A técnica e sua variante sobem de Rank gratuitamente sempre que o limite de Rank de jutsu do personagem aumentar.
+Traits de Combate
+Regeneração de Status
+Tratamento Rápido: Intervenção Médica de Campo
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+O personagem carrega consigo um kit de emergência avançado, contendo bandagens hemostáticas, soros de rápida absorção e estimulantes médicos. Ele possui o treinamento necessário para ignorar a dor e realizar procedimentos cirúrgicos rudimentares em si mesmo ou em aliados no meio do caos, estabilizando ferimentos graves e fechando cortes profundos em segundos para se manter na luta.
+Requisito:
+Mínimo de 500 PV totais.
+Vantagem:
+O usuário pode consumir 1 Ação de Suporte para realizar um tratamento de emergência.
+Efeito:
+Regenera 30% dos Pontos de Vida (PV) instantaneamente.
+Limite:
+Pode ser utilizado apenas uma vez por dia.
+Pulso de Energia: Liberação de Reserva
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Através de um treinamento de controle de chakra rigoroso, o shinobi aprendeu a criar um pequeno nó de energia concentrada em seu sistema circulatório (Tenketsu). Em momentos de exaustão espiritual, ele pode "romper" essa barreira interna, liberando um fluxo súbito de chakra puro que inunda seus canais e restaura sua capacidade de executar jutsus complexos.
+Requisito:
+Mínimo de 500 Pontos de Chakra (PC) totais.
+Vantagem:
+O usuário pode consumir 1 Ação de Suporte para forçar a abertura de suas reservas.
+Efeito:
+Regenera 30% dos Pontos de Chakra (PC) instantaneamente.
+Limite:
+Pode ser utilizado apenas uma vez por dia.
+Segundo Fôlego: Recomposição Muscular
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Este personagem domina técnicas de respiração rítmica e controle cardíaco que permitem uma recuperação metabólica acelerada. Ao focar por um breve momento, ele consegue limpar o ácido lático dos músculos e oxigenar o sangue de forma explosiva, recuperando o vigor físico necessário para continuar executando manobras de Taijutsu ou movimentações de alta intensidade.
+Requisito:
+Mínimo de 500 Pontos de Estâmina (PE) totais.
+Vantagem:
+O usuário pode consumir 1 Ação de Suporte para estabilizar o ritmo corporal.
+Efeito:
+Regenera 30% Pontos de Estâmina (PE) instantaneamente.
+Limite:
+Pode ser utilizado apenas uma vez por dia.
+Resistência
+Espírito Indomável: Purgação de Estado
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+O personagem possui uma força de vontade avassaladora ou um sistema imunológico treinado para expelir invasores. Ao ser atingido por condições debilitantes — sejam venenos, paralisias ou restrições de movimento — o shinobi força seu chakra a circular de forma violenta, "limpando" seu organismo ou mente de qualquer influência externa. Esta explosão de resiliência não apenas liberta o usuário, mas cria uma resistência temporária contra as mesmas ameaças que tentaram derrubá-lo.
+Vantagem:
+Quando o personagem estiver sob o efeito de uma ou mais condições negativas (Status), ele pode declarar a purgação.
+Efeito:
+Todos os efeitos ativos são negados imediatamente. Além disso, o personagem torna-se imune especificamente aos efeitos que foram removidos por esta técnica pelo restante do combate.
+Restrição:
+Pode ser utilizado apenas uma vez por combate. Comprado uma única vez por personagem.
+Bônificação de Ação
+Foco Ofensivo: Investida Decisiva
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+O personagem possui a habilidade de identificar brechas momentâneas na guarda do inimigo ou simplesmente canalizar uma agressividade avassaladora em um único instante. Ao "Atacar com Tudo", o shinobi ignora distrações e foca cada fibra de seu ser no acerto, garantindo que o golpe encontre seu destino com uma precisão cirúrgica.
+Requisito: Nível 10 (Mínimo)
+Vantagem:
+O personagem pode adicionar um bônus de +3 em suas jogadas de Ataque (este bônus ignora os limites/caps de atributo).
+Limite:
+Este bônus pode ser aplicado em até duas ações de ataque por batalha. O jogador deve declarar o uso antes da rolagem.
+Vantagem Defensiva: Guardião Implacável
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+Através de uma leitura de combate magistral, o personagem antecipa a trajetória dos golpes inimigos, preparando seu corpo ou sua defesa de chakra para o impacto. É o estado de alerta máximo, onde o ninja se torna uma fortaleza móvel, capaz de desviar ou bloquear ataques que seriam fatais para outros.
+Requisito:
+Nível 10 (Mínimo).
+Vantagem:
+O personagem recebe um bônus de +3 em suas jogadas de Defesa (este bônus ignora os limites/caps de atributo).
+Limite:
+Este bônus pode ser aplicado em até duas ações de defesa por batalha. O jogador deve declarar o uso ao reagir a um ataque.
+Ápice do Poder: Último Recurso Ofensivo
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+Este é o momento em que o shinobi reúne toda a sua energia vital, memórias e vontade para um único ataque lendário. Ao acessar este recurso, a técnica utilizada brilha com uma intensidade devastadora, rompendo barreiras e causando uma destruição muito além de suas capacidades normais. É a jogada final, destinada a encerrar o combate de uma vez por todas.
+Vantagem:
+O personagem potencializa o dano de uma técnica, adicionando +50% ao Dano Final causado.
+Regra de Uso:
+O jogador deve declarar o uso desta Trait antes de realizar a rolagem de dados da técnica. Caso erre seu ataque, o personagem poderá re-utilizar a trait até atingir um alvo.
+Restrição:
+Pode ser utilizado apenas uma vez por combate.
+Redução de Dano
+Postura de Muralha: Foco Defensivo
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+O personagem possui uma capacidade analítica superior nos instantes iniciais de um combate. Antes mesmo do primeiro golpe ser desferido, ele já ajustou sua postura, estabilizou seu centro de gravidade e preparou seu chakra para absorver impactos. Esta técnica de foco absoluto permite que o shinobi dissipe a energia de ataques devastadores logo no início do confronto, garantindo que ele sobreviva à investida inicial do inimigo para contra-atacar com precisão.
+Requisito:
+Mínimo de Nível 20.
+Vantagem:
+O personagem é capaz de se blindar contra o ímpeto inicial do adversário.
+Efeito:
+O dano recebido dos dois primeiros ataques que atingirem o personagem em combate é reduzido pela metade (50%).
+Mecânica:
+Esta redução é aplicada automaticamente às duas primeiras fontes de dano sofridas no combate, após a resolução dos dados.
+Fonte de Chakra
+Transfusão de Sangue: Sacrifício Vital
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Para este shinobi, as reservas de energia espiritual e física são apenas o começo. Através de uma técnica proibida de conversão metabólica, o personagem é capaz de forçar suas próprias células a se decomporem para gerar energia bruta. Ele utiliza sua própria força vital — seu sangue e integridade física — como combustível para seus Jutsus. É um caminho perigoso e doloroso, onde cada técnica disparada consome um pouco da vida do usuário, mas permite que ele continue lutando muito além dos limites da exaustão total.
+Vantagem: O personagem ganha a habilidade de converter vitalidade em energia combativa.
+Efeito:
+O usuário pode optar por pagar o custo de qualquer técnica utilizando seus Pontos de Vida (PV) em substituição aos Pontos de Chakra (PC) ou Pontos de Estâmina (PE).
+Mecânica de Troca:
+A conversão é de 1:2 (Exemplo: uma técnica que custa 100 PC pode ser conjurada ao custo de 50 PV).
+Risco:
+O uso desta Trait não reduz o dano da técnica ou seus efeitos colaterais; ele apenas altera a fonte do combustível. O personagem ainda pode cair em estado de "Incapacitado" se seus PV chegarem a 0 através desta conversão.
+Amplificação de Técnica
+Sinergia Curativa: Alquimia Vital
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de Trait)
+Descrição:
+O personagem atingiu um nível de controle de chakra tão refinado que é capaz de condensar as propriedades regenerativas de sua energia antes de aplicá-la. Em momentos críticos, o Mednin entra em um estado de foco absoluto, acelerando a mitose celular do alvo de forma exponencial. Isso permite que ferimentos que levariam minutos para fechar desapareçam em segundos, restaurando combatentes à beira da exaustão com uma eficácia milagrosa.
+Requisito:
+Possuir a Trait Mednin.
+Vantagem:
+O personagem pode sobrecarregar intencionalmente um Jutsu de tratamento para maximizar seus resultados.
+Efeito:
+Aumenta a eficácia de cura de um Ninjutsu Médico em 50%.
+Mecânica:
+O bônus é aplicado sobre o valor final da cura da técnica utilizada.
+Limite:
+Pode ser utilizado no máximo duas vezes por batalha.
+CATEGORIA: LIDERANÇA E ORGANIZAÇÃO
+Restrições Gerais: Só é possível possuir uma das vantagens de "Organização" por personagem. O custo indicado reflete a progressão ou o estágio atual da facção.
+Organização Internacional: Império das Sombras
+★ ★ ★ ★ ★ ☆
+(250 pontos de Trait)
+Descrição:
+A organização atingiu o ápice. Sua influência atravessa as fronteiras das Cinco Grandes Nações, sendo reconhecida pelos Daimyōs ou temida pelo submundo global. O QG é agora uma fortaleza de vanguarda, com setores de pesquisa, luxo e defesa. O nome do seu grupo é sinônimo de poder absoluto, e seus contratos envolvem os segredos mais profundos e perigosos do continente.
+Membros:
+Expansão final para um total de 12 Membros Fiéis.
+Infraestrutura Suprema:
+Inclui todos os benefícios anteriores, mais Duas Áreas Extras à escolha do jogador (Ex: Laboratório Médico, Oficina de Marionetes, Prisão de Segurança Máxima, etc.).
+Contratos:
+Quadro de Missões lendárias (Rank B até Rank SSS).
+Status:
+Recebe o Reconhecimento Internacional, garantindo bônus em testes de Intimidação ou Persuasão política.
+Organização Grande: Potência Emergente
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+O grupo agora é uma força a ser temida. Com uma estrutura interna profissional, a organização possui especialistas em logística e treinamento. O QG foi ampliado para se tornar uma
+instalação
+militar completa, capaz de processar informações complexas e preparar seus membros para os desafios mais letais do mundo ninja.
+Membros:
+Expansão para um total de 9 Membros Fiéis.
+Infraestrutura:
+QG Avançado, Estoque de Armas, Salão de Treinamento especializado e uma Secretária/Inteligência (NPC que investiga e filtra missões).
+Contratos:
+Quadro de Missões expandido (Rank B até Rank SS+).
+Organização Média: Influência Regional
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+A facção cresceu e seus passos já deixam marcas. Com o aumento do número de membros, a organização passou a ser notada por contratantes e rivais. Agora, o grupo possui recursos para estocar armamento e um fluxo constante de missões que financiam suas operações, permitindo que o líder atue com mais autonomia em escala regional.
+Membros:
+Expansão para um total de 6 Membros Fiéis.
+Infraestrutura:
+Além do QG, inclui um Estoque de Armas e um Quadro de Contratos (acesso a missões de Rank B até Rank S).
+Nota de Roleplay:
+Requer o recrutamento ativo dos novos membros.
+Organização Nova: O Núcleo de Poder
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de Trait)
+Descrição:
+Todo grande império começa com uma única ideia e um grupo de pessoas dispostas a morrer por ela. O personagem estabeleceu os alicerces de uma nova força no mundo shinobi. Embora ainda seja um segredo sussurrado ou uma pequena célula de atuação, a organização já possui uma base de operações fixa onde os planos são traçados.
+Membros:
+O líder conta com 3 Subordinados Fiéis.
+Infraestrutura:
+Garante o direito a um Quartel-General (QG) básico (esconderijo ou residência protegida).
+Nota de Roleplay:
+Os subordinados devem ser encontrados e recrutados pelo personagem durante a história.
+TRAITS DE TRAMA & LEGADO
+Células de Hashirama: A Maldição da Vitalidade
+✦ ✦ ✦ ✦
+(Custo: Variável/Trama)
+Descrição:
+O personagem teve seu código genético invadido pelo DNA do "Deus Shinobi", Hashirama Senju. Esta modificação biológica agressiva concede uma vitalidade monstruosa, mas a um custo visual e existencial terrível. A área do implante torna-se pálida e artificial, muitas vezes manifestando o rosto do Primeiro Hokage, pulsando como se tivesse vida própria.
+Vantagem:
+O personagem recebe um bônus de
+Legado:
++25% em seus Pontos de Chakra
+(Poderá ser somado a demais Traits que ampliem o Chakra)
+O usuário recebe o
+Requisito:
+Mokuton no Jutsu (Liberação de Madeira) no Rank SS
+.
+Obtido apenas In-game ou com permissão expressa.
+Dōjutsu Implantado: O Olho Roubado
+✦ ✦ ✦
+(Custo: Variável/Trama)
+Descrição:
+Seja por um presente no leito de morte ou pelo saque de um inimigo caído, o personagem possui um olho que não lhe pertence. O transplante concede acesso aos poderes oculares da linhagem original, mas o corpo do hospedeiro luta constantemente contra a invasão do chakra estranho.
+Mecânica:
+O Mestre pode aplicar regras de consumo elevado de chakra para não-originais (como o Sharingan de Kakashi).
+O olho transplantado não pode evoluir (ex: de Sharingan 2 tomoe para 3 tomoe) através de treino, exceto se o usuário original evoluir ou se o implante possuir uma capacidade específica de adaptação.
+Nota de Consumo:
+O personagem recebe o Dōjutsu no Rank exato em que foi obtido/extraído.
+Restrição de Evolução:
+Clãs e Hiden
+Sem Clã: A Trilha do Auto-Made
+(0 pontos de Trait)
+Descrição:
+☆ ☆ ☆ ☆ ☆ ☆
+Seu personagem não nasceu com olhos especiais, ossos de aço ou segredos de família milenares. Ele é a prova viva de que o trabalho duro pode superar o talento natural. Dependendo inteiramente de sua obsessão pelo treinamento e especialização tática, este shinobi quebra as barreiras biológicas que limitam as linhagens comuns. Benefícios Exclusivos:
+Quebra de Limites (Cap Break):
+O jogador recebe +4 pontos para distribuir exclusivamente em Atributos Core (Força, Agilidade, etc.). Estes pontos ignoram o limite máximo (Cap) do Rank atual.
+Especialista em Estilo:
+Escolha uma categoria base na criação (Taijutsu, Bukijutsu ou Um Elemento Específico). Todas as técnicas dessa categoria tornam-se Hiden, recebendo +30% de Dano Final.
+Gênio do Esforço:
+Recebe 50% de desconto em Traits de Estilo de Luta (ex: Gōken). A restrição de compra para a trait Hachimon (Oito Portões) é removida.
+Aprendizado Acelerado:
+Recebe +25 Pontos de Jutsu adicionais por nível.
+Clã Yotsuki
+★ ☆ ☆ ☆ ☆ ☆
+(50 pontos de Trait)
+Descrição:
+Guerreiros de Kumogakure conhecidos por sua musculatura densa e afinidade natural com o relâmpago.
+Bônus:
+Recebe Raiton como elemento inicial e +3 Pontos de Atributo (Combate/Interpretativo).
+Nota:
+Bônus de atributo anulado se possuir Dupla Genética.
+Clã Aburame
+Os misteriosos domadores de insetos de Konoha. O corpo do usuário serve como ninho para os Kikaichū, criando uma simbiose letal que drena chakra inimigo.
+Bônus:
+Recebe a Habilidade Kikaichū Rank C. Role 1d6 para elemento inicial. Recebe +1 Ponto de Atributo.
+Nota:
+Bônus de atributo anulado se possuir Dupla Genética.
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de Trait)
+Descrição:
+Clã Akimichi
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de Trait)
+Descrição:
+Especialistas na conversão de calorias em chakra puro. Possuem corpos robustos capazes de aumentar de tamanho e massa para golpes devastadores.
+Bônus:
+Recebe a Habilidade Karorī Kontorōru (Controle de Calorias) Rank C. Role 1d6 para elemento inicial. Recebe +1 Ponto de Atributo.
+Nota:
+Bônus de atributo anulado se possuir Dupla Genética.
+Clã Jiongu (Linhagem Proibida)
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de Trait)
+Descrição:
+O personagem detém o segredo roubado de Takigakure. Seu corpo é costurado por fios negros preênseis que permitem manipular a própria anatomia e roubar corações.
+Bônus:
+Recebe a técnica Jiongu Rank B. Role 1d6 para elemento inicial. Recebe +1 Ponto de Atributo.
+Nota:
+Bônus de atributo anulado se possuir Dupla Genética.
+Clã Yota (Manipuladores do Clima)
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de Trait)
+Descrição:
+Um clã raro com a habilidade inata de influenciar o clima através de suas emoções e chakra.
+Bônus:
+Recebe a Habilidade Kishō Sōsa (Manipulação do Tempo) Rank C. Role 1d6 para elemento inicial. Recebe +1 Ponto de Atributo.
+Nota:
+Bônus de atributo anulado se possuir Dupla Genética.
+Clã Fūma
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Renomados em todo o mundo shinobi pelo uso da Fūma Shuriken e armamentos exóticos.
+Bônus:
+Técnicas com armas/armamentos tornam-se Hidden. Role 1d6 para elemento inicial. Recebe +2 Pontos de Atributo.
+Nota:
+Bônus de atributo anulado se possuir Dupla Genética.
+Clã Hatake
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Um clã de prodígios táticos e olfato apurado, famosos pelo "Chakra Branco" e afinidade com ninkens.
+Bônus:
+Inicia com Kuchiyose no Jutsu: Ninken (Cães Ninja) exclusivo e uma invocação inicial Rank C. Role 1d6 para elemento inicial.
+Clã Hōzuki
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Assassinos da Névoa capazes de liquefazer o próprio corpo, tornando-se imunes a ataques físicos convencionais.
+Bônus:
+Recebe a Habilidade Suika no Jutsu (Hidrificação) Rank B. Elemento Inicial: Suiton.
+Clã Kaguya
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Selvagens amantes da guerra que manipulam a estrutura óssea (osteoblastos) para criar armas indestrutíveis.
+Bônus:
+Recebe a Habilidade Shikotsumyaku (Pulso Ósseo Morto) Rank C. Role 1d6 para elemento inicial.
+Clã Kamizuru
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Seu personagem é membro do antigo e reverenciado clã Kamizuru de Iwagakure. O personagem possui um contrato de sangue exclusivo com as abelhas, recebendo gratuitamente a habilidade base Kuchiyose no Jutsu: Hachi no Rank C
+Bônus:
+O jogador deverá rolar 1d6 para definir seu elemento inicial e recebe +1 ponto para distribuir em atributos de combate e interpretativos. (Esse bônus de atributo é perdido caso o usuário possua a trait de Dupla Genética)
+Passiva do Clã:
+Todas as técnicas derivadas e que possuam o Kuchiyose no Jutsu: Hachi como requisito são consideradas técnicas Hiden (Secretas), recebendo um multiplicador fixo de +30% de dano extra em seus cálculos finais
+Clã Nara
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Estrategistas brilhantes que manipulam sombras para prender e controlar inimigos.
+Bônus:
+Recebe a Habilidade Kagemane no Jutsu Rank B. Bônus passivo de +3 em Conhecimento. Role 1d6 para elemento inicial.
+Clã Hoshigaki
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+O personagem é membro do temido clã Hoshigaki de Kirigakure
+Fisiologia de Tubarão:
+O personagem é imune ao sufocamento causado por água, podendo respirar livremente debaixo d&apos;água.
+Clã Inuzuka
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+Recebe um Ninken, a Habilidade Shikyaku no Jutsu (Quatro Patas) Rank B e a Trait Olfato Treinado. Role 1d6 para elemento inicial.
+O clã da besta. Lutam em sincronia perfeita com parceiros caninos (Ninken).
+Bônus:
+Seita Jashinista
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição: Fanáticos religiosos que obtiveram a imortalidade através de rituais profanos de sangue.
+Bônus:
+Imortalidade Biológica (O personagem não morre por dano letal, mas pode ser desmembrado/incapacitado. Mínimo de PV trava em 0). Recebe a técnica Jujutsu (Maldição) Rank C. Role 1d6 para elemento inicial.
+Clã Yuki
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+Mestres do Gelo, capazes de combinar água e vento para criar espelhos e agulhas glaciais.
+Bônus:
+Recebe Afinidade Suiton + Fūton e a Kekkei Genkai Hyōton (Gelo) Rank C.
+Clã Sarutobi
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+Um clã de alta linhagem de Konoha, conhecidos pela Vontade do Fogo ardente.
+Bônus:
+Elemento Inicial Katon (+ Katon no Jutsu Rank C Fortalecido). Contrato Kuchiyose: Macacos (Enma) Rank C.
+Clã Shimura
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+Guerreiros tradicionais com afinidade extrema com o vento e armas de vácuo.
+Bônus:
+Elemento Inicial Fūton (+ Fūton no Jutsu Rank C Fortalecido). Contrato Kuchiyose: Elefantes (Zou) Rank C.
+Clã Chinoike
+★ ★ ★ ★ ★ ☆
+(250 pontos de Trait)
+Descrição:
+Um clã exilado que manipula sangue (inclusive o próprio) através de um Dōjutsu.
+Bônus:
+Recebe o Dōjutsu Ketsuryūgan Rank B. Elemento Inicial Suiton.
+Clã Hyūga
+★ ★ ★ ★ ★ ☆
+(250 pontos de Trait)
+Descrição:
+A elite de Konoha, possuidores do "Olho Branco" que vê através de tudo e fecha Tenketsu.
+Bônus:
+Recebe o Dōjutsu Byakugan Rank B. Role 1d6 para elemento inicial.
+Clã Jūgo
+★ ★ ★ ★ ★ ☆
+(250 pontos de Trait)
+Descrição:
+A origem da Marca da Maldição. Absorvem energia natural passivamente, transformando seus corpos em armas monstruosas.
+Bônus:
+Recebe a Habilidade Senninka (Transformação Sábia) Rank B. Role 1d6 para elemento inicial.
+Clã Uchiha
+★ ★ ★ ★ ★ ☆
+(250 pontos de Trait)
+Descrição:
+O clã do ódio e do amor. Mestres do fogo e possuidores do Sharingan, o olho que copia e prevê.
+Bônus:
+Recebe o Dōjutsu Sharingan Rank C (1 Tomoe). Elemento Inicial Katon.
+(150 pontos de Trait)
+Descrição:
+Shikigami no Mai: Dança dos Papéis
+★ ★ ★ ☆ ☆ ☆
+O personagem domina uma forma de arte milenar onde o chakra flui através de folhas de papel, tornando-as extensões de seu próprio corpo. Mais do que simples origami, esta habilidade permite que o usuário se disperse em centenas de folhas, voe ou crie armas afiadas como navalhas a partir de material comum. Este estilo de luta é gracioso e mortal, permitindo que o shinobi se infiltre em locais impossíveis e transforme o cenário em um turbilhão de papel explosivo.
+Clã Izuno
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Usuários de técnicas felinas que garantem agilidade e reflexos sobrenaturais.
+Bônus:
+Recebe a Habilidade Nekokaburi (Cobertura de Gato) Rank B. Role 1d6 para elemento inicial.
+Clã Uzumaki
+★ ★ ★ ★ ☆ ☆
+(200 pontos de Trait)
+Descrição:
+Parentes distantes dos Senju, famosos pela longevidade e Fuinjutsu aterrorizante.
+Bônus:
+Recebe a Habilidade Kinbaku Kingusari (Correntes de Selamento Adamantinas) Rank S. Role 1d6 para elemento inicial.
+Clã Senju: A Floresta das Mil Mãos
+★ ★ ★ ★ ★ ☆
+(250 pontos de Trait)
+Descrição:
+O clã fundador. Conhecidos por corpos fortes e versatilidade em todas as artes ninja.
+Bônus Base:
+Role 1d6 para elemento inicial. Recebe +50 Pontos de Jutsu por Nível.
+Nota:
+Bônus de atributo anulado se possuir Dupla Genética.
+Herança de Ashura
+★ ★ ★ ★ ★ ★
+(300 pontos de Trait)
+Requisito:
+Ser Senju. Não possuir Descendente de Hashirama.
+Efeito:
+Recebe a dádiva divina da madeira. Troca o elemento inicial e bônus base por: Afinidade Doton + Suiton e a Kekkei Genkai Mokuton Rank C.
+Clã Yamanaka
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Especialistas em espionagem, comunicação telepática e transferência de mente.
+Bônus:
+Recebe Shintenshin no Jutsu Rank B e a Trait Ninja Sensor (sem custo extra). Role 1d6 para elemento inicial.
+Clã Kazekage
+★ ★ ★ ★ ★ ☆
+(250 pontos de Trait)
+Descrição:
+A realeza da Areia. Manipulam areia metálica ou pó de ouro através de campos magnéticos.
+Bônus:
+Recebe Afinidade Doton + Fūton e a Kekkei Genkai Jiton (Magnetismo) Rank C.
+LINHAGENS CELESTIAIS (ÕTSUTSUKI)
+Clã Õtsutsuki (Sangue Puro)
+Um invasor celestial, um colhedor de planetas. Você não é um ninja; você é uma divindade pálida.
+Requisito:
+Permissão do Mestre.
+Bônus:
+Recebe +100% em Vida, Chakra e Estâmina. Possui Afinidade com Todos os 5 Elementos.
+Olhos de Deus:
+Recebe Byakugan Rank SS E Rinnegan (com habilidade única).
+Opção:
+Pode trocar o Rinnegan pelo Isshiki Dōjutsu.
+✦ ✦ ✦ ✦
+(1000 pontos de Trait)
+Descrição:
+Híbrido: Meio-Õtsutsuki
+Filho direto de um "Deus" com um humano. O potencial genético é instável mas avassalador.
+Requisito:
+Permissão do Mestre.
+Bônus: Recebe
++60% em Vida, Chakra e Estâmina. Possui Afinidade com Todos os 5 Elementos.
+Herança:
+Recebe Sharingan OU Byakugan.
+Destino Divino:
+Byakugan Rank SS evolui para Tenseigan.
+Mangekyō Sharingan evolui para Rinnegan.
+✦ ✦
+(800 pontos de Trait)
+Descrição:
+Linhagem de Hagoromo (Sábio dos Seis Caminhos)
+Descendente direto do criador do Ninshū. O personagem carrega o potencial para despertar os olhos divinos ou o corpo perfeito.
+Requisito:
+Permissão do Mestre.
+Bônus:
+Recebe +35% em Vida, Chakra e Estâmina.
+Herança:
+Escolha entre Sharingan Rank C OU Mokuton no Jutsu Rank C (com Suiton+Doton).
+Evolução:
+Caso desperte o Mangekyō Sharingan, ele será automaticamente Eterno (EMS). (Nota: Não desperta Rinnegan automaticamente).
+◆ ◆ ◆ ◆ ◆ ◆
+(600 pontos de Trait)
+Descrição:
+Linhagem de Hamura (Luar de Tenseigan)
+Descendente do irmão do Sábio, guardiões da Lua. Nascem cegos ou com visão especial, sensores absolutos.
+Requisito:
+Permissão do Mestre.
+Bônus:
+Recebe +35% em Vida, Chakra e Estâmina.
+Herança:
+Recebe a Habilidade Kanchi Taipu (Sensor) Rank SS.
+Evolução:
+Se obtiver um Byakugan (qualquer Rank), ele evoluirá automaticamente para o Tenseigan.
+✦
+(700 pontos de Trait)
+Descrição:
+Afinidade Elemental Extra
+★ ★ ☆ ☆ ☆ ☆
+(100 a 400 pontos de Trait)
+Descrição: Através de um estudo exaustivo da transformação de natureza ou de uma predisposição genética, o personagem desbloqueou a capacidade de moldar elementos que não pertenciam ao seu chakra original.
+Vantagem:
+Cada 100 pontos garantem uma nova Afinidade Elemental e seu respectivo "No Jutsu" em Rank C. O limite máximo é a maestria sobre os 5 elementos básicos.
+Descendente de Hashirama
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait - Custo Ajustado)
+Requisito:
+Ser Senju. Não possuir Herança de Ashura.
+Descrição:
+O personagem não caminha sozinho. Seja por laços de sangue, favores passados ou reconhecimento de mérito, ele possui "portas abertas" em esferas restritas. Isso pode incluir amizades com conselheiros do Daimyō, informantes no mercado negro, ou veteranos respeitados dentro das vilas ocultas. Essa trait permite que o shinobi obtenha informações privilegiadas, acesso a locais selados ou a aquisição de suprimentos raros que não estariam disponíveis para um ninja comum.
+Requisito:
+Deve ser detalhado e combinado com o Mestre (quem são os contatos e qual a natureza da relação).
+Vantagem:
+Permite solicitar favores, reduzir dificuldades em testes sociais com autoridades e obter itens de contrabando ou raros.
+Restrição:
+Comprada apenas uma vez por personagem.
+Bloqueador: Muralha Inabalável
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+O personagem especializou-se na arte da preservação e da negação. Ele sabe exatamente como posicionar o corpo e o chakra para dissipar o impacto de ataques inimigos. Seja parando uma lâmina com as mãos protegidas por chakra ou absorvendo a força de uma explosão, ele é o escudo que protege a si mesmo e aos seus aliados.
+Bônus Inicial (50 pts):
++1 em Bloqueio Físico e Bloqueio de Chakra.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +5 com 250 pts).
+Ilusionista: Tecelão de Pesadelos
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Este ninja entende que a mente é o campo de batalha mais vulnerável. Com uma manipulação sutil e precisa do chakra nos nervos ópticos e cerebrais do inimigo, ele é capaz de distorcer a realidade de forma convincente. Suas ilusões são densas, sensoriais e difíceis de distinguir da verdade, permitindo-lhe vencer lutas antes mesmo que o primeiro golpe físico seja desferido.
+Bônus Inicial (50 pts):
++2 em Genjutsu e Genjutsu Kai.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Domínio das Armas: Mestre de Armaria
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Para este shinobi, a lâmina é uma extensão do braço e a kunai uma extensão da vontade. Ele possui uma afinidade instintiva com armas brancas e de arremesso, dominando o equilíbrio, o peso e o fio de cada instrumento. Sua capacidade de alternar entre golpes de proximidade e projéteis letais com fluidez absoluta o torna um adversário imprevisível em qualquer distância.
+Bônus Inicial (50 pts):
++2 em Bukijutsu, Arremesso e Tai-Bukijutsu.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Artista Marcial: Disciplina de Combate
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+O personagem dedicou anos ao condicionamento físico extremo e à perfeição dos movimentos corporais. Seja através de um treinamento monástico, militar ou autodidata, seu corpo é uma arma perfeitamente calibrada. Ele entende a física do impacto, o fluxo do movimento e como aplicar força máxima com o mínimo de desperdício, tornando-se letal em qualquer forma de combate corpo a corpo.
+Bônus Inicial (50 pts):
++2 em Taijutsu, Tai-Bukijutsu e Nin-Taijutsu.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Manipulador de Chakra: Mestre dos Fluxos
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+O personagem possui uma facilidade nata para moldar e direcionar sua energia interna. Ele executa selos de mão com uma clareza absoluta e consegue infundir chakra em suas técnicas ou corpo com precisão cirúrgica. Essa maestria permite que ele realize Ninjutsus complexos ou técnicas de selamento com uma taxa de sucesso muito superior à de shinobis comuns.
+Bônus Inicial (50 pts):
++2 em Ninjutsu, Fuinjutsu e Nin-Taijutsu.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Erudito (Nerd): Intelecto Acadêmico
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Um devorador de pergaminhos e um observador atento da cronologia do mundo. Este personagem possui uma memória eidética para fatos históricos, selamentos antigos e a política das nações, sendo muitas vezes o "cérebro" estratégico do grupo.
+Bônus Inicial (50 pts):
++2 em Conhecimento e História.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Sobrevivente: Instinto Primal
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Forjado em condições adversas ou treinado nas florestas mais perigosas, este personagem possui sentidos aguçados e uma leitura ambiental instintiva. Ele sabe onde encontrar água, como ler o céu e como detectar predadores (ou inimigos) antes que o bote aconteça.
+Bônus Inicial (50 pts):
++2 em Percepção e Sobrevivência.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Mednin Eficiente: Especialista em Campo
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Possui mãos precisas e um conhecimento profundo da anatomia e botânica. Além de tratar ferimentos, é capaz de sintetizar antídotos, venenos e fármacos complexos utilizando recursos mínimos, sendo essencial para manter a unidade em pé.
+Bônus Inicial (50 pts):
++2 em Medicina e Ofício.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Manipulador: Mestre das Intenções
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Um profundo conhecedor da psique humana. Este personagem lê microexpressões e entende as fraquezas emocionais dos outros, sabendo exatamente o que dizer para confortar um aliado ou destruir a confiança de um inimigo.
+Bônus Inicial (50 pts):
++2 em Enganação e Empatia.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Caçador: Predador Invisível
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Especialista em rastreio e emboscadas. Este personagem domina a arte de se mover sem som e de utilizar o cenário para criar armadilhas letais, tratando seus alvos shinobis como se fossem presas em uma caçada.
+Bônus Inicial (50 pts):
++2 em Armadilha e Ladinagem.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+TRAIT FÍSICA
+Político: Líder Maquiavélico
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Transita com facilidade entre a diplomacia e a coerção. Este personagem sabe quando usar palavras de mel para convencer uma massa e quando usar o medo para dobrar a vontade de um subordinado ou prisioneiro.
+Bônus Inicial (50 pts):
++2 em Intimidação e Enganação.
+Evolução:
++1 nos atributos acima para cada 50 pontos extras (Máximo de +6 com 250 pts).
+Mednin: Especialista em Iryō Ninjutsu
+★ ★ ☆ ☆ ☆ ☆
+(100 pontos de Trait)
+Descrição:
+O personagem converte seu chakra em uma ferramenta de regeneração e purificação. Mais do que apenas curar feridas, o Ninja Médico entende a ciência da vida, sendo capaz de remover efeitos deletérios e sustentar a vida de seus aliados no limiar da morte.
+Requisito:
+5 em Ninjutsu e 5 em Medicina.
+Vantagem:
+Recebe a habilidade
+Iryō Ninjutsu em Rank C.
+Titereiro: Mestre das Marionetes
+★ ★ ★ ★
+☆
+☆
+(200 pontos de Trait)
+Descrição:
+O usuário utiliza fios de chakra quase invisíveis para converter madeira e metal em armas de guerra. O estilo Kugutsu exige uma mente multitarefa, capaz de controlar mecanismos complexos à distância enquanto mantém a própria segurança.
+Requisito:
+7 pontos em Ninjutsu.
+Vantagem:
+Recebe Kugutsu no Jutsu (Rank B), Chakra no Ito (Rank B) e uma Marionete de Rank B. As técnicas deste estilo são classificadas como Hidden (Secretas).
+Shabondama: Estilo Bolhas de Sabão
+★ ★ ★
+☆
+☆
+(150 pontos de Trait)
+Descrição:
+☆
+Uma variação exótica do Suiton que utiliza uma mistura de chakra e fluidos para criar bolhas flutuantes. Estas esferas podem carregar venenos, explosivos ou servir para transporte e proteção, tornando o usuário um estrategista versátil e imprevisível.
+Requisito:
+Afinidade com Suiton.
+Vantagem:
+Recebe o Shabondama (Rank B)
+Samurai: O Caminho da Lâmina
+★ ☆ ☆ ☆ ☆ ☆
+(50 pontos de Trait)
+Descrição:
+O personagem segue o código e as técnicas dos guerreiros de elite do País do Ferro. Focado na velocidade do desembainhar e na precisão do corte, este estilo ignora a complexidade dos selos de mão em favor da letalidade física pura.
+Requisito:
+7 em Bukijutsu.
+Vantagem:
+Recebe o Estilo de Luta
+Iaidō (Rank C)
+e uma
+Katana/Chokutō Rank C
+.
+Jōgan: O Olho Puro
+★ ★
+☆
+☆
+☆
+(150 pontos de Trait)
+Descrição:
+☆
+Permissão expressa do Mestre.
+Vantagem:
+Desperta o Jōgan em um de seus olhos.
+Um Dõjutsu ancestral e misterioso, ligado às linhagens mais profundas do clã Ōtsutsuki. O "Olho Puro" permite ao usuário perceber fendas no espaço-tempo e visualizar o fluxo de chakra de forma única, sendo uma relíquia divina manifestada em um único olho.
+Requisito:
+Jū Giga: Desenho de Imitação de Bestas
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Para este shinobi, o pincel é tão letal quanto a kunai. Através da infusão de chakra em tintas especiais, o usuário é capaz de dar vida e tridimensionalidade aos seus desenhos. De pássaros velozes para transporte a feras ferozes para combate, as criações de tinta obedecem cegamente aos comandos de seu criador. É uma habilidade que une a criatividade artística à utilidade militar, permitindo que um único ninja forme seu próprio esquadrão de suporte em segundos.
+Vantagem:
+O personagem é capaz de materializar desenhos em criaturas vivas e funcionais. O usuário recebe automaticamente a técnica
+Jū Giga em Rank C.
+Versatilidade:
+As criações podem ser usadas para reconhecimento, transporte, ataque ou restrição, dependendo da forma desenhada.
+Mente Blindada: Cidadela Psíquica
+★ ☆ ☆ ☆ ☆ ☆
+(50 a 250 pontos de Trait)
+Descrição:
+Seja por ter sobrevivido a torturas psicológicas severas ou por possuir uma vontade inquebrável, a psique deste personagem é como uma fortaleza. Ele desenvolveu "filtros" mentais que detectam intrusões externas instantaneamente. Ilusionistas encontram uma resistência feroz ao tentar penetrar em sua mente, pois ele consegue ancorar sua consciência na realidade com uma força impressionante.
+Requisito:
+6 pontos em Inteligência ou Força Espiritual.
+Vantagem:
+Recebe um bônus permanente de +4 em Genjutsu Kai (defesa).
+Resiliência:
+Reduz a duração de qualquer efeito de Atordoamento ou Genjutsu sofrido em 1 rodada (Mínimo de 1 rodada de duração).
+Evolução:
+A cada 50 pontos extras, recebe +1 em Genjutsu Kai.
+Adrenalina de Combate: Instinto de Sobrevivência
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Quando o corpo atinge o limiar da morte, a mente do personagem entra em um estado primitivo de "Lutar ou Fugir". Uma descarga maciça de adrenalina inunda o sistema nervoso, entorpecendo a dor de ferimentos letais e ignorando a fadiga muscular. Nesse estado de transe combativo, os sentidos do shinobi tornam-se hiper-aguçados, permitindo reações impossíveis enquanto ele luta com o vigor de alguém que não tem mais nada a perder.
+Gatilho:
+Ativado automaticamente quando os Pontos de Vida (PV) caem abaixo de 20%.
+Bônus de Sobrevivência:
+O personagem recebe um bônus de +2 em todas as jogadas de Ataque e Defesa (este bônus ignora os limites/caps de atributo).
+Recuperação Súbita:
+O personagem recupera 150 pontos de Estâmina (PE) imediatamente ao ativar este efeito.
+Duração:
+O efeito persiste até que a Vida suba acima de 20% ou o combate termine.
+Restrição:
+Só pode ser ativado uma vez por combate.
+O hospedeiro do Dez-Caudas, a forma primordial que combina a Árvore Divina e a vontade de Kaguya Ōtsutsuki, transcende a própria definição de Shinobi para tornar-se uma divindade na terra. O Jūbi é o progenitor do chakra, uma força da natureza titânica e imparcial que não possui sentimentos ou ideais, agindo como um mecanismo absoluto de escala planetária. Ao selar esta entidade, o Jinchūriki deixa de ser humano para se tornar o receptáculo do mundo, manifestando o poder do Rikudō (Seis Caminhos). Com o corpo blindado por esferas que anulam a realidade e um controle total sobre todos os elementos, este ninja detém a chave para a criação e a destruição total.
+Vantagens:
+O hospedeiro recebe o ápice absoluto de recursos e habilidades do sistema:
++100% de Chakra Extra
+, dobrando sua reserva total.
+Chakra Progenitor:
+Recebe um bônus passivo de
+Onipotência Elemental:
+O usuário desperta afinidade nata com as 5 Naturezas Básicas (Katon, Suiton, Doton, Fūton e Raiton), recebendo todas em Rank SSS gratuitamente. Além disso, ganha maestria absoluta sobre a Liberação de Madeira (Mokuton) em Rank SSS.
+Poder do Sábio:
+O personagem desperta o Rikudō Senjutsu, recebendo 10 Gudōdama (Esferas da Busca da Verdade), armas maleáveis que podem desintegrar quase qualquer matéria.
+Imortalidade Biológica
+: O portador recebe a técnica Saisei Nōryoku (Capacidade de Regeneração) Rank SSS, tornando-o virtualmente impossível de ser derrotado por danos convencionais.
+Visão Suprema:
+Caso o usuário já possua o Rinnegan desperto, a união com o Jūbi transmuta seu poder ocular no lendário Rinne Sharingan, o olho que reflete o céu.
+Jinchūriki do Jūbi
+(Não Pode Ser Comprado)
+✦ ✦ ✦ ✦
+Vantagem:
+O personagem recebe um bônus passivo de
+para cada 50 pontos investidos nesta Trait.
++5% em seus Pontos de Vida (PV)
+Nível Máximo (250 pts):
++25% de Vida Extra.
+Restrições de Genética:
+Esta Trait representa uma herança biológica pura e, por isso, não pode ser evoluída após a criação do personagem. Devido à saturação celular, ela é incompatível com: Chakra Extra, Estâmina Extra, Traits Jinchūriki, Células de Hashirama ou Traits de Reencarnação.
+Restrições de Genética:
+O volume dos canais de chakra é definido no nascimento; portanto, esta Trait não pode ser evoluída posteriormente. É incompatível com: Vida Extra, Estâmina Extra, Traits Jinchūriki, Células de Hashirama ou Traits de Reencarnação.
+Vantagem:
+O personagem torna-se um mestre na manipulação de papéis, sendo capaz de controlar, transformar e infundir chakra neles. O usuário recebe automaticamente a técnica
+Shikigami no Mai no Jutsu em Rank C.
+Efeito Especial:
+O personagem possui a habilidade nata de converter papéis comuns em Papéis Bomba através de seu chakra, garantindo versatilidade em armadilhas e ataques de longo alcance.
+Restrições Gerais: Somente uma trait desta categoria por personagem. O limite de investimento é de 250 pontos. Os bônus concedidos não podem ultrapassar o limite de atributo de combate atual do personagem (Cap).
+★ ★ ★ ★ ★ ★
+- 300 pontos de Trait
+★ ★ ★ ★ ★ ☆
+- 250 pontos de Trait
+★ ★ ★ ★ ☆ ☆
+- 200 pontos de Trait
+★ ★ ★ ☆ ☆ ☆
+- 150 pontos de Trait
+★ ★ ☆ ☆ ☆ ☆
+- 100 pontos de Trait
+★ ☆ ☆ ☆ ☆ ☆
+- 50 pontos de Trait
+◆ ◆ ◆ ◆
+- 400 pontos de trait
+◆ ◆ ◆
+- 350 pontos de trait
+★
+◆ ◆ ◆ ◆ ◆ ◆
+- 600 pontos de trait
+Hiraishin: O Deus Voador do Trovão
+★ ★ ★ ★ ★
+☆
+(250 pontos de Trait)
+Descrição:
+O personagem dominou os segredos do espaço-tempo, aprendendo a marcar o tecido da realidade com fórmulas de selamento. Através desta técnica, a distância torna-se irrelevante; o ninja pode teleportar-se instantaneamente para qualquer local marcado, tornando-se o ápice da velocidade no mundo shinobi.
+Requisito:
+Nível 40 (Mínimo). Não pode ser adquirida na criação.
+Vantagem:
+O personagem recebe a técnica Hiraishin no Jutsu em Rank SS+ e o conhecimento para formular suas marcações.
+Hachimon: Os Oito Portões Internos
+★ ★ ★ ★ ★ ★
+(300 pontos de Trait)
+Descrição:
+O personagem aprendeu a romper os limitadores biológicos do corpo, permitindo que o chakra inunde o sistema circulatório de forma violenta. É o caminho do sacrifício e da força bruta absoluta, capaz de conceder poder divino ao custo de danos severos à própria estrutura física.
+Requisito:
+7 pontos em Taijutsu.
+Vantagem:
+Recebe o Hiden Hachimon (Oito Portões) em Rank B
+Kujaku Myōhō: Método do Pavão
+★ ★ ★ ★ ★
+☆
+(250 pontos de Trait)
+Descrição:
+O personagem foi treinado na Vila oculta da Estrela para manipular o chakra em formas plumadas e radiantes através da radiação de um meteoro ancestral. É uma técnica exótica que permite voo e ataques de longo alcance com uma coloração púrpura única.
+Requisito:
+Não pode ser adquirida na criação. Requer treinamento in-game.
+Aprendiz do Fogo: Senzoku no Sai
+★ ★
+☆
+☆
+☆
+☆
+(150 pontos de Trait)
+Descrição:
+O personagem recebeu permissão e treinamento para aprender as artes sagradas dos monges do Templo do Fogo. Este "Talento Dotado" permite a manipulação de um chakra especial para proteção e ataque espiritual.
+Requisito:
+Não pode ser adquirida na criação.
+Senrigan: O Olho da Onisciência
+Um Shinjutsu lendário dos Ōtsutsuki que transcende o tempo e o espaço. O usuário é capaz de projetar sua consciência para ver qualquer evento que esteja ocorrendo no presente ou que tenha ocorrido no passado, tornando segredos algo inexistente diante de sua visão.
+Requisito:
+Permissão expressa do Mestre.
+Vantagem:
+Desperta o Senrigan em um de seus olhos.
+★ ★ ★ ★ ★
+☆
+(250 pontos de Trait)
+Descrição:
+Nota Geral: Estas Traits não possuem um custo fixo de criação. Elas são recompensas de grandes arcos narrativos, consequências de experimentos proibidos ou definidas pelo Mestre como parte da história do personagem.
+Receptáculo Ōtsutsuki: Karma Preto
+✦ ✦ ✦ ✦ ✦
+(Custo: Variável/Trama)
+Descrição:
+O personagem foi marcado pelo selo amaldiçoado "Kāma". Ele não é mais apenas um humano, mas um "arquivo de backup" biológico para um Ōtsutsuki. O selo em forma de diamante negro concede poderes divinos e a capacidade de absorver jutsu, mas representa uma contagem regressiva para a completa substituição da alma do usuário pela do parasita alienígena.
+Efeito:
+Recebe o Karma Preto (Acesso a absorção de chakra, aumento de atributos físicos e portal dimensional, conforme progresso da extração).
+Restrição:
+Incompatível com Traits de Status Extra.
+Receptáculo Imperfeito: Karma Branco
+✦ ✦ ✦ ✦
+(Custo: Variável/Trama)
+Descrição:
+O personagem sobreviveu ao ritual de marcação Ōtsutsuki, mas foi considerado incompatível para a reencarnação. O resultado é o "Karma Branco": uma anomalia que concede o poder puro e as habilidades de combate dos deuses, mas sem a alma do Ōtsutsuki para sobrescrever a mente do usuário. É a arma perfeita — poder divino sem o custo da possessão.
+Efeito:
+Recebe o Karma Branco (Acesso a poderes físicos e destrutivos do Ōtsutsuki, mas sem a capacidade de absorção de Ninjutsu típica do Karma Preto).
+Restrição:
+Incompatível com Traits de Status Extra.
+Reencarnação de Asura: Corpo do Sábio
+✦ ✦ ✦ ✦
+(Custo: Variável/Trama)
+Descrição:
+O personagem é a reencarnação transmigrante de Asura Ōtsutsuki. Ele carrega a "Vontade do Fogo" e a vitalidade física herdada do Rikudō Sennin. Sua força não vem do talento nato, mas do esforço, dos laços e de uma força vital que se recusa a extinguir.
+Requisito:
+Ser do Clã Senju ou Uzumaki.
+Vantagem:
+O personagem recebe
++25% de Pontos de Vida
+e
++25% de Pontos de Estâmina
+.
+Restrição:
+Incompatível com qualquer outra Trait de Status Extra (Vida, Chakra ou Estâmina Extra).
+Reencarnação de Indra: Olhos do Sábio
+✦ ✦ ✦ ✦
+(Custo: Variável/Trama)
+Descrição:
+O personagem é a reencarnação transmigrante de Indra Ōtsutsuki. Ele herda o chakra espiritual potente e a genialidade solitária do filho mais velho do Rikudō. Seu chakra é denso, frio e excepcionalmente poderoso, focado na manifestação de proezas visuais e espirituais.
+Requisito:
+Ser do Clã Uchiha.
+Vantagem:
+O personagem recebe
++40% de Pontos de Chakra.
+Restrição: I
+ncompatível com qualquer outra Trait de Status Extra.
+CAMINHO DO ESFORÇO (SEM CLÃ)
+Regras e Restrições:
+Elemento:
+Role 1d6 para definir o elemento inicial.
+Proibição Absoluta:
+O personagem não pode adquirir: Kekkei Genkai Elemental, Kekkei Tōta, Shikigami no Mai, Shabondama, Jū Giga ou Trait Jinchūriki. A compra de qualquer uma destas anula todos os benefícios desta Trait.
+CATEGORIA: CLÃS MENORES E ESPECÍFICOS (50 - 150 pts)
+Mestre da Ilusão (Hidden)
+★ ★ ★ ☆ ☆ ☆
+(150 pontos de Trait)
+Descrição:
+Uma anomalia sensorial. O personagem nasceu com um desequilíbrio natural em seu fluxo de chakra Yin, tornando seus Genjutsus excepcionalmente potentes e difíceis de quebrar (Similar ao Clã Kurama).
+Bônus:
+Recebe +30% de Dano/Eficácia em técnicas de Genjutsu e ganha o Genjutsu no Jutsu Rank B.
+CATEGORIA: CLÃS DE ELITE E LENDÁRIOS (200 - 250 pts)
+Efeito:
+Herda a regeneração celular mítica. Recebe Iryō Ninjutsu Rank C e Cura Fortalecida. Perde benefícios de "Sem Clã".
+1. O que são as Traits?
+As Traits são as características únicas que definem a origem, o sangue e o destino do seu ninja. Elas são os "perks" ou "talentos" que você escolhe na criação do personagem (ou ganha durante a história).
+Exemplo:
+Se você quer ser um gênio do fogo, você pega a Trait do Clã Sarutobi. Se você quer ser um tanque humano que nunca cansa, você investe em Vida Extra.
+2. O que elas fazem na prática?
+Mecanicamente, as Traits servem para três coisas principais:
+Liberar Poderes:
+Muitas técnicas (como o Byakugan ou o Mokuton) só podem ser usadas se você tiver a Trait correspondente. Sem a "chave" (Trait), você não abre a "porta" (Jutsu).
+Dar Bônus Passivos:
+Elas podem aumentar seu Chakra, dar bônus em perícias (como Percepção ou Persuasão) ou até te dar mais pontos de vida.
+Quebrar Regras:
+Algumas Traits permitem que você faça coisas que um ninja comum não faria, como usar o sangue como combustível ou ter uma marionete desde o nível 1.
+3. Para que elas servem?
+O objetivo das Traits é garantir que nenhum personagem seja igual ao outro.
+Mesmo que dois jogadores escolham ser "Especialistas em Ninjutsu", um pode ser um Uzumaki (focado em selamentos e reservas imensas) e o outro um Hōzuki (focado em se transformar em água e ataques furtivos). Elas servem para dar personalidade e estratégia ao seu jogo.
+Dica de Mestre: Como escolher?
+Ao olhar a lista, não foque apenas no que é "mais forte". Pense no conceito do seu ninja:
+1. Origem
+: Eu venho de um clã famoso ou sou um "Sem Clã" que se esforça o dobro?
+2. Estilo:
+Eu quero bater de perto, curar meus amigos ou controlar o campo com ilusões?
+3. Custo:
+Lembre-se que você tem uma pontuação limitada. Às vezes, vale mais a pena ter três Traits médias do que uma lendária que te deixa "pobre" de outros recursos.
+SIMBOLOS E PREÇOS
+✦ ✦ ✦ ✦
+- 1000 pontos de Trait
+✦ ✦ ✦
+- 900 pontos de Trait
+✦ ✦
+- 800 pontos de Trait
+✦
+- 700 pontos de Trait
+Afinidade e Herança:
+O personagem recebe Suiton como elemento inicial e a habilidade Suiton no Jutsu no Rank C fortalecido. Ele também recebe gratuitamente a técnica Kuchiyose no Jutsu: Same (Tubarões) no Rank C.
+Passiva (A Fúria dos Mares):
+O clã é absurdamente proficiente em Suiton, recebendo aumentos diretos de dano em suas técnicas baseados no Rank do jutsu utilizado
+

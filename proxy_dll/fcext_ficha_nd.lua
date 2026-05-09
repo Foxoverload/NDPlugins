@@ -591,6 +591,100 @@ local function criarFichaAvancada(sheet, parentForm)
         end;
     end);
 
+    -- IA Narradora button
+    local aiBtn = GUI.newButton();
+    aiBtn.parent = exportRow;
+    aiBtn.align = "right";
+    aiBtn.width = 200;
+    aiBtn.text = "🤖 IA Narradora";
+    pcall(function() aiBtn.fontColor = "#00FF88"; end);
+    aiBtn:addEventListener("onClick", function()
+        pcall(function()
+            -- Load AI module
+            local aiCode = findScript("fcext_ai.lua");
+            if not aiCode then
+                GUI.toast("fcext_ai.lua nao encontrado. Reinstale o Script Extender.");
+                return;
+            end;
+            local aiModule = load(aiCode)();
+            if not aiModule then
+                GUI.toast("Erro ao carregar modulo IA.");
+                return;
+            end;
+
+            -- Load config
+            aiModule.loadConfig();
+
+            -- Check if API key is set
+            if aiModule.config.apiKey == "" then
+                -- Ask for API key
+                local dlg = GUI.newPopupForm(300, 200);
+                dlg.title = "IA Narradora - Configuracao";
+
+                local lbl = GUI.newLabel();
+                lbl.parent = dlg;
+                lbl.text = "Cole sua API Key da OpenAI:";
+                lbl.align = "top";
+                lbl.height = 20;
+                lbl.margins = {top = 10, left = 10, right = 10};
+
+                local edt = GUI.newEdit();
+                edt.parent = dlg;
+                edt.align = "top";
+                edt.height = 24;
+                edt.margins = {top = 4, left = 10, right = 10};
+                edt.text = "";
+
+                local modelLbl = GUI.newLabel();
+                modelLbl.parent = dlg;
+                modelLbl.text = "Modelo:";
+                modelLbl.align = "top";
+                modelLbl.height = 20;
+                modelLbl.margins = {top = 10, left = 10};
+
+                local modelEdt = GUI.newEdit();
+                modelEdt.parent = dlg;
+                modelEdt.align = "top";
+                modelEdt.height = 24;
+                modelEdt.margins = {top = 4, left = 10, right = 10};
+                modelEdt.text = aiModule.config.model;
+
+                local okBtn = GUI.newButton();
+                okBtn.parent = dlg;
+                okBtn.align = "bottom";
+                okBtn.height = 30;
+                okBtn.text = "Salvar e Ativar";
+                okBtn.margins = {bottom = 10, left = 10, right = 10};
+                okBtn:addEventListener("onClick", function()
+                    local key = edt.text or "";
+                    if key ~= "" then
+                        aiModule.config.apiKey = key;
+                        aiModule.config.model = modelEdt.text or "gpt-4o-mini";
+                        aiModule.saveConfig();
+                        aiModule.start();
+                        pcall(function() dlg:close(); end);
+                        GUI.toast("✅ IA Narradora ativada! Use /ia no chat.");
+                    else
+                        GUI.toast("Insira uma API Key valida.");
+                    end;
+                end);
+
+                dlg:show();
+            else
+                -- Toggle on/off
+                if aiModule.config.enabled then
+                    aiModule.stop();
+                    GUI.toast("🤖 IA Narradora desativada.");
+                    aiBtn.text = "🤖 IA Narradora";
+                else
+                    aiModule.start();
+                    GUI.toast("✅ IA Narradora ativada! Use /ia no chat.");
+                    aiBtn.text = "🤖 IA Narradora (ON)";
+                end;
+            end;
+        end);
+    end);
+
     -- Status bars will be added to tab2 (Atributos) later
     -- We define the helper function here, create bars after scroll2 exists
     local statusCard; -- forward declaration

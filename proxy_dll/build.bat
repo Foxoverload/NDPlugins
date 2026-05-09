@@ -10,7 +10,7 @@ if errorlevel 1 (
 )
 
 echo Compiling proxy DLL...
-zig cc -shared -target x86_64-windows-gnu -o lua54x64.dll lua54x64_proxy.c lua54x64.def -lkernel32 -luser32 -ladvapi32 -O2
+zig cc -shared -target x86_64-windows-gnu -o lua54x64.dll lua54x64_proxy.c lua54x64.def -lkernel32 -luser32 -lgdi32 -ladvapi32 -lwinhttp -O2
 
 if errorlevel 1 (
     echo.

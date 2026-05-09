@@ -20,3 +20,18 @@ desktop.ini
 *.swp
 *.swo
 *~
+
+# Binary / large files
+*.bib
+*.zip
+*.pdb
+bib_raw.bin
+ND_ScriptExtender_*/
+
+# Generated text (large, rebuild from .bib)
+ND Sistema/ND_BIB_SISTEMA_COMPLETO.txt
+ND Sistema/Backup/
+
+# Temp extraction
+proxy_dll/nd_system_txt/
+proxy_dll/combate_raw.txt
